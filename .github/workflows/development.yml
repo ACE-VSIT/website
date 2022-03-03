@@ -35,7 +35,7 @@ jobs:
           PRISMIC_REPO_NAME: ${{ secrets.PRISMIC_REPO_NAME }}
           PRISMIC_ACCESS_TOKEN: ${{ secrets.PRISMIC_REPO_NAME }}
       run: |
-        yarn install
+        yarn install --production
         yarn build
       
     - name: Deploy to Netlify
