@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Netlify Development Build
+name: Netlify Build
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
 on:
   push:
-    branches-ignore: [ main ]
+    branches: [ * ]
   pull_request:
-    branches-ignore: [ main ]
+    branches: [ * ]
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,7 +33,7 @@ jobs:
     - name: Building your Gatsby Site
       env:
           PRISMIC_REPO_NAME: ${{ secrets.PRISMIC_REPO_NAME }}
-          PRISMIC_ACCESS_TOKEN: ${{ secrets.PRISMIC_REPO_NAME }}
+          PRISMIC_ACCESS_TOKEN: ${{ secrets.PRISMIC_ACCESS_TOKEN }}
       run: |
         yarn install --production
         yarn build
@@ -45,5 +45,5 @@ jobs:
           production-branch: main
           deploy-message: '${{ github.event.head_commit.message }}'
       env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_DEV_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_DEV_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_PROD_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_PROD_AUTH_TOKEN }}
