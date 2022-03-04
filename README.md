@@ -8,8 +8,9 @@
   ACE Website Development Guide
 </h1>
 
-<p>Hello reader, our team has initiated this project in order to update the ACE's website and along with that this can be a great opportunity for all of the team members to learn and explore various technologies which are used on the Web. Wish you luck! <br />
-This guide includes everything you need to get started with the Project.</p>
+<p>Hello reader, our team has initiated this project in order to update the ACE's website and along with that this can be a great opportunity for all of the team members to learn and explore various technologies which are used on the Web. <br />
+This guide includes everything you need to get started with the Project. <br />
+Wish you luck! </p>
 
 _If you find anything which can be improved in the README.md then ping me and give a pull request._
 
