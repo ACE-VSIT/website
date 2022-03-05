@@ -13,6 +13,7 @@ import {
   NavabrSliderClose,
 } from "./NavbarElements"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { navigate } from "gatsby"
 import { useTrail, animated } from "react-spring"
 
 export default function Navbar({ img, sliderInfo, itemList, socialList }) {
@@ -35,7 +36,6 @@ export default function Navbar({ img, sliderInfo, itemList, socialList }) {
     opacity: toggleSlider ? 1 : 0,
     x: toggleSlider ? 0 : -20,
     height: toggleSlider ? 80 : 0,
-    onRest: () => setAwaitAnimate(true),
     from: { opacity: 0, x: -20, height: 0 },
   })
 
@@ -50,7 +50,7 @@ export default function Navbar({ img, sliderInfo, itemList, socialList }) {
   return (
     <NavbarWrapper>
       {brandImg && (
-        <NavbarBrandImg>
+        <NavbarBrandImg onClick={() => navigate("/")}>
           <GatsbyImage image={brandImg} alt="" />
         </NavbarBrandImg>
       )}
