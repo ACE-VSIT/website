@@ -67,7 +67,6 @@ export const NavbarList = styled(FlexCenter)`
 
     &:hover,
     &:focus {
-      
       ${NavbarListItem} {
         color: ${props => props.theme.active};
       }
@@ -133,12 +132,18 @@ export const NavbarSlider = styled(FlexCenter)`
   }
 `
 
-export const NavSliderInfo = styled.div`
-  display: block;
+export const NavSliderInfo = styled(FlexCenter)`
+  flex-direction: column;
+  gap: 1rem;
 
-  h4,
-  h4 > strong {
-    font-size: 3rem;
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  h5,
+  h5 > strong {
+    font-size: 1.15rem;
     width: inherit;
     text-align: center;
   }

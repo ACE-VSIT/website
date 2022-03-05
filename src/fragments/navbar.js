@@ -7,7 +7,7 @@ export const navbarInfo = graphql`
         ... on PrismicLayoutDataBodyNavbarListItem {
           primary {
             navbar_slider_info {
-              html
+              richText
             }
             navbar_logo {
               gatsbyImageData(placeholder: BLURRED)

@@ -12,7 +12,7 @@ const Layout = ({ children, navbar }) => {
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       <Navbar
-        sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.html}
+        sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.richText}
         itemList={navbar && navbar[1]?.items}
         socialList={navbar && navbar[2]?.items}
         img={navbar && navbar[0]?.primary?.navbar_logo}

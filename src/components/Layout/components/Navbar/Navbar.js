@@ -12,15 +12,25 @@ import {
   NavbarSocialItem,
   NavabrSliderClose,
 } from "./NavbarElements"
+import RichText from "../../../rich-text/index"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { navigate } from "gatsby"
-import { useTrail, animated } from "react-spring"
+import { useTrail, useSpring, animated } from "react-spring"
 
 export default function Navbar({ img, sliderInfo, itemList, socialList }) {
   const [toggleSlider, setToggleSlider] = useState(false)
   const [awaitAnimate, setAwaitAnimate] = useState(false)
   const springConfig = { mass: 5, tension: 1500, friction: 200 }
   const brandImg = getImage(img)
+
+  const navbarSliderAnimation = useSpring({
+    opacity: toggleSlider ? 1 : 0,
+    transform: toggleSlider ? `translateX(0)` : `translateX(100%)`,
+  })
+
+  const toggleStyles = {
+    display: toggleSlider ? "flex" : "none",
+  }
 
   const trailVertical = useTrail(itemList?.length ?? 1, {
     springConfig,
@@ -77,32 +87,34 @@ export default function Navbar({ img, sliderInfo, itemList, socialList }) {
           })}
       </NavbarList>
       <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
-      {toggleSlider && (
-        <NavbarSlider>
-          <NavabrSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
-          <NavSliderInfo dangerouslySetInnerHTML={{ __html: sliderInfo }} />
-          {itemList &&
-            trailMobile.map(({ x, height, ...rest }, index) => {
-              const link = itemList[index].navbar_link.url.replace(
-                /(^\w+:|^)\/\//,
-                ""
-              )
-              return (
-                <animated.div
-                  key={index}
-                  style={{
-                    ...rest,
-                    transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
-                  }}
-                >
-                  <NavbarListItem to={link} style={{ height }}>
-                    {itemList[index].navbar_link_name.text}
-                  </NavbarListItem>
-                </animated.div>
-              )
-            })}
-        </NavbarSlider>
-      )}
+      <NavbarSlider style={toggleStyles}>
+        <NavabrSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+        <animated.div style={navbarSliderAnimation}>
+          <NavSliderInfo>
+            <RichText richText={sliderInfo} />
+          </NavSliderInfo>
+        </animated.div>
+        {itemList &&
+          trailMobile.map(({ x, height, ...rest }, index) => {
+            const link = itemList[index].navbar_link.url.replace(
+              /(^\w+:|^)\/\//,
+              ""
+            )
+            return (
+              <animated.div
+                key={index}
+                style={{
+                  ...rest,
+                  transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                }}
+              >
+                <NavbarListItem to={link} style={{ height }}>
+                  {itemList[index].navbar_link_name.text}
+                </NavbarListItem>
+              </animated.div>
+            )
+          })}
+      </NavbarSlider>
       <NavbarVertical left>
         <NavbarSocialHeading>{"Follow Us"}</NavbarSocialHeading>
         {socialList &&
