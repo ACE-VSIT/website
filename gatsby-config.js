@@ -30,7 +30,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#EEE`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/AceLogo.svg`,
       },
     },
     {
@@ -40,6 +40,7 @@ module.exports = {
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         schemas: {
           homepage: require('./src/schemas/Homepage.json'),
+          layout: require('./src/schemas/Layout.json')
         }
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
