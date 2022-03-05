@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@fontsource/open-sans": "^4.5.5",
+    "@ant-design/icons": "^4.7.0",
+    "@fontsource/roboto-slab": "^4.5.4",
     "@prismicio/react": "^2.1.1",
     "babel-plugin-styled-components": "^2.0.6",
     "gatsby": "^4.9.0",
