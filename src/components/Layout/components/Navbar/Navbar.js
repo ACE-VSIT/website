@@ -1,25 +1,54 @@
 import React, { useState } from "react"
 import {
-  // NavbarBrand,
   NavbarBrandImg,
   NavbarList,
   NavbarListItem,
   NavbarSlider,
+  NavSliderInfo,
   NavbarSliderIcon,
   NavbarWrapper,
   NavbarVertical,
   NavbarSocialHeading,
   NavbarSocialItem,
+  NavabrSliderClose,
 } from "./NavbarElements"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { useTrail, animated } from "react-spring"
 
 export default function Navbar({ img, sliderInfo, itemList, socialList }) {
   const [toggleSlider, setToggleSlider] = useState(false)
+  const [awaitAnimate, setAwaitAnimate] = useState(false)
+  const springConfig = { mass: 5, tension: 1500, friction: 200 }
   const brandImg = getImage(img)
+
+  const trailVertical = useTrail(itemList?.length ?? 1, {
+    springConfig,
+    opacity: 1,
+    x: 0,
+    height: 80,
+    onRest: () => setAwaitAnimate(true),
+    from: { opacity: 0, x: -20, height: 0 },
+  })
+
+  const trailMobile = useTrail(itemList?.length ?? 1, {
+    springConfig,
+    opacity: toggleSlider ? 1 : 0,
+    x: toggleSlider ? 0 : -20,
+    height: toggleSlider ? 80 : 0,
+    onRest: () => setAwaitAnimate(true),
+    from: { opacity: 0, x: -20, height: 0 },
+  })
+
+  const trailHorizontal = useTrail(socialList?.length ?? 1, {
+    springConfig,
+    opacity: awaitAnimate ? 1 : 0,
+    y: awaitAnimate ? 0 : -20,
+    height: awaitAnimate ? 80 : 0,
+    from: { opacity: 0, y: -20, height: 0 },
+  })
 
   return (
     <NavbarWrapper>
-      {/* {brandName && !brandImg && <NavbarBrand>{brandName}</NavbarBrand>} */}
       {brandImg && (
         <NavbarBrandImg>
           <GatsbyImage image={brandImg} alt="" />
@@ -27,32 +56,76 @@ export default function Navbar({ img, sliderInfo, itemList, socialList }) {
       )}
       <NavbarList>
         {itemList &&
-          itemList.map((element, key) => {
-            const link = element.navbar_link.url.replace(/(^\w+:|^)\/\//, "")
+          trailVertical.map(({ x, height, ...rest }, index) => {
+            const link = itemList[index].navbar_link.url.replace(
+              /(^\w+:|^)\/\//,
+              ""
+            )
             return (
-              <NavbarListItem to={link} key={key}>
-                {element.navbar_link_name.text}
-              </NavbarListItem>
+              <animated.div
+                key={index}
+                style={{
+                  ...rest,
+                  transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                }}
+              >
+                <NavbarListItem to={link} style={{ height }}>
+                  {itemList[index].navbar_link_name.text}
+                </NavbarListItem>
+              </animated.div>
             )
           })}
       </NavbarList>
       <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
       {toggleSlider && (
-        <NavbarSlider dangerouslySetInnerHTML={{ __html: sliderInfo }} />
+        <NavbarSlider>
+          <NavabrSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+          <NavSliderInfo dangerouslySetInnerHTML={{ __html: sliderInfo }} />
+          {itemList &&
+            trailMobile.map(({ x, height, ...rest }, index) => {
+              const link = itemList[index].navbar_link.url.replace(
+                /(^\w+:|^)\/\//,
+                ""
+              )
+              return (
+                <animated.div
+                  key={index}
+                  style={{
+                    ...rest,
+                    transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                  }}
+                >
+                  <NavbarListItem to={link} style={{ height }}>
+                    {itemList[index].navbar_link_name.text}
+                  </NavbarListItem>
+                </animated.div>
+              )
+            })}
+        </NavbarSlider>
       )}
       <NavbarVertical left>
         <NavbarSocialHeading>{"Follow Us"}</NavbarSocialHeading>
         {socialList &&
-          socialList.map((element, key) => {
+          trailHorizontal.map(({ y, height, ...rest }, index) => {
             return (
-              <NavbarSocialItem
-                href={element.navbar_social_link.url}
-                target={"_blank"}
-                rel={"noreferrer"}
-                key={key}
+              <animated.div
+                style={{
+                  ...rest,
+                  transform: y.interpolate(
+                    y => `translateY(${y}px) rotate(-90deg)`
+                  ),
+                }}
+                key={index}
               >
-                {element.navbar_social_item_name.text}
-              </NavbarSocialItem>
+                <NavbarSocialItem
+                  href={socialList[index].navbar_social_link.url}
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  style={{ height }}
+                >
+                  {socialList[index].navbar_social_item_name.text}
+                </NavbarSocialItem>
+              </animated.div>
             )
           })}
       </NavbarVertical>

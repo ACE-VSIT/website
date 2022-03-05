@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 import AlignRightOutlined from "@ant-design/icons/AlignRightOutlined"
+import CloseOutlined from "@ant-design/icons/CloseOutlined"
 import { FlexCenter } from "../../../../styles/sharedStyles"
 import { Link } from "gatsby"
 
@@ -17,24 +18,12 @@ export const NavbarWrapper = styled(FlexCenter)`
     flex-direction: row;
     flex-wrap: wrap;
   }
-`
-export const NavbarBrand = styled.div`
-  font-weight: 800;
-  cursor: pointer;
-  font-size: 1.75rem;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s all ease-in-out;
-  width: 5rem;
-  height: 5rem;
-  line-height: 5rem;
-  border-right: 1px solid ${props => props.theme.font + "25"};
 
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.active};
+  @media (max-width: 330px) {
+    height: 4rem;
   }
 `
+
 export const NavbarBrandImg = styled.div`
   width: 5rem;
   height: 5rem;
@@ -48,12 +37,10 @@ export const NavbarBrandImg = styled.div`
   &:focus {
     opacity: 1;
   }
-`
-export const NavbarList = styled(FlexCenter)`
-  gap: 0.5rem;
 
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: 330px) {
+    height: 4rem;
+    width: 4rem;
   }
 `
 export const NavbarListItem = styled(Link)`
@@ -61,7 +48,6 @@ export const NavbarListItem = styled(Link)`
   margin-bottom: -1px;
   font-size: 1.05rem;
   letter-spacing: -0.1mm;
-  border: 1px solid transparent;
   transition: 0.5s all ease-in-out;
   height: 5rem;
   line-height: 5rem;
@@ -72,11 +58,26 @@ export const NavbarListItem = styled(Link)`
   text-transform: capitalize;
   color: ${props => props.theme.font};
   font-weight: 500;
+`
+export const NavbarList = styled(FlexCenter)`
+  gap: 0.5rem;
 
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.active};
-    border-bottom: 1.5px solid ${props => props.theme.font};
+  div {
+    border: 1px solid transparent;
+
+    &:hover,
+    &:focus {
+      
+      ${NavbarListItem} {
+        color: ${props => props.theme.active};
+      }
+
+      border-bottom: 1.5px solid ${props => props.theme.font};
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `
 export const NavbarSliderIcon = styled(AlignRightOutlined)`
@@ -94,24 +95,90 @@ export const NavbarSliderIcon = styled(AlignRightOutlined)`
   &:focus {
     color: ${props => props.theme.active};
   }
-`
-export const NavbarSlider = styled.section`
-  position: absolute;
-  top: 5rem;
-  right: 0%;
-  max-width: 25vw;
-  height: calc(100vh - 5rem);
-  z-index: 1000;
-  padding: 1rem;
-  overflow: hidden;
-  text-align: right;
-  background: ${props => props.theme.bg};
-  border-left: 1.5px solid ${props => props.theme.font + "50"};
 
-  * {
-    text-align: right:
+  @media (max-width: 330px) {
+    height: 4rem;
+    line-height: 4rem;
+    width: 4rem;
   }
 `
+export const NavbarSlider = styled(FlexCenter)`
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 25vw;
+  height: 100vh;
+  z-index: 1000;
+  padding: 0 1.5rem;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: ${props => props.theme.bg};
+  border-left: 1.5px solid ${props => props.theme.font + "25"};
+
+  ${NavbarListItem} {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 100vw;
+    max-width: 100vw;
+
+    ${NavbarListItem} {
+      display: block;
+      border-bottom: 0;
+    }
+  }
+`
+
+export const NavSliderInfo = styled.div`
+  display: block;
+
+  h4,
+  h4 > strong {
+    font-size: 3rem;
+    width: inherit;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+export const NavabrSliderClose = styled(CloseOutlined)`
+  transition: 0.5s all ease-in-out;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: ${props => props.theme.font};
+  height: 5rem;
+  line-height: 5rem;
+  padding: 0.25rem 0;
+  top: 0%;
+  right: 1.5rem;
+  position: absolute;
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.active};
+  }
+
+  @media (max-width: 330px) {
+    height: 4rem;
+    font-size: 1.25rem;
+    margin-left: 95%;
+    line-height: 4rem;
+  }
+`
+
 export const NavbarVertical = styled(FlexCenter)`
   position: absolute;
   top: 5rem;
@@ -156,7 +223,7 @@ export const NavbarSocialItem = styled.a`
   transform: rotate(-90deg);
   white-space: nowrap;
   text-decoration: none;
-  transition: .5s all ease-in;
+  transition: 0.5s all ease-in;
   color: ${props => props.theme.font};
 
   &:hover,
