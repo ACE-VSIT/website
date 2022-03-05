@@ -13,12 +13,9 @@ import {
 } from "./NavbarElements"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-export default function Navbar({ data }) {
+export default function Navbar({ img, sliderInfo, itemList, socialList }) {
   const [toggleSlider, setToggleSlider] = useState(false)
-  const brandImg = getImage(data[0]?.primary?.navbar_logo)
-  const sliderInfo = data[0]?.primary?.navbar_slider_info.html
-  const itemList = data[1]?.items
-  const socialList = data[2]?.items
+  const brandImg = getImage(img)
 
   return (
     <NavbarWrapper>

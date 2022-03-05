@@ -7,11 +7,16 @@ import { GlobalStyle, lightTheme } from "./themes/GlobalStyles"
 import { Container } from "./components/container"
 
 const Layout = ({ children, navbar }) => {
-
+  
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
-      <Navbar data={navbar} />
+      <Navbar
+        sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.html}
+        itemList={navbar && navbar[1]?.items}
+        socialList={navbar && navbar[2]?.items}
+        img={navbar && navbar[0]?.primary?.navbar_logo}
+      />
       <Container>{children}</Container>
       <Footer />
     </ThemeProvider>
