@@ -6,14 +6,14 @@ import { getImage } from "gatsby-plugin-image"
 import MemberCard from "../components/members/MemberCard"
 import { FlexCenter, Heading } from "../styles/sharedStyles"
 
-const IndexPage = ({ data }) => {
+const MembersPage = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
 
   return (
     <Layout navbar={nav}>
-      <Seo title="Home" />
+      <Seo title="Members" />
       <FlexCenter>
-        <Heading>Core Members</Heading>
+        <Heading>Our Members</Heading>
       </FlexCenter>
       <FlexCenter style={{ flexWrap: "wrap" }}>
         {data.allPrismicMembers.nodes.map((e, key) => {
@@ -33,14 +33,14 @@ const IndexPage = ({ data }) => {
   )
 }
 
-export default IndexPage
+export default MembersPage
 
 export const IndexQuery = graphql`
-  query indexPage {
+  query membersPage {
     prismicLayout {
       ...navbarInfo
     }
-    allPrismicMembers(filter: { data: { is_core: { eq: true } } }) {
+    allPrismicMembers {
       nodes {
         ...memberInfo
       }

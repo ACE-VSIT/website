@@ -9,6 +9,10 @@ export const NavbarWrapper = styled(FlexCenter)`
   height: 5rem;
   overflow: visible;
   border-bottom: 1px solid ${props => props.theme.font + "25"};
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: ${props => props.theme.bg};
 
   * {
     overflow: visible;
@@ -186,7 +190,7 @@ export const NavabrSliderClose = styled(CloseOutlined)`
 `
 
 export const NavbarVertical = styled(FlexCenter)`
-  position: absolute;
+  position: fixed;
   top: 5rem;
   width: 5rem;
   height: calc(100vh - 5rem);

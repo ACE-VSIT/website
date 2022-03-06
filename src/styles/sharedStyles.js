@@ -14,3 +14,8 @@ export const FlexCenter = styled.div`
       flex-direction: column;
   }
 `
+export const Heading = styled.h1`
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 0.5rem 0 0 0;
+`

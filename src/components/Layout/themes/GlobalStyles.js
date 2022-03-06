@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     transition: all 0.375 ease-in-out;
     font-family: "Roboto Slab";
-    overflow: hidden;
+    overflow-x: hidden;
   }
   html.theming,
   html.theming * {
