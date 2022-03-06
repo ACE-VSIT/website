@@ -30,7 +30,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#EEE`,
         display: `minimal-ui`,
-        icon: `src/images/AceLogo.svg`,
+        icon: `src/images/ACELogoLight.svg`,
       },
     },
     {

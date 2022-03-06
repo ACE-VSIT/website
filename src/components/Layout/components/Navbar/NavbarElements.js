@@ -139,6 +139,7 @@ export const NavSliderInfo = styled(FlexCenter)`
   img {
     width: 10rem;
     height: 10rem;
+    filter: ${props => (props.isDarkTheme ? "invert(1)" : "")};
   }
 
   h5,
@@ -234,5 +235,19 @@ export const NavbarSocialItem = styled.a`
   &:hover,
   &:focus {
     color: ${props => props.theme.active};
+  }
+`
+export const NavbarSliderThemeIcon = styled(FlexCenter)`
+  position: absolute;
+  left: 0.5rem;
+  top: 0%;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+
+  > * {
+    border-radius: 50%;
+    border: 1px solid ${props => props.theme.font + "50"};
   }
 `

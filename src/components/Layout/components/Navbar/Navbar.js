@@ -11,13 +11,21 @@ import {
   NavbarSocialHeading,
   NavbarSocialItem,
   NavabrSliderClose,
+  NavbarSliderThemeIcon,
 } from "./NavbarElements"
 import RichText from "../../../rich-text/index"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { navigate } from "gatsby"
 import { useTrail, useSpring, animated } from "react-spring"
 
-export default function Navbar({ img, sliderInfo, itemList, socialList }) {
+export default function Navbar({
+  img,
+  sliderInfo,
+  itemList,
+  socialList,
+  isDarkTheme,
+  setIsDarkTheme,
+}) {
   const [toggleSlider, setToggleSlider] = useState(false)
   const [awaitAnimate, setAwaitAnimate] = useState(false)
   const springConfig = { mass: 5, tension: 1500, friction: 200 }
@@ -89,8 +97,18 @@ export default function Navbar({ img, sliderInfo, itemList, socialList }) {
       <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
       <NavbarSlider style={toggleStyles}>
         <NavabrSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+        <NavbarSliderThemeIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
+          <StaticImage
+            src={"../../../../images/themeIcon.svg"}
+            placeholder="BLURRED"
+            alt=""
+            width="30"
+            height="30"
+            imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
+          />
+        </NavbarSliderThemeIcon>
         <animated.div style={navbarSliderAnimation}>
-          <NavSliderInfo>
+          <NavSliderInfo isDarkTheme={isDarkTheme}>
             <RichText richText={sliderInfo} />
           </NavSliderInfo>
         </animated.div>

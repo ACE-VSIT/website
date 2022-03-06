@@ -12,6 +12,9 @@ export const navbarInfo = graphql`
             navbar_logo {
               gatsbyImageData(placeholder: BLURRED)
             }
+            navbar_logo_dark {
+              gatsbyImageData(placeholder: BLURRED)
+            }
           }
         }
         ... on PrismicLayoutDataBodyNavbarListItem1 {

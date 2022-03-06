@@ -3,19 +3,22 @@ import PropTypes from "prop-types"
 import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
 import { ThemeProvider } from "styled-components"
-import { GlobalStyle, lightTheme } from "./themes/GlobalStyles"
+import { GlobalStyle, lightTheme, darkTheme } from "./themes/GlobalStyles"
 import { Container } from "./components/container"
 
 const Layout = ({ children, navbar }) => {
-  
+  const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={!isDarkTheme ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Navbar
         sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.richText}
         itemList={navbar && navbar[1]?.items}
         socialList={navbar && navbar[2]?.items}
-        img={navbar && navbar[0]?.primary?.navbar_logo}
+        img={navbar && !isDarkTheme ? navbar[0]?.primary?.navbar_logo : navbar[0]?.primary?.navbar_logo_dark}
+        isDarkTheme={isDarkTheme}
+        setIsDarkTheme={setIsDarkTheme}
       />
       <Container>{children}</Container>
       <Footer />
