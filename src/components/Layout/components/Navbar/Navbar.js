@@ -102,8 +102,6 @@ export default function Navbar({
             src={"../../../../images/themeIcon.svg"}
             placeholder="BLURRED"
             alt=""
-            width="30"
-            height="30"
             imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
           />
         </NavbarSliderThemeIcon>
