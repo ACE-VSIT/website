@@ -10,7 +10,7 @@ import {
   NavbarVertical,
   NavbarSocialHeading,
   NavbarSocialItem,
-  NavabrSliderClose,
+  NavabarSliderClose,
   NavbarSliderThemeIcon,
 } from "./NavbarElements"
 import RichText from "../../../rich-text/index"
@@ -75,19 +75,16 @@ export default function Navbar({
       <NavbarList>
         {itemList &&
           trailVertical.map(({ x, height, ...rest }, index) => {
-            const link = itemList[index].navbar_link.url.replace(
-              /(^\w+:|^)\/\//,
-              ""
-            )
+            const link = itemList[index].navbar_link.url.replace("https://", "")
             return (
               <animated.div
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                  transform: x.to(x => `translate3d(0,${x}px,0)`),
                 }}
               >
-                <NavbarListItem to={link} style={{ height }}>
+                <NavbarListItem to={`/${link}`} style={{ height }}>
                   {itemList[index].navbar_link_name.text}
                 </NavbarListItem>
               </animated.div>
@@ -96,7 +93,7 @@ export default function Navbar({
       </NavbarList>
       <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
       <NavbarSlider style={toggleStyles}>
-        <NavabrSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+        <NavabarSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
         <NavbarSliderThemeIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
           <StaticImage
             src={"../../../../images/themeIcon.svg"}
@@ -121,7 +118,7 @@ export default function Navbar({
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+                  transform: x.to(x => `translate3d(0,${x}px,0)`),
                 }}
               >
                 <NavbarListItem to={link} style={{ height }}>
@@ -139,9 +136,7 @@ export default function Navbar({
               <animated.div
                 style={{
                   ...rest,
-                  transform: y.interpolate(
-                    y => `translateY(${y}px) rotate(-90deg)`
-                  ),
+                  transform: y.to(y => `translateY(${y}px) rotate(-90deg)`),
                 }}
                 key={index}
               >

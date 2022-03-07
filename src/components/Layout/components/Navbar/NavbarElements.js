@@ -164,7 +164,7 @@ export const NavSliderInfo = styled(FlexCenter)`
   }
 `
 
-export const NavabrSliderClose = styled(CloseOutlined)`
+export const NavabarSliderClose = styled(CloseOutlined)`
   transition: 0.5s all ease-in-out;
   font-size: 1.5rem;
   cursor: pointer;
