@@ -17,7 +17,7 @@ export const darkTheme = {
 }
 
 export const GlobalStyle = createGlobalStyle`
-  * {
+  *, html, body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -30,8 +30,9 @@ export const GlobalStyle = createGlobalStyle`
   html.theming * {
     transition: all 0.375s ease-in-out;
   }
+  html,
   body {
-    background-color:  ${props => props.theme.bg};
     color: ${props => props.theme.font};
+    background-color:  ${props => props.theme.bg};
   }
 `

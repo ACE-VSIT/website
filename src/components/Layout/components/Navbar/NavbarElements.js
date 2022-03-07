@@ -8,6 +8,7 @@ export const NavbarWrapper = styled(FlexCenter)`
   justify-content: space-between;
   height: 5rem;
   overflow: visible;
+  gap: 0;
   border-bottom: 1px solid ${props => props.theme.font + "25"};
   position: fixed;
   width: 100%;
