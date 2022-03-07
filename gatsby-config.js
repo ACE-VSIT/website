@@ -42,6 +42,7 @@ module.exports = {
           homepage: require('./src/schemas/Homepage.json'),
           layout: require('./src/schemas/Layout.json'),
           members: require('./src/schemas/Members.json'),
+          projects: require('./src/schemas/Projects.json'),
         }
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
