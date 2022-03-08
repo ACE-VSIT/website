@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@fontsource/roboto-slab": "^4.5.4",
     "@prismicio/react": "^2.1.1",
     "babel-plugin-styled-components": "^2.0.6",
     "gatsby": "^4.9.0",
@@ -22,6 +24,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-spring": "^9.4.3",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
