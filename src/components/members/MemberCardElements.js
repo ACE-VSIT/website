@@ -49,7 +49,7 @@ export const MemberCardWrapper = styled(FlexCenter)`
       cursor: default;
       border: 1px solid ${props => props.theme.font + "25"};
       z-index: 1005;
-      
+
       ${MemberImageWrapper} {
         width: 20rem;
         height: 20rem;

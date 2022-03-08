@@ -39,11 +39,11 @@ module.exports = {
         repositoryName: process.env.PRISMIC_REPO_NAME,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         schemas: {
-          homepage: require('./src/schemas/Homepage.json'),
-          layout: require('./src/schemas/Layout.json'),
-          members: require('./src/schemas/Members.json'),
-          projects: require('./src/schemas/Projects.json'),
-        }
+          homepage: require("./src/schemas/Homepage.json"),
+          layout: require("./src/schemas/Layout.json"),
+          members: require("./src/schemas/Members.json"),
+          projects: require("./src/schemas/Projects.json"),
+        },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
       },

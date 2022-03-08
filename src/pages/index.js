@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import { getImage } from "gatsby-plugin-image"
 import MemberCard from "../components/members/MemberCard"
 import { FlexCenter, Heading } from "../styles/sharedStyles"
+import Button from "../components/button/Button"
 
 const IndexPage = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
@@ -40,6 +41,8 @@ const IndexPage = ({ data }) => {
           )
         })}
       </FlexCenter>
+
+      <Button to={"/members"} value={"Show More"} type={"primary"} sm />
     </Layout>
   )
 }
