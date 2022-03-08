@@ -48,7 +48,8 @@ export const MemberCardWrapper = styled(FlexCenter)`
       padding: 0.5rem;
       cursor: default;
       border: 1px solid ${props => props.theme.font + "25"};
-
+      z-index: 1005;
+      
       ${MemberImageWrapper} {
         width: 20rem;
         height: 20rem;
@@ -63,7 +64,7 @@ export const MemberCardWrapper = styled(FlexCenter)`
         height: 80vh;
 
         ${MemberImageWrapper} {
-          padding-top: .5rem;
+          padding-top: 0.5rem;
           width: 80vw;
           height: 80vw;
         }
@@ -71,14 +72,18 @@ export const MemberCardWrapper = styled(FlexCenter)`
 
       @media (max-width: 375px) {
         height: 90%;
-        z-index: 1005;
         transform: translate(-50%, -50%);
       }
 
       @media (max-width: 320px) {
         height: 95%;
-        z-index: 1005;
         transform: translate(-50%, -50%);
+
+        ${MemberImageWrapper} {
+          padding-top: 0.5rem;
+          width: 80vw;
+          height: 70vw;
+        }
       }
     `}
 `
@@ -105,7 +110,13 @@ export const MemberInfoWrapper = styled(FlexCenter)`
         width: 100%;
         align-items: flex-start !important;
         justify-content: center !important;
-        height: 4rem !important;
+        min-height: 4rem !important;
+        max-height: 5rem !important;
+      }
+
+      @media (max-width: 320px) {
+        min-height: 12rem !important;
+        max-height: 14rem !important;
       }
     }
     h1:nth-of-type(1) {
@@ -138,11 +149,16 @@ export const MemberName = styled.h1`
   padding: 0 0.75rem;
   width: 100%;
   letter-spacing: 0.25px;
+  white-space: nowrap;
 `
 export const MemberTitle = styled(MemberName)`
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `
 export const MemberInfo = styled.p`
   font-size: 1rem;
@@ -151,7 +167,7 @@ export const MemberInfo = styled.p`
     width: 100%;
     text-align: center;
     overflow: scroll;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
 `
 export const LinkedIn = styled(LinkedinOutlined)`

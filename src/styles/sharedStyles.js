@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import CloseOutlined from "@ant-design/icons/CloseOutlined"
 
 export const FlexCenter = styled.div`
@@ -12,7 +12,7 @@ export const FlexCenter = styled.div`
   gap: 1rem;
 
   @media (max-width: 768px) {
-      flex-direction: column;
+    flex-direction: column;
   }
 `
 export const Heading = styled.h1`
@@ -37,11 +37,23 @@ export const Close = styled(CloseOutlined)`
   &:focus {
     color: ${props => props.theme.active};
   }
-
   @media (max-width: 330px) {
     height: 4rem;
     font-size: 1.25rem;
     margin-left: 95%;
     line-height: 4rem;
   }
+  ${({ cardCloseBtn }) =>
+    cardCloseBtn &&
+    css`
+      @media (max-width: 768px) {
+        right: 0;
+        top: 0;
+        line-height: 4rem;
+        width: 2.75rem;
+        margin-right: 0.5rem;
+        height: 3rem;
+        background: ${props => props.theme.bg};
+      }
+    `}
 `

@@ -46,7 +46,7 @@ export default function MemberInfoCard({
           {title && <MemberTitle>{title}</MemberTitle>}
 
           <FlexCenter style={socialIconStyleConfig}>
-            <Close onClick={() => setShowMemberInfoCard(false)} />
+            <Close cardCloseBtn onClick={() => setShowMemberInfoCard(false)} />
             {social?.linkedin_link.url && (
               <LinkedIn
                 onClick={() => window.open(social?.linkedin_link.url)}
