@@ -22,7 +22,7 @@ export const memberInfo = graphql`
         url
       }
       member_image {
-        gatsbyImageData(placeholder: BLURRED)
+        gatsbyImageData(placeholder: BLURRED, aspectRatio: 1)
       }
       member_name {
         text
