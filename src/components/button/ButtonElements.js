@@ -1,0 +1,63 @@
+import styled, { css } from "styled-components"
+import { Link } from "gatsby"
+
+export const ButtonComponent = styled(Link)`
+  text-align: center;
+  text-decoration: none;
+  line-height: 80px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  max-width: 250px;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  border: 1px solid ${props => props.theme.font + "75"};
+  color: ${props => props.theme.font};
+  background: ${props => props.theme.font + 25};
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: ${props => props.theme.font};
+    background-color: ${props => props.theme.font + "25"};
+    transform: translateX(-100%);
+    transition: 0.5s all ease-in-out;
+  }
+
+  &:hover:before {
+    transform: translateX(0);
+  }
+
+  ${({ sm }) =>
+    sm &&
+    css`
+      width: 100%;
+      height: 50px;
+      max-width: 150px;
+      line-height: 50px;
+    `}
+
+  ${({ md }) =>
+    md &&
+    css`
+      width: 100%;
+      height: 75px;
+      max-width: 180px;
+      line-height: 75px;
+    `}
+
+    ${({ lg }) =>
+    lg &&
+    css`
+      width: 100%;
+      height: 90px;
+      max-width: 250px;
+      line-height: 90px;
+    `}
+`
