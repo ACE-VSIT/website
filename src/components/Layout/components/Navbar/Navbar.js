@@ -65,6 +65,11 @@ export default function Navbar({
     from: { opacity: 0, y: -20, height: 0 },
   })
 
+  const handleThemeChange = () => {
+    setIsDarkTheme(!isDarkTheme)
+    localStorage.setItem("theme", `${!isDarkTheme ? "dark" : "light"}`)
+  }
+
   return (
     <NavbarWrapper>
       {brandImg && (
@@ -94,7 +99,7 @@ export default function Navbar({
       <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
       <NavbarSlider style={toggleStyles}>
         <NavabarSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
-        <NavbarSliderThemeIcon onClick={() => setIsDarkTheme(!isDarkTheme)}>
+        <NavbarSliderThemeIcon onClick={handleThemeChange}>
           <StaticImage
             src={"../../../../images/themeIcon.svg"}
             placeholder="BLURRED"

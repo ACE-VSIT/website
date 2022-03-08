@@ -35,6 +35,7 @@ export default function MemberCard({
           social={social}
           info={info}
           joiningYear={joiningYear}
+          showMemberInfoCard={showMemberInfoCard}
           setShowMemberInfoCard={setShowMemberInfoCard}
         />
       ) : (
