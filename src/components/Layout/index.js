@@ -9,6 +9,17 @@ import { Container } from "./components/container"
 const Layout = ({ children, navbar }) => {
   const [isDarkTheme, setIsDarkTheme] = React.useState(false)
 
+  React.useEffect(() => {
+    let theme = localStorage.getItem("theme")
+    if (theme) {
+      if (theme === "dark") {
+        setIsDarkTheme(true)
+      } else {
+        setIsDarkTheme(false)
+      }
+    }
+  }, [])
+
   return (
     <ThemeProvider theme={!isDarkTheme ? lightTheme : darkTheme}>
       <GlobalStyle />
@@ -16,7 +27,11 @@ const Layout = ({ children, navbar }) => {
         sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.richText}
         itemList={navbar && navbar[1]?.items}
         socialList={navbar && navbar[2]?.items}
-        img={navbar && !isDarkTheme ? navbar[0]?.primary?.navbar_logo : navbar[0]?.primary?.navbar_logo_dark}
+        img={
+          navbar && !isDarkTheme
+            ? navbar[0]?.primary?.navbar_logo
+            : navbar[0]?.primary?.navbar_logo_dark
+        }
         isDarkTheme={isDarkTheme}
         setIsDarkTheme={setIsDarkTheme}
       />
