@@ -17,7 +17,7 @@ export default function MemberCard({
   joiningYear,
 }) {
   const [showMemberInfoCard, setShowMemberInfoCard] = useState(false)
-  
+
   return (
     <>
       <MemberCardWrapper onClick={() => setShowMemberInfoCard(true)}>

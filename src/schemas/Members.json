@@ -1,115 +1,115 @@
 {
-  "Main" : {
-    "member_name" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Member Name",
-        "placeholder" : "Enter the name of the Member"
+  "Main": {
+    "member_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Member Name",
+        "placeholder": "Enter the name of the Member"
       }
     },
-    "member_position" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading4",
-        "label" : "Member Position",
-        "placeholder" : "Enter the Position of Member"
+    "member_position": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading4",
+        "label": "Member Position",
+        "placeholder": "Enter the Position of Member"
       }
     },
-    "joining_year" : {
-      "type" : "Select",
-      "config" : {
-        "options" : [ "2022", "2021", "2020", "2019", "2018", "2017" ],
-        "default_value" : "2022",
-        "label" : "Joining Year",
-        "placeholder" : "Member joined ACE in which year"
+    "joining_year": {
+      "type": "Select",
+      "config": {
+        "options": ["2022", "2021", "2020", "2019", "2018", "2017"],
+        "default_value": "2022",
+        "label": "Joining Year",
+        "placeholder": "Member joined ACE in which year"
       }
     },
-    "is_core" : {
-      "type" : "Boolean",
-      "config" : {
-        "default_value" : false,
-        "label" : "Is Core"
+    "is_core": {
+      "type": "Boolean",
+      "config": {
+        "default_value": false,
+        "label": "Is Core"
       }
     },
-    "member_image" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Member Image"
+    "member_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Member Image"
       }
     },
-    "about_member" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
-        "label" : "About Member",
-        "placeholder" : "Enter the info About Member"
+    "about_member": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em",
+        "label": "About Member",
+        "placeholder": "Enter the info About Member"
       }
     },
-    "github_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Github Link",
-        "placeholder" : "Enter Github Link",
-        "select" : null
+    "github_link": {
+      "type": "Link",
+      "config": {
+        "label": "Github Link",
+        "placeholder": "Enter Github Link",
+        "select": null
       }
     },
-    "linkedin_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "LinkedIn Link",
-        "placeholder" : "Enter Linked Link",
-        "select" : null
+    "linkedin_link": {
+      "type": "Link",
+      "config": {
+        "label": "LinkedIn Link",
+        "placeholder": "Enter Linked Link",
+        "select": null
       }
     },
-    "personal_website_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Personal Website Link",
-        "placeholder" : "Enter link of Personal Website",
-        "select" : null
+    "personal_website_link": {
+      "type": "Link",
+      "config": {
+        "label": "Personal Website Link",
+        "placeholder": "Enter link of Personal Website",
+        "select": null
       }
     },
-    "twitter_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Twitter Link",
-        "placeholder" : "Enter Twitter Link",
-        "select" : null
+    "twitter_link": {
+      "type": "Link",
+      "config": {
+        "label": "Twitter Link",
+        "placeholder": "Enter Twitter Link",
+        "select": null
       }
     },
-    "instagram_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Instagram Link",
-        "placeholder" : "Enter Instagram Link",
-        "select" : null
+    "instagram_link": {
+      "type": "Link",
+      "config": {
+        "label": "Instagram Link",
+        "placeholder": "Enter Instagram Link",
+        "select": null
       }
     },
-    "facebook_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Facebook Link",
-        "placeholder" : "Enter Facebook Link",
-        "select" : null
+    "facebook_link": {
+      "type": "Link",
+      "config": {
+        "label": "Facebook Link",
+        "placeholder": "Enter Facebook Link",
+        "select": null
       }
     },
-    "behance_link" : {
-      "type" : "Link",
-      "config" : {
-        "label" : "Behance Link",
-        "placeholder" : "Enter Behance Link",
-        "select" : null
+    "behance_link": {
+      "type": "Link",
+      "config": {
+        "label": "Behance Link",
+        "placeholder": "Enter Behance Link",
+        "select": null
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : { }
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {}
       }
     }
   }

@@ -47,9 +47,9 @@ export const MemberCardWrapper = styled(FlexCenter)`
       flex-direction: row;
       padding: 0.5rem;
       cursor: default;
-      border: 1px solid ${props => props.theme.font + "25"};
+      border: 1px solid ${props => props.theme.font + "45"};
       z-index: 1005;
-      
+
       ${MemberImageWrapper} {
         width: 20rem;
         height: 20rem;
