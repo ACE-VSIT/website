@@ -11,8 +11,6 @@ export const ButtonComponent = styled(Link)`
   width: 100%;
   height: 80px;
   max-width: 250px;
-  margin: 1rem auto;
-  text-transform: uppercase;
   border: 1px solid ${props => props.theme.font + "75"};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
@@ -27,7 +25,7 @@ export const ButtonComponent = styled(Link)`
     color: ${props => props.theme.font};
     background-color: ${props => props.theme.font + "25"};
     transform: translateX(-100%);
-    transition: 0.5s all ease-in-out;
+    transition: 0.375s all ease-in-out;
   }
 
   &:hover:before {
@@ -47,9 +45,9 @@ export const ButtonComponent = styled(Link)`
     md &&
     css`
       width: 100%;
-      height: 75px;
+      height: 60px;
       max-width: 180px;
-      line-height: 75px;
+      line-height: 60px;
     `}
 
     ${({ lg }) =>
