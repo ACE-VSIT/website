@@ -9,7 +9,7 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-  bg: "#1a1a1a",
+  bg: "#171717",
   font: "#EBF6FE",
   primary: "#EBF6FE",
   secondary: "#F3F0EC",
@@ -17,6 +17,8 @@ export const darkTheme = {
 }
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800&display=swap');
+  
   *, html, body {
     padding: 0;
     margin: 0;
@@ -25,6 +27,24 @@ export const GlobalStyle = createGlobalStyle`
     transition: all 0.375 ease-in-out;
     font-family: "Roboto Slab";
     overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${props => props.theme.bg};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.font};
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => props.theme.font + "AA"};
+  }
+  ::-moz-selection {
+    background: ${props => props.theme.font + "25"};
+  }
+  ::selection {
+    background: ${props => props.theme.font + "25"};
   }
   html.theming,
   html.theming * {
