@@ -9,7 +9,7 @@ export const NavbarWrapper = styled(FlexCenter)`
   height: 5rem;
   overflow: visible;
   gap: 0;
-  border-bottom: 1px solid ${props => props.theme.font + "25"};
+  border-bottom: 1px solid ${props => props.theme.font + "45"};
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -36,11 +36,16 @@ export const NavbarBrandImg = styled.div`
   padding: 1rem;
   opacity: 0.85;
   transition: 0.5s all ease-in-out;
-  border-right: 1px solid ${props => props.theme.font + "25"};
+  z-index: 1005;
 
   &:hover,
   &:focus {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    border-right: 1px solid ${props => props.theme.font + "45"};
+    z-index: 10;  
   }
 
   @media (max-width: 330px) {
@@ -62,7 +67,7 @@ export const NavbarListItem = styled(Link)`
   text-decoration: none;
   text-transform: capitalize;
   color: ${props => props.theme.font};
-  font-weight: 500;
+  font-weight: 400;
 `
 export const NavbarList = styled(FlexCenter)`
   gap: 0.5rem;
@@ -93,11 +98,15 @@ export const NavbarSliderIcon = styled(AlignRightOutlined)`
   color: ${props => props.theme.font};
   height: 5rem;
   line-height: 5rem;
-  border-left: 1px solid ${props => props.theme.font + "25"};
+  z-index: 1005;
 
   &:hover,
   &:focus {
     color: ${props => props.theme.active};
+  }
+
+  @media (max-width: 768px) {
+    border-left: 1px solid ${props => props.theme.font + "45"};
   }
 
   @media (max-width: 330px) {
@@ -120,7 +129,7 @@ export const NavbarSlider = styled(FlexCenter)`
   flex-direction: column;
   gap: 0.5rem;
   background: ${props => props.theme.bg};
-  border-left: 1.5px solid ${props => props.theme.font + "25"};
+  border-left: 1.5px solid ${props => props.theme.font + "45"};
 
   ${NavbarListItem} {
     display: none;
@@ -140,6 +149,7 @@ export const NavbarSlider = styled(FlexCenter)`
 export const NavSliderInfo = styled(FlexCenter)`
   flex-direction: column;
   gap: 1rem;
+  z-index: 1010;
 
   img {
     width: 10rem;
@@ -166,16 +176,15 @@ export const NavSliderInfo = styled(FlexCenter)`
 `
 
 export const NavabarSliderClose = styled(CloseOutlined)`
+  transform: rotateX(180deg);
   transition: 0.5s all ease-in-out;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  width: 5rem;
   cursor: pointer;
   color: ${props => props.theme.font};
   height: 5rem;
   line-height: 5rem;
-  padding: 0.25rem 0;
-  top: 0%;
-  right: 1.5rem;
-  position: absolute;
+  z-index: 1005;
 
   &:hover,
   &:focus {
@@ -184,34 +193,34 @@ export const NavabarSliderClose = styled(CloseOutlined)`
 
   @media (max-width: 330px) {
     height: 4rem;
-    font-size: 1.25rem;
-    margin-left: 95%;
     line-height: 4rem;
+    width: 4rem;
   }
 `
 
 export const NavbarVertical = styled(FlexCenter)`
   position: fixed;
-  top: 5rem;
+  top: 0;
   width: 5rem;
-  height: calc(100vh - 5rem);
-  z-index: 10;
+  height: 100vh;
   padding: 1rem;
+  padding-top: 5rem;
   flex-direction: column-reverse;
   justify-content: space-evenly;
+  overflow: hidden;
 
   ${({ left }) =>
     left &&
     css`
       left: 0%;
-      border-right: 1px solid ${props => props.theme.font + "25"};
+      border-right: 1px solid ${props => props.theme.font + "45"};
     `}
 
   ${({ right }) =>
     right &&
     css`
       right: 0%;
-      border-left: 1px solid ${props => props.theme.font + "25"};
+      border-left: 1px solid ${props => props.theme.font + "45"};
     `}
 
   @media (max-width: 768px) {

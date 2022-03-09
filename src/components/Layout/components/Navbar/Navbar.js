@@ -96,9 +96,12 @@ export default function Navbar({
             )
           })}
       </NavbarList>
-      <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
-      <NavbarSlider style={toggleStyles}>
+      {!toggleSlider ? (
+        <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
+      ) : (
         <NavabarSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+      )}
+      <NavbarSlider style={toggleStyles}>
         <NavbarSliderThemeIcon onClick={handleThemeChange}>
           <StaticImage
             src={"../../../../images/themeIcon.svg"}
