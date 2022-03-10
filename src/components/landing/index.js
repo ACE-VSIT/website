@@ -3,11 +3,23 @@ import HeroSection from "./hero-slice/HeroSlice"
 import { Heading, FlexCenter } from "../../styles/sharedStyles"
 import MemberCard from "../members/MemberCard"
 import { getImage } from "gatsby-plugin-image"
+import Counter from "./counter-slice/Counter"
+import { CounterWrapper } from "./counter-slice/CounterElements"
 
 export default function HomePage({ data }) {
+  console.log(data)
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />
+      <CounterWrapper>
+        {data?.prismicHomepage?.data?.body[2]?.items.map((e, key) => {
+          return (
+            <div key={key}>
+              <Counter e={e} />
+            </div>
+          )
+        })}
+      </CounterWrapper>
       <FlexCenter>
         <Heading>Core Members</Heading>
       </FlexCenter>
