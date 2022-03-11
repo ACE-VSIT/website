@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { FlexCenter } from "../../../styles/sharedStyles"
 
 export const HeroWrapper = styled(FlexCenter)`
-  min-height: 100vh;
+  /* min-height: 100vh; */
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
@@ -46,7 +46,7 @@ export const HeroTitle = styled.h1`
     display: block;
     background: ${props => props.theme.font};
     height: 2px;
-    margin-bottom: -1rem;
+    margin-bottom: -0.8rem;
     background: linear-gradient(
       90deg,
       ${props => props.theme.active} 70%,
