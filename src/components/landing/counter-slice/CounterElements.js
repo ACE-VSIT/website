@@ -7,13 +7,13 @@ export const CounterWrapper = styled(FlexCenter)`
   /* height: 20rem; */
   flex-wrap: wrap;
   padding: 5rem 0 7rem 0;
+  gap: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     height: 100%;
-    row-gap: 5rem;
-    padding: 0;
+    padding: 0 0 2rem 0;
   }
 `
 export const CounterSubTitle = styled.p`
@@ -55,6 +55,10 @@ export const CounterValue = styled.h1`
     width: 100%;
     text-align: center;
     white-space: nowrap;
+    font-size: 2.5rem;
+    * {
+      font-size: 1.5rem;
+    }
   }
 `
 export const CounterValueSubtitle = styled.p`
@@ -63,5 +67,10 @@ export const CounterValueSubtitle = styled.p`
   width: 100%;
   letter-spacing: 0.5px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    white-space: nowrap;
+    font-size: 1.1rem;
+  }
 `
 export const CounterPlus = styled(PlusOutlined)``

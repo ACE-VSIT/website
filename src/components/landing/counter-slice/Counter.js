@@ -22,7 +22,7 @@ const Counter = ({ e }) => {
   return (
     <CounterValueWrapper>
       <CounterValue>
-        {`${counter} ${intSplitArr[1] ?? ""}`}
+        {`${counter}${intSplitArr[1] ?? ""}`}
         <CounterPlus />
       </CounterValue>
       <CounterValueSubtitle>{e.numbers_subtitile.text}</CounterValueSubtitle>
