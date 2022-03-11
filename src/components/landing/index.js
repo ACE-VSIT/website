@@ -9,6 +9,7 @@ import {
   CounterSubTitle,
 } from "./counter-slice/CounterElements"
 import useOnScreen from "../../hooks/useOnScreen"
+import MoveTop from "../move-to-top/MoveTop"
 import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
 
 export default function HomePage({ data }) {
@@ -85,6 +86,7 @@ export default function HomePage({ data }) {
           )
         })}
       </FlexCenter>
+      <MoveTop />
     </>
   )
 }
