@@ -4,13 +4,27 @@ import PlusOutlined from "@ant-design/icons/PlusOutlined"
 
 export const CounterWrapper = styled(FlexCenter)`
   width: 100vw;
-  height: 30rem;
+  /* height: 20rem; */
+  flex-wrap: wrap;
+  padding: 5rem 0 7rem 0;
 
   @media (max-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     height: 100%;
     row-gap: 5rem;
+    padding: 0;
+  }
+`
+export const CounterSubTitle = styled.p`
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: ${props => props.theme.color};
+  padding: 0 calc(10vw + .5rem);
+  text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 0 calc(5vw + 0.5rem);
   }
 `
 export const CounterValueWrapper = styled(FlexCenter)`
@@ -28,7 +42,8 @@ export const CounterValueWrapper = styled(FlexCenter)`
 export const CounterValue = styled.h1`
   font-size: 3rem;
   font-weight: 300;
-  margin-right: -0.5rem;
+  margin-right: -1.5rem;
+  position: relative;
 
   * {
     font-size: 2rem;

@@ -1,25 +1,48 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import HeroSection from "./hero-slice/HeroSlice"
 import { Heading, FlexCenter } from "../../styles/sharedStyles"
 import MemberCard from "../members/MemberCard"
 import { getImage } from "gatsby-plugin-image"
 import Counter from "./counter-slice/Counter"
-import { CounterWrapper } from "./counter-slice/CounterElements"
+import {
+  CounterWrapper,
+  CounterSubTitle,
+} from "./counter-slice/CounterElements"
+import useOnScreen from "../../hooks/useOnScreen"
 
 export default function HomePage({ data }) {
+  const counterRef = useRef()
+  const [hasMounted, setHasMounted] = useState(false)
+  const counter = data?.prismicHomepage?.data?.body[2]?.items
+  const statsTitle =
+    data?.prismicHomepage?.data?.body[2]?.primary?.stats_title?.text
+  const statsSubTitle =
+    data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
+  const onViewPort = useOnScreen(counterRef)
+
   console.log(data)
+  useEffect(() => {
+    onViewPort && setHasMounted(true)
+  }, [onViewPort])
+
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />
-      <CounterWrapper>
-        {data?.prismicHomepage?.data?.body[2]?.items.map((e, key) => {
-          return (
-            <div key={key}>
-              <Counter e={e} />
-            </div>
-          )
-        })}
-      </CounterWrapper>
+      {counter && (
+        <>
+          <CounterWrapper>
+            <Heading>{statsTitle}</Heading>
+            <CounterSubTitle>{statsSubTitle}</CounterSubTitle>
+            {counter.map((e, key) => {
+              return (
+                <div ref={counterRef} key={key}>
+                  {hasMounted && <Counter e={e} />}
+                </div>
+              )
+            })}
+          </CounterWrapper>
+        </>
+      )}
       <FlexCenter>
         <Heading>Core Members</Heading>
       </FlexCenter>
