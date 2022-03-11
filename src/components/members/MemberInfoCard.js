@@ -54,8 +54,8 @@ export default function MemberInfoCard({
           </FlexCenter>
           <MemberInfoWrapper>
             <div>
-              {name && <MemberName>{name}</MemberName>}
               {title && <MemberTitle>{title}</MemberTitle>}
+              {name && <MemberName>{name}</MemberName>}
 
               <FlexCenter style={socialIconStyleConfig}>
                 <Close

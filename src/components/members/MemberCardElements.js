@@ -119,11 +119,11 @@ export const MemberInfoWrapper = styled(FlexCenter)`
         max-height: 14rem !important;
       }
     }
-    h1:nth-of-type(1) {
-      font-size: 1.65rem;
-    }
     h1:nth-of-type(2) {
-      font-size: 1.15rem;
+      font-size: 1.45rem;
+    }
+    h1:nth-of-type(1) {
+      font-size: .85rem;
     }
   }
 
@@ -152,12 +152,13 @@ export const MemberName = styled.h1`
   white-space: nowrap;
 `
 export const MemberTitle = styled(MemberName)`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 `
 export const MemberInfo = styled.p`
@@ -167,7 +168,7 @@ export const MemberInfo = styled.p`
     width: 100%;
     text-align: center;
     overflow: scroll;
-    padding: 0.5rem 0;
+    margin: 0.25rem 0 0 0;
   }
 `
 export const LinkedIn = styled(LinkedinOutlined)`

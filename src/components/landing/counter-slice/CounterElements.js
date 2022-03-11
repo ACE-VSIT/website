@@ -17,7 +17,7 @@ export const CounterWrapper = styled(FlexCenter)`
   }
 `
 export const CounterSubTitle = styled.p`
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: ${props => props.theme.color};
   padding: 0 calc(10vw + .5rem);
