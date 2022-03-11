@@ -32,7 +32,7 @@ export default function HeroSection({ data }) {
               style={{
                 width: "calc(50vw - 5rem)",
                 height: "calc(100vh - 5rem)",
-                filter: "brightness(75%)",
+                filter: "brightness(85%)",
                 position: "absolute",
                 right: "5rem",
               }}
