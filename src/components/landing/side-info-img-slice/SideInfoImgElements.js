@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { FlexCenter } from "../../../styles/sharedStyles"
+import { FlexCenter, Heading } from "../../../styles/sharedStyles"
 
-export const HeroWrapper = styled(FlexCenter)`
-  /* min-height: 100vh; */
+export const SliderInfoWrapper = styled(FlexCenter)`
+  min-height: 100vh;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
@@ -11,13 +11,9 @@ export const HeroWrapper = styled(FlexCenter)`
     padding: 5vh 0;
     flex-direction: column;
     min-height: 100%;
-
-    #hero-img {
-      display: none;
-    }
   }
 `
-export const HeroInfoWrapper = styled(FlexCenter)`
+export const SliderInfoTextWrapper = styled(FlexCenter)`
   width: calc(50vw - 5rem);
   flex-direction: column;
   padding: 0 5rem;
@@ -34,44 +30,41 @@ export const HeroInfoWrapper = styled(FlexCenter)`
     gap: 1rem;
   }
 `
-export const HeroTitle = styled.h1`
+export const SliderInfoHeading = styled(Heading)`
+  font-size: 3rem;
   text-align: left;
-  font-size: 4rem;
-  color: ${props => props.theme.font};
+  width: 100%;
   font-weight: 300;
+  position: relative;
 
   &::before {
     content: "";
-    width: 4rem;
+    width: 3rem;
     display: block;
     background: ${props => props.theme.font};
     height: 2px;
-    margin-bottom: -0.8rem;
+    margin-bottom: -0.5rem;
     background: linear-gradient(
       90deg,
       ${props => props.theme.active} 70%,
       ${props => props.theme.font} 70%
     );
   }
+`
+export const SliderInfoPara = styled.p`
+  font-size: 1.25rem;
+  text-align: left;
+`
+export const SliderImageWrapper = styled.div`
+  width: calc(50vw - 5rem);
+  height: calc(100vh - 5rem);
+  position: absolute;
+  left: 5rem;
 
   @media (max-width: 768px) {
-    font-size: 3.5rem;
-    &::before {
-      width: 3.5rem;
-    }
+    position: static;
+    width: 100vw;
+    height: 100vw;
+    padding: 0;
   }
-
-  @media (max-width: 320px) {
-    font-size: 3rem;
-    &::before {
-      width: 3rem;
-      margin: 0;
-    }
-  }
-`
-export const HeroInfo = styled.p`
-  text-align: left;
-  font-size: 1.25rem;
-  color: ${props => props.theme.font};
-  font-weight: 400;
 `
