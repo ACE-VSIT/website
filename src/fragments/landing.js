@@ -6,7 +6,9 @@ export const landingInfo = graphql`
       body {
         ... on PrismicHomepageDataBodyStatsSlice {
           items {
-            numbers
+            numbers {
+              text
+            }
             numbers_subtitile {
               text
             }
