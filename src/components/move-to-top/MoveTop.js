@@ -1,17 +1,35 @@
-import React from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import styled from "styled-components"
 import ArrowUpOutlined from "@ant-design/icons/ArrowUpOutlined"
 import { FlexCenter } from "../../styles/sharedStyles"
 
 export default function MoveTop() {
+  const [showScroll, setShowScroll] = useState(false)
+
   const handleScrollTop = () => {
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  const checkScrollTop = useCallback(() => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true)
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false)
+    }
+  }, [showScroll])
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkScrollTop)
+  }, [checkScrollTop])
+
   return (
-    <MoveTopWrapper>
-      <ArrowUpOutlined onClick={() => handleScrollTop()} />
-    </MoveTopWrapper>
+    <>
+      {showScroll && (
+        <MoveTopWrapper onClick={() => handleScrollTop()}>
+          <ArrowUpOutlined />
+        </MoveTopWrapper>
+      )}
+    </>
   )
 }
 
