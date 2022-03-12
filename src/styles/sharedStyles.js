@@ -16,9 +16,13 @@ export const FlexCenter = styled.div`
   }
 `
 export const Heading = styled.h1`
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 3rem;
+  font-weight: 300;
   padding: 0.5rem 0 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `
 
 export const Close = styled(CloseOutlined)`

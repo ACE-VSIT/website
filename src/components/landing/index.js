@@ -9,15 +9,25 @@ import {
   CounterSubTitle,
 } from "./counter-slice/CounterElements"
 import useOnScreen from "../../hooks/useOnScreen"
+import MoveTop from "../move-to-top/MoveTop"
+import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
 
 export default function HomePage({ data }) {
-  const counterRef = useRef()
+  const sliderInfoTitle =
+    data?.prismicHomepage?.data?.body[1]?.primary?.slice_title?.text
+  const sliderInfoSubTitle =
+    data?.prismicHomepage?.data?.body[1]?.primary?.slice_subtitle?.text
+  const sliderInfoImg = getImage(
+    data?.prismicHomepage?.data?.body[1]?.primary?.r_image
+  )
   const [hasMounted, setHasMounted] = useState(false)
   const counter = data?.prismicHomepage?.data?.body[2]?.items
   const statsTitle =
     data?.prismicHomepage?.data?.body[2]?.primary?.stats_title?.text
   const statsSubTitle =
     data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
+
+  const counterRef = useRef()
   const onViewPort = useOnScreen(counterRef)
 
   console.log(data)
@@ -28,11 +38,16 @@ export default function HomePage({ data }) {
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />
+      <SliderInfoImg
+        img={sliderInfoImg}
+        title={sliderInfoTitle}
+        subtitle={sliderInfoSubTitle}
+      />
       {counter && (
         <>
           <CounterWrapper>
-            <Heading>{statsTitle}</Heading>
-            <CounterSubTitle>{statsSubTitle}</CounterSubTitle>
+            {/* <Heading>{statsTitle}</Heading>
+            <CounterSubTitle>{statsSubTitle}</CounterSubTitle> */}
             {counter.map((e, key) => {
               return (
                 <div ref={counterRef} key={key}>
@@ -71,6 +86,7 @@ export default function HomePage({ data }) {
           )
         })}
       </FlexCenter>
+      <MoveTop />
     </>
   )
 }
