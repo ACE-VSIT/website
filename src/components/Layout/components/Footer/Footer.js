@@ -26,7 +26,6 @@ export default function Footer({ itemList, socialList }) {
         </FooterItemsWrapper>
         <FooterItemsWrapper>
           {itemList?.map((e, key) => {
-            console.log(e)
             return (
               <div key={key}>
                 <FooterLinks

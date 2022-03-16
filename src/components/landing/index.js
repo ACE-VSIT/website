@@ -27,10 +27,39 @@ export default function HomePage({ data }) {
   const statsSubTitle =
     data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
 
+  const [presidents, setPresidents] = useState([])
+  const [heads, setHeads] = useState([])
+  const [coreMembers, setCoreMembers] = useState([])
+  const [members, setMembers] = useState([])
   const counterRef = useRef()
   const onViewPort = useOnScreen(counterRef)
 
-  console.log(data)
+  //Not the best way, but just trying to make it work as needed
+  useEffect(() => {
+    setPresidents([
+      data.allPrismicMembers.nodes
+        .filter(e => e.data.member_position.text.includes("President"))
+        .reverse(),
+    ])
+    setHeads([
+      data.allPrismicMembers.nodes.filter(e =>
+        e.data.member_position.text.includes("Head")
+      ),
+    ])
+    setCoreMembers([
+      data.allPrismicMembers.nodes.filter(e =>
+        e.data.member_position.text.includes("Core")
+      ),
+    ])
+  }, [data.allPrismicMembers.nodes])
+
+  useEffect(() => {
+    if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
+      const combineAll = presidents[0].concat(heads[0], coreMembers[0])
+      setMembers(combineAll)
+    }
+  }, [presidents, heads, coreMembers])
+
   useEffect(() => {
     onViewPort && setHasMounted(true)
   }, [onViewPort])
@@ -62,7 +91,7 @@ export default function HomePage({ data }) {
         <Heading>Core Members</Heading>
       </FlexCenter>
       <FlexCenter style={{ flexWrap: "wrap" }}>
-        {data.allPrismicMembers.nodes.map((e, key) => {
+        {members?.map((e, key) => {
           const img = getImage(e.data.member_image)
           // Filters all key values which matches "link" and stores it in socialLinksI
           const socialLinks = Object.keys(e.data)
