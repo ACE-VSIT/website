@@ -1,0 +1,84 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title",
+          "placeholder" : "Enter the title for the Page"
+        }
+      },
+      "subtitle" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "Subtitle",
+          "placeholder" : "Enter subtitle for the Page"
+        }
+      },
+      "background_image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : {
+            "width" : null
+          },
+          "thumbnails" : [ ],
+          "label" : "Background Image"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : { },
+          "choices" : {
+            "event_item_relation_slice" : {
+              "type" : "Slice",
+              "fieldset" : "Event Item Relation Slice",
+              "description" : "Slice which links EVent Page and Items",
+              "icon" : "featured_play_list",
+              "non-repeat" : { },
+              "repeat" : {
+                "event_item_relation" : {
+                  "type" : "Link",
+                  "config" : {
+                    "select" : "document",
+                    "customtypes" : [ "eventitem" ],
+                    "tags" : [ "EventItem" ],
+                    "label" : "Event Item Relation",
+                    "placeholder" : "Select the event to list on Event page"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Seo" : {
+      "meta_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Meta Page Title",
+          "placeholder" : "Enter the meta title for the page"
+        }
+      },
+      "meta_page_subtitle" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "Meta Page Subtitle",
+          "placeholder" : "Enter the meta subtitle for the page"
+        }
+      },
+      "meta_keywords" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph",
+          "label" : "Meta Keywords",
+          "placeholder" : "Enter the Keywords for Meta"
+        }
+      }
+    }
+  }

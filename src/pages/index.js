@@ -1,23 +1,34 @@
 import * as React from "react"
-import { StaticImage } from "gatsby-plugin-image"
-
 import Layout from "../components/Layout/index"
 import Seo from "../components/SEO"
+import { graphql } from "gatsby"
+import HomePage from "../components/landing/index"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-  </Layout>
-)
+const IndexPage = ({ data }) => {
+  const nav = data?.prismicLayout?.data?.body
+
+  return (
+    <Layout navbar={nav}>
+      <Seo title="Home" />
+      <HomePage data={data} />
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const IndexQuery = graphql`
+  query indexPage {
+    prismicLayout {
+      ...navbarInfo
+    }
+    prismicHomepage {
+      ...landingInfo
+    }
+    allPrismicMembers(filter: { data: { is_core: { eq: true } } }) {
+      nodes {
+        ...memberInfo
+      }
+    }
+  }
+`

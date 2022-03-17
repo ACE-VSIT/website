@@ -30,7 +30,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#EEE`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/ACELogoLight.svg`,
       },
     },
     {
@@ -39,8 +39,14 @@ module.exports = {
         repositoryName: process.env.PRISMIC_REPO_NAME,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         schemas: {
-          homepage: require('./src/schemas/Homepage.json'),
-        }
+          homepage: require("./src/schemas/Homepage.json"),
+          layout: require("./src/schemas/Layout.json"),
+          members: require("./src/schemas/Members.json"),
+          projects: require("./src/schemas/Projects.json"),
+          achievements: require("./src/schemas/Achievements.json"),
+          eventpage: require("./src/schemas/EventPage.json"),
+          eventitem: require("./src/schemas/EventItem.json"),
+        },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
       },

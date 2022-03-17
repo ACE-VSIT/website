@@ -1,0 +1,57 @@
+{
+  "Main": {
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1,heading2,heading3,heading4,heading5,heading6",
+        "label": "Title",
+        "placeholder": "Enter the title of the project."
+      }
+    },
+    "content": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Content",
+        "placeholder": "Enter a short description for project."
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "project_developers": {
+            "type": "Slice",
+            "fieldset": "Project Developers",
+            "description": "List of Members developing a project",
+            "icon": "accessibility",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "developed_by": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["members"],
+                  "tags": ["Member"],
+                  "label": "Developed by",
+                  "placeholder": "Enter the member"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

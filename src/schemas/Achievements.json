@@ -1,0 +1,18 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "slug"
+      }
+    },
+    "event_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading5",
+        "label": "Event Name",
+        "placeholder": "Enter the event name"
+      }
+    }
+  }
+}
