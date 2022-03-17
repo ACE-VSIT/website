@@ -23,6 +23,32 @@ export const Heading = styled.h1`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
+
+  ${({ topLine }) =>
+    topLine &&
+    css`
+      &::before {
+        content: "";
+        width: 2.25rem;
+        display: block;
+        background: ${props => props.theme.font};
+        height: 2px;
+        margin-bottom: -0.5rem;
+        background: linear-gradient(
+          90deg,
+          ${props => props.theme.active} 70%,
+          ${props => props.theme.font} 70%
+        );
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 0.2rem;
+        font-size: 2rem;
+        &::before {
+          width: 1.5rem;
+        }
+      }
+    `}
 `
 
 export const Close = styled(CloseOutlined)`

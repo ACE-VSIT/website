@@ -14,6 +14,7 @@ export const ButtonComponent = styled(Link)`
   border: 1px solid ${props => props.theme.font + "75"};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
+  cursor: pointer;
 
   &::before {
     content: "";

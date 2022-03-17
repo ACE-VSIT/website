@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useCallback } from "react"
 import HeroSection from "./hero-slice/HeroSlice"
 import { Heading, FlexCenter } from "../../styles/sharedStyles"
-import MemberCard from "../members/MemberCard"
+import MemberCard from "../members/members-card/MemberCard"
 import { getImage } from "gatsby-plugin-image"
 import Counter from "./counter-slice/Counter"
 import {
@@ -27,38 +27,34 @@ export default function HomePage({ data }) {
   const statsSubTitle =
     data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
 
-  const [presidents, setPresidents] = useState([])
-  const [heads, setHeads] = useState([])
-  const [coreMembers, setCoreMembers] = useState([])
   const [members, setMembers] = useState([])
   const counterRef = useRef()
   const onViewPort = useOnScreen(counterRef)
 
-  //Not the best way, but just trying to make it work as needed
-  useEffect(() => {
-    setPresidents([
-      data.allPrismicMembers.nodes
-        .filter(e => e.data.member_position.text.includes("President"))
-        .reverse(),
-    ])
-    setHeads([
-      data.allPrismicMembers.nodes.filter(e =>
-        e.data.member_position.text.includes("Head")
-      ),
-    ])
-    setCoreMembers([
-      data.allPrismicMembers.nodes.filter(e =>
-        e.data.member_position.text.includes("Core")
-      ),
-    ])
+  // This is not the best approach, will think of something later
+  const resetSort = useCallback(() => {
+    const coreMembers = data.allPrismicMembers.nodes.filter(e =>
+      e.data.member_position.text.includes("Core")
+    )
+    const heads = data.allPrismicMembers.nodes.filter(e =>
+      e.data.member_position.text.includes("Head")
+    )
+    const presidents = data.allPrismicMembers.nodes
+      .filter(e => e.data.member_position.text.includes("President"))
+      .reverse()
+
+    if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
+      const member = data.allPrismicMembers.nodes.filter(
+        e => e.data.member_position.text === "Member"
+      )
+      const combineAll = presidents.concat(heads, coreMembers, member)
+      setMembers(combineAll)
+    }
   }, [data.allPrismicMembers.nodes])
 
   useEffect(() => {
-    if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
-      const combineAll = presidents[0].concat(heads[0], coreMembers[0])
-      setMembers(combineAll)
-    }
-  }, [presidents, heads, coreMembers])
+    resetSort()
+  }, [data.allPrismicMembers.nodes, resetSort])
 
   useEffect(() => {
     onViewPort && setHasMounted(true)
@@ -88,7 +84,7 @@ export default function HomePage({ data }) {
         </>
       )}
       <FlexCenter>
-        <Heading>Core Members</Heading>
+        <Heading topLine>Core Members</Heading>
       </FlexCenter>
       <FlexCenter style={{ flexWrap: "wrap" }}>
         {members?.map((e, key) => {

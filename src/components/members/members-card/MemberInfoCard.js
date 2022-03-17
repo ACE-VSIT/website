@@ -14,10 +14,10 @@ import {
   Behance,
   Globe,
 } from "./MemberCardElements"
-import { FlexCenter, Close } from "../../styles/sharedStyles"
+import { FlexCenter, Close } from "../../../styles/sharedStyles"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { useTransition, config, animated } from "react-spring"
-import useOutsideAlerter from "../../hooks/useOutsideTouch"
+import useOutsideAlerter from "../../../hooks/useOutsideTouch"
 
 export default function MemberInfoCard({
   name,
