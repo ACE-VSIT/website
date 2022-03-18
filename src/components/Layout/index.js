@@ -38,7 +38,7 @@ const Layout = ({ children, navbar }) => {
       <Container>{children}</Container>
       <Footer
         itemList={navbar && navbar[1]?.items}
-        socialList={navbar && navbar[2]?.items}
+        footerList={navbar && navbar[3]?.items}
       />
     </ThemeProvider>
   )

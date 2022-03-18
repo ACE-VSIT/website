@@ -46,6 +46,7 @@ module.exports = {
           achievements: require("./src/schemas/Achievements.json"),
           eventpage: require("./src/schemas/EventPage.json"),
           eventitem: require("./src/schemas/EventItem.json"),
+          "non-essential": require("./src/schemas/NonEssential.json"),
         },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
