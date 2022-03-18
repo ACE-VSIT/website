@@ -37,6 +37,16 @@ export const navbarInfo = graphql`
             }
           }
         }
+        ... on PrismicLayoutDataBodyFooterListItem {
+          items {
+            footer_item_link {
+              url
+            }
+            footer_item_name {
+              text
+            }
+          }
+        }
       }
     }
   }

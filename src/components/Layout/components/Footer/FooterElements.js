@@ -124,7 +124,7 @@ export const FooterBottom = styled.div`
   width: 100vw;
   height: 5rem;
   background: ${props => props.theme.bg};
-  border-top: 2px solid ${props => props.theme.font + "45"};
+  border-top: 1px solid ${props => props.theme.font + "45"};
   display: flex;
   justify-content: center;
   align-items: center;

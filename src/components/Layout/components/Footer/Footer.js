@@ -9,7 +9,7 @@ import {
   FooterWrapper,
 } from "./FooterElements"
 
-export default function Footer({ itemList, socialList }) {
+export default function Footer({ itemList, footerList }) {
   return (
     <>
       <FooterWrapper>
@@ -38,11 +38,11 @@ export default function Footer({ itemList, socialList }) {
           })}
         </FooterItemsWrapper>
         <FooterItemsWrapper mobileMb>
-          {socialList?.map((e, key) => {
+          {footerList?.map((e, key) => {
             return (
               <div key={key}>
-                <FooterLinks to={`${e.navbar_social_link.url}`}>
-                  {e.navbar_social_item_name.text}
+                <FooterLinks to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, "")}`}>
+                  {e.footer_item_name.text}
                 </FooterLinks>
               </div>
             )
