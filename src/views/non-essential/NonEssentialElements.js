@@ -20,6 +20,11 @@ export const NonEssentialWrapper = styled.main`
     }
   }
 
+  ul li,
+  ol li {
+    padding: 0.5rem 0;
+  }
+
   h3 {
     font-size: 2rem;
     font-weight: 300;
