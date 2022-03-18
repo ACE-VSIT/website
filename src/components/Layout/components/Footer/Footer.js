@@ -8,13 +8,20 @@ import {
   FooterTitle,
   FooterWrapper,
 } from "./FooterElements"
+import { StaticImage } from "gatsby-plugin-image"
 
-export default function Footer({ itemList, footerList }) {
+export default function Footer({ itemList, footerList, isDarkTheme }) {
   return (
     <>
       <FooterWrapper>
         <FooterItemsWrapper>
-          <FooterTitle>ACE</FooterTitle>
+          <StaticImage
+            placeholder="BLURRED"
+            src={"../../../../images/ACETextDark.svg"}
+            alt="ACE Logo"
+            width={175}
+            imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
+          />
           <FooterTitle subtitle={true}>
             To know more about the upcoming events and opportunities, connect
             with us via our newsletter
@@ -41,7 +48,9 @@ export default function Footer({ itemList, footerList }) {
           {footerList?.map((e, key) => {
             return (
               <div key={key}>
-                <FooterLinks to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, "")}`}>
+                <FooterLinks
+                  to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, "")}`}
+                >
                   {e.footer_item_name.text}
                 </FooterLinks>
               </div>

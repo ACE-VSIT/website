@@ -39,6 +39,7 @@ const Layout = ({ children, navbar }) => {
       <Footer
         itemList={navbar && navbar[1]?.items}
         footerList={navbar && navbar[3]?.items}
+        isDarkTheme={isDarkTheme}
       />
     </ThemeProvider>
   )
