@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from "prop-types"
-import { Tr , Td ,TableContainer,TableContainerTitle, tableContainerTable} from '../AchievementsElements'
+import { Tr , Td ,TableContainer,TableContainerTitle, TableContainerTable} from '../AchievementsElements'
 
 const Table = ({tableData, headingColumns, title,breakOn ="medium" }) => {
   let tableClass="table-container_table"
@@ -31,7 +31,7 @@ const data = tableData.map((row,index)=>{
         <TableContainerTitle>    
             <h2>{title}</h2>    
         </TableContainerTitle>
-        <tableContainerTable  >
+        <TableContainerTable  >
         <thead>
             <Tr>
                 {headingColumns.map((col,index)=>(
@@ -42,7 +42,7 @@ const data = tableData.map((row,index)=>{
         <tbody>
             {data}
         </tbody>
-        </tableContainerTable>
+        </TableContainerTable>
     </TableContainer>
   )
 }

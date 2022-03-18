@@ -8,43 +8,58 @@ h1 {
   font-size: 40px;
   font-weight: 300;
 }
+@media (max-width: 760px) {
+	display: block; 
+  position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
 `
 export const Tr =styled.tr`
-text-align:left;
-padding-left: 10px;
-
-margin-bottom: 5px;
+:nth-of-type(odd) { 
+  background: yellow; 
+}
+@media (max-width: 760px) {
+	display: block;
+  position: absolute;
+	top: -9999px;
+	left: -9999px; 
+  tr { border: 1px solid #green; }
+}
 `
 export const Td =styled.td`
-position: relative;
-padding-left: 10px;
-padding-right: 10px;
-border-bottom: 0;
-justify-content: center;
+padding: 6px; 
+border: 1px solid #ccc; 
+text-align: left;
 background-color: background-color: ${props => props.theme.bg};;
 
 &:last-child {
   border-bottom: 1px solid ${props => props.theme.secondary};;
 }
-
-&::before {
-  content: attr(data-heading);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-  padding: 0 5px;
-  justify-content: center;
+@media (max-width: 760px) {
+	display: block; 
+  border: none;
+  border-bottom: 1px solid #eee; 
+  position: relative;
+  padding-left: 50%; 
+  :before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
 }
+
 `
 export const TableContainer =styled.section`
 max-width: 800px;
 width: 90%;
 margin: 0 auto 40px;
+@media (max-width: 760px) {
+	display: block; 
+}
 
 `
 export const TableContainerTitle = styled.div`
@@ -55,55 +70,10 @@ h2 {
   font-weight: 300;
 }
 `
-export const tableContainerTable = styled.table`
-border-collapse: collapse;
-thead tr {
-background-color: transparent;
-}
-th {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-}
-tr:nth-child(even) {
-  background-color: #f1f1f1;
-}
-@media (max-width: 991px) {
-  thead {
-    display: none;
- }
- tr {
-  display: block;
-  margin-bottom: 5px;
-}
-td {
-  display: block;
-  position: relative;
-  padding-left: 130px;
-  text-align: left;
-  border-bottom: 0;
-}
-td:last-child {
-  border-bottom: 1px solid #ddd;
-}
-::before {
-  content: attr(data-heading);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #000;
-  color: #fff;
-  font-size: 0.75rem;
-  padding: 0 0px;
-  justify-content: center;
-}
-
-}
-@media (max-width: 767px) {
-  color:red
+export const TableContainerTable = styled.table`
+width: 100%; 
+border-collapse: collapse; 
+@media (max-width: 760px) {
+	display: block; 
 }
 `
