@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import {
   MemberCardWrapper,
   MemberImageWrapper,
@@ -14,9 +14,10 @@ import {
   Behance,
   Globe,
 } from "./MemberCardElements"
-import { FlexCenter, Close } from "../../styles/sharedStyles"
+import { FlexCenter, Close } from "../../../styles/sharedStyles"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { useTransition, config, animated } from "react-spring"
+import useOutsideAlerter from "../../../hooks/useOutsideTouch"
 
 export default function MemberInfoCard({
   name,
@@ -34,6 +35,8 @@ export default function MemberInfoCard({
     paddingTop: ".5rem",
     gap: "1.5rem",
   }
+  const cardWrapperRef = useRef()
+  useOutsideAlerter(cardWrapperRef, setShowMemberInfoCard)
   const AnimatedMemberCardWrapper = animated(MemberCardWrapper)
 
   const modalTransition = useTransition(showMemberInfoCard, {
@@ -46,7 +49,12 @@ export default function MemberInfoCard({
   return modalTransition(
     (styles, showMemberInfoCard) =>
       showMemberInfoCard && (
-        <AnimatedMemberCardWrapper style={styles} fixed detailed>
+        <AnimatedMemberCardWrapper
+          ref={cardWrapperRef}
+          style={styles}
+          fixed
+          detailed
+        >
           <FlexCenter style={{ flexDirection: "column" }}>
             <MemberImageWrapper>
               <GatsbyImage image={img} alt={""} />

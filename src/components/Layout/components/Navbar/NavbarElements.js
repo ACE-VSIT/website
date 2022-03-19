@@ -204,7 +204,6 @@ export const NavbarVertical = styled(FlexCenter)`
   width: 5rem;
   height: 100vh;
   padding: 1rem;
-  padding-top: 5rem;
   flex-direction: column-reverse;
   justify-content: space-evenly;
   overflow: hidden;

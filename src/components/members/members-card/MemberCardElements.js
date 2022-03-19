@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { FlexCenter } from "../../styles/sharedStyles"
+import { FlexCenter } from "../../../styles/sharedStyles"
 import LinkedinOutlined from "@ant-design/icons/LinkedinOutlined"
 import GithubOutlined from "@ant-design/icons/GithubOutlined"
 import TwitterOutlined from "@ant-design/icons/TwitterOutlined"

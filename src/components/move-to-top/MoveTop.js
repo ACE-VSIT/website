@@ -40,7 +40,7 @@ const MoveTopWrapper = styled(FlexCenter)`
   background: ${props => props.theme.bg};
   cursor: pointer;
   position: fixed;
-  right: 0.75rem;
+  right: 0.85rem;
   bottom: 1rem;
   transition: 0.375s all ease-in-out;
   z-index: 1020;
