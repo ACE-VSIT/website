@@ -23,9 +23,6 @@ export default function Events({ data }) {
                     <div>
                       <EventCard
                       // img={img}
-                      // date={currentItem.event_date}
-                      // name={currentItem.event_title.text}
-                      // description={currentItem.short_summary.text}
                       // name={displayData.title.text}
                       // date={displayData.event_date}
                       // description={`${displayData.subtitle.text.substring(0,106)}...`}
