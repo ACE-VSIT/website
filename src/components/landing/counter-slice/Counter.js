@@ -6,6 +6,7 @@ import {
   CounterPlus,
 } from "./CounterElements"
 import useCounter from "../../../hooks/useCounter"
+import AnimateIn from "../../animations/AnimateIn"
 
 const Counter = ({ e }) => {
   const [counter, setCounter] = useState(0)
@@ -20,13 +21,15 @@ const Counter = ({ e }) => {
   }, 25)
 
   return (
-    <CounterValueWrapper>
-      <CounterValue>
-        {`${counter}${intSplitArr[1] ?? ""}`}
-        <CounterPlus />
-      </CounterValue>
-      <CounterValueSubtitle>{e.numbers_subtitile.text}</CounterValueSubtitle>
-    </CounterValueWrapper>
+    <AnimateIn once={true} duration={375}>
+      <CounterValueWrapper>
+        <CounterValue>
+          {`${counter}${intSplitArr[1] ?? ""}`}
+          <CounterPlus />
+        </CounterValue>
+        <CounterValueSubtitle>{e.numbers_subtitile.text}</CounterValueSubtitle>
+      </CounterValueWrapper>
+    </AnimateIn>
   )
 }
 

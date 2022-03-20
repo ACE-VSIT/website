@@ -4,15 +4,16 @@ import {
   SliderInfoTextWrapper,
   SliderInfoHeading,
   SliderInfoPara,
-  SliderImageWrapper
+  SliderImageWrapper,
 } from "./SideInfoImgElements"
 import { GatsbyImage } from "gatsby-plugin-image"
+import AnimateIn from "../../animations/AnimateIn"
 
 export default function SideInfoImg({ img, title, subtitle }) {
   const imgStyles = {
     width: "100%",
     height: "100%",
-    filter: "brightness(85%)"
+    filter: "brightness(85%)",
   }
 
   return (
@@ -23,8 +24,12 @@ export default function SideInfoImg({ img, title, subtitle }) {
         </SliderImageWrapper>
       )}
       <SliderInfoTextWrapper>
-        {title && <SliderInfoHeading>{title}</SliderInfoHeading>}
-        {subtitle && <SliderInfoPara>{subtitle}</SliderInfoPara>}
+        <AnimateIn duration={500} delay={250}>
+          {title && <SliderInfoHeading>{title}</SliderInfoHeading>}
+        </AnimateIn>
+        <AnimateIn duration={500} delay={250}>
+          {subtitle && <SliderInfoPara>{subtitle}</SliderInfoPara>}
+        </AnimateIn>
       </SliderInfoTextWrapper>
     </SliderInfoWrapper>
   )

@@ -6,10 +6,9 @@ import { getImage } from "gatsby-plugin-image"
 import Counter from "./counter-slice/Counter"
 import {
   CounterWrapper,
-  CounterSubTitle,
+  // CounterSubTitle,
 } from "./counter-slice/CounterElements"
 import useOnScreen from "../../hooks/useOnScreen"
-import MoveTop from "../move-to-top/MoveTop"
 import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
 
 export default function HomePage({ data }) {
@@ -22,10 +21,10 @@ export default function HomePage({ data }) {
   )
   const [hasMounted, setHasMounted] = useState(false)
   const counter = data?.prismicHomepage?.data?.body[2]?.items
-  const statsTitle =
-    data?.prismicHomepage?.data?.body[2]?.primary?.stats_title?.text
-  const statsSubTitle =
-    data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
+  // const statsTitle =
+  //   data?.prismicHomepage?.data?.body[2]?.primary?.stats_title?.text
+  // const statsSubTitle =
+  //   data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
 
   const [members, setMembers] = useState([])
   const counterRef = useRef()
@@ -63,11 +62,15 @@ export default function HomePage({ data }) {
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />
-      <SliderInfoImg
-        img={sliderInfoImg}
-        title={sliderInfoTitle}
-        subtitle={sliderInfoSubTitle}
-      />
+      {sliderInfoTitle &&
+        sliderInfoSubTitle &&
+        sliderInfoImg && (
+          <SliderInfoImg
+            img={sliderInfoImg}
+            title={sliderInfoTitle}
+            subtitle={sliderInfoSubTitle}
+          />
+        )}
       {counter && (
         <>
           <CounterWrapper>
@@ -111,7 +114,6 @@ export default function HomePage({ data }) {
           )
         })}
       </FlexCenter>
-      <MoveTop />
     </>
   )
 }
