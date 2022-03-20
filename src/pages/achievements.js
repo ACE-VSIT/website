@@ -28,7 +28,11 @@ const AchievementsPage = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
   
   // Data to be shown in table
-  const achievementsData = data?.prismicAchievements?.data?.body
+  const achievementsData = data?.prismicAchievements?.data?.body?.[0].items
+  /* achievementsData.map(({winner_name,college_name})=>{
+    console.log(winner_name.document.data.member_name.text)
+  }) */
+
   
   // const heroImage = getImage(data?.prismicAchievements?.data?.hero_image)
   const heroTitle = data?.prismicAchievements?.data?.title?.text
@@ -39,14 +43,13 @@ const AchievementsPage = ({ data }) => {
         <Seo title={heroTitle} />
         <Head title={heroTitle} />
         <Table
-          tableData={driverData}
+          tableData={achievementsData}
           headingColumns={[
-            "#",
-            "Name",
-            "Team",
-            "Country",
-            "Date of Birth",
-            "place of birth",
+            "Date",
+            "Winner Name",
+            "Position",
+            "Event Name",
+            "College Name",
           ]}
           // title="F1 driver"
         />

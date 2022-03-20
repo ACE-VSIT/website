@@ -12,18 +12,14 @@ const Table = ({tableData, headingColumns, title,breakOn ="medium" }) => {
 } else if(breakOn=== "large"){
     tableClass += "table-container__table--break-lg"
 }
-const data = tableData.map((row,index)=>{
-    let rowData=[];
-    let i=0;
-    for(const key in row){
-        rowData.push({
-            key:headingColumns[i],
-            val: row[key]
-        })
-        i++
-    }
-    return <tr key={index}>
-        {rowData.map((data,index)=><Td key={index}  >{data.val} </Td>)}    
+const data = tableData.map(({event_date, winner_name,position,event_name,college_name})=>{
+   
+    return <tr >
+        <Td>{event_date}</Td>    
+        <Td>{winner_name.document.data.member_name.text}</Td>    
+        <Td>{position}</Td>    
+        <Td>{event_name.text}</Td>    
+        <Td>{college_name.text}</Td>    
     </tr>
 })
     return (
@@ -40,7 +36,7 @@ const data = tableData.map((row,index)=>{
             </Tr>   
         </thead>    
         <tbody>
-            {data}
+       {data}
         </tbody>
         </TableContainerTable>
     </TableContainer>

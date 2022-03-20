@@ -50,6 +50,11 @@ background-color: background-color: ${props => props.theme.bg};;
 		padding-right: 10px; 
 		white-space: nowrap;
 	}
+	:nth-of-type(1):before { content: "Date"; }
+	:nth-of-type(2):before { content: "Winner Name"; }
+	:nth-of-type(3):before { content: "Position"; }
+	:nth-of-type(4):before { content: "Event Name"; }
+	:nth-of-type(5):before { content: "College Name"; }
 }
 
 `
