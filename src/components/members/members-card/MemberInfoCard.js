@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import {
   MemberCardWrapper,
   MemberImageWrapper,
@@ -15,9 +15,10 @@ import {
   Globe,
 } from "./MemberCardElements"
 import { FlexCenter, Close } from "../../../styles/sharedStyles"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { useTransition, config, animated } from "react-spring"
 import useOutsideAlerter from "../../../hooks/useOutsideTouch"
+import useWindowSize from "../../../hooks/useWindowSize"
 
 export default function MemberInfoCard({
   name,
@@ -36,15 +37,34 @@ export default function MemberInfoCard({
     gap: "1.5rem",
   }
   const cardWrapperRef = useRef()
+  const [isMobile, setIsMobile] = useState(false)
+  let size = useWindowSize()
   useOutsideAlerter(cardWrapperRef, setShowMemberInfoCard)
-  const AnimatedMemberCardWrapper = animated(MemberCardWrapper)
 
+  useEffect(() => {
+    if (size.width < 768) {
+      setIsMobile(true)
+    }
+  }, [size])
+
+  const AnimatedMemberCardWrapper = animated(MemberCardWrapper)
   const modalTransition = useTransition(showMemberInfoCard, {
     config: showMemberInfoCard ? { ...config.stiff } : { duration: 200 },
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
   })
+
+  const closeBtnStyles = {
+    position: "absolute",
+    top: "0",
+    right: "0",
+    overflow: "hidden",
+    width: "5rem",
+    height: "5rem",
+    filter: "opacity(1)",
+    cursor: "pointer",
+  }
 
   return modalTransition(
     (styles, showMemberInfoCard) =>
@@ -66,10 +86,26 @@ export default function MemberInfoCard({
               {name && <MemberName>{name}</MemberName>}
 
               <FlexCenter style={socialIconStyleConfig}>
-                <Close
-                  cardCloseBtn
-                  onClick={() => setShowMemberInfoCard(false)}
-                />
+                {isMobile ? (
+                  <Close
+                    cardCloseBtn
+                    onClick={() => setShowMemberInfoCard(false)}
+                  />
+                ) : (
+                  <FlexCenter
+                    cardCloseBtn
+                    onClick={() => setShowMemberInfoCard(false)}
+                    style={closeBtnStyles}
+                  >
+                    <StaticImage
+                      src={"../../../images/close.svg"}
+                      placeholder="BLURRED"
+                      alt="ACE Logo"
+                      width={20}
+                      height={20}
+                    />
+                  </FlexCenter>
+                )}
                 {social?.linkedin_link.url && (
                   <LinkedIn
                     onClick={() => window.open(social?.linkedin_link.url)}
