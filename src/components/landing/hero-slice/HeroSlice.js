@@ -7,6 +7,7 @@ import {
   HeroInfo,
 } from "./HeroElements"
 import Button from "../../button/Button"
+import AnimateIn from "../../animations/AnimateIn"
 
 export default function HeroSection({ data }) {
   const [hero, setHero] = useState(null)
@@ -40,13 +41,12 @@ export default function HeroSection({ data }) {
             />
           </div>
           <HeroInfoWrapper>
-            {hero?.title && <HeroTitle>Where Imagination Meets Innovation</HeroTitle>}
-            {hero?.subTitle && (
-              <HeroInfo>
-                ACE - Association of Computer Enthusiasts is the Technical
-                Society of VSIT, Vivekananda Institute of Professional Studies
-              </HeroInfo>
-            )}
+            <AnimateIn duration={500} delay={250}>
+              {hero?.title && <HeroTitle>{hero?.title}</HeroTitle>}
+            </AnimateIn>
+            <AnimateIn duration={500} delay={200}>
+              {hero?.subTitle && <HeroInfo>{hero?.subTitle}</HeroInfo>}
+            </AnimateIn>
             {hero?.heroBtn && (
               <Button
                 to={hero?.heroBtnLink}
