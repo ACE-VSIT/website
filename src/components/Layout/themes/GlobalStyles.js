@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
   ::-webkit-scrollbar {
-    width: 3px;
+    width: 0px;
   }
   ::-webkit-scrollbar-track {
     background: ${props => props.theme.bg};

@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components"
 import AlignRightOutlined from "@ant-design/icons/AlignRightOutlined"
-import CloseOutlined from "@ant-design/icons/CloseOutlined"
 import { FlexCenter } from "../../../../styles/sharedStyles"
 import { Link } from "gatsby"
 
@@ -174,30 +173,6 @@ export const NavSliderInfo = styled(FlexCenter)`
     display: none;
   }
 `
-
-export const NavabarSliderClose = styled(CloseOutlined)`
-  transform: rotateX(180deg);
-  transition: 0.5s all ease-in-out;
-  font-size: 1.25rem;
-  width: 5rem;
-  cursor: pointer;
-  color: ${props => props.theme.font};
-  height: 5rem;
-  line-height: 5rem;
-  z-index: 1005;
-
-  &:hover,
-  &:focus {
-    color: ${props => props.theme.active};
-  }
-
-  @media (max-width: 330px) {
-    height: 4rem;
-    line-height: 4rem;
-    width: 4rem;
-  }
-`
-
 export const NavbarVertical = styled(FlexCenter)`
   position: fixed;
   top: 0;

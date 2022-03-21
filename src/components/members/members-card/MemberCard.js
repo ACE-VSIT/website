@@ -7,6 +7,7 @@ import {
 } from "./MemberCardElements"
 import MemberInfoCard from "./MemberInfoCard"
 import { GatsbyImage } from "gatsby-plugin-image"
+import AnimateIn from "../../animations/AnimateIn"
 
 export default function MemberCard({
   name,
@@ -20,13 +21,15 @@ export default function MemberCard({
 
   return (
     <>
-      <MemberCardWrapper onClick={() => setShowMemberInfoCard(true)}>
-        <MemberImageWrapper>
-          <GatsbyImage image={img} alt={""} />
-        </MemberImageWrapper>
-        {name && <MemberName>{name}</MemberName>}
-        {title && <MemberTitle>{title}</MemberTitle>}
-      </MemberCardWrapper>
+      <AnimateIn delay={150} duration={500}>
+        <MemberCardWrapper onClick={() => setShowMemberInfoCard(true)}>
+          <MemberImageWrapper>
+            <GatsbyImage image={img} alt={""} />
+          </MemberImageWrapper>
+          {name && <MemberName>{name}</MemberName>}
+          {title && <MemberTitle>{title}</MemberTitle>}
+        </MemberCardWrapper>
+      </AnimateIn>
       {showMemberInfoCard ? (
         <MemberInfoCard
           name={name}

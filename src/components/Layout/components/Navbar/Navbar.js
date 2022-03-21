@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import {
   NavbarBrandImg,
   NavbarList,
@@ -10,13 +10,14 @@ import {
   NavbarVertical,
   NavbarSocialHeading,
   NavbarSocialItem,
-  NavabarSliderClose,
   NavbarSliderThemeIcon,
 } from "./NavbarElements"
 import RichText from "../../../rich-text/index"
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { navigate } from "gatsby"
 import { useTrail, useSpring, animated } from "react-spring"
+import useOutsideAlerter from "../../../../hooks/useOutsideTouch"
+import { FlexCenter } from "../../../../styles/sharedStyles"
 
 export default function Navbar({
   img,
@@ -30,6 +31,16 @@ export default function Navbar({
   const [awaitAnimate, setAwaitAnimate] = useState(false)
   const springConfig = { mass: 5, tension: 1500, friction: 200 }
   const brandImg = getImage(img)
+  const sliderRef = useRef()
+  useOutsideAlerter(sliderRef, setToggleSlider)
+
+  const closeBtnStyles = {
+    width: "5rem",
+    height: "5rem",
+    filter: "opacity(0.75)",
+    cursor: "pointer",
+    zIndex: 1005,
+  }
 
   const navbarSliderAnimation = useSpring({
     opacity: toggleSlider ? 1 : 0,
@@ -99,9 +110,17 @@ export default function Navbar({
       {!toggleSlider ? (
         <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
       ) : (
-        <NavabarSliderClose onClick={() => setToggleSlider(!toggleSlider)} />
+        <FlexCenter style={closeBtnStyles}>
+          <StaticImage
+            src={"../../../../images/close.svg"}
+            placeholder="BLURRED"
+            alt="ACE Logo"
+            width={20}
+            height={20}
+          />
+        </FlexCenter>
       )}
-      <NavbarSlider style={toggleStyles}>
+      <NavbarSlider ref={sliderRef} style={toggleStyles}>
         <NavbarSliderThemeIcon onClick={handleThemeChange}>
           <StaticImage
             src={"../../../../images/themeIcon.svg"}

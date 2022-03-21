@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer"
 import { ThemeProvider } from "styled-components"
 import { GlobalStyle, lightTheme, darkTheme } from "./themes/GlobalStyles"
 import { Container } from "./components/container"
+import MoveTop from "../move-to-top/MoveTop"
 
 const Layout = ({ children, navbar }) => {
   const [isDarkTheme, setIsDarkTheme] = React.useState(false)
@@ -36,6 +37,7 @@ const Layout = ({ children, navbar }) => {
         setIsDarkTheme={setIsDarkTheme}
       />
       <Container>{children}</Container>
+      <MoveTop />
       <Footer
         itemList={navbar && navbar[1]?.items}
         footerList={navbar && navbar[3]?.items}

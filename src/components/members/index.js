@@ -7,7 +7,7 @@ import MembersSort from "./members-sort/MembersSort"
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
   const [year, setYear] = React.useState(null)
-
+  console.log(data.allPrismicMembers.nodes)
   // This is not the best approach, will think of something later
   const resetSort = React.useCallback(() => {
     const coreMembers = data.allPrismicMembers.nodes.filter(e =>

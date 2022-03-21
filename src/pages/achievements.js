@@ -4,7 +4,9 @@ import Seo from "../components/SEO"
 import Layout from "../components/Layout/index"
 import Head from "../components/achievements/achievements-table-slice/Head"
 import Table from "../components/achievements/achievements-table-slice/Table"
-// import { getImage, GatsbyImage} from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
+import HeroSliceSecondary from "../components/hero-slice-secondary/HeroSliceSecondary"
+import { FlexCenter } from "../styles/sharedStyles"
 
 const driverData = [
   {
@@ -26,27 +28,28 @@ const driverData = [
 ]
 const AchievementsPage = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
-  
+
   // Data to be shown in table
   const achievementsData = data?.prismicAchievements?.data?.body
-  
+
   // const heroImage = getImage(data?.prismicAchievements?.data?.hero_image)
   const heroTitle = data?.prismicAchievements?.data?.title?.text
+  const image = getImage(data?.prismicAchievements?.data?.hero_image)
 
   return (
     <>
       <Layout navbar={nav}>
         <Seo title={heroTitle} />
-        <Head title={heroTitle} />
+        {/* <Head title={heroTitle} /> */}
+        <HeroSliceSecondary heading={heroTitle} image={image} />
         <Table
-          tableData={driverData}
+          tableData={achievementsData}
           headingColumns={[
-            "#",
-            "Name",
-            "Team",
-            "Country",
-            "Date of Birth",
-            "place of birth",
+            "Position",
+            "Date",
+            "Winner Name",
+            "Event Name",
+            "College Name",
           ]}
           // title="F1 driver"
         />
