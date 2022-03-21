@@ -12,7 +12,7 @@ const Table = ({tableData, headingColumns, title,breakOn ="medium" }) => {
 } else if(breakOn=== "large"){
     tableClass += "table-container__table--break-lg"
 }
-const data = tableData.map(({event_date, winner_name,position,event_name,college_name})=>{
+const data = tableData.map(({event_date,winner_name,position,event_name,college_name})=>{
    
     return <tr >
         <Td>{event_date}</Td>    
