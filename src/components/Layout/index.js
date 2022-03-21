@@ -6,9 +6,10 @@ import { ThemeProvider } from "styled-components"
 import { GlobalStyle, lightTheme, darkTheme } from "./themes/GlobalStyles"
 import { Container } from "./components/container"
 import MoveTop from "../move-to-top/MoveTop"
+import { ThemeContext } from "../../context/ThemeContext"
 
 const Layout = ({ children, navbar }) => {
-  const [isDarkTheme, setIsDarkTheme] = React.useState(false)
+  const {isDarkTheme, setIsDarkTheme} = React.useContext(ThemeContext)
 
   React.useEffect(() => {
     let theme = localStorage.getItem("theme")
@@ -19,7 +20,7 @@ const Layout = ({ children, navbar }) => {
         setIsDarkTheme(false)
       }
     }
-  }, [])
+  }, [setIsDarkTheme])
 
   return (
     <ThemeProvider theme={!isDarkTheme ? lightTheme : darkTheme}>
