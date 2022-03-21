@@ -45,7 +45,11 @@ query eventInfo {
       ...EventPage
     }
     allPrismicEventitem{
-      ...allEventitem
+      edges {
+        node {
+          ...allEventitem
+        }
+      }
     }
   }
   
