@@ -67,6 +67,7 @@ export const TableContainer = styled.section`
   margin: auto 40px;
   @media (max-width: 760px) {
     display: block;
+    margin-top: 15rem;
   }
 `
 export const TableContainerTitle = styled.div`

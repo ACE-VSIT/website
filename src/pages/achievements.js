@@ -45,9 +45,9 @@ const AchievementsPage = ({ data }) => {
         <Table
           tableData={achievementsData}
           headingColumns={[
+            "Position",
             "Date",
             "Winner Name",
-            "Position",
             "Event Name",
             "College Name",
           ]}
