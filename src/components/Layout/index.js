@@ -9,40 +9,40 @@ import MoveTop from "../move-to-top/MoveTop"
 import { ThemeContext } from "../../context/ThemeContext"
 
 const Layout = ({ children, navbar }) => {
-  const {isDarkTheme, setIsDarkTheme} = React.useContext(ThemeContext)
+  const themeContext = React.useContext(ThemeContext)
 
   React.useEffect(() => {
     let theme = localStorage.getItem("theme")
     if (theme) {
       if (theme === "dark") {
-        setIsDarkTheme(true)
+        themeContext?.setIsDarkTheme(true)
       } else {
-        setIsDarkTheme(false)
+        themeContext?.setIsDarkTheme(false)
       }
     }
-  }, [setIsDarkTheme])
+  }, [themeContext?.setIsDarkTheme])
 
   return (
-    <ThemeProvider theme={!isDarkTheme ? lightTheme : darkTheme}>
+    <ThemeProvider theme={!themeContext?.isDarkTheme ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Navbar
         sliderInfo={navbar && navbar[0]?.primary?.navbar_slider_info.richText}
         itemList={navbar && navbar[1]?.items}
         socialList={navbar && navbar[2]?.items}
         img={
-          navbar && !isDarkTheme
+          navbar && !themeContext?.isDarkTheme
             ? navbar[0]?.primary?.navbar_logo
             : navbar[0]?.primary?.navbar_logo_dark
         }
-        isDarkTheme={isDarkTheme}
-        setIsDarkTheme={setIsDarkTheme}
+        isDarkTheme={themeContext?.isDarkTheme}
+        setIsDarkTheme={themeContext?.setIsDarkTheme}
       />
       <Container>{children}</Container>
       <MoveTop />
       <Footer
         itemList={navbar && navbar[1]?.items}
         footerList={navbar && navbar[3]?.items}
-        isDarkTheme={isDarkTheme}
+        isDarkTheme={themeContext?.isDarkTheme}
       />
     </ThemeProvider>
   )
