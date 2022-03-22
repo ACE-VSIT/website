@@ -395,6 +395,40 @@
                 }
               }
             }
+          },
+          "footer_info" : {
+            "type" : "Slice",
+            "fieldset" : "Footer Info",
+            "description" : "Footer Info Slice",
+            "icon" : "border_bottom",
+            "non-repeat" : { },
+            "repeat" : {
+              "footer_info" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Footer Info",
+                  "placeholder" : "Footer Info"
+                }
+              },
+              "footer_button" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Footer Button",
+                  "placeholder" : "Footer Link button",
+                  "select" : null
+                }
+              },
+              "footer_button_toggle" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Hide button",
+                  "placeholder_true" : "Show Button",
+                  "default_value" : true,
+                  "label" : "Footer button toggle"
+                }
+              }
+            }
           }
         }
       }
