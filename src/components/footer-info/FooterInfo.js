@@ -4,7 +4,6 @@ import { FooterWrapper, FooterSummary } from "./FooterInfoElements"
 import ButtonComponent from "../button/Button"
 
 export default function FooterInfo({ btn, showBtn, info }) {
-  console.log(btn, showBtn, info)
 
   return (
     <AnimateIn delay={500} duration={500}>
