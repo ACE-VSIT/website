@@ -102,6 +102,17 @@ export const landingInfo = graphql`
             }
           }
         }
+        ... on PrismicHomepageDataBodyFooterInfo {
+          items {
+            footer_button_toggle
+            footer_button {
+              url
+            }
+            footer_info {
+              text
+            }
+          }
+        }
       }
     }
   }
