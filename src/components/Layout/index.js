@@ -9,7 +9,7 @@ import MoveTop from "../move-to-top/MoveTop"
 import { ThemeContext } from "../../context/ThemeContext"
 
 const Layout = ({ children, navbar }) => {
-  const { isDarkTheme, setIsDarkTheme } = React.useContext(ThemeContext)
+  const themeContext = React.useContext(ThemeContext)
 
   React.useEffect(() => {
     let theme = localStorage.getItem("theme")
