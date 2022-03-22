@@ -9,7 +9,7 @@ import MoveTop from "../move-to-top/MoveTop"
 import { ThemeContext } from "../../context/ThemeContext"
 
 const Layout = ({ children, navbar }) => {
-  const themeContext = React.useContext(ThemeContext)
+  const { isDarkTheme, setIsDarkTheme } = React.useContext(ThemeContext)
 
   React.useEffect(() => {
     let theme = localStorage.getItem("theme")
@@ -20,7 +20,7 @@ const Layout = ({ children, navbar }) => {
         themeContext?.setIsDarkTheme(false)
       }
     }
-  }, [themeContext?.setIsDarkTheme])
+  }, [themeContext])
 
   return (
     <ThemeProvider theme={!themeContext?.isDarkTheme ? lightTheme : darkTheme}>
