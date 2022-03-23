@@ -1,66 +1,66 @@
 {
-    "Main": {
-      "page_title": {
-        "type": "StructuredText",
-        "config": {
-          "single": "heading1",
-          "label": "Page Title",
-          "placeholder": "Enter the Title of Page"
-        }
-      },
-      "page_info": {
-        "type": "StructuredText",
-        "config": {
-          "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-          "label": "Page Info",
-          "placeholder": "Enter the info for Page"
-        }
+  "Main": {
+    "page_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Page Title",
+        "placeholder": "Enter the Title of Page"
       }
     },
-    "Seo": {
-      "body": {
-        "type": "Slices",
-        "fieldset": "Slice zone",
-        "config": {
-          "labels": {},
-          "choices": {
-            "website_meta_info": {
-              "type": "Slice",
-              "fieldset": "Website Meta Info",
-              "description": "Website Meta info slice for SEO",
-              "icon": "airplay",
-              "non-repeat": {
-                "meta_title": {
-                  "type": "StructuredText",
-                  "config": {
-                    "single": "heading1",
-                    "label": "Meta Title",
-                    "placeholder": "Meta Title for SEO"
-                  }
-                },
-                "meta_description": {
-                  "type": "StructuredText",
-                  "config": {
-                    "multi": "paragraph",
-                    "allowTargetBlank": true,
-                    "label": "Meta Description",
-                    "placeholder": "Meta Description for SEO"
-                  }
-                },
-                "meta_keywords": {
-                  "type": "StructuredText",
-                  "config": {
-                    "multi": "paragraph",
-                    "allowTargetBlank": true,
-                    "label": "Meta Keywords",
-                    "placeholder": "Meta Keywords for SEO"
-                  }
+    "page_info": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "label": "Page Info",
+        "placeholder": "Enter the info for Page"
+      }
+    }
+  },
+  "Seo": {
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "website_meta_info": {
+            "type": "Slice",
+            "fieldset": "Website Meta Info",
+            "description": "Website Meta info slice for SEO",
+            "icon": "airplay",
+            "non-repeat": {
+              "meta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Meta Title",
+                  "placeholder": "Meta Title for SEO"
                 }
               },
-              "repeat": {}
-            }
+              "meta_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Description",
+                  "placeholder": "Meta Description for SEO"
+                }
+              },
+              "meta_keywords": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Keywords",
+                  "placeholder": "Meta Keywords for SEO"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
     }
   }
+}

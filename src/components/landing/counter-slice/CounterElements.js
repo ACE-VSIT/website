@@ -20,7 +20,7 @@ export const CounterSubTitle = styled.p`
   font-size: 1.25rem;
   font-weight: 400;
   color: ${props => props.theme.color};
-  padding: 0 calc(10vw + .5rem);
+  padding: 0 calc(10vw + 0.5rem);
   text-align: center;
 
   @media (max-width: 768px) {

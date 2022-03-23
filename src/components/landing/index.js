@@ -62,15 +62,13 @@ export default function HomePage({ data }) {
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />
-      {sliderInfoTitle &&
-        sliderInfoSubTitle &&
-        sliderInfoImg && (
-          <SliderInfoImg
-            img={sliderInfoImg}
-            title={sliderInfoTitle}
-            subtitle={sliderInfoSubTitle}
-          />
-        )}
+      {sliderInfoTitle && sliderInfoSubTitle && sliderInfoImg && (
+        <SliderInfoImg
+          img={sliderInfoImg}
+          title={sliderInfoTitle}
+          subtitle={sliderInfoSubTitle}
+        />
+      )}
       {counter && (
         <>
           <CounterWrapper>

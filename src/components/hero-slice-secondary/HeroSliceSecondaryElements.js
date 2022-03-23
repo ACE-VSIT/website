@@ -22,6 +22,6 @@ export const HeroSliceHeading = styled(Heading)`
   left: 0;
   width: 100vw;
   z-index: 105;
-  color: #EBF6FE;
+  color: #ebf6fe;
   text-align: center;
 `

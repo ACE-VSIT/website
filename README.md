@@ -17,42 +17,47 @@ _If you find anything which can be improved in the README.md then ping me and gi
 ## 🚀 Quick start
 
 1.  **Download required softwares.**
-    
+
     1. Download Github from [here](https://git-scm.com/downloads)
     2. Download Node.js from [here](https://nodejs.org/en/download/)
     3. Download your favourite Code Editor (VS Code Preferred)
 
-
-
 1.  **Setup Environment locally.**
 
     1. Clone Repo & Install dependencies
-    
-        _Linux Users_
-        1. Run the following commands in your terminal
-        ```shell
-        cd ~/Desktop 
-        git clone https://github.com/ACE-VSIT/ACE-Website
-        cd ./ACE-Website
-        npm install
-        touch .env.development
-        ```
 
-        _Windows Users_
-        1. Open CMD / Power Shell / Git Bash in your folder
-        2. Run the following commands
-        ```shell
-        git clone https://github.com/ACE-VSIT/ACE-Website
-        cd ./ACE-Website
-        npm install
-        echo.>.env.development
-        ```
+       _Linux Users_
+
+       1. Run the following commands in your terminal
+
+       ```shell
+       cd ~/Desktop
+       git clone https://github.com/ACE-VSIT/ACE-Website
+       cd ./ACE-Website
+       npm install
+       touch .env.development
+       ```
+
+       _Windows Users_
+
+       1. Open CMD / Power Shell / Git Bash in your folder
+       2. Run the following commands
+
+       ```shell
+       git clone https://github.com/ACE-VSIT/ACE-Website
+       cd ./ACE-Website
+       npm install
+       echo.>.env.development
+       ```
+
     2. Open the Project in your preferred code editor
     3. Opne the .env.development file and add the required env-vars
     4. Start the Local Dev server
-       
-          Note* the server takes some time to start.
-        ```shell
-         yarn start
-        ```
-    5. Website should be up and running on your `http://localhost:8000/` 
+
+       Note\* the server takes some time to start.
+
+       ```shell
+        yarn start
+       ```
+
+    5. Website should be up and running on your `http://localhost:8000/`

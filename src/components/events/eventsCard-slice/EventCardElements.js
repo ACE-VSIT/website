@@ -2,19 +2,15 @@ import styled, { css } from "styled-components"
 import { Heading } from "../../../styles/sharedStyles"
 
 export const EventsCardWrapper = styled.div`
-  width: 20vw;
-  height: 25rem;
-  overflow: hidden;
+  width: 17vw;
+  gap: 0.25rem;
   background: ${props => props.theme.bg};
-  gap: 0.15rem;
   cursor: pointer;
 
-  @media (max-width: 768px) {
-    width: 100%;
-    text-align: center;
-    overflow: scroll;
-    margin: 0.25rem 0 0 0;
-  }
+   @media (max-width: 768px) {
+     width: 70vw;
+     height: 10rem;
+   }
 `
 
 export const ImageWrapper = styled.img`
@@ -22,32 +18,40 @@ export const ImageWrapper = styled.img`
   height: 60%;
 `
 export const EventDetailContainer = styled.div`
-  display: flex;
+  /* display: flex; */
 `
 
-export const Date = styled.h4`
-  padding: 5px;
-  width: 30%;
-  font-size: 1.25rem;
-  text-align: center;
+export const DateWrapper = styled.div`
+
+  margin-top: 5%;
+  display: inline-flex;
+  float: right;
+`
+export const Date = styled.p`
+  padding: 0 10px;
+  font-size: 0.8rem;
 `
 
-export const EventDetail = styled.div`
-  padding-left: 10px;
-`
+
 export const EventName = styled(Heading)`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 400;
   margin: 1% 0 0 0;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
 `
 export const EventDescription = styled.p`
   margin-top: 5%;
-  font-size: 1 rem;
-  @media (max-width: 768px) {
-    font-size: .5rem;
-  }
+  font-size: 1rem;
+  height: 9.5rem;
+  max-height: 5rem;
 
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-top: 2%;
+  }
 `
