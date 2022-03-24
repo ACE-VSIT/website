@@ -34,7 +34,7 @@ export const ProjectCardImageWrapper = styled.div`
 `
 export const ProjectCardTags = styled.p`
   position: absolute;
-  top: 250px;
+  top: 225px;
   right: 0;
   text-align: right;
   width: max-content;

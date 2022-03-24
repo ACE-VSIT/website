@@ -1,6 +1,6 @@
 import React from "react"
 import ProjectCard from "./components/ProjectCard"
-import { FlexCenter } from "../../styles/sharedStyles"
+import { FlexCenter, Heading } from "../../styles/sharedStyles"
 import { getImage } from "gatsby-plugin-image"
 
 export default function ProjectPage({ projectList }) {
@@ -11,6 +11,7 @@ export default function ProjectPage({ projectList }) {
 
   return (
     <>
+      <Heading>Our Projects</Heading>
       <FlexCenter style={cardWrapperStyles}>
         {projectList.map((e, key) => {
           console.log(e)
