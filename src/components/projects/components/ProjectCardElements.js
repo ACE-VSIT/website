@@ -5,7 +5,7 @@ export const ProjectCardWrapper = styled(FlexCenter)`
   flex-direction: column;
   width: 350px;
   gap: 0.25rem;
-  max-height: 650px;
+  height: 550px;
   justify-content: flex-start;
   border: 1px solid ${props => props.theme.font + "50"};
   padding: 10px;
@@ -17,26 +17,29 @@ export const ProjectCardWrapper = styled(FlexCenter)`
 `
 export const ProjectCardHeading = styled(Heading)`
   font-size: 1.5rem;
+  text-align: left;
+  width: 100%;
 `
 export const ProjectCardInfo = styled(Heading)`
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
   padding: 0 0 0.25rem 0;
+  max-height: 230px;
 `
 export const ProjectCardImageWrapper = styled.div`
   overflow: hidden;
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
 `
 export const ProjectCardTags = styled.p`
   position: absolute;
-  top: 280px;
+  top: 250px;
   right: 0;
   text-align: right;
   width: max-content;
   height: max-content;
   padding: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background: ${props => props.theme.bg};
 `
