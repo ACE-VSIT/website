@@ -44,7 +44,7 @@ export const NavbarBrandImg = styled.div`
 
   @media (max-width: 768px) {
     border-right: 1px solid ${props => props.theme.font + "45"};
-    z-index: 10;  
+    z-index: 10;
   }
 
   @media (max-width: 330px) {

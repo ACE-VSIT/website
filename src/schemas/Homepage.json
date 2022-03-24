@@ -1,397 +1,397 @@
 {
-  "Main" : {
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "Slug",
-        "placeholder" : "Enter the Slug/UID of the Page"
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug",
+        "placeholder": "Enter the Slug/UID of the Page"
       }
     },
-    "title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1",
-        "label" : "Title",
-        "placeholder" : "Enter the Title of the Page"
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Enter the Title of the Page"
       }
     },
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : {
-          "core_member" : {
-            "type" : "Slice",
-            "fieldset" : "Members",
-            "description" : "Slice for Information of Core Members",
-            "icon" : "account_circle",
-            "non-repeat" : {
-              "member_section_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Member Section Title"
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "core_member": {
+            "type": "Slice",
+            "fieldset": "Members",
+            "description": "Slice for Information of Core Members",
+            "icon": "account_circle",
+            "non-repeat": {
+              "member_section_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Member Section Title"
                 }
               }
             },
-            "repeat" : {
-              "member_image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Member Image"
+            "repeat": {
+              "member_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Member Image"
                 }
               },
-              "member_name" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading2",
-                  "label" : "Member name"
+              "member_name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Member name"
                 }
               },
-              "member_position" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Member Position"
+              "member_position": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Member Position"
                 }
               },
-              "github_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Github Account",
-                  "placeholder" : "Member's Github Account",
-                  "select" : null
+              "github_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Github Account",
+                  "placeholder": "Member's Github Account",
+                  "select": null
                 }
               },
-              "linkedin_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "LinkedIn Account",
-                  "placeholder" : "Member's LinkedIn Account",
-                  "select" : null
+              "linkedin_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "LinkedIn Account",
+                  "placeholder": "Member's LinkedIn Account",
+                  "select": null
                 }
               },
-              "facebook_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Facebook Account",
-                  "placeholder" : "Member's Facebook Account",
-                  "select" : null
+              "facebook_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Facebook Account",
+                  "placeholder": "Member's Facebook Account",
+                  "select": null
                 }
               },
-              "instagram_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Instagram Account",
-                  "placeholder" : "Member's Instagram Account",
-                  "select" : null
+              "instagram_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Instagram Account",
+                  "placeholder": "Member's Instagram Account",
+                  "select": null
                 }
               },
-              "twitter_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Twitter Account",
-                  "placeholder" : "Member's Twitter Account",
-                  "select" : null
+              "twitter_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Twitter Account",
+                  "placeholder": "Member's Twitter Account",
+                  "select": null
                 }
               },
-              "personal_website" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Personal Website",
-                  "placeholder" : "Member's Personal Website",
-                  "select" : null
+              "personal_website": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Personal Website",
+                  "placeholder": "Member's Personal Website",
+                  "select": null
                 }
               },
-              "behance_account" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Behance Account",
-                  "placeholder" : "Member's Behance Account",
-                  "select" : null
+              "behance_account": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Behance Account",
+                  "placeholder": "Member's Behance Account",
+                  "select": null
                 }
               }
             }
           },
-          "landing_page" : {
-            "type" : "Slice",
-            "fieldset" : "Hero Section",
-            "description" : "Hero Section Slice ",
-            "icon" : "web_asset",
-            "non-repeat" : {
-              "hero_text" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Hero Text",
-                  "placeholder" : "Enter the Hero Text for Hero Section"
+          "landing_page": {
+            "type": "Slice",
+            "fieldset": "Hero Section",
+            "description": "Hero Section Slice ",
+            "icon": "web_asset",
+            "non-repeat": {
+              "hero_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Hero Text",
+                  "placeholder": "Enter the Hero Text for Hero Section"
                 }
               },
-              "hero_subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Hero Subtitle",
-                  "placeholder" : "Enter the Subtitile for the Hero Section"
+              "hero_subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Hero Subtitle",
+                  "placeholder": "Enter the Subtitile for the Hero Section"
                 }
               },
-              "hero_button" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "Hide Button on Hero Section",
-                  "placeholder_true" : "Show Button on Hero Section",
-                  "default_value" : false,
-                  "label" : "Hero Button"
+              "hero_button": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "Hide Button on Hero Section",
+                  "placeholder_true": "Show Button on Hero Section",
+                  "default_value": false,
+                  "label": "Hero Button"
                 }
               },
-              "hero_button_link" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Hero Button Link",
-                  "placeholder" : "Enter the Link for Hero Button",
-                  "select" : null
+              "hero_button_link": {
+                "type": "Link",
+                "config": {
+                  "allowTargetBlank": true,
+                  "label": "Hero Button Link",
+                  "placeholder": "Enter the Link for Hero Button",
+                  "select": null
                 }
               }
             },
-            "repeat" : {
-              "hero_image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Hero Image"
+            "repeat": {
+              "hero_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Hero Image"
                 }
               },
-              "hero_image_alt_text" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Hero Image alt text"
+              "hero_image_alt_text": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Hero Image alt text"
                 }
               },
-              "hero_image_alt_background_color" : {
-                "type" : "Color",
-                "config" : {
-                  "label" : "Hero Image Alt Background Color"
+              "hero_image_alt_background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Hero Image Alt Background Color"
                 }
               }
             }
           },
-          "stats_slice" : {
-            "type" : "Slice",
-            "fieldset" : "Stats Slice",
-            "description" : "Slice for presenting any numbers on the WebPage",
-            "icon" : "format_list_numbered",
-            "non-repeat" : {
-              "stats_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Stats Title",
-                  "placeholder" : "Title for the Section for which stats are to be shown"
+          "stats_slice": {
+            "type": "Slice",
+            "fieldset": "Stats Slice",
+            "description": "Slice for presenting any numbers on the WebPage",
+            "icon": "format_list_numbered",
+            "non-repeat": {
+              "stats_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Stats Title",
+                  "placeholder": "Title for the Section for which stats are to be shown"
                 }
               },
-              "stats_subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Stats Subtitle",
-                  "placeholder" : "Subtitle for the section where the stats are shown"
+              "stats_subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Stats Subtitle",
+                  "placeholder": "Subtitle for the section where the stats are shown"
                 }
               }
             },
-            "repeat" : {
-              "numbers" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "label" : "Numbers",
-                  "placeholder" : "Enter the Numbers"
+            "repeat": {
+              "numbers": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Numbers",
+                  "placeholder": "Enter the Numbers"
                 }
               },
-              "numbers_subtitile" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Numbers Subtitile",
-                  "placeholder" : "Subtitle for the section for which the stat is shown"
+              "numbers_subtitile": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Numbers Subtitile",
+                  "placeholder": "Subtitle for the section for which the stat is shown"
                 }
               }
             }
           },
-          "l-text-r-image" : {
-            "type" : "Slice",
-            "fieldset" : "Alternate Grid",
-            "description" : "Text on Left Image on Right",
-            "icon" : "art_track",
-            "non-repeat" : {
-              "slice_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Slice Title",
-                  "placeholder" : "Enter the title for the slice"
+          "l-text-r-image": {
+            "type": "Slice",
+            "fieldset": "Alternate Grid",
+            "description": "Text on Left Image on Right",
+            "icon": "art_track",
+            "non-repeat": {
+              "slice_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Slice Title",
+                  "placeholder": "Enter the title for the slice"
                 }
               },
-              "slice_subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "label" : "Slice Subtitle",
-                  "placeholder" : "Enter the subtitle for the slice"
+              "slice_subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Slice Subtitle",
+                  "placeholder": "Enter the subtitle for the slice"
                 }
               },
-              "align" : {
-                "type" : "Select",
-                "config" : {
-                  "options" : [ "Right", "Left" ],
-                  "default_value" : "Right",
-                  "label" : "Align",
-                  "placeholder" : "Select the alignment of the Primary Image"
+              "align": {
+                "type": "Select",
+                "config": {
+                  "options": ["Right", "Left"],
+                  "default_value": "Right",
+                  "label": "Align",
+                  "placeholder": "Select the alignment of the Primary Image"
                 }
               },
-              "r-image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Primary-Image"
+              "r-image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Primary-Image"
                 }
               }
             },
-            "repeat" : {
-              "icon-image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Icon-Image"
+            "repeat": {
+              "icon-image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Icon-Image"
                 }
               },
-              "title1" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Title",
-                  "placeholder" : "Enter the title for the repeatable zone"
+              "title1": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Title",
+                  "placeholder": "Enter the title for the repeatable zone"
                 }
               },
-              "subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Subtitle"
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Subtitle"
                 }
               },
-              "button" : {
-                "type" : "Link",
-                "config" : {
-                  "label" : "Button",
-                  "placeholder" : "Enter the link",
-                  "select" : null
+              "button": {
+                "type": "Link",
+                "config": {
+                  "label": "Button",
+                  "placeholder": "Enter the link",
+                  "select": null
                 }
               },
-              "show_button" : {
-                "type" : "Boolean",
-                "config" : {
-                  "placeholder_false" : "This will not show button",
-                  "placeholder_true" : "This will show the button",
-                  "default_value" : true,
-                  "label" : "Show Button"
+              "show_button": {
+                "type": "Boolean",
+                "config": {
+                  "placeholder_false": "This will not show button",
+                  "placeholder_true": "This will show the button",
+                  "default_value": true,
+                  "label": "Show Button"
                 }
               }
             }
           },
-          "card_list" : {
-            "type" : "Slice",
-            "fieldset" : "Card List",
-            "description" : "List of Cards to be shown as a Grid ",
-            "icon" : "grid_on",
-            "non-repeat" : {
-              "list_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "List Title",
-                  "placeholder" : "Enter the title for the List"
+          "card_list": {
+            "type": "Slice",
+            "fieldset": "Card List",
+            "description": "List of Cards to be shown as a Grid ",
+            "icon": "grid_on",
+            "non-repeat": {
+              "list_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "List Title",
+                  "placeholder": "Enter the title for the List"
                 }
               },
-              "list_subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "List Subtitle",
-                  "placeholder" : "Enter the subtitle for the list"
+              "list_subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "List Subtitle",
+                  "placeholder": "Enter the subtitle for the list"
                 }
               }
             },
-            "repeat" : {
-              "card_image" : {
-                "type" : "Image",
-                "config" : {
-                  "constraint" : { },
-                  "thumbnails" : [ ],
-                  "label" : "Card Image"
+            "repeat": {
+              "card_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Card Image"
                 }
               },
-              "card_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Card Title",
-                  "placeholder" : "Enter the title on the Card"
+              "card_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Card Title",
+                  "placeholder": "Enter the title on the Card"
                 }
               },
-              "card_subtitle" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Card Subtitle",
-                  "placeholder" : "Enter the subtitle on the card"
+              "card_subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Card Subtitle",
+                  "placeholder": "Enter the subtitle on the card"
                 }
               },
-              "card_author" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Card Author",
-                  "placeholder" : "Enter the name of Card's Author"
+              "card_author": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Card Author",
+                  "placeholder": "Enter the name of Card's Author"
                 }
               },
-              "card_date" : {
-                "type" : "Timestamp",
-                "config" : {
-                  "label" : "Card Date",
-                  "placeholder" : "Enter the date on the Card"
+              "card_date": {
+                "type": "Timestamp",
+                "config": {
+                  "label": "Card Date",
+                  "placeholder": "Enter the date on the Card"
                 }
               },
-              "card_hashtag" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "heading6",
-                  "allowTargetBlank" : true,
-                  "label" : "Card hashtag",
-                  "placeholder" : "Enter the hashtag on the Card"
+              "card_hashtag": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "heading6",
+                  "allowTargetBlank": true,
+                  "label": "Card hashtag",
+                  "placeholder": "Enter the hashtag on the Card"
                 }
               }
             }
@@ -434,47 +434,47 @@
       }
     }
   },
-  "Seo" : {
-    "body1" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
-      "config" : {
-        "labels" : { },
-        "choices" : {
-          "website_meta_info" : {
-            "type" : "Slice",
-            "fieldset" : "Website Meta Info",
-            "description" : "Website Meta info slice for SEO",
-            "icon" : "airplay",
-            "non-repeat" : {
-              "meta_title" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "single" : "heading1",
-                  "label" : "Meta Title",
-                  "placeholder" : "Meta Title for SEO"
+  "Seo": {
+    "body1": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "website_meta_info": {
+            "type": "Slice",
+            "fieldset": "Website Meta Info",
+            "description": "Website Meta info slice for SEO",
+            "icon": "airplay",
+            "non-repeat": {
+              "meta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Meta Title",
+                  "placeholder": "Meta Title for SEO"
                 }
               },
-              "meta_description" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Meta Description",
-                  "placeholder" : "Meta Description for SEO"
+              "meta_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Description",
+                  "placeholder": "Meta Description for SEO"
                 }
               },
-              "meta_keywords" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph",
-                  "allowTargetBlank" : true,
-                  "label" : "Meta Keywords",
-                  "placeholder" : "Meta Keywords for SEO"
+              "meta_keywords": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Keywords",
+                  "placeholder": "Meta Keywords for SEO"
                 }
               }
             },
-            "repeat" : { }
+            "repeat": {}
           }
         }
       }

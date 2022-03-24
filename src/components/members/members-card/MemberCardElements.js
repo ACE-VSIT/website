@@ -123,7 +123,7 @@ export const MemberInfoWrapper = styled(FlexCenter)`
       font-size: 1.45rem;
     }
     h1:nth-of-type(1) {
-      font-size: .85rem;
+      font-size: 0.85rem;
     }
   }
 
@@ -158,7 +158,7 @@ export const MemberTitle = styled(MemberName)`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 `
 export const MemberInfo = styled.p`
