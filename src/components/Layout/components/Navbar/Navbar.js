@@ -117,6 +117,7 @@ export default function Navbar({
             alt="ACE Logo"
             width={20}
             height={20}
+            style={{ filter: isDarkTheme ? "invert(1)" : "invert(0)" }}
           />
         </FlexCenter>
       )}

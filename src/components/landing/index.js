@@ -10,6 +10,7 @@ import {
 } from "./counter-slice/CounterElements"
 import useOnScreen from "../../hooks/useOnScreen"
 import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
+import FooterInfo from "../footer-info/FooterInfo"
 
 export default function HomePage({ data }) {
   const sliderInfoTitle =
@@ -19,6 +20,7 @@ export default function HomePage({ data }) {
   const sliderInfoImg = getImage(
     data?.prismicHomepage?.data?.body[1]?.primary?.r_image
   )
+  const footerInfo = data?.prismicHomepage?.data?.body[5]?.items[0]
   const [hasMounted, setHasMounted] = useState(false)
   const counter = data?.prismicHomepage?.data?.body[2]?.items
   // const statsTitle =
@@ -111,6 +113,11 @@ export default function HomePage({ data }) {
             </div>
           )
         })}
+        <FooterInfo
+          btn={footerInfo?.footer_button.url}
+          showBtn={footerInfo?.footer_button_toggle}
+          info={footerInfo?.footer_info?.text}
+        />
       </FlexCenter>
     </>
   )
