@@ -24,6 +24,23 @@
         "placeholder": "Enter a short description for project."
       }
     },
+    "project_type": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Web Development",
+          "AR/VR Development",
+          "App Development",
+          "Graphics Designing",
+          "Digital Marketting",
+          "Data Science",
+          "Security"
+        ],
+        "default_value": "Web Development",
+        "label": "Project Type",
+        "placeholder": "Select the type of Project"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -42,8 +59,12 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": ["members"],
-                  "tags": ["Member"],
+                  "customtypes": [
+                    "members"
+                  ],
+                  "tags": [
+                    "Member"
+                  ],
                   "label": "Developed by",
                   "placeholder": "Enter the member"
                 }
