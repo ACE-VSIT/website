@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
 import {
   MemberCardWrapper,
   MemberImageWrapper,
@@ -19,6 +19,7 @@ import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { useTransition, config, animated } from "react-spring"
 import useOutsideAlerter from "../../../hooks/useOutsideTouch"
 import useWindowSize from "../../../hooks/useWindowSize"
+import { ThemeContext } from "../../../context/ThemeContext"
 
 export default function MemberInfoCard({
   name,
@@ -29,6 +30,7 @@ export default function MemberInfoCard({
   showMemberInfoCard,
   setShowMemberInfoCard,
 }) {
+  const { isDarkTheme } = useContext(ThemeContext)
   const socialIconStyleConfig = {
     height: "2.25rem",
     width: "100%",
@@ -103,6 +105,9 @@ export default function MemberInfoCard({
                       alt="ACE Logo"
                       width={20}
                       height={20}
+                      style={{
+                        filter: isDarkTheme ? "invert(1)" : "invert(0)",
+                      }}
                     />
                   </FlexCenter>
                 )}

@@ -49,12 +49,8 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": [
-                    "members"
-                  ],
-                  "tags": [
-                    "Member"
-                  ],
+                  "customtypes": ["members"],
+                  "tags": ["Member"],
                   "label": "Winner Name",
                   "placeholder": "Select the Winner"
                 }

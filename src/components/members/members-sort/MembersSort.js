@@ -12,7 +12,7 @@ export default function MembersSort({ startingYear, setYear }) {
 
   useEffect(() => {
     let latestYear = new Date().getFullYear()
-    const yearArr = ['Select Year']
+    const yearArr = ["Select Year"]
     while (startingYear <= latestYear) {
       yearArr.push(latestYear--)
     }
@@ -25,7 +25,11 @@ export default function MembersSort({ startingYear, setYear }) {
         <SortText>Filter by Year </SortText>
         <SortSelect ref={optionRef} onChange={handleOptionChange}>
           {optionYears?.map((e, key) => {
-            return <SortOption value={e} key={key}>{e}</SortOption>
+            return (
+              <SortOption value={e} key={key}>
+                {e}
+              </SortOption>
+            )
           })}
         </SortSelect>
       </SortWrapper>
@@ -59,7 +63,7 @@ const SortSelect = styled.select`
   background: ${props => props.theme.bg};
   border-left: none;
   color: ${props => props.theme.font};
-  
+
   &:hover,
   &:focus {
     outline: none;

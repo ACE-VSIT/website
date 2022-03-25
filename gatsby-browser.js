@@ -7,3 +7,10 @@ import "@fontsource/roboto-slab/600.css"
 import "@fontsource/roboto-slab/700.css"
 import "@fontsource/roboto-slab/800.css"
 import "@fontsource/roboto-slab/900.css"
+import React from "react"
+import { ThemeContextProvider } from "./src/context/ThemeContext"
+
+export const wrapRootElement = ({ element }) => (
+    <ThemeContextProvider>{element}</ThemeContextProvider>
+  )
+  

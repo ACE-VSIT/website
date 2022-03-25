@@ -1,35 +1,35 @@
 {
-    "Main" : {
-      "event_title" : {
-        "type" : "StructuredText",
-        "config" : {
-          "single" : "heading1",
-          "label" : "Event Title",
-          "placeholder" : "Enter the event title"
-        }
-      },
-      "event_date" : {
-        "type" : "Date",
-        "config" : {
-          "label" : "Event date",
-          "placeholder" : "Enter the event date"
-        }
-      },
-      "short_summary" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph",
-          "label" : "Short Summary",
-          "placeholder" : "Enter short summary for the event"
-        }
-      },
-      "event_details" : {
-        "type" : "StructuredText",
-        "config" : {
-          "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
-          "label" : "Event details",
-          "placeholder" : "Enter details for the event"
-        }
+  "Main": {
+    "event_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Event Title",
+        "placeholder": "Enter the event title"
+      }
+    },
+    "event_date": {
+      "type": "Date",
+      "config": {
+        "label": "Event date",
+        "placeholder": "Enter the event date"
+      }
+    },
+    "short_summary": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Short Summary",
+        "placeholder": "Enter short summary for the event"
+      }
+    },
+    "event_details": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl",
+        "label": "Event details",
+        "placeholder": "Enter details for the event"
       }
     }
   }
+}

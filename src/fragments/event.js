@@ -37,4 +37,5 @@ export const EventPage = graphql`
         }
       }
     }
-  }`
+  }
+`
