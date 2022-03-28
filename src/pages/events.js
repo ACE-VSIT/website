@@ -8,10 +8,18 @@ import { FlexCenter, Heading } from "../styles/sharedStyles"
 
 export default function Events({ data }) {
   const nav = data?.prismicLayout?.data?.body
+  const metaTitle = data?.prismicEventpage?.data?.meta_page_title?.text
+  const metaDescription = data?.prismicEventpage?.data?.meta_page_subtitle?.text
+  const metaKeywords = data?.prismicEventpage?.data?.meta_keywords?.text.split(",")
+  console.log(metaKeywords)
   return (
     <>
       <Layout navbar={nav}>
-        <Seo title={"Events"} />
+        <Seo
+          description={metaDescription}
+          meta={metaKeywords}
+          title={metaTitle}
+        />
         <FlexCenter>
           <Heading>Our Events</Heading>
         </FlexCenter>
