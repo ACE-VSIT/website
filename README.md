@@ -26,7 +26,7 @@ _If you find anything which can be improved in the README.md then ping [me](http
 
     1. Clone Repo & Install dependencies
 
-       _Linux Users_
+       _Linux / Mac Users_
 
        1. Run the following commands in your terminal
 
