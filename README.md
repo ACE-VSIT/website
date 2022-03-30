@@ -12,7 +12,7 @@
 This guide includes everything you need to get started with the Project. <br />
 Wish you luck! </p>
 
-_If you find anything which can be improved in the README.md then ping me and give a pull request._
+_If you find anything which can be improved in the README.md then ping [me](https://github.com/nparashar150/) and give a pull request._
 
 ## 🚀 Quick start
 
