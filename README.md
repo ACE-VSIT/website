@@ -34,7 +34,7 @@ _If you find anything which can be improved in the README.md then ping me and gi
        cd ~/Desktop
        git clone https://github.com/ACE-VSIT/ACE-Website
        cd ./ACE-Website
-       npm install
+       yarn install
        touch .env.development
        ```
 
@@ -46,8 +46,8 @@ _If you find anything which can be improved in the README.md then ping me and gi
        ```shell
        git clone https://github.com/ACE-VSIT/ACE-Website
        cd ./ACE-Website
-       npm install
-       echo.>.env.development
+       yarn install
+       notepad .env.development
        ```
 
     2. Open the Project in your preferred code editor
