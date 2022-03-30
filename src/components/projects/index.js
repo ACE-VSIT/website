@@ -13,20 +13,21 @@ export default function ProjectPage({ projectList }) {
     <>
       <Heading>Our Projects</Heading>
       <FlexCenter style={cardWrapperStyles}>
-        {projectList.map((e, key) => {
-          console.log(e)
+        {projectList.map((e, index) => {
           const content = e?.data?.content?.text
           const img = getImage(e?.data?.image)
           const title = e?.data?.title?.text
           const type = e?.data?.project_type
 
           return (
-            <ProjectCard
-              type={type}
-              content={content}
-              img={img}
-              title={title}
-            />
+            <div key={index}>
+              <ProjectCard
+                type={type}
+                content={content}
+                img={img}
+                title={title}
+              />
+            </div>
           )
         })}
       </FlexCenter>

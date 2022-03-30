@@ -10,13 +10,13 @@ export default function Event({ data }) {
       <FlexCenter style={{ flexWrap: "wrap" }}>
         {
           data &&
-            displayData?.map(e => {
-              console.log(e.node.data)
+            displayData?.map((e, index) => {
               return (
                 <EventCard
                   name={e.node.data.event_title.text}
                   date={e.node.data.event_date}
                   // description={e.node.data.short_summary.text}
+                  key={index}
                   description={`${e.node.data.short_summary.text.substring(
                     0,
                     115
