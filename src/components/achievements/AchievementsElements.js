@@ -17,7 +17,7 @@ export const Header = styled.header`
 `
 export const Tr = styled.tr`
   :nth-of-type(odd) {
-    background: yellow;
+    background: ${props => props.theme.active};
   }
   @media (max-width: 760px) {
     display: block;
@@ -34,14 +34,16 @@ padding: 6px;
 border: 1px solid #ccc; 
 text-align: left;
 background-color: background-color: ${props => props.theme.bg};;
-
-&:last-child {
-  border-bottom: 1px solid ${props => props.theme.secondary};;
 }
+
+/* &:first-child {
+  border-top: 1px solid #ccc;
+} */
 @media (max-width: 760px) {
 	display: block; 
   border: none;
-  border-bottom: 1px solid #eee; 
+  :nth-child(even) {background-color:${props => props.theme.bg};}
+  border-bottom: 1px solid ${props => props.theme.primary}; 
   position: relative;
   padding-left: 50%; 
   :before { 
@@ -52,6 +54,14 @@ background-color: background-color: ${props => props.theme.bg};;
 		padding-right: 10px; 
 		white-space: nowrap;
 	}
+  &:last-child {
+    border-bottom : none;
+    padding-bottom:30px;
+  }
+  /* &:first-child {
+    border-top: 1px solid ${props => props.theme.primary};
+  } */
+  
 	:nth-of-type(1):before { content: "Date"; }
 	:nth-of-type(2):before { content: "Winner Name"; }
 	:nth-of-type(3):before { content: "Position"; }
@@ -62,12 +72,22 @@ background-color: background-color: ${props => props.theme.bg};;
 `
 export const TableContainer = styled.section`
   max-width: 800px;
+  
   width: 90%;
   padding: 5rem 0 0 0;
   margin: auto 40px;
+  @media (max-width: 954px) {
+    margin-top:220px;
+    
+  }
   @media (max-width: 760px) {
     display: block;
-    margin-top: 15rem;
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    margin:0px auto;
+    margin-top:220px;
+    justify-content: center;
   }
 `
 export const TableContainerTitle = styled.div`
@@ -79,9 +99,14 @@ export const TableContainerTitle = styled.div`
   }
 `
 export const TableContainerTable = styled.table`
+  display: inline-table;
   width: 100%;
+  top:20rem;
+  text-align:center;
   border-collapse: collapse;
   @media (max-width: 760px) {
-    display: block;
+    display: inline-table;
+    width:100%;
+    margin:0px auto;
   }
 `
