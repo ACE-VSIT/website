@@ -149,7 +149,7 @@ export default function Navbar({
                   transform: x.to(x => `translate3d(0,${x}px,0)`),
                 }}
               >
-                <NavbarListItem to={link} style={{ height }}>
+                <NavbarListItem to={`/${link}`} style={{ height }}>
                   {itemList[index].navbar_link_name.text}
                 </NavbarListItem>
               </animated.div>

@@ -12,6 +12,15 @@ export const EventPage = graphql`
       title {
         text
       }
+      meta_keywords {
+        text
+      }
+      meta_page_subtitle {
+        text
+      }
+      meta_page_title {
+        text
+      }
       body {
         ... on PrismicEventpageDataBodyEventItemRelationSlice {
           items {

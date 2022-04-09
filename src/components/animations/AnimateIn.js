@@ -1,10 +1,22 @@
-import React, { useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import useOnScreen from "../../hooks/useOnScreen"
 
 export default function AnimateIn({ ref, duration = 375, delay = 0, ...rest }) {
   const animateInRef = useRef()
   const onScreen = useOnScreen(animateInRef)
+
+  useEffect(() => {
+    function preventScroll(e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      return false
+    }
+    document
+      .querySelector("#animateFixScrollIssue")
+      .addEventListener("wheel", preventScroll, { passive: false })
+  }, [])
 
   return (
     <AnimationContainer
@@ -14,6 +26,7 @@ export default function AnimateIn({ ref, duration = 375, delay = 0, ...rest }) {
         opacity: onScreen ? 1 : 0,
         transform: `translateY(${onScreen ? 0 : 50}px)`,
       }}
+      id={`animateFixScrollIssue`}
       {...rest}
       ref={animateInRef}
     />

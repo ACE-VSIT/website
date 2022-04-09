@@ -7,20 +7,23 @@ import {
   ProjectCardWrapper,
 } from "./ProjectCardElements"
 import { GatsbyImage } from "gatsby-plugin-image"
+import AnimateIn from "../../animations/AnimateIn"
 
 export default function ProjectCard({ type, content, img, title }) {
   return (
-    <ProjectCardWrapper>
-      <ProjectCardImageWrapper>
-        <GatsbyImage
-          image={img}
-          style={{ width: "100%", height: "100%", objectFit: "s" }}
-          alt={""}
-        />
-      </ProjectCardImageWrapper>
-      <ProjectCardHeading>{title}</ProjectCardHeading>
-      <ProjectCardInfo>{content}</ProjectCardInfo>
-      <ProjectCardTags>{type}</ProjectCardTags>
-    </ProjectCardWrapper>
+    <AnimateIn duration={500} delay={250}>
+      <ProjectCardWrapper>
+        <ProjectCardImageWrapper>
+          <GatsbyImage
+            image={img}
+            style={{ width: "100%", height: "100%", objectFit: "s" }}
+            alt={""}
+          />
+        </ProjectCardImageWrapper>
+        <ProjectCardHeading>{title}</ProjectCardHeading>
+        <ProjectCardInfo>{content}</ProjectCardInfo>
+        <ProjectCardTags>{type}</ProjectCardTags>
+      </ProjectCardWrapper>
+    </AnimateIn>
   )
 }

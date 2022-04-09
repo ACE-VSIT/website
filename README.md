@@ -12,7 +12,7 @@
 This guide includes everything you need to get started with the Project. <br />
 Wish you luck! </p>
 
-_If you find anything which can be improved in the README.md then ping me and give a pull request._
+_If you find anything which can be improved in the README.md then ping [me](https://github.com/nparashar150/) and give a pull request._
 
 ## 🚀 Quick start
 
@@ -26,7 +26,7 @@ _If you find anything which can be improved in the README.md then ping me and gi
 
     1. Clone Repo & Install dependencies
 
-       _Linux Users_
+       _Linux / Mac Users_
 
        1. Run the following commands in your terminal
 
@@ -34,7 +34,7 @@ _If you find anything which can be improved in the README.md then ping me and gi
        cd ~/Desktop
        git clone https://github.com/ACE-VSIT/ACE-Website
        cd ./ACE-Website
-       npm install
+       yarn install
        touch .env.development
        ```
 
@@ -46,8 +46,8 @@ _If you find anything which can be improved in the README.md then ping me and gi
        ```shell
        git clone https://github.com/ACE-VSIT/ACE-Website
        cd ./ACE-Website
-       npm install
-       echo.>.env.development
+       yarn install
+       notepad .env.development
        ```
 
     2. Open the Project in your preferred code editor

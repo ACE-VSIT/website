@@ -27,24 +27,27 @@ export const GlobalStyle = createGlobalStyle`
     transition: all 0.375 ease-in-out;
     font-family: "Roboto Slab";
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   ::-webkit-scrollbar {
     width: 0px;
+    display: none;
   }
   ::-webkit-scrollbar-track {
     background: ${props => props.theme.bg};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.font};
+    background: ${props => props.theme.bg};
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: ${props => props.theme.font + "AA"};
+    background: ${props => props.theme.bg};
   }
   ::-moz-selection {
-    background: ${props => props.theme.font + "25"};
+    background: ${props => props.theme.bg};
   }
   ::selection {
-    background: ${props => props.theme.font + "25"};
+    background: ${props => props.theme.bg};
   }
   html.theming,
   html.theming * {

@@ -89,7 +89,7 @@ export default function HomePage({ data }) {
       <FlexCenter>
         <Heading topLine>Core Members</Heading>
       </FlexCenter>
-      <FlexCenter style={{ flexWrap: "wrap" }}>
+      <FlexCenter style={{ flexWrap: "wrap", height: "max-content" }}>
         {members?.map((e, key) => {
           const img = getImage(e.data.member_image)
           // Filters all key values which matches "link" and stores it in socialLinksI

@@ -6,7 +6,7 @@ import ProjectPage from "../components/projects"
 
 const Projects = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
-  const projList = data?.allPrismicProjects?.nodes
+  let projList = data?.allPrismicProjects?.nodes
 
   return (
     <Layout navbar={nav}>
