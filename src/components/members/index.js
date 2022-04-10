@@ -6,57 +6,46 @@ import MembersSort from "./members-sort/MembersSort"
 
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
-  const [year, setYear] = React.useState(null)
-  console.log(data.allPrismicMembers.nodes)
+  const [year, setYear] = React.useState(2022)
+
   // This is not the best approach, will think of something later
-  const resetSort = React.useCallback(() => {
-    const coreMembers = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Core")
+  const filterMembers = React.useCallback(() => {
+    const filterYear = data.allPrismicMembers.nodes.filter(
+      e =>
+        parseInt(e.data.joining_year) <= parseInt(year) &&
+        parseInt(e.data.ending_year) >= parseInt(year)
     )
-    const heads = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Head")
+    const presidents = filterYear.filter(
+      e =>
+        e.data.member_position.text.includes("President") &&
+        e.data.ending_year === year
     )
-    const presidents = data.allPrismicMembers.nodes
-      .filter(e => e.data.member_position.text.includes("President"))
-      .reverse()
 
-    if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
-      const member = data.allPrismicMembers.nodes.filter(
-        e => e.data.member_position.text === "Member"
-      )
-      const combineAll = presidents.concat(heads, coreMembers, member)
-      setMembers(combineAll)
-    }
-  }, [data.allPrismicMembers.nodes])
+    const coreMembers = filterYear.filter(
+      e =>
+        e.data.member_position.text.includes("Core") &&
+        e.data.ending_year === year
+    )
+    const heads = filterYear.filter(
+      e =>
+        e.data.member_position.text.includes("Head") &&
+        e.data.ending_year === year
+    )
+    const laterHeads = filterYear.filter(
+      e =>
+        e.data.ending_year !== year && e.data.member_position.text !== "Member"
+    )
+    const member = filterYear.filter(
+      e => e.data.member_position.text === "Member"
+    )
+    const combineAll = presidents.concat(heads, coreMembers, laterHeads, member)
+
+    setMembers(combineAll)
+  }, [year, data.allPrismicMembers.nodes])
 
   React.useEffect(() => {
-    if (year !== "Select Year") {
-      const filterYear = data.allPrismicMembers.nodes.filter(
-        e => parseInt(e.data.joining_year) === parseInt(year)
-      )
-      const presidents = filterYear
-        .filter(e => e.data.member_position.text.includes("President"))
-        .reverse()
-      const coreMembers = filterYear.filter(e =>
-        e.data.member_position.text.includes("Core")
-      )
-      const heads = filterYear.filter(e =>
-        e.data.member_position.text.includes("Head")
-      )
-      const member = filterYear.filter(
-        e => e.data.member_position.text === "Member"
-      )
-      const combineAll = presidents.concat(heads, coreMembers, member)
-
-      setMembers(combineAll)
-    } else {
-      resetSort()
-    }
-  }, [year, data.allPrismicMembers.nodes, resetSort])
-
-  React.useEffect(() => {
-    resetSort()
-  }, [data.allPrismicMembers.nodes, resetSort])
+    filterMembers()
+  }, [year, filterMembers])
 
   return (
     <>
@@ -84,6 +73,8 @@ export default function MembersPage({ data }) {
                 social={socialLinks}
                 info={e.data.about_member.text}
                 joiningYear={e.data.joining_year}
+                selectedYear={year}
+                endingYear={e.data.ending_year}
               />
             </div>
           )

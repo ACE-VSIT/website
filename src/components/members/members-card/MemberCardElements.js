@@ -163,6 +163,7 @@ export const MemberTitle = styled(MemberName)`
 `
 export const MemberInfo = styled.p`
   font-size: 1rem;
+  overflow: scroll;
 
   @media (max-width: 768px) {
     width: 100%;

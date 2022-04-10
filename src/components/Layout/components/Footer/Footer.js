@@ -17,7 +17,7 @@ export default function Footer({ itemList, footerList, isDarkTheme }) {
         <FooterItemsWrapper>
           <StaticImage
             placeholder="BLURRED"
-            src={"../../../../images/ACETextDark.svg"}
+            src={"../../../../images/ACELogoBlack.svg"}
             alt="ACE Logo"
             width={175}
             imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}

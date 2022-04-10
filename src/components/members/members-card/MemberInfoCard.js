@@ -106,7 +106,7 @@ export default function MemberInfoCard({
                       width={20}
                       height={20}
                       style={{
-                        filter: isDarkTheme ? "invert(1)" : "invert(0)",
+                        filter: isDarkTheme ? "invert(1)" : "",
                       }}
                     />
                   </FlexCenter>

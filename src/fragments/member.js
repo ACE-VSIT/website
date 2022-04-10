@@ -37,6 +37,7 @@ export const memberInfo = graphql`
         url
       }
       joining_year
+      ending_year
     }
   }
 `

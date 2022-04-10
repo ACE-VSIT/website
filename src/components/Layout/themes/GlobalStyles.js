@@ -44,10 +44,10 @@ export const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.bg};
   }
   ::-moz-selection {
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.font};
   }
   ::selection {
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.font};
   }
   html.theming,
   html.theming * {

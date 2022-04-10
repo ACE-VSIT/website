@@ -42,7 +42,6 @@ export default function HomePage({ data }) {
     )
     const presidents = data.allPrismicMembers.nodes
       .filter(e => e.data.member_position.text.includes("President"))
-      .reverse()
 
     if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
       const member = data.allPrismicMembers.nodes.filter(

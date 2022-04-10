@@ -16,6 +16,8 @@ export default function MemberCard({
   social,
   info,
   joiningYear,
+  selectedYear,
+  endingYear,
 }) {
   const [showMemberInfoCard, setShowMemberInfoCard] = useState(false)
 
@@ -27,13 +29,17 @@ export default function MemberCard({
             <GatsbyImage image={img} alt={""} />
           </MemberImageWrapper>
           {name && <MemberName>{name}</MemberName>}
-          {title && <MemberTitle>{title}</MemberTitle>}
+          {title && endingYear === selectedYear ? (
+            <MemberTitle>{title}</MemberTitle>
+          ) : (
+            <MemberTitle>{"Member"}</MemberTitle>
+          )}
         </MemberCardWrapper>
       </AnimateIn>
       {showMemberInfoCard ? (
         <MemberInfoCard
           name={name}
-          title={title}
+          title={endingYear === selectedYear ? title : "Member"}
           img={img}
           social={social}
           info={info}

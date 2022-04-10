@@ -12,7 +12,7 @@ export default function MembersSort({ startingYear, setYear }) {
 
   useEffect(() => {
     let latestYear = new Date().getFullYear()
-    const yearArr = ["Select Year"]
+    const yearArr = []
     while (startingYear <= latestYear) {
       yearArr.push(latestYear--)
     }
