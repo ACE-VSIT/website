@@ -2,7 +2,13 @@ import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import useOnScreen from "../../hooks/useOnScreen"
 
-export default function AnimateIn({ ref, duration = 375, delay = 0, ...rest }) {
+export default function AnimateIn({
+  ref,
+  enableScroll = false,
+  duration = 375,
+  delay = 0,
+  ...rest
+}) {
   const animateInRef = useRef()
   const onScreen = useOnScreen(animateInRef)
 
@@ -13,10 +19,11 @@ export default function AnimateIn({ ref, duration = 375, delay = 0, ...rest }) {
 
       return false
     }
-    document
-      .querySelector("#animateFixScrollIssue")
-      .addEventListener("wheel", preventScroll, { passive: false })
-  }, [])
+    !enableScroll &&
+      document
+        .querySelector("#animateFixScrollIssue")
+        .addEventListener("wheel", preventScroll, { passive: true })
+  }, [enableScroll])
 
   return (
     <AnimationContainer

@@ -2,32 +2,28 @@ import * as React from "react"
 import Layout from "../components/Layout/index"
 import Seo from "../components/SEO"
 import { graphql } from "gatsby"
+import MagazinePage from "../components/magazine"
 
-const MagazinePage = ({ data }) => {
+const Magazine = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
 
   return (
     <Layout navbar={nav}>
       <Seo title="Magazine" />
-      <div>Magazine</div>
+      <MagazinePage data={data?.prismicMagazine?.data} />
     </Layout>
   )
 }
 
-export default MagazinePage
+export default Magazine
 
 export const MagazineQuery = graphql`
   query magazinePage {
     prismicLayout {
       ...navbarInfo
     }
-    prismicHomepage {
-      ...landingInfo
-    }
-    allPrismicMembers(filter: { data: { is_core: { eq: true } } }) {
-      nodes {
-        ...memberInfo
-      }
+    prismicMagazine {
+      ...magazineInfo
     }
   }
 `

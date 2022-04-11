@@ -12,7 +12,7 @@ export const darkTheme = {
   bg: "#171717",
   font: "#EBF6FE",
   primary: "#EBF6FE",
-  secondary: "#F3F0EC",
+  secondary: "#1C1C1C",
   active: "#FD925F",
 }
 
