@@ -57,7 +57,7 @@ export default function Footer({ itemList, footerList, isDarkTheme }) {
             )
           })}
         </FooterItemsWrapper>
-        <FooterBottom>© 2022 ACE-VIST, All Rights Reserved</FooterBottom>
+        <FooterBottom>© 2022 ACE-VSIT, All Rights Reserved</FooterBottom>
       </FooterWrapper>
     </>
   )

@@ -41,6 +41,13 @@
         "placeholder": "Select the type of Project"
       }
     },
+    "source_link": {
+      "type": "Link",
+      "config": {
+        "label": "Source Link",
+        "placeholder": "Enter the source link for the Project"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
