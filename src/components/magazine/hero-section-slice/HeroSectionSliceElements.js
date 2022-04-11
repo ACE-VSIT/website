@@ -11,7 +11,7 @@ export const HeroSectionWrapper = styled(FlexCenter)`
     gap: 0;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 100vh;
+    height: 90vh;
   }
 `
 export const HeroSectionBg = styled.div`
