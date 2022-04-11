@@ -9,10 +9,16 @@ import {
 import { GatsbyImage } from "gatsby-plugin-image"
 import AnimateIn from "../../animations/AnimateIn"
 
-export default function ProjectCard({ type, content, img, title }) {
+export default function ProjectCard({
+  type,
+  content,
+  img,
+  title,
+  link = null,
+}) {
   return (
     <AnimateIn duration={500} delay={250}>
-      <ProjectCardWrapper>
+      <ProjectCardWrapper onClick={() => link && window.open(link)}>
         <ProjectCardImageWrapper>
           <GatsbyImage
             image={img}

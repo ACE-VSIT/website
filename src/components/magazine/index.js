@@ -37,6 +37,7 @@ export default function MagazinePage({ data }) {
                 content={info}
                 img={magazineImage}
                 title={title}
+                link={link}
               />
             )
           })}
