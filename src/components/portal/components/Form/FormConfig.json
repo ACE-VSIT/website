@@ -1,0 +1,92 @@
+{
+  "questions": [
+    {
+      "placeholder": "First Name",
+      "required": true,
+      "type": "text",
+      "halfwidth": true,
+      "id": "firstName"
+    },
+    {
+      "placeholder": "Last Name",
+      "required": true,
+      "type": "text",
+      "halfwidth": true,
+      "id": "lastName"
+    },
+    {
+      "placeholder": "Email",
+      "required": true,
+      "type": "email",
+      "halfwidth": true,
+      "id": "email"
+    },
+    {
+      "placeholder": "Mobile Number",
+      "required": true,
+      "type": "tel",
+      "halfwidth": true,
+      "id": "mobile"
+    },
+    {
+      "placeholder": "Enrollment Number",
+      "required": true,
+      "type": "tel",
+      "halfwidth": true,
+      "id": "enrollmentNo"
+    },
+    {
+      "placeholder": "DOB",
+      "required": true,
+      "type": "date",
+      "halfwidth": true,
+      "id": "dob"
+    },
+    {
+      "placeholder": "Course",
+      "required": true,
+      "type": "select",
+      "halfwidth": true,
+      "id": "course",
+      "options": [
+        "BCA",
+        "MCA",
+        "Other"
+      ]
+    },
+    {
+      "placeholder": "Section",
+      "required": true,
+      "type": "select",
+      "halfwidth": true,
+      "id": "section",
+      "options": [
+        "1A",
+        "2A",
+        "3A",
+        "4A",
+        "5A",
+        "1B",
+        "2B",
+        "3B",
+        "4B",
+        "5B",
+        "1C",
+        "2C",
+        "3C",
+        "4C",
+        "5C",
+        "1EA",
+        "2EA",
+        "3EA",
+        "4EA",
+        "5EA",
+        "1EB",
+        "2EB",
+        "3EB",
+        "4EB",
+        "5EB"
+      ]
+    }
+  ]
+}
