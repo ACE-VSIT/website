@@ -7,7 +7,7 @@ import {
   ProjectCardWrapper,
 } from "./ProjectCardElements"
 import { GatsbyImage } from "gatsby-plugin-image"
-import AnimateIn from "../../animations/AnimateIn"
+import AnimateIn from "../../../animations/AnimateIn"
 
 export default function ProjectCard({
   type,
