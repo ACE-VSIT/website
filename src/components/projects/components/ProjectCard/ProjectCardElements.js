@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Heading, FlexCenter } from "../../../styles/sharedStyles"
+import { Heading, FlexCenter } from "../../../../styles/sharedStyles"
 
 export const ProjectCardWrapper = styled(FlexCenter)`
   flex-direction: column;
