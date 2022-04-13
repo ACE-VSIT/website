@@ -38,9 +38,9 @@ const provider = new GoogleAuthProvider()
 const auth = getAuth()
 const db = getFirestore()
 
-const saveUser = async (email, uid, name) => {
+const saveUser = async (email, uid, name, photoURL) => {
   const checkIfUserExists = query(
-    collection(db, "email"),
+    collection(db, "users"),
     where("user", "==", email)
   )
   const queryData = await getDocs(checkIfUserExists)
@@ -51,12 +51,13 @@ const saveUser = async (email, uid, name) => {
   if (flag.includes(email)) {
     console.log("exists")
   } else {
-    await setDoc(doc(db, "email", email), {
+    await setDoc(doc(db, "users", email), {
       user: email,
       uid,
       name,
       createdAt: Timestamp.fromDate(new Date()),
       personalDetails: "",
+      photoURL,
     })
     console.log("saved")
   }
@@ -67,7 +68,7 @@ export const savePersonalDetails = async (email, personalDetails) => {
     personalDetails
   if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob)
     return
-  const emailRef = doc(db, "email", email)
+  const emailRef = doc(db, "users", email)
   await updateDoc(emailRef, {
     personalDetails: {
       dob,
@@ -130,16 +131,18 @@ export const resetEmailPassword = async email => {
 
 export const loginWithGoogleAccount = async (user, dispatch) => {
   try {
+    dispatch({ type: "LOGIN_START" })
     const res = await signInWithPopup(auth, provider)
-    await saveUser(res.user.email, res.user.uid, res.user.displayName)
+    await saveUser(
+      res.user.email,
+      res.user.uid,
+      res.user.displayName,
+      res.user.photoURL
+    )
     res.user &&
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: {
-          email: res.user.email,
-          name: res.user.displayName,
-          uid: res.user.uid,
-        },
+        payload: res.user,
       })
   } catch (err) {
     dispatch({ type: "LOGIN_FAILURE", payload: err })
@@ -159,12 +162,15 @@ export const signOutUser = async dispatch => {
 }
 
 export function signInStatus(dispatch) {
+  dispatch({ type: "LOGIN_START" })
   onAuthStateChanged(auth, user => {
     if (user) {
+      saveUser(user.email, user.uid, user.displayName, user.photoURL)
       dispatch({ type: "LOGIN_SUCCESS", payload: user })
     } else {
       // window.location.replace("/");
       // console.log("Signed Out");
+      dispatch({ type: "LOGOUT_SUCCESS" })
     }
   })
 }

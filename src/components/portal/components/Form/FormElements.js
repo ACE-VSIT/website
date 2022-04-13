@@ -82,3 +82,15 @@ export const Option = styled.option`
   color: ${props => props.theme.font};
   background-color: ${props => props.theme.bg};
 `
+export const ErrorBox = styled.div`
+  background: ${props => props.theme.active + 75};
+  border: 1px solid ${props => props.theme.active};
+  color: ${props => props.theme.font};
+  width: 100%;
+  font-size: 1rem;
+  text-align: center;
+  height: 60px;
+  padding: 0 0.5rem;
+  line-height: 60px;
+  overflow: hidden;
+`

@@ -3,9 +3,10 @@ import Form from "./components/Form/Form"
 import { AuthContext } from "../../context/auth/AuthContext"
 import { FlexCenter } from "../../styles/sharedStyles"
 import LoginWithGoogle from "./components/Google/LoginWithGoogle"
+import Loading from "../animations/Loading"
 
 export default function PortalForm() {
-  const { user } = useContext(AuthContext)
+  const { user, loading } = useContext(AuthContext)
   const [showForm, setShowForm] = useState(false)
 
   useEffect(() => {
@@ -19,8 +20,14 @@ export default function PortalForm() {
   return (
     <>
       <FlexCenter style={{ flexDirection: "column" }}>
-        {!showForm && <LoginWithGoogle />}
-        {showForm && <Form />}
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {!showForm && <LoginWithGoogle />}
+            {showForm && <Form />}
+          </>
+        )}
       </FlexCenter>
     </>
   )
