@@ -1,7 +1,24 @@
-import React from 'react'
+import { navigate } from "gatsby"
+import React, { useContext } from "react"
+import Loading from "../../components/animations/Loading"
+import { FirebaseContext } from "../../context/FirebaseContext"
 
 export default function Questions() {
+  const { personalDetails } = useContext(FirebaseContext)
+
   return (
-    <div>Questions</div>
+    <>
+      {personalDetails ? (
+        personalDetails[0]?.completed ? (
+          <div>Questions will be shown now</div>
+        ) : (
+          navigate("/register/")
+        )
+      ) : (
+        <div>
+          <Loading />
+        </div>
+      )}
+    </>
   )
 }

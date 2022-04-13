@@ -6,7 +6,7 @@ import GoogleOutlined from "@ant-design/icons/GoogleOutlined"
 
 export default function LoginWithGoogle() {
   let { user, dispatch } = useContext(AuthContext)
-  
+
   const handleGoogleLogin = e => {
     e.preventDefault()
     loginWithGoogleAccount(user, dispatch)
@@ -14,7 +14,7 @@ export default function LoginWithGoogle() {
 
   return (
     <div>
-      <ButtonWrapper onClick={handleGoogleLogin} md>
+      <ButtonWrapper onClick={handleGoogleLogin} md={"md"}>
         <GoogleOutlined />
         <span>Login with Google</span>
       </ButtonWrapper>

@@ -77,6 +77,7 @@ export const savePersonalDetails = async (email, personalDetails) => {
       lastName,
       mobile,
       section,
+      completed: true
     },
   })
   console.log("saved personal details")

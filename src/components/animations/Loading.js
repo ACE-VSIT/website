@@ -3,7 +3,7 @@ import loading from "./loading.json"
 import Lottie from "react-lottie"
 import { FlexCenter } from "../../styles/sharedStyles"
 
-export default function Check({ loop = true, autoplay = true }) {
+export default function Loading({ loop = true, autoplay = true }) {
   const defaultOptions = {
     loop,
     autoplay,

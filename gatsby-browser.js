@@ -9,10 +9,13 @@ import "@fontsource/roboto-slab/800.css"
 import "@fontsource/roboto-slab/900.css"
 import React from "react"
 import { ThemeContextProvider } from "./src/context/ThemeContext"
+import { FirebaseContextProvider } from "./src/context/FirebaseContext"
 import { AuthContextProvider } from "./src/context/auth/AuthContext"
 
 export const wrapRootElement = ({ element }) => (
   <AuthContextProvider>
-    <ThemeContextProvider>{element}</ThemeContextProvider>
+    <FirebaseContextProvider>
+      <ThemeContextProvider>{element}</ThemeContextProvider>
+    </FirebaseContextProvider>
   </AuthContextProvider>
 )
