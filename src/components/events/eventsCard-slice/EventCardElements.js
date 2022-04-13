@@ -55,3 +55,8 @@ export const EventDescription = styled.p`
     margin-top: 2%;
   }
 `
+
+export const WrapperBody = styled.div`
+  margin-top: 25rem;
+  margin-bottom: 5%;
+`
