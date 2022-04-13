@@ -19,7 +19,8 @@
       "required": true,
       "type": "email",
       "halfwidth": true,
-      "id": "email"
+      "id": "email",
+      "disabled": true
     },
     {
       "placeholder": "Mobile Number",
@@ -36,7 +37,9 @@
       "id": "enrollmentNo"
     },
     {
-      "placeholder": "DOB",
+      "placeholder": "dd-mm-yyyy",
+      "min": "1997-01-01",
+      "max": "2022-12-31",
       "required": true,
       "type": "date",
       "halfwidth": true,
@@ -48,11 +51,7 @@
       "type": "select",
       "halfwidth": true,
       "id": "course",
-      "options": [
-        "BCA",
-        "MCA",
-        "Other"
-      ]
+      "options": ["BCA", "MCA", "Other"]
     },
     {
       "placeholder": "Section",

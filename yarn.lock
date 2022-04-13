@@ -6295,10 +6295,10 @@ gatsby-parcel-config@^0.2.0:
     "@parcel/transformer-raw" "^2.3.2"
     "@parcel/transformer-react-refresh-wrap" "^2.3.2"
 
-gatsby-plugin-firebase@^0.2.0-beta.4:
-  version "0.2.0-beta.4"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-firebase/-/gatsby-plugin-firebase-0.2.0-beta.4.tgz#a4d8bfdce8c65efa284d0c523f8524c28f4a786c"
-  integrity sha512-F1uh9T5dY38aeNvKzqj+3K655dce1QS70wuG4bhV9L3cnTJR2vitTWyIoCvRJJfPs7Xq7LgjUDmHDrEos4S3gQ==
+gatsby-plugin-firebase-v9.0@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-firebase-v9.0/-/gatsby-plugin-firebase-v9.0-1.0.3.tgz#adbc495ad9c4e55245a4c143b069231564611b24"
+  integrity sha512-3bbj9jV9BWmBHaBqXLMT6B7M2BPKVkIsLaW73bJRDFsknXlypgLxNtG5zjp4Nft+iVSip9fEr2KQUD4vNqHbug==
 
 gatsby-plugin-gatsby-cloud@^4.9.0:
   version "4.11.1"

@@ -12,6 +12,7 @@ import {
   getFirestore,
   doc,
   setDoc,
+  updateDoc,
   getDocs,
   Timestamp,
   collection,
@@ -55,9 +56,29 @@ const saveUser = async (email, uid, name) => {
       uid,
       name,
       createdAt: Timestamp.fromDate(new Date()),
+      personalDetails: "",
     })
     console.log("saved")
   }
+}
+
+export const savePersonalDetails = async (email, personalDetails) => {
+  const { dob, enrollmentNo, firstName, lastName, mobile, section } =
+    personalDetails
+  if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob)
+    return
+  const emailRef = doc(db, "email", email)
+  await updateDoc(emailRef, {
+    personalDetails: {
+      dob,
+      enrollmentNo,
+      firstName,
+      lastName,
+      mobile,
+      section,
+    },
+  })
+  console.log("saved personal details")
 }
 
 export const createUserAccount = async (
@@ -114,7 +135,11 @@ export const loginWithGoogleAccount = async (user, dispatch) => {
     res.user &&
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { email: res.user.email, name: res.user.displayName },
+        payload: {
+          email: res.user.email,
+          name: res.user.displayName,
+          uid: res.user.uid,
+        },
       })
   } catch (err) {
     dispatch({ type: "LOGIN_FAILURE", payload: err })
