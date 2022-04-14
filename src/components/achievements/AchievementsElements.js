@@ -17,7 +17,7 @@ export const Header = styled.header`
 `
 export const Tr = styled.tr`
   :nth-of-type(odd) {
-    background: ${props => props.theme.active};
+    background: ${props => props.theme.bg};
   }
   @media (max-width: 760px) {
     display: block;
@@ -56,7 +56,7 @@ background-color: background-color: ${props => props.theme.bg};;
 	}
   &:last-child {
     border-bottom : none;
-    padding-bottom:30px;
+    padding-bottom:50px;
   }
   /* &:first-child {
     border-top: 1px solid ${props => props.theme.primary};
