@@ -4,7 +4,7 @@ import Layout from "../components/Layout/index"
 import Seo from "../components/SEO"
 import { getImage } from "gatsby-plugin-image"
 import { graphql } from "gatsby"
-import { FlexCenter, Heading } from "../styles/sharedStyles"
+import { FlexCenter } from "../styles/sharedStyles"
 import HeroSliceSecondary from "../components/hero-slice-secondary/HeroSliceSecondary"
 
 export default function Events({ data }) {

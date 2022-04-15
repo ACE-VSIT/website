@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { Heading } from "../../../styles/sharedStyles"
 
 export const EventsCardWrapper = styled.div`

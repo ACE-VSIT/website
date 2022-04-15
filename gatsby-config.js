@@ -48,6 +48,7 @@ module.exports = {
           eventpage: require("./src/schemas/EventPage.json"),
           eventitem: require("./src/schemas/EventItem.json"),
           magazine: require("./src/schemas/Magazine.json"),
+          questions: require("./src/schemas/Questions.json"),
           "non-essential": require("./src/schemas/NonEssential.json"),
         },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
