@@ -1,120 +1,152 @@
 {
-    "Main": {
-      "body1": {
-        "type": "Slices",
-        "fieldset": "Slice zone",
-        "config": {
-          "labels": null,
-          "choices": {
-            "question_slice": {
-              "type": "Slice",
-              "fieldset": "Question Slice",
-              "description": "Slice for Questions",
-              "icon": "chrome_reader_mode",
-              "display": "list",
-              "non-repeat": {},
-              "repeat": {
-                "question_name": {
-                  "type": "StructuredText",
-                  "config": {
-                    "single": "heading4",
-                    "label": "Question Name"
-                  }
-                },
-                "question_info": {
-                  "type": "StructuredText",
-                  "config": {
-                    "multi": "paragraph, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
-                    "label": "Question Info",
-                    "placeholder": "Enter the Info to explain the question"
-                  }
-                },
-                "question_category": {
-                  "type": "Select",
-                  "config": {
-                    "options": [
-                      "Web Development",
-                      "AR/VR Development",
-                      "App Development",
-                      "Graphics Designing",
-                      "Digital Marketting",
-                      "Data Science",
-                      "Security"
-                    ],
-                    "label": "Question Category",
-                    "placeholder": "Select the category of Question"
-                  }
-                },
-                "difficulty_level": {
-                  "type": "Select",
-                  "config": {
-                    "options": [
-                      "Easy",
-                      "Medium",
-                      "Hard"
-                    ],
-                    "default_value": "Easy",
-                    "label": "Difficulty Level",
-                    "placeholder": "Select the difficulty of Question"
-                  }
-                },
-                "show_question": {
-                  "type": "Boolean",
-                  "config": {
-                    "default_value": true,
-                    "label": "Show Question"
-                  }
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title",
+        "placeholder": "Enter the title of the page"
+      }
+    },
+    "subtitle": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "SubTitle",
+        "placeholder": "Enter the subtitle of the page"
+      }
+    },
+    "background_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Background Image"
+      }
+    },
+    "rules_of_page": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,strong,em,hyperlink,embed,list-item",
+        "label": "Rules of Page",
+        "placeholder": "Enter the rules of the page"
+      }
+    },
+    "body1": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "question_slice": {
+            "type": "Slice",
+            "fieldset": "Question Slice",
+            "description": "Slice for Questions",
+            "icon": "chrome_reader_mode",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "question_name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Question Name"
+                }
+              },
+              "question_info": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item",
+                  "label": "Question Info",
+                  "placeholder": "Enter the Info to explain the question"
+                }
+              },
+              "question_category": {
+                "type": "Select",
+                "config": {
+                  "options": [
+                    "Web Development",
+                    "AR/VR Development",
+                    "App Development",
+                    "Graphics Designing",
+                    "Digital Marketing",
+                    "Data Science",
+                    "Security",
+                    "IOT",
+                    "Audio / Visual",
+                    "Content Writing",
+                    "Programming"
+                  ],
+                  "label": "Question Category",
+                  "placeholder": "Select the category of Question"
+                }
+              },
+              "difficulty_level": {
+                "type": "Select",
+                "config": {
+                  "options": ["Easy", "Medium", "Hard"],
+                  "default_value": "Easy",
+                  "label": "Difficulty Level",
+                  "placeholder": "Select the difficulty of Question"
+                }
+              },
+              "show_question": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": true,
+                  "label": "Show Question"
                 }
               }
             }
           }
         }
       }
-    },
-    "Seo": {
-      "body": {
-        "type": "Slices",
-        "fieldset": "Slice zone",
-        "config": {
-          "labels": {},
-          "choices": {
-            "website_meta_info": {
-              "type": "Slice",
-              "fieldset": "Website Meta Info",
-              "description": "Website Meta info slice for SEO",
-              "icon": "airplay",
-              "non-repeat": {
-                "meta_title": {
-                  "type": "StructuredText",
-                  "config": {
-                    "single": "heading1",
-                    "label": "Meta Title",
-                    "placeholder": "Meta Title for SEO"
-                  }
-                },
-                "meta_description": {
-                  "type": "StructuredText",
-                  "config": {
-                    "multi": "paragraph",
-                    "allowTargetBlank": true,
-                    "label": "Meta Description",
-                    "placeholder": "Meta Description for SEO"
-                  }
-                },
-                "meta_keywords": {
-                  "type": "StructuredText",
-                  "config": {
-                    "multi": "paragraph",
-                    "allowTargetBlank": true,
-                    "label": "Meta Keywords",
-                    "placeholder": "Meta Keywords for SEO"
-                  }
+    }
+  },
+  "Seo": {
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "website_meta_info": {
+            "type": "Slice",
+            "fieldset": "Website Meta Info",
+            "description": "Website Meta info slice for SEO",
+            "icon": "airplay",
+            "non-repeat": {
+              "meta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Meta Title",
+                  "placeholder": "Meta Title for SEO"
                 }
               },
-              "repeat": {}
-            }
+              "meta_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Description",
+                  "placeholder": "Meta Description for SEO"
+                }
+              },
+              "meta_keywords": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Keywords",
+                  "placeholder": "Meta Keywords for SEO"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
     }
   }
+}

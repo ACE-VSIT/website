@@ -1,0 +1,15 @@
+{
+  "questions": [
+    { "name": "Web Development", "id": "web_development" },
+    { "name": "AR/VR Development", "id": "ar-vr_development" },
+    { "name": "App Development", "id": "app_development" },
+    { "name": "Graphics Designing", "id": "graphics_designing" },
+    { "name": "Digital Marketing", "id": "digital_marketing" },
+    { "name": "Data Science", "id": "data_science" },
+    { "name": "Security", "id": "security" },
+    { "name": "IOT", "id": "iot" },
+    { "name": "Audio / Visual", "id": "audio-visual" },
+    { "name": "Content Writing", "id": "content_writing" },
+    { "name": "Programming", "id": "programming" }
+  ]
+}

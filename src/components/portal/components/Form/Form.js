@@ -17,6 +17,7 @@ export default function Form() {
     lastName: "",
     mobile: "",
     enrollmentNo: "",
+    course: "",
     section: "",
   })
   const { user } = useContext(AuthContext)
