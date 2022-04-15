@@ -51,7 +51,7 @@
       "type": "select",
       "halfwidth": true,
       "id": "course",
-      "options": ["BCA", "MCA", "Other"]
+      "options": ["Course", "BCA", "MCA", "Other"]
     },
     {
       "placeholder": "Section",
@@ -60,6 +60,7 @@
       "halfwidth": true,
       "id": "section",
       "options": [
+        "Section",
         "1A",
         "2A",
         "3A",

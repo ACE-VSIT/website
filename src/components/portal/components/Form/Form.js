@@ -5,10 +5,11 @@ import { Input, Select, FormWrapper, Option, ErrorBox } from "./FormElements"
 import Button from "../../../button/Button"
 import config from "./FormConfig.json"
 import { checkEmailVerfiy, savePersonalDetails } from "../../../../firebase"
-import { Heading } from "../../../../styles/sharedStyles"
+import { FlexCenter, Heading } from "../../../../styles/sharedStyles"
 import Check from "../../../animations/Check"
 import Loading from "../../../animations/Loading"
 import { navigate } from "gatsby"
+import { ButtonWrapper as ButtonElement } from "../Google/LoginElements"
 
 export default function Form() {
   const [input, setInput] = useState({
@@ -23,15 +24,65 @@ export default function Form() {
     useContext(FirebaseContext)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
+  const [customError, setCustomError] = useState(false)
   const [success, setSuccess] = useState(false)
 
   const handleChange = e => {
+    setError(false)
+    switch (e.target.name) {
+      case "firstName":
+      case "lastName":
+        if (e.target.value.length > 25) {
+          setCustomError(
+            `${e.target.placeholder} should be less than 25 characters.`
+          )
+        } else {
+          setCustomError(false)
+        }
+        break
+
+      case "mobile":
+        const mobileRegExp = new RegExp("^([0|+[0-9]{1,5})?([7-9][0-9]{9})$")
+        if (!e.target.value) {
+          setCustomError(false)
+        } else {
+          if (!mobileRegExp.test(e.target.value)) {
+            setCustomError(`${e.target.placeholder} is not correct`)
+          } else {
+            setCustomError(false)
+          }
+        }
+        break
+      case "enrollmentNo":
+        const enrollmentNoRegExp = new RegExp("^[a-zA-Z0-9]{10,11}$")
+        if (!e.target.value) {
+          setCustomError(false)
+        } else {
+          if (!enrollmentNoRegExp.test(e.target.value)) {
+            setCustomError(`${e.target.placeholder} is not correct`)
+          } else {
+            setCustomError(false)
+          }
+        }
+        break
+      default:
+        break
+    }
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
   const handleSavePersonalInfo = async e => {
-    const { firstName, lastName, mobile, enrollmentNo, section } = input
-    if (firstName && lastName && mobile && enrollmentNo && section) {
+    const { firstName, lastName, mobile, enrollmentNo, section, course, dob } =
+      input
+    if (
+      firstName &&
+      lastName &&
+      mobile &&
+      enrollmentNo &&
+      section &&
+      course &&
+      dob
+    ) {
       setError(false)
       setSubmitted(true)
       await checkEmailVerfiy(setIsVerified)
@@ -106,6 +157,7 @@ export default function Form() {
                             type={e.type}
                             halfWidth={e.halfwidth}
                             name={e.id}
+                            defaultValue={e.options[0]}
                             onChange={event => handleChange(event)}
                           >
                             {e.options.map(e => (
@@ -130,11 +182,32 @@ export default function Form() {
                     }
                   })}
                   {error && <ErrorBox>{config.errorText}</ErrorBox>}
+                  {customError && <ErrorBox>{customError}</ErrorBox>}
                   {submitted &&
                     (isVerified ? (
                       <ErrorBox success>{config.emailVerified}</ErrorBox>
                     ) : (
-                      <ErrorBox>{config.emailVerification}</ErrorBox>
+                      <FlexCenter
+                        style={{
+                          gap: "0",
+                          flexWrap: "nowrap",
+                          flexDirection: "row",
+                        }}
+                      >
+                        <ErrorBox style={{ borderRight: "0" }}>
+                          {config.emailVerification}
+                        </ErrorBox>
+                        <ButtonElement
+                          onClick={async () =>
+                            await checkEmailVerfiy(setIsVerified)
+                          }
+                          style={{ borderLeft: "0" }}
+                          md={"md"}
+                          primary={"primary"}
+                        >
+                          Update
+                        </ButtonElement>
+                      </FlexCenter>
                     ))}
                   <div
                     role={"button"}
