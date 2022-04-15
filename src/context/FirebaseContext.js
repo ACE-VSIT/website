@@ -15,11 +15,11 @@ import {
   getFirestore,
 } from "firebase/firestore"
 
-export const FirebaseContext = createContext()
+export const FirebaseContext = createContext("")
 
 export function FirebaseContextProvider({ children }) {
   const { dispatch, user } = useContext(AuthContext)
-  const [personalDetails, setPersonalDetails] = useState(null)
+  const [personalDetails, setPersonalDetails] = useState()
   const [isVerified, setIsVerified] = useState(false)
 
   const getPersonalDetails = useCallback(async email => {
