@@ -4,7 +4,7 @@ import { FirebaseContext } from "../../../../context/FirebaseContext"
 import { Input, Select, FormWrapper, Option, ErrorBox } from "./FormElements"
 import Button from "../../../button/Button"
 import config from "./FormConfig.json"
-import { savePersonalDetails } from "../../../../firebase"
+import { checkEmailVerfiy, savePersonalDetails } from "../../../../firebase"
 import { Heading } from "../../../../styles/sharedStyles"
 import Check from "../../../animations/Check"
 import Loading from "../../../animations/Loading"
@@ -19,7 +19,9 @@ export default function Form() {
     section: "",
   })
   const { user } = useContext(AuthContext)
-  const { personalDetails } = useContext(FirebaseContext)
+  const { personalDetails, setIsVerified, isVerified } =
+    useContext(FirebaseContext)
+  const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
 
@@ -27,12 +29,18 @@ export default function Form() {
     setInput({ ...input, [e.target.name]: e.target.value })
   }
 
-  const handleSavePersonalInfo = e => {
+  const handleSavePersonalInfo = async e => {
     const { firstName, lastName, mobile, enrollmentNo, section } = input
     if (firstName && lastName && mobile && enrollmentNo && section) {
       setError(false)
-      savePersonalDetails(user.email, input)
-      setSuccess(true)
+      setSubmitted(true)
+      await checkEmailVerfiy(setIsVerified)
+      if (isVerified) {
+        savePersonalDetails(user.email, input)
+        setSuccess(true)
+      } else {
+        setSuccess(false)
+      }
     } else {
       setError(true)
     }
@@ -46,6 +54,14 @@ export default function Form() {
   }
 
   useEffect(() => {
+    if (submitted) {
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 3000)
+    }
+  }, [submitted, setSubmitted])
+
+  useEffect(() => {
     if (success) {
       window.scrollTo({ top: 0, behavior: "smooth" })
       setTimeout(() => {
@@ -57,7 +73,7 @@ export default function Form() {
   return (
     <>
       {personalDetails ? (
-        !personalDetails[0].completed ? (
+        !personalDetails[0]?.completed ? (
           <>
             {!success ? (
               <>
@@ -114,6 +130,12 @@ export default function Form() {
                     }
                   })}
                   {error && <ErrorBox>{config.errorText}</ErrorBox>}
+                  {submitted &&
+                    (isVerified ? (
+                      <ErrorBox success>{config.emailVerified}</ErrorBox>
+                    ) : (
+                      <ErrorBox>{config.emailVerification}</ErrorBox>
+                    ))}
                   <div
                     role={"button"}
                     tabIndex={0}

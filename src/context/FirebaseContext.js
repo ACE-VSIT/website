@@ -6,7 +6,7 @@ import React, {
   useContext,
 } from "react"
 import { AuthContext } from "./auth/AuthContext"
-import { signInStatus } from "../firebase"
+import { signInStatus, auth } from "../firebase"
 import {
   query,
   collection,
@@ -20,6 +20,7 @@ export const FirebaseContext = createContext()
 export function FirebaseContextProvider({ children }) {
   const { dispatch, user } = useContext(AuthContext)
   const [personalDetails, setPersonalDetails] = useState(null)
+  const [isVerified, setIsVerified] = useState(false)
 
   const getPersonalDetails = useCallback(async email => {
     console.log("fired")
@@ -37,6 +38,14 @@ export function FirebaseContextProvider({ children }) {
   }, [])
 
   useEffect(() => {
+    if (auth?.currentUser?.emailVerified) {
+      setIsVerified(true)
+    } else {
+      setIsVerified(false)
+    }
+  }, [user])
+
+  useEffect(() => {
     if (user?.email) {
       getPersonalDetails(user.email)
     }
@@ -50,6 +59,8 @@ export function FirebaseContextProvider({ children }) {
     getPersonalDetails,
     personalDetails,
     setPersonalDetails,
+    isVerified,
+    setIsVerified,
   }
   return (
     <FirebaseContext.Provider value={value}>

@@ -5,11 +5,11 @@ import { ButtonWrapper } from "./LoginElements"
 import GoogleOutlined from "@ant-design/icons/GoogleOutlined"
 
 export default function LoginWithGoogle() {
-  let { user, dispatch } = useContext(AuthContext)
+  let { dispatch } = useContext(AuthContext)
 
   const handleGoogleLogin = e => {
     e.preventDefault()
-    loginWithGoogleAccount(user, dispatch)
+    loginWithGoogleAccount(dispatch)
   }
 
   return (

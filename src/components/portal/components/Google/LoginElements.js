@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const ButtonWrapper = styled.button`
   text-align: center;
@@ -35,4 +35,14 @@ export const ButtonWrapper = styled.button`
   &:hover:before {
     transform: translateX(0);
   }
+
+  ${({ primary }) =>
+    primary &&
+    css`
+      font-size: 1rem;
+      padding: 0;
+      color: ${props => props.theme.font};
+      border-color: ${props => props.theme.active};
+      background-color: ${props => props.theme.active + 75};
+    `}
 `

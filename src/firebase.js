@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signOut,
+  sendEmailVerification,
 } from "firebase/auth"
 import {
   getFirestore,
@@ -14,6 +15,7 @@ import {
   setDoc,
   updateDoc,
   getDocs,
+  getDoc,
   Timestamp,
   collection,
   query,
@@ -35,10 +37,10 @@ if (getApps().length === 0) {
 }
 
 const provider = new GoogleAuthProvider()
-const auth = getAuth()
+export const auth = getAuth()
 const db = getFirestore()
 
-const saveUser = async (email, uid, name, photoURL) => {
+const saveUser = async (email, uid, name, photoURL, emailVerified) => {
   const checkIfUserExists = query(
     collection(db, "users"),
     where("user", "==", email)
@@ -58,6 +60,7 @@ const saveUser = async (email, uid, name, photoURL) => {
       createdAt: Timestamp.fromDate(new Date()),
       personalDetails: "",
       photoURL,
+      emailVerified,
     })
     console.log("saved")
   }
@@ -77,7 +80,7 @@ export const savePersonalDetails = async (email, personalDetails) => {
       lastName,
       mobile,
       section,
-      completed: true
+      completed: true,
     },
   })
   console.log("saved personal details")
@@ -130,15 +133,18 @@ export const resetEmailPassword = async email => {
   }
 }
 
-export const loginWithGoogleAccount = async (user, dispatch) => {
+export const loginWithGoogleAccount = async dispatch => {
   try {
     dispatch({ type: "LOGIN_START" })
     const res = await signInWithPopup(auth, provider)
+    if (!auth.currentUser.emailVerified)
+      await sendEmailVerification(auth.currentUser)
     await saveUser(
       res.user.email,
       res.user.uid,
       res.user.displayName,
-      res.user.photoURL
+      res.user.photoURL,
+      res.user.emailVerified
     )
     res.user &&
       dispatch({
@@ -148,6 +154,30 @@ export const loginWithGoogleAccount = async (user, dispatch) => {
   } catch (err) {
     dispatch({ type: "LOGIN_FAILURE", payload: err })
     console.error(err)
+  }
+}
+
+export const checkEmailVerfiy = async setIsVerified => {
+  try {
+    await auth.currentUser.reload() // Reload user to check if user has already verified
+    const emailRef = doc(db, "users", auth.currentUser.email)
+    const emailInfo = await getDoc(emailRef)
+    if (emailInfo.exists()) {
+      if (emailInfo.data().emailVerified) setIsVerified(true)
+      else {
+        // Checking if user has verified and not saved of firestore
+        if (auth.currentUser.emailVerified) {
+          await updateDoc(emailRef, {
+            emailVerified: true,
+          })
+        } else {
+          setIsVerified(false)
+          await sendEmailVerification(auth.currentUser)
+        }
+      }
+    }
+  } catch (error) {
+    console.error(error)
   }
 }
 
@@ -166,7 +196,13 @@ export function signInStatus(dispatch) {
   dispatch({ type: "LOGIN_START" })
   onAuthStateChanged(auth, user => {
     if (user) {
-      saveUser(user.email, user.uid, user.displayName, user.photoURL)
+      saveUser(
+        user.email,
+        user.uid,
+        user.displayName,
+        user.photoURL,
+        user.emailVerified
+      )
       dispatch({ type: "LOGIN_SUCCESS", payload: user })
     } else {
       // window.location.replace("/");

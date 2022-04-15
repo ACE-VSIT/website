@@ -88,5 +88,7 @@
       ]
     }
   ],
-  "errorText": "Please fill Incomplete Feilds"
+  "errorText": "Please fill Incomplete Feilds",
+  "emailVerification": "Check Inbox for Email verification",
+  "emailVerified": "Email verification successful"
 }

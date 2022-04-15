@@ -93,6 +93,7 @@ export const ErrorBox = styled.div`
   padding: 0 0.5rem;
   line-height: 60px;
   overflow: hidden;
+  min-width: 12rem;
 
   ${({ success }) => success && css`
       background: ${props => props.theme.success};
