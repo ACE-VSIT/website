@@ -9,7 +9,7 @@ export function Questions() {
     <Container>
       <Heading>Round 1</Heading>
       <QuestionWrapper>
-        {Config.questions.sort().map((e, index) => (
+        {Config.questions.map((e, index) => (
           <QuestionBox
             onClick={() => navigate(`/register/question/${e.id}`)}
             key={index}

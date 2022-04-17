@@ -11,9 +11,9 @@ export default function Questions() {
     <>
       {personalDetails ? (
         personalDetails[0]?.completed ? (
-          <div>
+          <>
             <QuestionHandler />
-          </div>
+          </>
         ) : (
           navigate("/register/")
         )
