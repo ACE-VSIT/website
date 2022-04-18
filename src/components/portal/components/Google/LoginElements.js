@@ -45,4 +45,13 @@ export const ButtonWrapper = styled.button`
       border-color: ${props => props.theme.active};
       background-color: ${props => props.theme.active + 75};
     `}
+
+  ${({ sm }) =>
+    sm &&
+    css`
+      width: 100%;
+      height: 50px;
+      max-width: 150px;
+      line-height: 50px;
+    `}
 `

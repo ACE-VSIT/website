@@ -26,7 +26,7 @@ const QuestionType = ({ data }) => {
   return (
     <>
       {!is404 ? (
-        <>{filtered?.length > 0 && <Timeline data={filtered} name={name} />}</>
+        <>{filtered?.length > 0 && <Timeline timeLine={filtered} name={name} />}</>
       ) : (
         <NotFound />
       )}

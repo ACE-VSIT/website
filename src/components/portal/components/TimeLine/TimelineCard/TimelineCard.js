@@ -1,6 +1,6 @@
 import React from "react"
 import { FlexCenter } from "../../../../../styles/sharedStyles"
-import Button from "../../../../button/Button"
+import { ButtonWrapper } from "../../Google/LoginElements"
 import RichText from "../../../../rich-text"
 import {
   Container,
@@ -11,7 +11,13 @@ import {
   TimelineDifficulty,
 } from "./TimelineCardElements"
 
-export default function TimelineCard({ heading, level, info, align }) {
+export default function TimelineCard({
+  heading,
+  level,
+  info,
+  align,
+  openPicker,
+}) {
   const styledFlex = {
     justifyContent: "space-between",
     flexWrap: "nowrap",
@@ -37,7 +43,9 @@ export default function TimelineCard({ heading, level, info, align }) {
         )}
         <FlexCenter style={styledFlex}>
           {level && <TimelineDifficulty>#{level}</TimelineDifficulty>}
-          <Button to={""} sm value={"Submit"} />
+          <ButtonWrapper onClick={e => openPicker()} sm={"sm"}>
+            Submit
+          </ButtonWrapper>
         </FlexCenter>
         <TimelinePoint>
           <span />
