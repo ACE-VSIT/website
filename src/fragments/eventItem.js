@@ -13,6 +13,9 @@ export const allEventitem = graphql`
       short_summary {
         text
       }
+      event_link {
+        url
+      }
     }
   }
 `
