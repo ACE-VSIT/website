@@ -10,7 +10,7 @@ export default function FooterInfo({ btn, showBtn, info }) {
       <FooterWrapper>
         {info && <FooterSummary>{info}</FooterSummary>}
         {showBtn && btn && (
-          <ButtonComponent to={btn} sm value={"Apply Now"} />
+          <ButtonComponent to={"/magazine"} sm value={"Magazine"} />
         )}
       </FooterWrapper>
     </AnimateIn>

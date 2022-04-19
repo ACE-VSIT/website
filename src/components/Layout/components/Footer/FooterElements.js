@@ -69,7 +69,7 @@ export const FooterSubscribe = styled.input`
   }
 `
 export const FooterSubscribeSendBtn = styled(RightSquareOutlined)`
-  font-size: 2.25rem;
+  font-size: 2rem;
   color: ${props => props.theme.font + "50"};
   cursor: pointer;
   transition: 0.375s all ease-in-out;

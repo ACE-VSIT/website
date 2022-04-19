@@ -1,17 +1,16 @@
 import React from "react"
 import { FlexCenter } from "../../styles/sharedStyles"
 import EventCard from "./eventsCard-slice/EventCard"
-import { WrapperBody } from "./eventsCard-slice/EventCardElements"
+import { WrapperBody, Container } from "./eventsCard-slice/EventCardElements"
 
 export default function Event({ data }) {
   const displayData = data?.allPrismicEventitem?.edges
 
   return (
     <>
-        <WrapperBody>
-      <FlexCenter style={{ flexWrap: "wrap" }}>
-        {
-          data &&
+      <WrapperBody>
+        <Container>
+          {data &&
             displayData?.map((e, index) => {
               return (
                 <EventCard
@@ -25,9 +24,8 @@ export default function Event({ data }) {
                   )}...`}
                 />
               )
-            })
-        }
-      </FlexCenter>
+            })}
+        </Container>
       </WrapperBody>
     </>
   )

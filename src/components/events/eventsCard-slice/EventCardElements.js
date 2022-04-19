@@ -1,16 +1,18 @@
 import styled from "styled-components"
-import { Heading } from "../../../styles/sharedStyles"
+import { Heading, FlexCenter } from "../../../styles/sharedStyles"
 
 export const EventsCardWrapper = styled.div`
-  width: 17vw;
+  width: 20rem;
   gap: 0.25rem;
   background: ${props => props.theme.bg};
   cursor: pointer;
+  padding: 1rem;
+  border: 1px solid ${props => props.theme.font + 75};
 
-   @media (max-width: 768px) {
-     width: 70vw;
-     height: 10rem;
-   }
+  @media (max-width: 768px) {
+    width: 80vw;
+    height: max-content;
+  }
 `
 
 export const ImageWrapper = styled.img`
@@ -22,7 +24,6 @@ export const EventDetailContainer = styled.div`
 `
 
 export const DateWrapper = styled.div`
-
   margin-top: 5%;
   display: inline-flex;
   float: right;
@@ -31,7 +32,6 @@ export const Date = styled.p`
   padding: 0 10px;
   font-size: 0.8rem;
 `
-
 
 export const EventName = styled(Heading)`
   font-size: 1.25rem;
@@ -59,4 +59,13 @@ export const EventDescription = styled.p`
 export const WrapperBody = styled.div`
   margin-top: 25rem;
   margin-bottom: 5%;
+`
+export const Container = styled(FlexCenter)`
+  flex-wrap: wrap;
+  width: calc(100vw - 20rem);
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `
