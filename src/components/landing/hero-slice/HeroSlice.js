@@ -49,8 +49,8 @@ export default function HeroSection({ data }) {
             </AnimateIn>
             {hero?.heroBtn && (
               <Button
-                to={"/register/"}
-                value={"Register Now"}
+                to={"/magazine/"}
+                value={"Magazine"}
                 style={{ marginRight: "auto" }}
                 md={
                   "md"
