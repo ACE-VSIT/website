@@ -5,8 +5,10 @@ export const EventsCardWrapper = styled.div`
   width: 17vw;
   gap: 0.25rem;
   background: ${props => props.theme.bg};
+  border: 0.001rem solid ${props => props.theme.font +75};
+  padding: 1rem;
   cursor: pointer;
-
+  
    @media (max-width: 768px) {
      width: 70vw;
      height: 10rem;
@@ -38,7 +40,7 @@ export const EventName = styled(Heading)`
   font-weight: 400;
   margin: 1% 0 0 0;
   letter-spacing: 0.25px;
-  white-space: nowrap;
+  white-space: normal;
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -48,7 +50,7 @@ export const EventDescription = styled.p`
   margin-top: 5%;
   font-size: 1rem;
   height: 9.5rem;
-  max-height: 5rem;
+  max-height: 5.2rem;
 
   @media (max-width: 768px) {
     font-size: 1rem;

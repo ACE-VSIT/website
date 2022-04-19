@@ -12,11 +12,14 @@ import React from "react"
 import { CalendarOutlined } from '@ant-design/icons';
 
 
-export default function EventCard({ name, img, date, description }) {
+export default function EventCard({ name, img, date, description, link }) {
+  const Redirect = (link) => {
+    link? window.open = link: console.log("No link available")
+  }
   return (
     <>
       <AnimateIn delay={150} duration={500}>
-        <EventsCardWrapper>
+        <EventsCardWrapper onClick={Redirect({link})}>
           {img && <ImageWrapper src={img} />}
           <EventDetailContainer>
             {name && <EventName> {name}</EventName>}
