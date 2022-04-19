@@ -24,69 +24,74 @@ export const Tr = styled.tr`
     position: absolute;
     top: -9999px;
     left: -9999px;
-    tr {
-      border: 1px solid #green;
-    }
   }
 `
 export const Td = styled.td`
-padding: 6px; 
-border: 1px solid #ccc; 
-text-align: left;
-background-color: background-color: ${props => props.theme.bg};;
-}
+  padding: 6px;
+  border: 1px solid ${props => props.theme.font + 75};
+  text-align: left;
+  background-color: ${props => props.theme.bg};
 
-/* &:first-child {
-  border-top: 1px solid #ccc;
-} */
-@media (max-width: 760px) {
-	display: block; 
-  border: none;
-  :nth-child(even) {background-color:${props => props.theme.bg};}
-  border-bottom: 1px solid ${props => props.theme.primary}; 
-  position: relative;
-  padding-left: 50%; 
-  :before { 
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
-  &:last-child {
-    border-bottom : none;
-    padding-bottom:50px;
+  @media (max-width: 760px) {
+    display: block;
+    border: none;
+    border-bottom: 1px solid ${props => props.theme.primary};
+    position: relative;
+    padding-left: 50%;
+    height: auto;
+    min-height: 2rem;
+
+    &:nth-child(even) {
+      background-color: ${props => props.theme.bg};
+    }
+    &::before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 50px;
+    }
+
+    :nth-of-type(1):before {
+      content: "Date";
+    }
+    :nth-of-type(2):before {
+      content: "Winner Name";
+    }
+    :nth-of-type(3):before {
+      content: "Position";
+    }
+    :nth-of-type(4):before {
+      content: "Event Name";
+    }
+    :nth-of-type(5):before {
+      content: "College Name";
+    }
   }
-  /* &:first-child {
-    border-top: 1px solid ${props => props.theme.primary};
-  } */
-  
-	:nth-of-type(1):before { content: "Date"; }
-	:nth-of-type(2):before { content: "Winner Name"; }
-	:nth-of-type(3):before { content: "Position"; }
-	:nth-of-type(4):before { content: "Event Name"; }
-	:nth-of-type(5):before { content: "College Name"; }
-}
-
 `
+
 export const TableContainer = styled.section`
   max-width: 800px;
-  
+
   width: 90%;
   padding: 5rem 0 0 0;
-  margin: auto 40px;
+  margin: 15rem 40px;
   @media (max-width: 954px) {
-    margin-top:220px;
-    
+    margin-top: 220px;
   }
   @media (max-width: 760px) {
     display: block;
     top: 50%;
     left: 50%;
     align-items: center;
-    margin:0px auto;
-    margin-top:220px;
+    margin: 0px auto;
+    margin-top: 220px;
     justify-content: center;
   }
 `
@@ -101,12 +106,15 @@ export const TableContainerTitle = styled.div`
 export const TableContainerTable = styled.table`
   display: inline-table;
   width: 100%;
-  top:20rem;
-  text-align:center;
+  top: 20rem;
+  text-align: center;
   border-collapse: collapse;
+  border: 1px solid ${props => props.theme.font + 75};
+
   @media (max-width: 760px) {
     display: inline-table;
-    width:100%;
-    margin:0px auto;
+    width: max-content;
+    margin: 0px auto;
+    border: none;
   }
 `

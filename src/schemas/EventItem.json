@@ -30,6 +30,15 @@
         "label": "Event details",
         "placeholder": "Enter details for the event"
       }
+    },
+    "event_link" : {
+      "type" : "Link",
+      "config" : {
+        "allowTargetBlank" : true,
+        "label" : "Event Link",
+        "placeholder" : "Event Link",
+        "select" : null
+      }
     }
   }
 }
