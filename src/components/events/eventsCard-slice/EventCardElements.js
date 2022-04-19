@@ -5,7 +5,6 @@ export const EventsCardWrapper = styled.div`
   width: 17vw;
   gap: 0.25rem;
   background: ${props => props.theme.bg};
-  border: 0.001rem solid ${props => props.theme.font +75};
   padding: 1rem;
   cursor: pointer;
   

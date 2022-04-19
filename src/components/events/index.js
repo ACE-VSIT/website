@@ -5,7 +5,7 @@ import { WrapperBody } from "./eventsCard-slice/EventCardElements"
 
 export default function Event({ data }) {
   const displayData = data?.allPrismicEventitem?.edges
-  console.log(displayData)
+  // console.log(displayData)
   return (
     <>
       <WrapperBody>
@@ -13,9 +13,10 @@ export default function Event({ data }) {
           {
             data &&
             displayData?.map((e, index) => {
+              console.log(e.node.data.event_link.url)
               return (
                 <EventCard
-                  link={e.node.event_link}
+                  link={e.node.data.event_link?.url}
                   name={e.node.data.event_title.text}
                   date={e.node.data.event_date}
                   // description={e.node.data.short_summary.text}
