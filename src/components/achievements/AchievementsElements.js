@@ -75,7 +75,7 @@ export const TableContainer = styled.section`
   
   width: 90%;
   padding: 5rem 0 0 0;
-  margin: auto 40px;
+  margin: 15rem 40px;
   @media (max-width: 954px) {
     margin-top:220px;
     
