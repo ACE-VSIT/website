@@ -37,10 +37,11 @@ export const Td = styled.td`
     border: none;
     border-bottom: 1px solid ${props => props.theme.primary};
     position: relative;
-    padding-left: 50%;
+    padding-left: 40%;
+    width: 100vw;
     height: auto;
     min-height: 2rem;
-
+    
     &:nth-child(even) {
       background-color: ${props => props.theme.bg};
     }
