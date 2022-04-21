@@ -44,7 +44,7 @@ export const TableContainer = styled.section`
     align-items: center;
     margin: 0px auto;
     margin-top: 270px;
-    overflow: scroll;
+    overflow-x: scroll !important;
     width: calc(90vw + 1px);
     justify-content: center;
   }
@@ -52,6 +52,7 @@ export const TableContainer = styled.section`
 export const TableContainerTitle = styled.div`
   text-align: center;
   padding: 10px;
+  overflow-x: scroll !important;
   h2 {
     font-size: 24px;
     font-weight: 300;
@@ -70,5 +71,6 @@ export const TableContainerTable = styled.table`
     width: max-content;
     margin: 0px auto;
     border: none;
+    overflow-x: scroll !important;
   }
 `
