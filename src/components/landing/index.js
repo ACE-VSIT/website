@@ -40,14 +40,15 @@ export default function HomePage({ data }) {
     const heads = data.allPrismicMembers.nodes.filter(e =>
       e.data.member_position.text.includes("Head")
     )
-    const presidents = data.allPrismicMembers.nodes
-      .filter(e => e.data.member_position.text.includes("President"))
+    const presidents = data.allPrismicMembers.nodes.filter(
+      e => e.data.member_position.text === "President"
+    )
+    const vicepresidents = data.allPrismicMembers.nodes.filter(
+      e => e.data.member_position.text === "Vice President"
+    )
 
     if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
-      const member = data.allPrismicMembers.nodes.filter(
-        e => e.data.member_position.text === "Member"
-      )
-      const combineAll = presidents.concat(heads, coreMembers, member)
+      const combineAll = presidents.concat(vicepresidents, heads, coreMembers)
       setMembers(combineAll)
     }
   }, [data.allPrismicMembers.nodes])
