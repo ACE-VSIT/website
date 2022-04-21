@@ -11,7 +11,8 @@ export const Wrapper = styled(FlexCenter)`
 `
 export const CardWrapper = styled(FlexCenter)`
   padding: 1rem 0;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   width: calc(100vw - 20vw);
 
   @media (max-width: 768px) {
