@@ -29,6 +29,7 @@ export default function HomePage({ data }) {
   //   data?.prismicHomepage?.data?.body[2]?.primary?.stats_subtitle?.text
 
   const [members, setMembers] = useState([])
+  const [faculty, setFaculty] = useState([])
   const counterRef = useRef()
   const onViewPort = useOnScreen(counterRef)
 
@@ -36,6 +37,12 @@ export default function HomePage({ data }) {
   const resetSort = useCallback(() => {
     const coreMembers = data.allPrismicMembers.nodes.filter(e =>
       e.data.member_position.text.includes("Core")
+    )
+    const dean = data.allPrismicMembers.nodes.filter(e =>
+      e.data.member_position.text.includes("Dean")
+    )
+    const faculty = data.allPrismicMembers.nodes.filter(e =>
+      e.data.member_position.text.includes("Faculty")
     )
     const heads = data.allPrismicMembers.nodes.filter(e =>
       e.data.member_position.text.includes("Head")
@@ -49,6 +56,10 @@ export default function HomePage({ data }) {
 
     if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
       const combineAll = presidents.concat(vicepresidents, heads, coreMembers)
+      if (faculty.length > 0) {
+        const facult = dean.concat(faculty)
+        setFaculty(facult)
+      }
       setMembers(combineAll)
     }
   }, [data.allPrismicMembers.nodes])
@@ -86,6 +97,34 @@ export default function HomePage({ data }) {
           </CounterWrapper>
         </>
       )}
+      <FlexCenter style={{ flexDirection: "column" }}>
+        <Heading topLine>Faculty Coordinators</Heading>
+        <FlexCenter style={{ flexWrap: "wrap", height: "max-content" }}>
+          {faculty?.map((e, key) => {
+            const img = getImage(e.data.member_image)
+            // Filters all key values which matches "link" and stores it in socialLinksI
+            const socialLinks = Object.keys(e.data)
+              .filter(links => links.includes("link"))
+              .reduce((obj, key) => {
+                obj[key] = e.data[key]
+                return obj
+              }, {})
+
+            return (
+              <div key={key}>
+                <MemberCard
+                  img={img}
+                  name={e.data.member_name.text}
+                  title={e.data.member_position.text}
+                  social={socialLinks}
+                  info={e.data.about_member.text}
+                  joiningYear={e.data.joining_year}
+                />
+              </div>
+            )
+          })}
+        </FlexCenter>
+      </FlexCenter>
       <FlexCenter>
         <Heading topLine>Core Members</Heading>
       </FlexCenter>

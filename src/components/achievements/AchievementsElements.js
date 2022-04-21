@@ -30,6 +30,7 @@ export const Td = styled.td`
   padding: 6px;
   border: 1px solid ${props => props.theme.font + 75};
   text-align: left;
+  text-align: center;
   background-color: ${props => props.theme.bg};
 
   @media (max-width: 760px) {
@@ -40,6 +41,7 @@ export const Td = styled.td`
     padding-left: 40%;
     width: 100vw;
     height: auto;
+    text-align: start;
     min-height: 2rem;
     
     &:nth-child(even) {

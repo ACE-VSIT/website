@@ -25,7 +25,7 @@ const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
         <tr>
           <Td>{event_date}</Td>
           <Td>{winner_name?.document?.data?.member_name?.text}</Td>
-          <Td>{position}</Td>
+          <Td>{position ?? "-"}</Td>
           <Td>{event_name.text}</Td>
           <Td>{college_name.text}</Td>
         </tr>
