@@ -3,48 +3,69 @@ import { getImage } from "gatsby-plugin-image"
 import MemberCard from "./members-card/MemberCard"
 import { FlexCenter, Heading } from "../../styles/sharedStyles"
 import MembersSort from "./members-sort/MembersSort"
+import Loading from "../animations/Loading"
 
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
+  const [loading, setLoading] = React.useState(true)
   const [year, setYear] = React.useState(2022)
 
   // This is not the best approach, will think of something later
-  const filterMembers = React.useCallback(() => {
-    const filterYear = data.allPrismicMembers.nodes.filter(
-      e =>
-        parseInt(e.data.joining_year) <= parseInt(year) &&
-        parseInt(e.data.ending_year) >= parseInt(year)
-    )
-    const presidents = filterYear.filter(
-      e =>
-        e.data.member_position.text.includes("President") &&
-        e.data.ending_year === year
-    )
+  const filterMembers = React.useCallback(
+    year => {
+      const filterYear = data.allPrismicMembers.nodes.filter(
+        e =>
+          parseInt(e.data.joining_year) <= parseInt(year) &&
+          parseInt(e.data.ending_year) >= parseInt(year)
+      )
+      const presidents = filterYear.filter(
+        e =>
+          e.data.member_position.text === "President" &&
+          e.data.ending_year === year
+      )
 
-    const coreMembers = filterYear.filter(
-      e =>
-        e.data.member_position.text.includes("Core") &&
-        e.data.ending_year === year
-    )
-    const heads = filterYear.filter(
-      e =>
-        e.data.member_position.text.includes("Head") &&
-        e.data.ending_year === year
-    )
-    const laterHeads = filterYear.filter(
-      e =>
-        e.data.ending_year !== year && e.data.member_position.text !== "Member"
-    )
-    const member = filterYear.filter(
-      e => e.data.member_position.text === "Member"
-    )
-    const combineAll = presidents.concat(heads, coreMembers, laterHeads, member)
+      const vicepresidents = filterYear.filter(
+        e =>
+          e.data.member_position.text === "Vice President" &&
+          e.data.ending_year === year
+      )
 
-    setMembers(combineAll)
-  }, [year, data.allPrismicMembers.nodes])
+      const coreMembers = filterYear.filter(
+        e =>
+          e.data.member_position.text.includes("Core") &&
+          e.data.ending_year === year
+      )
+      const heads = filterYear.filter(
+        e =>
+          e.data.member_position.text.includes("Head") &&
+          e.data.ending_year === year
+      )
+      const laterHeads = filterYear.filter(
+        e =>
+          e.data.ending_year !== year &&
+          e.data.member_position.text !== "Member"
+      )
+      const member = filterYear.filter(
+        e => e.data.member_position.text === "Member"
+      )
+      const combineAll = presidents.concat(
+        vicepresidents,
+        heads,
+        coreMembers,
+        laterHeads,
+        member
+      )
+
+      setMembers(combineAll)
+    },
+    [data.allPrismicMembers.nodes]
+  )
 
   React.useEffect(() => {
-    filterMembers()
+    setTimeout(() => {
+      filterMembers(year)
+      setLoading(false)
+    }, 575)
   }, [year, filterMembers])
 
   return (
@@ -53,33 +74,37 @@ export default function MembersPage({ data }) {
         <Heading>Our Members</Heading>
       </FlexCenter>
       <MembersSort startingYear={2017} setYear={e => setYear(e)} />
-      <FlexCenter style={{ flexWrap: "wrap" }}>
-        {members?.map((e, key) => {
-          const img = getImage(e.data.member_image)
-          // Filters all key values which matches "link" and stores it in socialLinksI
-          const socialLinks = Object.keys(e.data)
-            .filter(links => links.includes("link"))
-            .reduce((obj, key) => {
-              obj[key] = e.data[key]
-              return obj
-            }, {})
+      {!loading ? (
+        <FlexCenter style={{ flexWrap: "wrap" }}>
+          {members?.map((e, key) => {
+            const img = getImage(e.data.member_image)
+            // Filters all key values which matches "link" and stores it in socialLinksI
+            const socialLinks = Object.keys(e.data)
+              .filter(links => links.includes("link"))
+              .reduce((obj, key) => {
+                obj[key] = e.data[key]
+                return obj
+              }, {})
 
-          return (
-            <div key={key}>
-              <MemberCard
-                img={img}
-                name={e.data.member_name.text}
-                title={e.data.member_position.text}
-                social={socialLinks}
-                info={e.data.about_member.text}
-                joiningYear={e.data.joining_year}
-                selectedYear={year}
-                endingYear={e.data.ending_year}
-              />
-            </div>
-          )
-        })}
-      </FlexCenter>
+            return (
+              <div key={key}>
+                <MemberCard
+                  img={img}
+                  name={e.data.member_name.text}
+                  title={e.data.member_position.text}
+                  social={socialLinks}
+                  info={e.data.about_member.text}
+                  joiningYear={e.data.joining_year}
+                  selectedYear={year}
+                  endingYear={e.data.ending_year}
+                />
+              </div>
+            )
+          })}
+        </FlexCenter>
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

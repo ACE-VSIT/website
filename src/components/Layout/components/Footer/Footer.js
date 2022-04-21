@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
   FooterBottom,
   FooterItemsWrapper,
@@ -8,9 +8,11 @@ import {
   FooterTitle,
   FooterWrapper,
 } from "./FooterElements"
+import { ThemeContext } from "../../../../context/ThemeContext"
 import { StaticImage } from "gatsby-plugin-image"
 
-export default function Footer({ itemList, footerList, isDarkTheme }) {
+export default function Footer({ itemList, footerList }) {
+  const { isDarkTheme } = useContext(ThemeContext)
   return (
     <>
       <FooterWrapper>
