@@ -7,12 +7,14 @@ import {
   TableContainerTitle,
   TableContainerTable,
 } from "../AchievementsElements"
+import Loading from "../../animations/Loading"
 import AnimateIn from "../../animations/AnimateIn"
 import ProjectFilter from "../../projects/components/ProjectFilter"
 
-const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
-  const [filter, setFilter] = useState()
+const Table = ({ tableData, title, breakOn = "medium" }) => {
+  const [filter, setFilter] = useState("Achievement")
   const [table, setTable] = useState(tableData)
+  const [loading, setLoading] = useState(true)
 
   let tableClass = "table-container_table"
 
@@ -24,65 +26,91 @@ const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
     tableClass += "table-container__table--break-lg"
   }
 
+  const tableHeader = [
+    "Date",
+    filter !== "Achievement" ? "Name" : "Winner Name",
+    filter === "Achievement" && "Position",
+    filter !== "Achievement" ? "Position" : "Event Name",
+    filter !== "Achievement" ? "Company" : "College Name",
+  ]
+
   useEffect(() => {
-    switch (filter) {
-      case "Internships":
-        const intern = tableData.filter(e =>
-          e.event_name.text.includes("Intern")
-        )
-        setTable(intern)
-        break
-      case "Achievements":
-        const achieve = tableData.filter(
-          e => !e.event_name.text.includes("Intern")
-        )
-        setTable(achieve)
-        break
-      default:
-        setTable(tableData)
-    }
+    setLoading(true)
+    setTimeout(() => {
+      switch (filter) {
+        case "Placement":
+          const place = tableData.filter(e => e.type === "Placement")
+          setTable(place)
+          setLoading(false)
+          break
+        case "Internship":
+          const intern = tableData.filter(e => e.type === "Internship")
+          setTable(intern)
+          setLoading(false)
+          break
+        case "Freelance":
+          const freelance = tableData.filter(e => e.type === "Freelance")
+          setTable(freelance)
+          setLoading(false)
+          break
+        case "Achievement":
+          const achieve = tableData.filter(e => e.type === "Achievement")
+          setTable(achieve)
+          setLoading(false)
+          break
+        default:
+          setTable(tableData)
+          setLoading(false)
+      }
+    }, 500)
   }, [filter, tableData])
 
   return (
     <AnimateIn>
       <TableContainer>
         <ProjectFilter
-          categories={["Default", "Achievements", "Internships"]}
+          categories={["Achievement", "Freelance", "Internship", "Placement"]}
           setState={setFilter}
         />
         <TableContainerTitle>
           <h2>{title}</h2>
+          {!loading ? (
+            <TableContainerTable>
+              <thead>
+                <Tr>
+                  {tableHeader.map((col, index) => (
+                    <th key={index}>{col}</th>
+                  ))}
+                </Tr>
+              </thead>
+              <tbody>
+                {table?.map(
+                  ({
+                    event_date,
+                    winner_name,
+                    position,
+                    event_name,
+                    college_name,
+                  }) => {
+                    return (
+                      <tr>
+                        <Td>{event_date}</Td>
+                        <Td>
+                          {winner_name?.document?.data?.member_name?.text}
+                        </Td>
+                        <Td>{position ?? "-"}</Td>
+                        <Td>{event_name.text}</Td>
+                        <Td>{college_name.text}</Td>
+                      </tr>
+                    )
+                  }
+                )}
+              </tbody>
+            </TableContainerTable>
+          ) : (
+            <Loading />
+          )}
         </TableContainerTitle>
-        <TableContainerTable>
-          <thead>
-            <Tr>
-              {headingColumns.map((col, index) => (
-                <th key={index}>{col}</th>
-              ))}
-            </Tr>
-          </thead>
-          <tbody>
-            {table?.map(
-              ({
-                event_date,
-                winner_name,
-                position,
-                event_name,
-                college_name,
-              }) => {
-                return (
-                  <tr>
-                    <Td>{event_date}</Td>
-                    <Td>{winner_name?.document?.data?.member_name?.text}</Td>
-                    <Td>{position ?? "-"}</Td>
-                    <Td>{event_name.text}</Td>
-                    <Td>{college_name.text}</Td>
-                  </tr>
-                )
-              }
-            )}
-          </tbody>
-        </TableContainerTable>
       </TableContainer>
     </AnimateIn>
   )

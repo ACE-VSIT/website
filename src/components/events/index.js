@@ -1,5 +1,4 @@
 import React from "react"
-import { FlexCenter } from "../../styles/sharedStyles"
 import EventCard from "./eventsCard-slice/EventCard"
 import { WrapperBody, Container } from "./eventsCard-slice/EventCardElements"
 

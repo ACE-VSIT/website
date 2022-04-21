@@ -19,12 +19,6 @@ export const Tr = styled.tr`
   :nth-of-type(odd) {
     background: ${props => props.theme.bg};
   }
-  @media (max-width: 760px) {
-    display: block;
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
 `
 export const Td = styled.td`
   padding: 6px;
@@ -32,51 +26,6 @@ export const Td = styled.td`
   text-align: left;
   text-align: center;
   background-color: ${props => props.theme.bg};
-
-  @media (max-width: 760px) {
-    display: block;
-    border: none;
-    border-bottom: 1px solid ${props => props.theme.primary};
-    position: relative;
-    padding-left: 40%;
-    width: 100vw;
-    height: auto;
-    text-align: start;
-    min-height: 2rem;
-
-    &:nth-child(even) {
-      background-color: ${props => props.theme.bg};
-    }
-    &::before {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-    }
-
-    &:last-child {
-      border-bottom: none;
-      padding-bottom: 50px;
-    }
-
-    :nth-of-type(1):before {
-      content: "Date";
-    }
-    :nth-of-type(2):before {
-      content: "Winner Name";
-    }
-    :nth-of-type(3):before {
-      content: "Position";
-    }
-    :nth-of-type(4):before {
-      content: "Event Name";
-    }
-    :nth-of-type(5):before {
-      content: "College Name";
-    }
-  }
 `
 
 export const TableContainer = styled.section`
@@ -95,6 +44,8 @@ export const TableContainer = styled.section`
     align-items: center;
     margin: 0px auto;
     margin-top: 270px;
+    overflow: scroll;
+    width: calc(90vw + 1px);
     justify-content: center;
   }
 `

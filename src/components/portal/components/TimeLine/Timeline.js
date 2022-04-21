@@ -9,7 +9,7 @@ import axios from "axios"
 export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [submitData, setSubmitData] = useState([])
-  const [openPicker, data, authResponse] = useDrivePicker()
+  const [openPicker, data,] = useDrivePicker()
   const wrapper = useRef()
 
   const getHeight = useCallback(() => {

@@ -22,6 +22,7 @@ export const achievementsPage = graphql`
             event_name {
               text
             }
+            type
             position
             winner_name {
               document {

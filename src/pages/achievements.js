@@ -31,13 +31,6 @@ const AchievementsPage = ({ data }) => {
         <HeroSliceSecondary heading={heroTitle} image={image} />
         <Table
           tableData={achievementsData}
-          headingColumns={[
-            "Date",
-            "Winner Name",
-            "Position",
-            "Event Name",
-            "College Name",
-          ]}
           // title="F1 driver"
         />
       </Layout>

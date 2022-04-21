@@ -4,7 +4,7 @@ import useOnScreen from "../../hooks/useOnScreen"
 
 export default function AnimateIn({
   ref,
-  enableScroll = false,
+  enableScroll = true,
   duration = 375,
   delay = 0,
   ...rest
@@ -22,7 +22,7 @@ export default function AnimateIn({
     !enableScroll &&
       document
         .querySelector("#animateFixScrollIssue")
-        .addEventListener("wheel", preventScroll, { passive: true })
+        .addEventListener("wheel", preventScroll, { passive: false })
   }, [enableScroll])
 
   return (
