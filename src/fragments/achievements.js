@@ -18,7 +18,7 @@ export const achievementsPage = graphql`
             college_name {
               text
             }
-            event_date
+            event_date(formatString: "YYYY")
             event_name {
               text
             }
