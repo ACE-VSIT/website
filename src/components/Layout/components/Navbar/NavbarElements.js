@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import AlignRightOutlined from "@ant-design/icons/AlignRightOutlined"
+import MenuOutlined from "@ant-design/icons/MenuOutlined"
 import { FlexCenter } from "../../../../styles/sharedStyles"
 import { Link } from "gatsby"
 
@@ -88,8 +88,7 @@ export const NavbarList = styled(FlexCenter)`
     display: none;
   }
 `
-export const NavbarSliderIcon = styled(AlignRightOutlined)`
-  transform: rotateX(180deg);
+export const NavbarSliderIcon = styled(MenuOutlined)`
   transition: 0.5s all ease-in-out;
   font-size: 1.25rem;
   width: 5rem;
