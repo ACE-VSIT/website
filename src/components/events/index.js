@@ -4,7 +4,12 @@ import EventCard from "./eventsCard-slice/EventCard"
 import { WrapperBody, Container } from "./eventsCard-slice/EventCardElements"
 
 export default function Event({ data }) {
-  const displayData = data?.allPrismicEventitem?.edges
+  const displayData = data?.allPrismicEventitem?.edges.sort(function (a, b) {
+    return (
+      parseInt(b.node.data.event_date.slice(-2)) -
+      parseInt(a.node.data.event_date.slice(-2))
+    )
+  })
   // console.log(displayData)
   return (
     <>
@@ -12,7 +17,6 @@ export default function Event({ data }) {
         <Container>
           {data &&
             displayData?.map((e, index) => {
-              console.log(e.node.data.event_link.url)
               return (
                 <EventCard
                   link={e.node.data.event_link?.url}
