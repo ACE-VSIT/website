@@ -72,10 +72,11 @@ export default function MembersPage({ data }) {
   )
 
   React.useEffect(() => {
+    setLoading(true)
     setTimeout(() => {
       filterMembers(year)
       setLoading(false)
-    }, 575)
+    }, 500)
   }, [year, filterMembers])
 
   return (
@@ -118,7 +119,9 @@ export default function MembersPage({ data }) {
           })}
         </FlexCenter>
       ) : (
-        <Loading />
+        <div style={{ height: "80vh" }}>
+          <Loading />
+        </div>
       )}
     </>
   )

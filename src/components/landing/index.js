@@ -11,6 +11,7 @@ import {
 import useOnScreen from "../../hooks/useOnScreen"
 import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
 import FooterInfo from "../footer-info/FooterInfo"
+import { FacultyWrapper } from "./LandingElements"
 
 export default function HomePage({ data }) {
   const sliderInfoTitle =
@@ -97,7 +98,7 @@ export default function HomePage({ data }) {
           </CounterWrapper>
         </>
       )}
-      <FlexCenter style={{ flexDirection: "column" }}>
+      <FacultyWrapper>
         <Heading topLine>Faculty Coordinators</Heading>
         <FlexCenter style={{ flexWrap: "wrap", height: "max-content" }}>
           {faculty?.map((e, key) => {
@@ -124,7 +125,7 @@ export default function HomePage({ data }) {
             )
           })}
         </FlexCenter>
-      </FlexCenter>
+      </FacultyWrapper>
       <FlexCenter>
         <Heading topLine>Core Members</Heading>
       </FlexCenter>
