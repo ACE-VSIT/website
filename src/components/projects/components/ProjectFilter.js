@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import { FlexCenter } from "../../../styles/sharedStyles"
 import styled from "styled-components"
 
-export default function ProjectFilter({ categories, setState }) {
+export default function ProjectFilter({ categories, setState, ...rest }) {
   const optionRef = useRef()
 
   const handleOptionChange = () => {
@@ -11,7 +11,7 @@ export default function ProjectFilter({ categories, setState }) {
 
   return (
     <>
-      <SortWrapper>
+      <SortWrapper {...rest}>
         <SortText>Filter by Type: </SortText>
         <SortSelect ref={optionRef} onChange={handleOptionChange}>
           {categories?.map((e, key) => {
@@ -43,6 +43,7 @@ const SortText = styled.p`
   letter-spacing: 0.5px;
   border: 1px solid ${props => props.theme.font + "75"};
   border-right: none;
+  white-space: nowrap;
   padding: 0.05rem 0 0.05rem 0.5rem;
 `
 const SortSelect = styled.select`

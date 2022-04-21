@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import {
   Tr,
@@ -8,8 +8,12 @@ import {
   TableContainerTable,
 } from "../AchievementsElements"
 import AnimateIn from "../../animations/AnimateIn"
+import ProjectFilter from "../../projects/components/ProjectFilter"
 
 const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
+  const [filter, setFilter] = useState()
+  const [table, setTable] = useState(tableData)
+
   let tableClass = "table-container_table"
 
   if (breakOn === "small") {
@@ -19,22 +23,33 @@ const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
   } else if (breakOn === "large") {
     tableClass += "table-container__table--break-lg"
   }
-  const data = tableData.map(
-    ({ event_date, winner_name, position, event_name, college_name }) => {
-      return (
-        <tr>
-          <Td>{event_date}</Td>
-          <Td>{winner_name?.document?.data?.member_name?.text}</Td>
-          <Td>{position ?? "-"}</Td>
-          <Td>{event_name.text}</Td>
-          <Td>{college_name.text}</Td>
-        </tr>
-      )
+
+  useEffect(() => {
+    switch (filter) {
+      case "Internships":
+        const intern = tableData.filter(e =>
+          e.event_name.text.includes("Intern")
+        )
+        setTable(intern)
+        break
+      case "Achievements":
+        const achieve = tableData.filter(
+          e => !e.event_name.text.includes("Intern")
+        )
+        setTable(achieve)
+        break
+      default:
+        setTable(tableData)
     }
-  )
+  }, [filter, tableData])
+
   return (
     <AnimateIn>
       <TableContainer>
+        <ProjectFilter
+          categories={["Default", "Achievements", "Internships"]}
+          setState={setFilter}
+        />
         <TableContainerTitle>
           <h2>{title}</h2>
         </TableContainerTitle>
@@ -46,7 +61,27 @@ const Table = ({ tableData, headingColumns, title, breakOn = "medium" }) => {
               ))}
             </Tr>
           </thead>
-          <tbody>{data}</tbody>
+          <tbody>
+            {table?.map(
+              ({
+                event_date,
+                winner_name,
+                position,
+                event_name,
+                college_name,
+              }) => {
+                return (
+                  <tr>
+                    <Td>{event_date}</Td>
+                    <Td>{winner_name?.document?.data?.member_name?.text}</Td>
+                    <Td>{position ?? "-"}</Td>
+                    <Td>{event_name.text}</Td>
+                    <Td>{college_name.text}</Td>
+                  </tr>
+                )
+              }
+            )}
+          </tbody>
         </TableContainerTable>
       </TableContainer>
     </AnimateIn>

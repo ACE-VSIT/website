@@ -43,7 +43,7 @@ export const Td = styled.td`
     height: auto;
     text-align: start;
     min-height: 2rem;
-    
+
     &:nth-child(even) {
       background-color: ${props => props.theme.bg};
     }
@@ -84,9 +84,9 @@ export const TableContainer = styled.section`
 
   width: 90%;
   padding: 5rem 0 0 0;
-  margin: 15rem 40px;
+  margin: 16.5rem 40px;
   @media (max-width: 954px) {
-    margin-top: 220px;
+    margin-top: 270px;
   }
   @media (max-width: 760px) {
     display: block;
@@ -94,7 +94,7 @@ export const TableContainer = styled.section`
     left: 50%;
     align-items: center;
     margin: 0px auto;
-    margin-top: 220px;
+    margin-top: 270px;
     justify-content: center;
   }
 `
