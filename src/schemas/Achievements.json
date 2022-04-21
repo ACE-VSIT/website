@@ -1,89 +1,98 @@
 {
-  "Main": {
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1",
-        "label": "Title",
-        "placeholder": "Enter the title for the page"
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title",
+        "placeholder" : "Enter the title for the page"
       }
     },
-    "hero_image": {
-      "type": "Image",
-      "config": {
-        "constraint": {},
-        "thumbnails": [],
-        "label": "Hero Image"
+    "hero_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Hero Image"
       }
     },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {},
-        "choices": {
-          "achievement": {
-            "type": "Slice",
-            "fieldset": "Achievement",
-            "description": "list of achievements by ace members",
-            "icon": "dvr",
-            "non-repeat": {},
-            "repeat": {
-              "achievement_title": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1",
-                  "label": "Achievement Title",
-                  "placeholder": "Enter the title for achievement"
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : { },
+        "choices" : {
+          "achievement" : {
+            "type" : "Slice",
+            "fieldset" : "Achievement",
+            "description" : "list of achievements by ace members",
+            "icon" : "dvr",
+            "non-repeat" : { },
+            "repeat" : {
+              "achievement_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Achievement Title",
+                  "placeholder" : "Enter the title for achievement"
                 }
               },
-              "event_name": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Event Name",
-                  "placeholder": "Enter the Name of Event"
+              "event_name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "Event Name",
+                  "placeholder" : "Enter the Name of Event"
                 }
               },
-              "winner_name": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "customtypes": ["members"],
-                  "tags": ["Member"],
-                  "label": "Winner Name",
-                  "placeholder": "Select the Winner"
+              "winner_name" : {
+                "type" : "Link",
+                "config" : {
+                  "select" : "document",
+                  "customtypes" : [ "members" ],
+                  "tags" : [ "Member" ],
+                  "label" : "Winner Name",
+                  "placeholder" : "Select the Winner"
                 }
               },
-              "position": {
-                "type": "Number",
-                "config": {
-                  "label": "Position",
-                  "placeholder": "Enter position won by the winner"
+              "position" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Position",
+                  "placeholder" : "Enter position won by the winner"
                 }
               },
-              "is_position_number": {
-                "type": "Boolean",
-                "config": {
-                  "placeholder_false": "will show custom position name",
-                  "placeholder_true": "will show position number",
-                  "default_value": true,
-                  "label": "Is position number"
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Achievement", "Internship", "Freelance", "Placement" ],
+                  "default_value" : "Achievement",
+                  "label" : "Type",
+                  "placeholder" : "Select the type"
                 }
               },
-              "college_name": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "College Name",
-                  "placeholder": "Enter name of college that hosted event"
+              "is_position_number" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "will show custom position name",
+                  "placeholder_true" : "will show position number",
+                  "default_value" : true,
+                  "label" : "Is position number"
                 }
               },
-              "event_date": {
-                "type": "Date",
-                "config": {
-                  "label": "Event Date",
-                  "placeholder": "Enter the date of event"
+              "college_name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph",
+                  "label" : "College Name",
+                  "placeholder" : "Enter name of college that hosted event"
+                }
+              },
+              "event_date" : {
+                "type" : "Date",
+                "config" : {
+                  "label" : "Event Date",
+                  "placeholder" : "Enter the date of event"
                 }
               }
             }
@@ -92,29 +101,29 @@
       }
     }
   },
-  "Seo": {
-    "meta_title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1",
-        "label": "Meta Title",
-        "placeholder": "Meta Title for Seo"
+  "Seo" : {
+    "meta_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Meta Title",
+        "placeholder" : "Meta Title for Seo"
       }
     },
-    "meta_description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Meta Description",
-        "placeholder": "Meta description"
+    "meta_description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta Description",
+        "placeholder" : "Meta description"
       }
     },
-    "meta_keywords": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph",
-        "label": "Meta Keywords",
-        "placeholder": "Meta Keywords for Seo"
+    "meta_keywords" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph",
+        "label" : "Meta Keywords",
+        "placeholder" : "Meta Keywords for Seo"
       }
     }
   }
