@@ -18,6 +18,12 @@ export default function MembersPage({ data }) {
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
       )
+      const dean = filterYear.filter(e =>
+        e.data.member_position.text.includes("Dean")
+      )
+      const faculty = filterYear.filter(e =>
+        e.data.member_position.text.includes("Faculty")
+      )
       const presidents = filterYear.filter(
         e =>
           e.data.member_position.text === "President" &&
@@ -43,12 +49,16 @@ export default function MembersPage({ data }) {
       const laterHeads = filterYear.filter(
         e =>
           e.data.ending_year !== year &&
-          e.data.member_position.text !== "Member"
+          e.data.member_position.text !== "Member" &&
+          !e.data.member_position.text.includes("Dean") &&
+          !e.data.member_position.text.includes("Faculty")
       )
       const member = filterYear.filter(
         e => e.data.member_position.text === "Member"
       )
-      const combineAll = presidents.concat(
+      const combineAll = dean.concat(
+        faculty,
+        presidents,
         vicepresidents,
         heads,
         coreMembers,
@@ -86,6 +96,10 @@ export default function MembersPage({ data }) {
                 return obj
               }, {})
 
+            const forceShow =
+              e.data.member_position.text.includes("Dean") |
+              e.data.member_position.text.includes("Faculty")
+
             return (
               <div key={key}>
                 <MemberCard
@@ -96,6 +110,7 @@ export default function MembersPage({ data }) {
                   info={e.data.about_member.text}
                   joiningYear={e.data.joining_year}
                   selectedYear={year}
+                  forceShowPosition={forceShow}
                   endingYear={e.data.ending_year}
                 />
               </div>

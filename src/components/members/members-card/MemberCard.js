@@ -18,6 +18,7 @@ export default function MemberCard({
   joiningYear,
   selectedYear,
   endingYear,
+  forceShowPosition,
 }) {
   const [showMemberInfoCard, setShowMemberInfoCard] = useState(false)
 
@@ -32,7 +33,7 @@ export default function MemberCard({
           {title && endingYear === selectedYear ? (
             <MemberTitle>{title}</MemberTitle>
           ) : (
-            <MemberTitle>{"Member"}</MemberTitle>
+            <MemberTitle>{!forceShowPosition ? "Member" : title}</MemberTitle>
           )}
         </MemberCardWrapper>
       </AnimateIn>
