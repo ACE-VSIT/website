@@ -91,7 +91,7 @@ export default function HomePage({ data }) {
             {counter.map((e, key) => {
               return (
                 <div ref={counterRef} key={key}>
-                  {hasMounted && <Counter e={e} />}
+                  {hasMounted && <Counter e={e} startVal={key === 1 && 300} />}
                 </div>
               )
             })}

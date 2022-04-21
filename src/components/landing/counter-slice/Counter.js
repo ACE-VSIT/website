@@ -8,8 +8,8 @@ import {
 import useCounter from "../../../hooks/useCounter"
 import AnimateIn from "../../animations/AnimateIn"
 
-const Counter = ({ e }) => {
-  const [counter, setCounter] = useState(0)
+const Counter = ({ e, startVal }) => {
+  const [counter, setCounter] = useState(startVal ?? 0)
   const [intSplitArr, setIntSplitArr] = useState([])
 
   useCounter(() => {
