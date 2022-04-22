@@ -39,4 +39,9 @@ export const ImageContainer = styled.div`
       transform: scale(1.15);
     }
   }
+
+  @media (max-width: 768px) {
+    width: 80vw;
+    height: auto;
+  }
 `

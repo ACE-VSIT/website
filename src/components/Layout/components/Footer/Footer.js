@@ -34,7 +34,7 @@ export default function Footer({ itemList, footerList }) {
           </div>
         </FooterItemsWrapper>
         <FooterItemsWrapper>
-          {itemList?.map((e, key) => {
+          {itemList?.slice(0, -2).map((e, key) => {
             return (
               <div key={key}>
                 <FooterLinks
