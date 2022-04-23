@@ -5,6 +5,7 @@ import AnimateIn from "../animations/AnimateIn"
 import { getImage } from "gatsby-plugin-image"
 
 export default function GalleryPage({ title, subTitle, imgArr }) {
+  console.log(imgArr)
   return (
     <>
       <Heading>{title}</Heading>
@@ -17,9 +18,15 @@ export default function GalleryPage({ title, subTitle, imgArr }) {
       >
         {imgArr.map((e, index) => {
           const image = getImage(e?.image)
+          const tooltip = e?.event_title?.text
           return (
             <AnimateIn>
-              <ImageGrid key={index} image={image} />
+              <ImageGrid
+                key={index}
+                image={image}
+                tooltip={tooltip}
+                id={index}
+              />
             </AnimateIn>
           )
         })}

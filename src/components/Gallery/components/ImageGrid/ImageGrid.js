@@ -1,20 +1,26 @@
-import React, { useState, useRef } from "react"
+import React, { useContext } from "react"
+import ReactTooltip from "react-tooltip"
 import { GatsbyImage } from "gatsby-plugin-image"
-// import ImageGridCard from "../ImageGridCard/ImageGridCard"
+import { ThemeContext } from "../../../../context/ThemeContext"
 import { ImageContainer, ImageElement } from "./ImageGridElements"
-import useOutsideAlerter from "../../../../hooks/useOutsideTouch"
 
-export default function ImageGrid({ image }) {
-  // const [open, setOpen] = useState(false)
-  // const imageRef = useRef()
-  // useOutsideAlerter(imageRef, setOpen)
+export default function ImageGrid({ image, tooltip, id }) {
+  const { isDarkTheme } = useContext(ThemeContext)
 
   return (
     <>
-      <ImageContainer /**ref={imageRef} onClick={() => setOpen(true)} open={open} */ >
+      <ImageContainer
+        data-tip={tooltip}
+        data-for={`tooltip-${id}`}
+        data-place="top"
+      >
         <ImageElement>
           <GatsbyImage image={image} alt={""} />
         </ImageElement>
+        <ReactTooltip
+          id={`tooltip-${id}`}
+          type={isDarkTheme ? "dark" : "light"}
+        />
       </ImageContainer>
     </>
   )

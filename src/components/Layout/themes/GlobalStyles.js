@@ -6,7 +6,7 @@ export const lightTheme = {
   primary: "#EBF6FE",
   secondary: "#F3F0EC",
   active: "#FD925F",
-  success: "#d0f0c0"
+  success: "#d0f0c0",
 }
 
 export const darkTheme = {
@@ -15,7 +15,7 @@ export const darkTheme = {
   primary: "#EBF6FE",
   secondary: "#1C1C1C",
   active: "#FD925F",
-  success: "#123524"
+  success: "#123524",
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -37,13 +37,13 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   ::-webkit-scrollbar-track {
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.font + 25};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.font};
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: ${props => props.theme.bg};
+    background: ${props => props.theme.font};
   }
   ::-moz-selection {
     background: ${props => props.theme.font};
@@ -59,5 +59,12 @@ export const GlobalStyle = createGlobalStyle`
   body {
     color: ${props => props.theme.font};
     background-color:  ${props => props.theme.bg};
+    -ms-overflow-style: scrollbar;
+    scrollbar-width: auto;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 6px;
+    display: block;
   }
 `
