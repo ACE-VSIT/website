@@ -2,8 +2,9 @@ import styled from "styled-components"
 import { Heading, FlexCenter } from "../../../styles/sharedStyles"
 
 export const EventsCardWrapper = styled.div`
-  width: 20rem;
+  width: 21rem;
   gap: 0.25rem;
+  height: 16rem;
   background: ${props => props.theme.bg};
   padding: 1rem;
   cursor: pointer;
@@ -20,8 +21,13 @@ export const ImageWrapper = styled.img`
   width: 100%;
   height: 60%;
 `
-export const EventDetailContainer = styled.div`
-  /* display: flex; */
+export const EventDetailContainer = styled(FlexCenter)`
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(100% - 0.5rem);
+  flex-wrap: wrap;
+  gap: 0;
 `
 
 export const DateWrapper = styled.div`
