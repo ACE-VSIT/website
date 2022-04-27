@@ -34,7 +34,6 @@ export default function ProjectPage({ projectList }) {
           "AR/VR Development",
           "App Development",
           "Graphics Designing",
-          "Digital Marketting",
           "Data Science",
           "Security",
         ]}
