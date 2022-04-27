@@ -47,6 +47,7 @@ export default function MembersPage({ data }) {
         e =>
           e.data.ending_year !== year &&
           e.data.member_position.text !== "Member" &&
+          e.data.member_position.text !== "Vice President" &&
           !e.data.member_position.text.includes("Dean") &&
           !e.data.member_position.text.includes("Faculty")
       )
