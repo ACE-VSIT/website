@@ -16,6 +16,7 @@ export const allEventitem = graphql`
       event_link {
         url
       }
+      event_type
     }
   }
 `

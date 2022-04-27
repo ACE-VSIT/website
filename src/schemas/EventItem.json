@@ -31,13 +31,25 @@
         "placeholder": "Enter details for the event"
       }
     },
-    "event_link" : {
-      "type" : "Link",
-      "config" : {
-        "allowTargetBlank" : true,
-        "label" : "Event Link",
-        "placeholder" : "Event Link",
-        "select" : null
+    "event_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Event Link",
+        "placeholder": "Event Link",
+        "select": null
+      }
+    },
+    "event_type": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "Event",
+          "ACE Hour"
+        ],
+        "default_value": "Event",
+        "label": "Event type",
+        "placeholder": "Enter Event type"
       }
     }
   }
