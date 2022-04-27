@@ -48,6 +48,7 @@ export default function MembersPage({ data }) {
           e.data.ending_year !== year &&
           e.data.member_position.text !== "Member" &&
           e.data.member_position.text !== "Vice President" &&
+          !e.data.member_position.text.includes("Head") &&
           !e.data.member_position.text.includes("Dean") &&
           !e.data.member_position.text.includes("Faculty")
       )
@@ -105,7 +106,7 @@ export default function MembersPage({ data }) {
 
   return (
     <>
-      <FlexCenter>
+      <FlexCenter style={{ marginTop: "1rem" }}>
         <Heading>Faculty Coordinators</Heading>
       </FlexCenter>
       <MembersSort startingYear={2017} setYear={e => setYearFaculty(e)} />
