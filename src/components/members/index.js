@@ -7,8 +7,11 @@ import Loading from "../animations/Loading"
 
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
-  const [loading, setLoading] = React.useState(true)
-  const [year, setYear] = React.useState(2022)
+  const [faculty, setFaculty] = React.useState([])
+  const [loadingMembers, setLoadingMembers] = React.useState(true)
+  const [loadingFaculty, setLoadingFaculty] = React.useState(true)
+  const [yearMembers, setYearMembers] = React.useState(2022)
+  const [yearFaculty, setYearFaculty] = React.useState(2022)
 
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(
@@ -17,12 +20,6 @@ export default function MembersPage({ data }) {
         e =>
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
-      )
-      const dean = filterYear.filter(e =>
-        e.data.member_position.text.includes("Dean")
-      )
-      const faculty = filterYear.filter(e =>
-        e.data.member_position.text.includes("Faculty")
       )
       const presidents = filterYear.filter(
         e =>
@@ -56,38 +53,64 @@ export default function MembersPage({ data }) {
       const member = filterYear.filter(
         e => e.data.member_position.text === "Member"
       )
-      const combineAll = dean.concat(
-        faculty,
-        presidents,
+      const combineAll = presidents.concat(
         vicepresidents,
         heads,
         coreMembers,
         laterHeads,
         member
       )
-
+      
       setMembers(combineAll)
     },
     [data.allPrismicMembers.nodes]
   )
 
+  const filterFaculty = React.useCallback(
+    year => {
+      const filterYear = data.allPrismicMembers.nodes.filter(
+        e =>
+          parseInt(e.data.joining_year) <= parseInt(year) &&
+          parseInt(e.data.ending_year) >= parseInt(year)
+      )
+      const dean = filterYear.filter(e =>
+        e.data.member_position.text.includes("Dean")
+      )
+      const faculty = filterYear.filter(e =>
+        e.data.member_position.text.includes("Faculty")
+      )
+      const facultyMembers = dean.concat(faculty)
+
+      setFaculty(facultyMembers)
+    },
+    [data.allPrismicMembers.nodes]
+  )
+
   React.useEffect(() => {
-    setLoading(true)
+    setLoadingMembers(true)
     setTimeout(() => {
-      filterMembers(year)
-      setLoading(false)
+      filterMembers(yearMembers)
+      setLoadingMembers(false)
     }, 500)
-  }, [year, filterMembers])
+  }, [yearMembers, filterMembers])
+
+  React.useEffect(() => {
+    setLoadingFaculty(true)
+    setTimeout(() => {
+      filterFaculty(yearFaculty)
+      setLoadingFaculty(false)
+    }, 500)
+  }, [yearFaculty, filterFaculty])
 
   return (
     <>
       <FlexCenter>
-        <Heading>Our Members</Heading>
+        <Heading>Faculty Coordinators</Heading>
       </FlexCenter>
-      <MembersSort startingYear={2017} setYear={e => setYear(e)} />
-      {!loading ? (
+      <MembersSort startingYear={2017} setYear={e => setYearFaculty(e)} />
+      {!loadingFaculty ? (
         <FlexCenter style={{ flexWrap: "wrap" }}>
-          {members?.map((e, key) => {
+          {faculty?.map((e, key) => {
             const img = getImage(e.data.member_image)
             // Filters all key values which matches "link" and stores it in socialLinksI
             const socialLinks = Object.keys(e.data)
@@ -110,8 +133,44 @@ export default function MembersPage({ data }) {
                   social={socialLinks}
                   info={e.data.about_member.text}
                   joiningYear={e.data.joining_year}
-                  selectedYear={year}
+                  selectedYear={yearFaculty}
                   forceShowPosition={forceShow}
+                  endingYear={e.data.ending_year}
+                />
+              </div>
+            )
+          })}
+        </FlexCenter>
+      ) : (
+        <div style={{ height: "80vh" }}>
+          <Loading />
+        </div>
+      )}
+      <FlexCenter>
+        <Heading>Our Members</Heading>
+      </FlexCenter>
+      <MembersSort startingYear={2017} setYear={e => setYearMembers(e)} />
+      {!loadingMembers ? (
+        <FlexCenter style={{ flexWrap: "wrap" }}>
+          {members?.map((e, key) => {
+            const img = getImage(e.data.member_image)
+            // Filters all key values which matches "link" and stores it in socialLinksI
+            const socialLinks = Object.keys(e.data)
+              .filter(links => links.includes("link"))
+              .reduce((obj, key) => {
+                obj[key] = e.data[key]
+                return obj
+              }, {})
+            return (
+              <div key={key}>
+                <MemberCard
+                  img={img}
+                  name={e.data.member_name.text}
+                  title={e.data.member_position.text}
+                  social={socialLinks}
+                  info={e.data.about_member.text}
+                  joiningYear={e.data.joining_year}
+                  selectedYear={yearMembers}
                   endingYear={e.data.ending_year}
                 />
               </div>
