@@ -60,7 +60,7 @@ export default function MembersPage({ data }) {
         laterHeads,
         member
       )
-      
+
       setMembers(combineAll)
     },
     [data.allPrismicMembers.nodes]
@@ -161,12 +161,17 @@ export default function MembersPage({ data }) {
                 obj[key] = e.data[key]
                 return obj
               }, {})
+
+            const title =
+              e.data.member_position.text === "General Head"
+                ? "General Secretary"
+                : e.data.member_position.text
             return (
               <div key={key}>
                 <MemberCard
                   img={img}
                   name={e.data.member_name.text}
-                  title={e.data.member_position.text}
+                  title={title}
                   social={socialLinks}
                   info={e.data.about_member.text}
                   joiningYear={e.data.joining_year}
