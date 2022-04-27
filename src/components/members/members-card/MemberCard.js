@@ -30,7 +30,7 @@ export default function MemberCard({
             <GatsbyImage image={img} alt={""} />
           </MemberImageWrapper>
           {name && <MemberName>{name}</MemberName>}
-          {title && endingYear === selectedYear ? (
+          {title && parseInt(endingYear) === parseInt(selectedYear) ? (
             <MemberTitle>{title}</MemberTitle>
           ) : (
             <MemberTitle>{!forceShowPosition ? "Member" : title}</MemberTitle>
@@ -40,7 +40,9 @@ export default function MemberCard({
       {showMemberInfoCard ? (
         <MemberInfoCard
           name={name}
-          title={endingYear === selectedYear ? title : "Member"}
+          title={
+            parseInt(endingYear) === parseInt(selectedYear) ? title : "Member"
+          }
           img={img}
           social={social}
           info={info}

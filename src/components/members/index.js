@@ -10,8 +10,8 @@ export default function MembersPage({ data }) {
   const [faculty, setFaculty] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
-  const [yearMembers, setYearMembers] = React.useState(2022)
-  const [yearFaculty, setYearFaculty] = React.useState(2022)
+  const [yearMembers, setYearMembers] = React.useState(parseInt(2022))
+  const [yearFaculty, setYearFaculty] = React.useState(parseInt(2022))
 
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(
@@ -24,24 +24,24 @@ export default function MembersPage({ data }) {
       const presidents = filterYear.filter(
         e =>
           e.data.member_position.text === "President" &&
-          e.data.ending_year === year
+          parseInt(e.data.ending_year) === parseInt(year)
       )
 
       const vicepresidents = filterYear.filter(
         e =>
           e.data.member_position.text === "Vice President" &&
-          e.data.ending_year === year
+          parseInt(e.data.ending_year) === parseInt(year)
       )
 
       const coreMembers = filterYear.filter(
         e =>
           e.data.member_position.text.includes("Core") &&
-          e.data.ending_year === year
+          parseInt(e.data.ending_year) === parseInt(year)
       )
       const heads = filterYear.filter(
         e =>
           e.data.member_position.text.includes("Head") &&
-          e.data.ending_year === year
+          parseInt(e.data.ending_year) === parseInt(year)
       )
       const laterHeads = filterYear.filter(
         e =>
