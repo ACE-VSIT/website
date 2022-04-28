@@ -120,6 +120,7 @@ export default function HomePage({ data }) {
                   social={socialLinks}
                   info={e.data.about_member.text}
                   joiningYear={e.data.joining_year}
+                  forceShowPosition={true}
                 />
               </div>
             )
@@ -149,6 +150,7 @@ export default function HomePage({ data }) {
                 social={socialLinks}
                 info={e.data.about_member.text}
                 joiningYear={e.data.joining_year}
+                forceShowPosition={true}
               />
             </div>
           )
