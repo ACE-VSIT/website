@@ -186,6 +186,7 @@ export const NavbarVertical = styled(FlexCenter)`
     left &&
     css`
       left: 0%;
+      gap: 0;
       border-right: 1px solid ${props => props.theme.font + "45"};
     `}
 
