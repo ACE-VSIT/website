@@ -54,9 +54,17 @@ export default function HomePage({ data }) {
     const vicepresidents = data.allPrismicMembers.nodes.filter(
       e => e.data.member_position.text === "Vice President"
     )
+    const generalsecretary = data.allPrismicMembers.nodes.filter(e =>
+      e.data.member_position.text.includes("Secretary")
+    )
 
     if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
-      const combineAll = presidents.concat(vicepresidents, heads, coreMembers)
+      const combineAll = presidents.concat(
+        vicepresidents,
+        generalsecretary,
+        heads,
+        coreMembers
+      )
       if (faculty.length > 0) {
         const facult = dean.concat(faculty)
         setFaculty(facult)

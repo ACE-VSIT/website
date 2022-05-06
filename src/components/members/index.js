@@ -32,10 +32,9 @@ export default function MembersPage({ data }) {
           e.data.member_position.text === "Vice President" &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
-
-      const coreMembers = filterYear.filter(
+      const generalsecretary = filterYear.filter(
         e =>
-          e.data.member_position.text.includes("Core") &&
+          e.data.member_position.text.includes("Secretary") &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
       const heads = filterYear.filter(
@@ -43,9 +42,14 @@ export default function MembersPage({ data }) {
           e.data.member_position.text.includes("Head") &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
+      const coreMembers = filterYear.filter(
+        e =>
+          e.data.member_position.text.includes("Core") &&
+          parseInt(e.data.ending_year) === parseInt(year)
+      )
       const laterHeads = filterYear.filter(
         e =>
-          e.data.ending_year !== year &&
+          parseInt(e.data.ending_year) !== parseInt(year) &&
           e.data.member_position.text !== "Member" &&
           e.data.member_position.text !== "Vice President" &&
           !e.data.member_position.text.includes("Head") &&
@@ -57,12 +61,12 @@ export default function MembersPage({ data }) {
       )
       const combineAll = presidents.concat(
         vicepresidents,
+        generalsecretary,
         heads,
         coreMembers,
         laterHeads,
         member
       )
-
       setMembers(combineAll)
     },
     [data.allPrismicMembers.nodes]
@@ -164,16 +168,12 @@ export default function MembersPage({ data }) {
                 return obj
               }, {})
 
-            const title =
-              e.data.member_position.text === "General Head"
-                ? "General Secretary"
-                : e.data.member_position.text
             return (
               <div key={key}>
                 <MemberCard
                   img={img}
                   name={e.data.member_name.text}
-                  title={title}
+                  title={e.data.member_position.text}
                   social={socialLinks}
                   info={e.data.about_member.text}
                   joiningYear={e.data.joining_year}
