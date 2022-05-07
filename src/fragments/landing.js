@@ -36,6 +36,10 @@ export const landingInfo = graphql`
             hero_button
             hero_button_link {
               url
+              target
+            }
+            hero_button_title {
+              text
             }
             hero_subtitle {
               text

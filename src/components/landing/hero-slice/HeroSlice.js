@@ -16,12 +16,24 @@ export default function HeroSection({ data }) {
     const title = data?.primary?.hero_text?.text
     const subTitle = data?.primary?.hero_subtitle?.text
     const heroBtn = data?.primary?.hero_button
+    const heroBtnTitle = data?.primary?.hero_button_title?.text
     const heroBtnLink = data?.primary?.hero_button_link?.url
+    const heroBtnTarget = data?.primary?.hero_button_link?.target
     const imgAlt = data?.items[0]?.hero_image_alt_text?.text
     const img = getImage(data?.items[0]?.hero_image)
 
-    setHero({ title, subTitle, heroBtn, heroBtnLink, imgAlt, img })
+    setHero({
+      title,
+      subTitle,
+      heroBtn,
+      heroBtnLink,
+      heroBtnTitle,
+      heroBtnTarget,
+      imgAlt,
+      img,
+    })
   }, [data])
+  console.log(data?.primary?.hero_button)
 
   return (
     <>
@@ -49,8 +61,9 @@ export default function HeroSection({ data }) {
             </AnimateIn>
             {hero?.heroBtn && (
               <Button
-                to={"/magazine/"}
-                value={"Magazine"}
+                to={hero?.heroBtnLink}
+                value={hero?.heroBtnTitle}
+                target={hero?.heroBtnTarget ?? "_self"}
                 style={{ marginRight: "auto" }}
                 md={
                   "md"

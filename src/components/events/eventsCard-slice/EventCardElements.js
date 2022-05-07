@@ -69,7 +69,7 @@ export const WrapperBody = styled.div`
 `
 export const Container = styled(FlexCenter)`
   flex-wrap: wrap;
-  width: calc(100vw - 20rem);
+  width: calc(100vw - 12.5rem);
   gap: 2rem;
 
   @media (max-width: 768px) {
