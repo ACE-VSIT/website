@@ -1,5 +1,5 @@
 {
-  "name": "firebase-table",
+  "name": "@ace/admin-table",
   "version": "1.0.1",
   "private": true,
   "dependencies": {

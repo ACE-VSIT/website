@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "@ace/root",
   "private": true,
   "version": "1.0.0",
   "devDependencies": {
@@ -11,8 +11,8 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "start": "lerna run start",
-    "start:website": "lerna run start --scope=ace-website",
-    "start:admintable": "lerna run start --scope=firebase-table",
+    "start:website": "lerna run start --scope=@ace/ace-website",
+    "start:admintable": "lerna run start --scope=@ace/admin-table",
     "format": "lerna run format",
     "new-version": "lerna version --conventional-commits --yes"
   },
@@ -23,5 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lottie": "^1.2.3"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
