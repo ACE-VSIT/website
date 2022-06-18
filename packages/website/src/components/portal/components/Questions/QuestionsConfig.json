@@ -8,7 +8,7 @@
     { "name": "Digital Marketing", "id": "digital_marketing" },
     { "name": "Graphics Designing", "id": "graphics_designing" },
     { "name": "IOT", "id": "iot" },
-    { "name": "Miscellaneous", "id": "misc"},
+    { "name": "Miscellaneous", "id": "misc" },
     { "name": "Programming", "id": "programming" },
     { "name": "Security", "id": "security" },
     { "name": "Web Development", "id": "web_development" }

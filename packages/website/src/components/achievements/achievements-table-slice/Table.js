@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from "react"
-import PropTypes from "prop-types"
+import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import {
   Tr,
   Td,
   TableContainer,
   TableContainerTitle,
   TableContainerTable,
-} from "../AchievementsElements"
-import Loading from "../../animations/Loading"
-import AnimateIn from "../../animations/AnimateIn"
-import ProjectFilter from "../../projects/components/ProjectFilter"
+} from '../AchievementsElements'
+import Loading from '../../animations/Loading'
+import AnimateIn from '../../animations/AnimateIn'
+import ProjectFilter from '../../projects/components/ProjectFilter'
 
-const Table = ({ tableData, title, breakOn = "medium" }) => {
-  const [filter, setFilter] = useState("Achievement")
+const Table = ({ tableData, title, breakOn = 'medium' }) => {
+  const [filter, setFilter] = useState('Achievement')
   const [table, setTable] = useState(tableData)
   const [loading, setLoading] = useState(true)
 
-  let tableClass = "table-container_table"
+  let tableClass = 'table-container_table'
 
-  if (breakOn === "small") {
-    tableClass += "table-container__table--break-sm"
-  } else if (breakOn === "medium") {
-    tableClass += "table-container__table--break-md"
-  } else if (breakOn === "large") {
-    tableClass += "table-container__table--break-lg"
+  if (breakOn === 'small') {
+    tableClass += 'table-container__table--break-sm'
+  } else if (breakOn === 'medium') {
+    tableClass += 'table-container__table--break-md'
+  } else if (breakOn === 'large') {
+    tableClass += 'table-container__table--break-lg'
   }
 
   const tableHeader = [
-    "Date",
-    filter !== "Achievement" ? "Name" : "Winner Name",
-    filter === "Achievement" && "Position",
-    filter !== "Achievement" ? "Position" : "Event Name",
-    filter !== "Achievement" ? "Company" : "College Name",
+    'Date',
+    filter !== 'Achievement' ? 'Name' : 'Winner Name',
+    filter === 'Achievement' && 'Position',
+    filter !== 'Achievement' ? 'Position' : 'Event Name',
+    filter !== 'Achievement' ? 'Company' : 'College Name',
   ]
 
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       switch (filter) {
-        case "Placement":
-          const place = tableData.filter(e => e.type === "Placement")
+        case 'Placement':
+          const place = tableData.filter(e => e.type === 'Placement')
           setTable(place)
           setLoading(false)
           break
-        case "Internship":
-          const intern = tableData.filter(e => e.type === "Internship")
+        case 'Internship':
+          const intern = tableData.filter(e => e.type === 'Internship')
           setTable(intern)
           setLoading(false)
           break
-        case "Freelance":
-          const freelance = tableData.filter(e => e.type === "Freelance")
+        case 'Freelance':
+          const freelance = tableData.filter(e => e.type === 'Freelance')
           setTable(freelance)
           setLoading(false)
           break
-        case "Achievement":
-          const achieve = tableData.filter(e => e.type === "Achievement")
+        case 'Achievement':
+          const achieve = tableData.filter(e => e.type === 'Achievement')
           setTable(achieve)
           setLoading(false)
           break
@@ -69,7 +69,7 @@ const Table = ({ tableData, title, breakOn = "medium" }) => {
     <AnimateIn>
       <TableContainer>
         <ProjectFilter
-          categories={["Achievement", "Freelance", "Internship", "Placement"]}
+          categories={['Achievement', 'Freelance', 'Internship', 'Placement']}
           setState={setFilter}
         />
         <TableContainerTitle>
@@ -98,7 +98,7 @@ const Table = ({ tableData, title, breakOn = "medium" }) => {
                         <Td>
                           {winner_name?.document?.data?.member_name?.text}
                         </Td>
-                        <Td>{position ?? "-"}</Td>
+                        <Td>{position ?? '-'}</Td>
                         <Td>{event_name.text}</Td>
                         <Td>{college_name.text}</Td>
                       </tr>
@@ -120,7 +120,7 @@ Table.prototype = {
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
   headingColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  breakOn: PropTypes.oneOf(["small", "medium", "large"]),
+  breakOn: PropTypes.oneOf(['small', 'medium', 'large']),
 }
 
 export default Table

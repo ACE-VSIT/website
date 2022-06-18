@@ -1,9 +1,9 @@
-import * as React from "react"
-import { getImage } from "gatsby-plugin-image"
-import MemberCard from "./members-card/MemberCard"
-import { FlexCenter, Heading } from "../../styles/sharedStyles"
-import MembersSort from "./members-sort/MembersSort"
-import Loading from "../animations/Loading"
+import * as React from 'react'
+import { getImage } from 'gatsby-plugin-image'
+import MemberCard from './members-card/MemberCard'
+import { FlexCenter, Heading } from '../../styles/sharedStyles'
+import MembersSort from './members-sort/MembersSort'
+import Loading from '../animations/Loading'
 
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
@@ -23,41 +23,41 @@ export default function MembersPage({ data }) {
       )
       const presidents = filterYear.filter(
         e =>
-          e.data.member_position.text === "President" &&
+          e.data.member_position.text === 'President' &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
 
       const vicepresidents = filterYear.filter(
         e =>
-          e.data.member_position.text === "Vice President" &&
+          e.data.member_position.text === 'Vice President' &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
       const generalsecretary = filterYear.filter(
         e =>
-          e.data.member_position.text.includes("Secretary") &&
+          e.data.member_position.text.includes('Secretary') &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
       const heads = filterYear.filter(
         e =>
-          e.data.member_position.text.includes("Head") &&
+          e.data.member_position.text.includes('Head') &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
       const coreMembers = filterYear.filter(
         e =>
-          e.data.member_position.text.includes("Core") &&
+          e.data.member_position.text.includes('Core') &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
       const laterHeads = filterYear.filter(
         e =>
           parseInt(e.data.ending_year) !== parseInt(year) &&
-          e.data.member_position.text !== "Member" &&
-          e.data.member_position.text !== "Vice President" &&
-          !e.data.member_position.text.includes("Head") &&
-          !e.data.member_position.text.includes("Dean") &&
-          !e.data.member_position.text.includes("Faculty")
+          e.data.member_position.text !== 'Member' &&
+          e.data.member_position.text !== 'Vice President' &&
+          !e.data.member_position.text.includes('Head') &&
+          !e.data.member_position.text.includes('Dean') &&
+          !e.data.member_position.text.includes('Faculty')
       )
       const member = filterYear.filter(
-        e => e.data.member_position.text === "Member"
+        e => e.data.member_position.text === 'Member'
       )
       const combineAll = presidents.concat(
         vicepresidents,
@@ -80,10 +80,10 @@ export default function MembersPage({ data }) {
           parseInt(e.data.ending_year) >= parseInt(year)
       )
       const dean = filterYear.filter(e =>
-        e.data.member_position.text.includes("Dean")
+        e.data.member_position.text.includes('Dean')
       )
       const faculty = filterYear.filter(e =>
-        e.data.member_position.text.includes("Faculty")
+        e.data.member_position.text.includes('Faculty')
       )
       const facultyMembers = dean.concat(faculty)
 
@@ -110,25 +110,25 @@ export default function MembersPage({ data }) {
 
   return (
     <>
-      <FlexCenter style={{ marginTop: "1rem" }}>
+      <FlexCenter style={{ marginTop: '1rem' }}>
         <Heading>Faculty Coordinators</Heading>
       </FlexCenter>
       <MembersSort startingYear={2017} setYear={e => setYearFaculty(e)} />
       {!loadingFaculty ? (
-        <FlexCenter style={{ flexWrap: "wrap" }}>
+        <FlexCenter style={{ flexWrap: 'wrap' }}>
           {faculty?.map((e, key) => {
             const img = getImage(e.data.member_image)
             // Filters all key values which matches "link" and stores it in socialLinksI
             const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes("link"))
+              .filter(links => links.includes('link'))
               .reduce((obj, key) => {
                 obj[key] = e.data[key]
                 return obj
               }, {})
 
             const forceShow =
-              e.data.member_position.text.includes("Dean") |
-              e.data.member_position.text.includes("Faculty")
+              e.data.member_position.text.includes('Dean') |
+              e.data.member_position.text.includes('Faculty')
 
             return (
               <div key={key}>
@@ -148,7 +148,7 @@ export default function MembersPage({ data }) {
           })}
         </FlexCenter>
       ) : (
-        <div style={{ height: "80vh" }}>
+        <div style={{ height: '80vh' }}>
           <Loading />
         </div>
       )}
@@ -157,12 +157,12 @@ export default function MembersPage({ data }) {
       </FlexCenter>
       <MembersSort startingYear={2017} setYear={e => setYearMembers(e)} />
       {!loadingMembers ? (
-        <FlexCenter style={{ flexWrap: "wrap" }}>
+        <FlexCenter style={{ flexWrap: 'wrap' }}>
           {members?.map((e, key) => {
             const img = getImage(e.data.member_image)
             // Filters all key values which matches "link" and stores it in socialLinksI
             const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes("link"))
+              .filter(links => links.includes('link'))
               .reduce((obj, key) => {
                 obj[key] = e.data[key]
                 return obj
@@ -185,7 +185,7 @@ export default function MembersPage({ data }) {
           })}
         </FlexCenter>
       ) : (
-        <div style={{ height: "80vh" }}>
+        <div style={{ height: '80vh' }}>
           <Loading />
         </div>
       )}

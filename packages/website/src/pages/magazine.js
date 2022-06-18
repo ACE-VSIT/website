@@ -1,8 +1,8 @@
-import * as React from "react"
-import Layout from "../components/Layout/index"
-import Seo from "../components/SEO"
-import { graphql } from "gatsby"
-import MagazinePage from "../components/magazine"
+import * as React from 'react'
+import Layout from '../components/Layout/index'
+import Seo from '../components/SEO'
+import { graphql } from 'gatsby'
+import MagazinePage from '../components/magazine'
 
 const Magazine = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body

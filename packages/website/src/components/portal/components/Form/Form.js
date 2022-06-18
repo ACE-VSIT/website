@@ -1,24 +1,24 @@
-import React, { useState, useContext, useEffect } from "react"
-import { AuthContext } from "../../../../context/auth/AuthContext"
-import { FirebaseContext } from "../../../../context/FirebaseContext"
-import { Input, Select, FormWrapper, Option, ErrorBox } from "./FormElements"
-import Button from "../../../button/Button"
-import config from "./FormConfig.json"
-import { checkEmailVerfiy, savePersonalDetails } from "../../../../firebase"
-import { FlexCenter, Heading } from "../../../../styles/sharedStyles"
-import Check from "../../../animations/Check"
-import Loading from "../../../animations/Loading"
-import { navigate } from "gatsby"
-import { ButtonWrapper as ButtonElement } from "../Google/LoginElements"
+import React, { useState, useContext, useEffect } from 'react'
+import { AuthContext } from '../../../../context/auth/AuthContext'
+import { FirebaseContext } from '../../../../context/FirebaseContext'
+import { Input, Select, FormWrapper, Option, ErrorBox } from './FormElements'
+import Button from '../../../button/Button'
+import config from './FormConfig.json'
+import { checkEmailVerfiy, savePersonalDetails } from '../../../../firebase'
+import { FlexCenter, Heading } from '../../../../styles/sharedStyles'
+import Check from '../../../animations/Check'
+import Loading from '../../../animations/Loading'
+import { navigate } from 'gatsby'
+import { ButtonWrapper as ButtonElement } from '../Google/LoginElements'
 
 export default function Form() {
   const [input, setInput] = useState({
-    firstName: "",
-    lastName: "",
-    mobile: "",
-    enrollmentNo: "",
-    course: "",
-    section: "",
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    enrollmentNo: '',
+    course: '',
+    section: '',
   })
   const { user } = useContext(AuthContext)
   const { personalDetails, setIsVerified, isVerified } =
@@ -31,8 +31,8 @@ export default function Form() {
   const handleChange = e => {
     setError(false)
     switch (e.target.name) {
-      case "firstName":
-      case "lastName":
+      case 'firstName':
+      case 'lastName':
         if (e.target.value.length > 25) {
           setCustomError(
             `${e.target.placeholder} should be less than 25 characters.`
@@ -42,8 +42,8 @@ export default function Form() {
         }
         break
 
-      case "mobile":
-        const mobileRegExp = new RegExp("^([0|+[0-9]{1,5})?([7-9][0-9]{9})$")
+      case 'mobile':
+        const mobileRegExp = new RegExp('^([0|+[0-9]{1,5})?([7-9][0-9]{9})$')
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -54,8 +54,8 @@ export default function Form() {
           }
         }
         break
-      case "enrollmentNo":
-        const enrollmentNoRegExp = new RegExp("^[a-zA-Z0-9]{10,11}$")
+      case 'enrollmentNo':
+        const enrollmentNoRegExp = new RegExp('^[a-zA-Z0-9]{10,11}$')
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -99,10 +99,10 @@ export default function Form() {
   }
 
   const ButtonWrapper = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
   }
 
   useEffect(() => {
@@ -115,9 +115,9 @@ export default function Form() {
 
   useEffect(() => {
     if (success) {
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(() => {
-        window.location.href = "/register/question/"
+        window.location.href = '/register/question/'
       }, 3500)
     }
   }, [success])
@@ -133,10 +133,10 @@ export default function Form() {
                 <FormWrapper onSubmit={e => handleSavePersonalInfo(e)}>
                   {config.questions.map(e => {
                     switch (e.type) {
-                      case "text":
-                      case "number":
-                      case "tel":
-                      case "date":
+                      case 'text':
+                      case 'number':
+                      case 'tel':
+                      case 'date':
                         return (
                           <Input
                             placeholder={e.placeholder}
@@ -144,13 +144,13 @@ export default function Form() {
                             type={e.type}
                             halfWidth={e.halfwidth}
                             name={e.id}
-                            min={e.min ?? ""}
-                            max={e.max ?? ""}
+                            min={e.min ?? ''}
+                            max={e.max ?? ''}
                             disabled={e.disabled ?? false}
                             onChange={event => handleChange(event)}
                           />
                         )
-                      case "select":
+                      case 'select':
                         return (
                           <Select
                             placeholder={e.placeholder}
@@ -166,7 +166,7 @@ export default function Form() {
                             ))}
                           </Select>
                         )
-                      case "email":
+                      case 'email':
                         return (
                           <Input
                             placeholder={e.placeholder}
@@ -179,7 +179,7 @@ export default function Form() {
                           />
                         )
                       default:
-                        return ""
+                        return ''
                     }
                   })}
                   {error && <ErrorBox>{config.errorText}</ErrorBox>}
@@ -190,34 +190,34 @@ export default function Form() {
                     ) : (
                       <FlexCenter
                         style={{
-                          gap: "0",
-                          flexWrap: "nowrap",
-                          flexDirection: "row",
+                          gap: '0',
+                          flexWrap: 'nowrap',
+                          flexDirection: 'row',
                         }}
                       >
-                        <ErrorBox style={{ borderRight: "0" }}>
+                        <ErrorBox style={{ borderRight: '0' }}>
                           {config.emailVerification}
                         </ErrorBox>
                         <ButtonElement
                           onClick={async () =>
                             await checkEmailVerfiy(setIsVerified)
                           }
-                          style={{ borderLeft: "0" }}
-                          md={"md"}
-                          primary={"primary"}
+                          style={{ borderLeft: '0' }}
+                          md={'md'}
+                          primary={'primary'}
                         >
                           Update
                         </ButtonElement>
                       </FlexCenter>
                     ))}
                   <div
-                    role={"button"}
+                    role={'button'}
                     tabIndex={0}
                     style={ButtonWrapper}
                     onClick={e => handleSavePersonalInfo(e)}
                     onKeyDown={e => handleSavePersonalInfo(e)}
                   >
-                    <Button type="submit" value={"Submit"} md={"md"} />
+                    <Button type="submit" value={'Submit'} md={'md'} />
                   </div>
                 </FormWrapper>
               </>
@@ -228,7 +228,7 @@ export default function Form() {
             )}
           </>
         ) : (
-          navigate("/register/question/")
+          navigate('/register/question/')
         )
       ) : (
         <div>

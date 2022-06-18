@@ -15,6 +15,7 @@ Wish you luck! </p>
 _If you find anything which can be improved in the README.md then ping [me](https://github.com/nparashar150/) and give a pull request._
 
 ## 👨‍💻 Directory Structure
+
 ```
 .
 ├── gatsby-browser.js

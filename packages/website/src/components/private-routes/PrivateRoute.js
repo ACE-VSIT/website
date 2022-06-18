@@ -1,13 +1,13 @@
-import React, { useState } from "react"
-import { getAuth, onAuthStateChanged } from "firebase/auth"
-import { navigate } from "gatsby"
+import React, { useState } from 'react'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { navigate } from 'gatsby'
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const [check, setCheck] = useState(false)
   const auth = getAuth()
   onAuthStateChanged(auth, user => {
     if (!user && location.pathname !== `/register/questions`) {
-      navigate("/register/")
+      navigate('/register/')
     } else {
       setCheck(true)
     }

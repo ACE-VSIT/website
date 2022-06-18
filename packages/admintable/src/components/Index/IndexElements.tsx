@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -6,8 +6,8 @@ export const Wrapper = styled.div`
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: ${(props) => props.theme.bg};
-`;
+  background-color: ${props => props.theme.bg};
+`
 
 export const LoginWrapper = styled.div`
   gap: 1rem;
@@ -18,23 +18,23 @@ export const LoginWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding: 1rem 0.5rem;
-  border: 1px solid ${(props) => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
 
   @media (max-width: 768px) {
     width: 80vw;
   }
-`;
+`
 
 export const LoginHeading = styled.h1`
   font-size: 1.4rem;
   font-weight: 300;
   text-transform: capitalize;
-`;
+`
 
 export const ButtonComponent = styled.button<{
-  md?: boolean;
-  sm?: boolean;
-  lg?: boolean;
+  md?: boolean
+  sm?: boolean
+  lg?: boolean
 }>`
   text-align: center;
   text-decoration: none;
@@ -45,21 +45,21 @@ export const ButtonComponent = styled.button<{
   width: 100%;
   height: 80px;
   max-width: 250px;
-  border: 1px solid ${(props) => props.theme.font + "75"};
-  color: ${(props) => props.theme.font};
-  background: ${(props) => props.theme.font + 25};
+  border: 1px solid ${props => props.theme.font + '75'};
+  color: ${props => props.theme.font};
+  background: ${props => props.theme.font + 25};
   cursor: pointer;
   font-size: 0.9rem;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    color: ${(props) => props.theme.font};
-    background-color: ${(props) => props.theme.font + "25"};
+    color: ${props => props.theme.font};
+    background-color: ${props => props.theme.font + '25'};
     transform: translateX(-100%);
     transition: 0.375s all ease-in-out;
   }
@@ -94,4 +94,4 @@ export const ButtonComponent = styled.button<{
       max-width: 250px;
       line-height: 90px;
     `}
-`;
+`

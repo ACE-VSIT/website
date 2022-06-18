@@ -29,9 +29,9 @@ const Dashboard: React.FC = () => {
     <Wrapper>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
+              {headerGroup.headers.map(column => (
                 <th {...column.getHeaderProps()}>{column.render('Header')}</th>
               ))}
             </tr>
@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+                {row.cells.map(cell => {
                   if (cell.column.id === 'photoURL') {
                     return (
                       <td>

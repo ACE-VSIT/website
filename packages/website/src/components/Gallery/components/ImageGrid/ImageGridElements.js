@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
 export const ImageElement = styled.div`
   transition: 0.375s all ease-in-out;

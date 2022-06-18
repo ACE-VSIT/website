@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import ProjectCard from "./components/ProjectCard/ProjectCard"
-import { FlexCenter, Heading } from "../../styles/sharedStyles"
-import { getImage } from "gatsby-plugin-image"
-import ProjectFilter from "./components/ProjectFilter"
+import React, { useState, useEffect } from 'react'
+import ProjectCard from './components/ProjectCard/ProjectCard'
+import { FlexCenter, Heading } from '../../styles/sharedStyles'
+import { getImage } from 'gatsby-plugin-image'
+import ProjectFilter from './components/ProjectFilter'
 
 export default function ProjectPage({ projectList }) {
   const [active, setActive] = useState(null)
@@ -10,7 +10,7 @@ export default function ProjectPage({ projectList }) {
 
   useEffect(() => {
     if (active) {
-      if (active === "Default") {
+      if (active === 'Default') {
         setList(projectList)
       } else {
         setList(projectList.filter(e => e?.data?.project_type === active))
@@ -19,8 +19,8 @@ export default function ProjectPage({ projectList }) {
   }, [active, projectList])
 
   const cardWrapperStyles = {
-    flexWrap: "wrap",
-    padding: "2rem 0",
+    flexWrap: 'wrap',
+    padding: '2rem 0',
   }
 
   return (
@@ -28,13 +28,13 @@ export default function ProjectPage({ projectList }) {
       <Heading>Our Projects</Heading>
       <ProjectFilter
         categories={[
-          "Default",
-          "Web Development",
-          "AR/VR Development",
-          "App Development",
-          "Graphics Designing",
-          "Data Science",
-          "Security",
+          'Default',
+          'Web Development',
+          'AR/VR Development',
+          'App Development',
+          'Graphics Designing',
+          'Data Science',
+          'Security',
         ]}
         setState={e => setActive(e)}
       />

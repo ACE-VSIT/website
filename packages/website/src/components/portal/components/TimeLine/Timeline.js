@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react"
-import { Heading } from "../../../../styles/sharedStyles"
-import TimelineCard from "./TimelineCard/TimelineCard"
-import { TimelineWrapper } from "./TimelineElements"
-import Loading from "../../../animations/Loading"
-import useDrivePicker from "react-google-drive-picker"
-import axios from "axios"
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { Heading } from '../../../../styles/sharedStyles'
+import TimelineCard from './TimelineCard/TimelineCard'
+import { TimelineWrapper } from './TimelineElements'
+import Loading from '../../../animations/Loading'
+import useDrivePicker from 'react-google-drive-picker'
+import axios from 'axios'
 
 export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
@@ -21,12 +21,12 @@ export default function Timeline({ timeLine, name }) {
   const handleOpenPicker = async () => {
     try {
       const res = await axios.post(
-        "https://www.googleapis.com/oauth2/v4/token",
+        'https://www.googleapis.com/oauth2/v4/token',
         {
           client_id: process.env.GATSBY_GOOGLE_CLIENT_ID,
           client_secret: process.env.GATSBY_GOOGLE_CLIENT_SECRET,
           refresh_token: process.env.GATSBY_GOOGLE_REFRESH_TOKEN,
-          grant_type: "refresh_token",
+          grant_type: 'refresh_token',
         }
       )
 
@@ -34,7 +34,7 @@ export default function Timeline({ timeLine, name }) {
         openPicker({
           clientId: process.env.GATSBY_GOOGLE_CLIENT_ID,
           developerKey: process.env.GATSBY_GOOGLE_API_KEY,
-          viewId: "DOCS",
+          viewId: 'DOCS',
           token: res.data.access_token,
           showUploadView: true,
           showUploadFolders: false,
@@ -70,7 +70,7 @@ export default function Timeline({ timeLine, name }) {
 
   return (
     <>
-      <Heading style={{ textAlign: "center", padding: "2rem 0 5rem 0" }}>
+      <Heading style={{ textAlign: 'center', padding: '2rem 0 5rem 0' }}>
         {name}
       </Heading>
       {height !== 0 ? (
@@ -83,7 +83,7 @@ export default function Timeline({ timeLine, name }) {
                   heading={e?.question_name.text}
                   level={e?.difficulty_level}
                   info={e?.question_info.richText}
-                  align={index % 2 ? "start" : "end"}
+                  align={index % 2 ? 'start' : 'end'}
                   openPicker={handleOpenPicker}
                 />
               )

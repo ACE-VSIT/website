@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import {
   CardDate,
   CardHeading,
@@ -6,10 +6,10 @@ import {
   HeroCardHighlight,
   HeroSectionBg,
   HeroSectionWrapper,
-} from "./HeroSectionSliceElements"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
-import AnimateIn from "../../animations/AnimateIn"
+} from './HeroSectionSliceElements'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
+import AnimateIn from '../../animations/AnimateIn'
 
 const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
   return (
@@ -17,7 +17,7 @@ const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
       <AnimateIn enableScroll={true} duration={500} delay={300}>
         <HeroSectionBg>
           {mainImage && (
-            <GatsbyImage image={mainImage} alt={"HeroSectionMainImg"} />
+            <GatsbyImage image={mainImage} alt={'HeroSectionMainImg'} />
           )}
         </HeroSectionBg>
       </AnimateIn>
@@ -27,7 +27,7 @@ const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
             <CardDate>{date}</CardDate>
           </AnimateIn>
         )}
-        <Link target={"_blank"} to={link}>
+        <Link target={'_blank'} to={link}>
           {title && (
             <AnimateIn duration={500} delay={450}>
               <CardHeading>{title}</CardHeading>

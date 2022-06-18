@@ -34,19 +34,19 @@ export const GlobalStyle = createGlobalStyle`
     width: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: ${(props) => props.theme.font + 25};
+    background: ${props => props.theme.font + 25};
   }
   ::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.font};
+    background: ${props => props.theme.font};
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: ${(props) => props.theme.font};
+    background: ${props => props.theme.font};
   }
   ::-moz-selection {
-    background: ${(props) => props.theme.font};
+    background: ${props => props.theme.font};
   }
   ::selection {
-    background: ${(props) => props.theme.font};
+    background: ${props => props.theme.font};
   }
   html.theming,
   html.theming * {
@@ -54,8 +54,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   html,
   body {
-    color: ${(props) => props.theme.font};
-    background-color:  ${(props) => props.theme.bg};
+    color: ${props => props.theme.font};
+    background-color:  ${props => props.theme.bg};
     -ms-overflow-style: scrollbar;
     scrollbar-width: auto;
   }

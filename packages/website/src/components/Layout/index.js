@@ -1,20 +1,20 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import Navbar from "./components/Navbar/Navbar"
-import Footer from "./components/Footer/Footer"
-import { ThemeProvider } from "styled-components"
-import { GlobalStyle, lightTheme, darkTheme } from "./themes/GlobalStyles"
-import { Container } from "./components/container"
-import MoveTop from "../move-to-top/MoveTop"
-import { ThemeContext } from "../../context/ThemeContext"
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyle, lightTheme, darkTheme } from './themes/GlobalStyles'
+import { Container } from './components/container'
+import MoveTop from '../move-to-top/MoveTop'
+import { ThemeContext } from '../../context/ThemeContext'
 
 const Layout = ({ children, navbar }) => {
   const themeContext = React.useContext(ThemeContext)
 
   React.useEffect(() => {
-    let theme = localStorage.getItem("theme")
+    let theme = localStorage.getItem('theme')
     if (theme) {
-      if (theme === "dark") {
+      if (theme === 'dark') {
         themeContext?.setIsDarkTheme(true)
       } else {
         themeContext?.setIsDarkTheme(false)

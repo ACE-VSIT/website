@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter } from '../../../../styles/sharedStyles'
 
 export const TimelineWrapper = styled(FlexCenter)`
   flex-direction: column;
@@ -8,7 +8,7 @@ export const TimelineWrapper = styled(FlexCenter)`
   padding-bottom: 5rem;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     height: ${props => props.height && props.height};
     width: 2px;

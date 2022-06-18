@@ -1,21 +1,21 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 export const lightTheme = {
-  bg: "#FFFFFF",
-  font: "#324861",
-  primary: "#EBF6FE",
-  secondary: "#F3F0EC",
-  active: "#FD925F",
-  success: "#d0f0c0",
+  bg: '#FFFFFF',
+  font: '#324861',
+  primary: '#EBF6FE',
+  secondary: '#F3F0EC',
+  active: '#FD925F',
+  success: '#d0f0c0',
 }
 
 export const darkTheme = {
-  bg: "#171717",
-  font: "#EBF6FE",
-  primary: "#EBF6FE",
-  secondary: "#1C1C1C",
-  active: "#FD925F",
-  success: "#123524",
+  bg: '#171717',
+  font: '#EBF6FE',
+  primary: '#EBF6FE',
+  secondary: '#1C1C1C',
+  active: '#FD925F',
+  success: '#123524',
 }
 
 export const GlobalStyle = createGlobalStyle`

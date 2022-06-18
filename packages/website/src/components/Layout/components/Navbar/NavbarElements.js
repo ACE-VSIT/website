@@ -1,14 +1,14 @@
-import styled, { css } from "styled-components"
-import MenuOutlined from "@ant-design/icons/MenuOutlined"
-import { FlexCenter } from "../../../../styles/sharedStyles"
-import { Link } from "gatsby"
+import styled, { css } from 'styled-components'
+import MenuOutlined from '@ant-design/icons/MenuOutlined'
+import { FlexCenter } from '../../../../styles/sharedStyles'
+import { Link } from 'gatsby'
 
 export const NavbarWrapper = styled(FlexCenter)`
   justify-content: space-between;
   height: 5rem;
   overflow: visible;
   gap: 0;
-  border-bottom: 1px solid ${props => props.theme.font + "45"};
+  border-bottom: 1px solid ${props => props.theme.font + '45'};
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -43,7 +43,7 @@ export const NavbarBrandImg = styled.div`
   }
 
   @media (max-width: 768px) {
-    border-right: 1px solid ${props => props.theme.font + "45"};
+    border-right: 1px solid ${props => props.theme.font + '45'};
     z-index: 10;
   }
 
@@ -104,7 +104,7 @@ export const NavbarSliderIcon = styled(MenuOutlined)`
   }
 
   @media (max-width: 768px) {
-    border-left: 1px solid ${props => props.theme.font + "45"};
+    border-left: 1px solid ${props => props.theme.font + '45'};
   }
 
   @media (max-width: 330px) {
@@ -127,7 +127,7 @@ export const NavbarSlider = styled(FlexCenter)`
   flex-direction: column;
   gap: 0.5rem;
   background: ${props => props.theme.bg};
-  border-left: 1.5px solid ${props => props.theme.font + "45"};
+  border-left: 1.5px solid ${props => props.theme.font + '45'};
 
   ${NavbarListItem} {
     display: none;
@@ -152,7 +152,7 @@ export const NavSliderInfo = styled(FlexCenter)`
   img {
     width: 10rem;
     height: 10rem;
-    filter: ${props => (props.isDarkTheme ? "invert(1)" : "")};
+    filter: ${props => (props.isDarkTheme ? 'invert(1)' : '')};
   }
 
   h5,
@@ -187,14 +187,14 @@ export const NavbarVertical = styled(FlexCenter)`
     css`
       left: 0%;
       gap: 0;
-      border-right: 1px solid ${props => props.theme.font + "45"};
+      border-right: 1px solid ${props => props.theme.font + '45'};
     `}
 
   ${({ right }) =>
     right &&
     css`
       right: 0%;
-      border-left: 1px solid ${props => props.theme.font + "45"};
+      border-left: 1px solid ${props => props.theme.font + '45'};
     `}
 
   @media (max-width: 768px) {
@@ -236,6 +236,6 @@ export const NavbarSliderThemeIcon = styled(FlexCenter)`
 
   > * {
     border-radius: 50%;
-    border: 1px solid ${props => props.theme.font + "50"};
+    border: 1px solid ${props => props.theme.font + '50'};
   }
 `

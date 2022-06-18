@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import { FlexCenter } from "../../../../styles/sharedStyles"
+import styled, { css } from 'styled-components'
+import { FlexCenter } from '../../../../styles/sharedStyles'
 
 export const FormWrapper = styled(FlexCenter)`
   flex-direction: row;
@@ -15,7 +15,7 @@ export const FormWrapper = styled(FlexCenter)`
 export const Input = styled.input`
   text-align: center;
   text-decoration: none;
-  border: 1px solid ${props => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
   cursor: pointer;
@@ -48,7 +48,7 @@ export const Input = styled.input`
 export const Select = styled.select`
   text-align: center;
   text-decoration: none;
-  border: 1px solid ${props => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
   cursor: pointer;
@@ -95,8 +95,10 @@ export const ErrorBox = styled.div`
   overflow: hidden;
   min-width: 12rem;
 
-  ${({ success }) => success && css`
+  ${({ success }) =>
+    success &&
+    css`
       background: ${props => props.theme.success};
       border: 1px solid ${props => props.theme.font};
-  `}
+    `}
 `

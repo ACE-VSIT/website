@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react"
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import {
   MemberCardWrapper,
   MemberImageWrapper,
@@ -13,13 +13,13 @@ import {
   Facebook,
   Behance,
   Globe,
-} from "./MemberCardElements"
-import { FlexCenter, Close } from "../../../styles/sharedStyles"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
-import { useTransition, config, animated } from "react-spring"
-import useOutsideAlerter from "../../../hooks/useOutsideTouch"
-import useWindowSize from "../../../hooks/useWindowSize"
-import { ThemeContext } from "../../../context/ThemeContext"
+} from './MemberCardElements'
+import { FlexCenter, Close } from '../../../styles/sharedStyles'
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
+import { useTransition, config, animated } from 'react-spring'
+import useOutsideAlerter from '../../../hooks/useOutsideTouch'
+import useWindowSize from '../../../hooks/useWindowSize'
+import { ThemeContext } from '../../../context/ThemeContext'
 
 export default function MemberInfoCard({
   name,
@@ -32,11 +32,11 @@ export default function MemberInfoCard({
 }) {
   const { isDarkTheme } = useContext(ThemeContext)
   const socialIconStyleConfig = {
-    height: "2.25rem",
-    width: "100%",
-    justifyContent: "flex-start",
-    paddingTop: ".5rem",
-    gap: "1.5rem",
+    height: '2.25rem',
+    width: '100%',
+    justifyContent: 'flex-start',
+    paddingTop: '.5rem',
+    gap: '1.5rem',
   }
   const cardWrapperRef = useRef()
   const [isMobile, setIsMobile] = useState(false)
@@ -58,14 +58,14 @@ export default function MemberInfoCard({
   })
 
   const closeBtnStyles = {
-    position: "absolute",
-    top: "0",
-    right: "0",
-    overflow: "hidden",
-    width: "5rem",
-    height: "5rem",
-    filter: "opacity(1)",
-    cursor: "pointer",
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    overflow: 'hidden',
+    width: '5rem',
+    height: '5rem',
+    filter: 'opacity(1)',
+    cursor: 'pointer',
   }
 
   return modalTransition(
@@ -77,9 +77,9 @@ export default function MemberInfoCard({
           fixed
           detailed
         >
-          <FlexCenter style={{ flexDirection: "column" }}>
+          <FlexCenter style={{ flexDirection: 'column' }}>
             <MemberImageWrapper>
-              <GatsbyImage image={img} alt={""} />
+              <GatsbyImage image={img} alt={''} />
             </MemberImageWrapper>
           </FlexCenter>
           <MemberInfoWrapper>
@@ -100,13 +100,13 @@ export default function MemberInfoCard({
                     style={closeBtnStyles}
                   >
                     <StaticImage
-                      src={"../../../images/close.svg"}
+                      src={'../../../images/close.svg'}
                       placeholder="BLURRED"
                       alt="ACE Logo"
                       width={20}
                       height={20}
                       style={{
-                        filter: isDarkTheme ? "invert(1)" : "",
+                        filter: isDarkTheme ? 'invert(1)' : '',
                       }}
                     />
                   </FlexCenter>

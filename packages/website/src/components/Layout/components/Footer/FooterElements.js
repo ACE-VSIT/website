@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
-import RightSquareOutlined from "@ant-design/icons/RightSquareOutlined"
-import { Heading, FlexCenter } from "../../../../styles/sharedStyles"
-import { Link } from "gatsby"
+import styled, { css } from 'styled-components'
+import RightSquareOutlined from '@ant-design/icons/RightSquareOutlined'
+import { Heading, FlexCenter } from '../../../../styles/sharedStyles'
+import { Link } from 'gatsby'
 
 export const FooterWrapper = styled(FlexCenter)`
   width: 100vw;
@@ -51,7 +51,7 @@ export const FooterSubscribe = styled.input`
   padding: 0.25rem 0.5rem;
   width: calc(33vw - 13rem);
   font-size: 1.15rem;
-  border-bottom: 2px solid ${props => props.theme.font + "50"};
+  border-bottom: 2px solid ${props => props.theme.font + '50'};
   color: 2px solid ${props => props.theme.font};
   background: ${props => props.theme.bg};
   transition: 0.375s all ease-in-out;
@@ -70,7 +70,7 @@ export const FooterSubscribe = styled.input`
 `
 export const FooterSubscribeSendBtn = styled(RightSquareOutlined)`
   font-size: 2rem;
-  color: ${props => props.theme.font + "50"};
+  color: ${props => props.theme.font + '50'};
   cursor: pointer;
   transition: 0.375s all ease-in-out;
   margin-bottom: -0.4rem;
@@ -124,7 +124,7 @@ export const FooterBottom = styled.div`
   width: 100vw;
   height: 5rem;
   background: ${props => props.theme.bg};
-  border-top: 1px solid ${props => props.theme.font + "45"};
+  border-top: 1px solid ${props => props.theme.font + '45'};
   display: flex;
   justify-content: center;
   align-items: center;

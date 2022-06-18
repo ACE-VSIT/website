@@ -1,7 +1,7 @@
-import React from "react"
-import { FlexCenter } from "../../../../../styles/sharedStyles"
-import { ButtonWrapper } from "../../Google/LoginElements"
-import RichText from "../../../../rich-text"
+import React from 'react'
+import { FlexCenter } from '../../../../../styles/sharedStyles'
+import { ButtonWrapper } from '../../Google/LoginElements'
+import RichText from '../../../../rich-text'
 import {
   Container,
   TimelineCardInfo,
@@ -9,7 +9,7 @@ import {
   TimelineCardWrapper,
   TimelinePoint,
   TimelineDifficulty,
-} from "./TimelineCardElements"
+} from './TimelineCardElements'
 
 export default function TimelineCard({
   heading,
@@ -19,19 +19,19 @@ export default function TimelineCard({
   openPicker,
 }) {
   const styledFlex = {
-    justifyContent: "space-between",
-    flexWrap: "nowrap",
-    flexDirection: "row",
-    paddingTop: "0.5rem",
+    justifyContent: 'space-between',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    paddingTop: '0.5rem',
   }
 
   const containerMargin = {
-    marginLeft: align === "start" && "20rem",
-    marginRight: align === "end" && "20rem",
+    marginLeft: align === 'start' && '20rem',
+    marginRight: align === 'end' && '20rem',
   }
 
   return (
-    <Container id={"timelineCard"} align={"flex-end"} style={containerMargin}>
+    <Container id={'timelineCard'} align={'flex-end'} style={containerMargin}>
       <TimelineCardWrapper>
         {heading && (
           <TimelineCardTitle align={align}>{heading}</TimelineCardTitle>
@@ -43,7 +43,7 @@ export default function TimelineCard({
         )}
         <FlexCenter style={styledFlex}>
           {level && <TimelineDifficulty>#{level}</TimelineDifficulty>}
-          <ButtonWrapper onClick={e => openPicker()} sm={"sm"}>
+          <ButtonWrapper onClick={e => openPicker()} sm={'sm'}>
             Submit
           </ButtonWrapper>
         </FlexCenter>

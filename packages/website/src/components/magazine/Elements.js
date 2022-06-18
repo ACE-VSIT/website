@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter } from '../../styles/sharedStyles'
 
 export const Wrapper = styled(FlexCenter)`
   padding: 5rem 0 2rem 0;

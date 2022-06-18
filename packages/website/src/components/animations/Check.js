@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
-import { ThemeContext } from "../../context/ThemeContext"
-import checkLight from "./check_light.json"
-import checkDark from "./check_dark.json"
-import Lottie from "react-lottie"
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../context/ThemeContext'
+import checkLight from './check_light.json'
+import checkDark from './check_dark.json'
+import Lottie from 'react-lottie'
 
 export default function Check({ loop = true, autoplay = true }) {
   const { isDarkTheme } = useContext(ThemeContext)
@@ -11,7 +11,7 @@ export default function Check({ loop = true, autoplay = true }) {
     autoplay,
     animationData: isDarkTheme ? checkDark : checkLight,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
+      preserveAspectRatio: 'xMidYMid slice',
     },
   }
 

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter } from '../../../styles/sharedStyles'
 
 export const HeroWrapper = styled(FlexCenter)`
   /* min-height: 100vh; */
@@ -41,7 +41,7 @@ export const HeroTitle = styled.h1`
   font-weight: 300;
 
   &::before {
-    content: "";
+    content: '';
     width: 4rem;
     display: block;
     background: ${props => props.theme.font};

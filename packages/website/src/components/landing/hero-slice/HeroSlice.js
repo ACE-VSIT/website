@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React, { useState, useEffect } from 'react'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import {
   HeroWrapper,
   HeroInfoWrapper,
   HeroTitle,
   HeroInfo,
-} from "./HeroElements"
-import Button from "../../button/Button"
-import AnimateIn from "../../animations/AnimateIn"
+} from './HeroElements'
+import Button from '../../button/Button'
+import AnimateIn from '../../animations/AnimateIn'
 
 export default function HeroSection({ data }) {
   const [hero, setHero] = useState(null)
@@ -38,15 +38,15 @@ export default function HeroSection({ data }) {
     <>
       {hero && (
         <HeroWrapper>
-          <div id={"hero-img"}>
+          <div id={'hero-img'}>
             <GatsbyImage
               image={hero.img}
               style={{
-                width: "calc(50vw - 5rem)",
-                height: "calc(100vh - 5rem)",
-                filter: "brightness(85%)",
-                position: "absolute",
-                right: "5rem",
+                width: 'calc(50vw - 5rem)',
+                height: 'calc(100vh - 5rem)',
+                filter: 'brightness(85%)',
+                position: 'absolute',
+                right: '5rem',
               }}
               alt={hero?.imgAlt}
             />
@@ -62,10 +62,10 @@ export default function HeroSection({ data }) {
               <Button
                 to={hero?.heroBtnLink}
                 value={hero?.heroBtnTitle}
-                target={hero?.heroBtnTarget ?? "_self"}
-                style={{ marginRight: "auto" }}
+                target={hero?.heroBtnTarget ?? '_self'}
+                style={{ marginRight: 'auto' }}
                 md={
-                  "md"
+                  'md'
                 } /* Passing random string to avoid `Received `true` for a non-boolean attribute `md`.` */
               />
             )}

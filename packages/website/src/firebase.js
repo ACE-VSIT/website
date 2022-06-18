@@ -8,7 +8,7 @@ import {
   GoogleAuthProvider,
   signOut,
   sendEmailVerification,
-} from "firebase/auth"
+} from 'firebase/auth'
 import {
   getFirestore,
   doc,
@@ -20,8 +20,8 @@ import {
   collection,
   query,
   where,
-} from "firebase/firestore"
-import { initializeApp, getApps } from "firebase/app"
+} from 'firebase/firestore'
+import { initializeApp, getApps } from 'firebase/app'
 
 const firebaseConfig = {
   apiKey: process.env.GATSBY_APIKEY,
@@ -42,8 +42,8 @@ const db = getFirestore()
 
 const saveUser = async (email, uid, name, photoURL, emailVerified) => {
   const checkIfUserExists = query(
-    collection(db, "users"),
-    where("user", "==", email)
+    collection(db, 'users'),
+    where('user', '==', email)
   )
   const queryData = await getDocs(checkIfUserExists)
   let flag = []
@@ -53,12 +53,12 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
   if (flag.includes(email)) {
     // console.log("exists")
   } else {
-    await setDoc(doc(db, "users", email), {
+    await setDoc(doc(db, 'users', email), {
       user: email,
       uid,
       name,
       createdAt: Timestamp.fromDate(new Date()),
-      personalDetails: "",
+      personalDetails: '',
       photoURL,
       emailVerified,
     })
@@ -70,7 +70,7 @@ export const savePersonalDetails = async (email, personalDetails) => {
     personalDetails
   if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob)
     return
-  const emailRef = doc(db, "users", email)
+  const emailRef = doc(db, 'users', email)
   await updateDoc(emailRef, {
     personalDetails: {
       dob,
@@ -94,31 +94,31 @@ export const createUserAccount = async (
 ) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password)
-    dispatch({ type: "LOGIN_START" })
-    const name = firstName + " " + lastName
+    dispatch({ type: 'LOGIN_START' })
+    const name = firstName + ' ' + lastName
     saveUser(email, res.user.uid, name)
     res.user &&
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: { email: res.user.email, name: res.user.displayName },
       })
   } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err })
+    dispatch({ type: 'LOGIN_FAILURE', payload: err })
     console.error(err)
   }
 }
 
 export const loginUserAccount = async (email, password, user, dispatch) => {
   try {
-    dispatch({ type: "LOGIN_START" })
+    dispatch({ type: 'LOGIN_START' })
     const res = await signInWithEmailAndPassword(auth, email, password)
     res.user &&
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: { email, name: res.user.displayName },
       })
   } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err })
+    dispatch({ type: 'LOGIN_FAILURE', payload: err })
     console.error(err)
   }
 }
@@ -133,7 +133,7 @@ export const resetEmailPassword = async email => {
 
 export const loginWithGoogleAccount = async dispatch => {
   try {
-    dispatch({ type: "LOGIN_START" })
+    dispatch({ type: 'LOGIN_START' })
     const res = await signInWithPopup(auth, provider)
     if (!auth.currentUser.emailVerified)
       await sendEmailVerification(auth.currentUser)
@@ -146,11 +146,11 @@ export const loginWithGoogleAccount = async dispatch => {
     )
     res.user &&
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: res.user,
       })
   } catch (err) {
-    dispatch({ type: "LOGIN_FAILURE", payload: err })
+    dispatch({ type: 'LOGIN_FAILURE', payload: err })
     console.error(err)
   }
 }
@@ -158,7 +158,7 @@ export const loginWithGoogleAccount = async dispatch => {
 export const checkEmailVerfiy = async setIsVerified => {
   try {
     await auth.currentUser.reload() // Reload user to check if user has already verified
-    const emailRef = doc(db, "users", auth.currentUser.email)
+    const emailRef = doc(db, 'users', auth.currentUser.email)
     const emailInfo = await getDoc(emailRef)
     if (emailInfo.exists()) {
       if (emailInfo.data().emailVerified) setIsVerified(true)
@@ -182,7 +182,7 @@ export const checkEmailVerfiy = async setIsVerified => {
 export const signOutUser = async dispatch => {
   try {
     signOut(auth).then(() => {
-      dispatch({ type: "LOGOUT_SUCCESS" })
+      dispatch({ type: 'LOGOUT_SUCCESS' })
     })
   } catch (err) {
     console.error(err)
@@ -190,7 +190,7 @@ export const signOutUser = async dispatch => {
 }
 
 export function signInStatus(dispatch) {
-  dispatch({ type: "LOGIN_START" })
+  dispatch({ type: 'LOGIN_START' })
   onAuthStateChanged(auth, user => {
     if (user) {
       saveUser(
@@ -200,11 +200,11 @@ export function signInStatus(dispatch) {
         user.photoURL,
         user.emailVerified
       )
-      dispatch({ type: "LOGIN_SUCCESS", payload: user })
+      dispatch({ type: 'LOGIN_SUCCESS', payload: user })
     } else {
       // window.location.replace("/");
       // console.log("Signed Out");
-      dispatch({ type: "LOGOUT_SUCCESS" })
+      dispatch({ type: 'LOGOUT_SUCCESS' })
     }
   })
 }

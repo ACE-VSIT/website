@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter } from '../../styles/sharedStyles'
 
 export const FooterWrapper = styled(FlexCenter)`
   min-height: 15rem;

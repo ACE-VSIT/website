@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState, useCallback } from "react"
-import HeroSection from "./hero-slice/HeroSlice"
-import { Heading, FlexCenter } from "../../styles/sharedStyles"
-import MemberCard from "../members/members-card/MemberCard"
-import { getImage } from "gatsby-plugin-image"
-import Counter from "./counter-slice/Counter"
+import React, { useEffect, useRef, useState, useCallback } from 'react'
+import HeroSection from './hero-slice/HeroSlice'
+import { Heading, FlexCenter } from '../../styles/sharedStyles'
+import MemberCard from '../members/members-card/MemberCard'
+import { getImage } from 'gatsby-plugin-image'
+import Counter from './counter-slice/Counter'
 import {
   CounterWrapper,
   // CounterSubTitle,
-} from "./counter-slice/CounterElements"
-import useOnScreen from "../../hooks/useOnScreen"
-import SliderInfoImg from "./side-info-img-slice/SideInfoImg"
-import FooterInfo from "../footer-info/FooterInfo"
-import { FacultyWrapper } from "./LandingElements"
+} from './counter-slice/CounterElements'
+import useOnScreen from '../../hooks/useOnScreen'
+import SliderInfoImg from './side-info-img-slice/SideInfoImg'
+import FooterInfo from '../footer-info/FooterInfo'
+import { FacultyWrapper } from './LandingElements'
 
 export default function HomePage({ data }) {
   const sliderInfoTitle =
@@ -37,25 +37,25 @@ export default function HomePage({ data }) {
   // This is not the best approach, will think of something later
   const resetSort = useCallback(() => {
     const coreMembers = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Core")
+      e.data.member_position.text.includes('Core')
     )
     const dean = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Dean")
+      e.data.member_position.text.includes('Dean')
     )
     const faculty = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Faculty")
+      e.data.member_position.text.includes('Faculty')
     )
     const heads = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Head")
+      e.data.member_position.text.includes('Head')
     )
     const presidents = data.allPrismicMembers.nodes.filter(
-      e => e.data.member_position.text === "President"
+      e => e.data.member_position.text === 'President'
     )
     const vicepresidents = data.allPrismicMembers.nodes.filter(
-      e => e.data.member_position.text === "Vice President"
+      e => e.data.member_position.text === 'Vice President'
     )
     const generalsecretary = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes("Secretary")
+      e.data.member_position.text.includes('Secretary')
     )
 
     if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
@@ -108,12 +108,12 @@ export default function HomePage({ data }) {
       )}
       <FacultyWrapper>
         <Heading topLine>Faculty Coordinators</Heading>
-        <FlexCenter style={{ flexWrap: "wrap", height: "max-content" }}>
+        <FlexCenter style={{ flexWrap: 'wrap', height: 'max-content' }}>
           {faculty?.map((e, key) => {
             const img = getImage(e.data.member_image)
             // Filters all key values which matches "link" and stores it in socialLinksI
             const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes("link"))
+              .filter(links => links.includes('link'))
               .reduce((obj, key) => {
                 obj[key] = e.data[key]
                 return obj
@@ -138,12 +138,12 @@ export default function HomePage({ data }) {
       <FlexCenter>
         <Heading topLine>Core Members</Heading>
       </FlexCenter>
-      <FlexCenter style={{ flexWrap: "wrap", height: "max-content" }}>
+      <FlexCenter style={{ flexWrap: 'wrap', height: 'max-content' }}>
         {members?.map((e, key) => {
           const img = getImage(e.data.member_image)
           // Filters all key values which matches "link" and stores it in socialLinksI
           const socialLinks = Object.keys(e.data)
-            .filter(links => links.includes("link"))
+            .filter(links => links.includes('link'))
             .reduce((obj, key) => {
               obj[key] = e.data[key]
               return obj

@@ -1,9 +1,9 @@
-import React from "react"
-import { getImage } from "gatsby-plugin-image"
-import ProjectCard from "../projects/components/ProjectCard/ProjectCard"
-import HeroSectionSlice from "./hero-section-slice/HeroSectionSlice"
-import { CardWrapper, Wrapper } from "./Elements"
-import { Heading } from "../../styles/sharedStyles"
+import React from 'react'
+import { getImage } from 'gatsby-plugin-image'
+import ProjectCard from '../projects/components/ProjectCard/ProjectCard'
+import HeroSectionSlice from './hero-section-slice/HeroSectionSlice'
+import { CardWrapper, Wrapper } from './Elements'
+import { Heading } from '../../styles/sharedStyles'
 
 export default function MagazinePage({ data }) {
   const date = data?.date

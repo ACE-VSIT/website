@@ -1,8 +1,8 @@
-import { useParams } from "@reach/router"
-import * as React from "react"
-import NotFound from "../components/404"
-import questionConfig from "../components/portal/components/Questions/QuestionsConfig.json"
-import Timeline from "../components/portal/components/TimeLine/Timeline"
+import { useParams } from '@reach/router'
+import * as React from 'react'
+import NotFound from '../components/404'
+import questionConfig from '../components/portal/components/Questions/QuestionsConfig.json'
+import Timeline from '../components/portal/components/TimeLine/Timeline'
 // import RichText from "../components/rich-text"
 
 const QuestionType = ({ data }) => {

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Heading, FlexCenter } from "../../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { Heading, FlexCenter } from '../../../../styles/sharedStyles'
 
 export const ProjectCardWrapper = styled(FlexCenter)`
   flex-direction: column;
@@ -7,7 +7,7 @@ export const ProjectCardWrapper = styled(FlexCenter)`
   gap: 0.25rem;
   height: 550px;
   justify-content: flex-start;
-  border: 1px solid ${props => props.theme.font + "50"};
+  border: 1px solid ${props => props.theme.font + '50'};
   padding: 10px;
   transition: 0s all ease-in-out;
   overflow: hidden;

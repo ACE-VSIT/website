@@ -1,7 +1,7 @@
-import React from "react"
-import loading from "./loading.json"
-import Lottie from "react-lottie"
-import { FlexCenter } from "../../styles/sharedStyles"
+import React from 'react'
+import loading from './loading.json'
+import Lottie from 'react-lottie'
+import { FlexCenter } from '../../styles/sharedStyles'
 
 export default function Loading({ loop = true, autoplay = true }) {
   const defaultOptions = {
@@ -9,7 +9,7 @@ export default function Loading({ loop = true, autoplay = true }) {
     autoplay,
     animationData: loading,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
+      preserveAspectRatio: 'xMidYMid slice',
     },
   }
 

@@ -1,53 +1,52 @@
 {
-    "Main" : {
-      "body" : {
-        "type" : "Slices",
-        "fieldset" : "Slice zone",
-        "config" : {
-          "labels" : null,
-          "choices" : {
-            "members_array" : {
-              "type" : "Slice",
-              "fieldset" : "Members Array",
-              "description" : "Members Array Slice",
-              "icon" : "format_list_numbered",
-              "display" : "list",
-              "non-repeat" : {
-                "members_year" : {
-                  "type" : "Select",
-                  "config" : {
-                    "options" : [ "2022", "2021", "2020", "2019", "2018", "2017" ],
-                    "default_value" : "2022",
-                    "label" : "Members Year",
-                    "placeholder" : "Select the year of members list"
-                  }
+  "Main": {
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "members_array": {
+            "type": "Slice",
+            "fieldset": "Members Array",
+            "description": "Members Array Slice",
+            "icon": "format_list_numbered",
+            "display": "list",
+            "non-repeat": {
+              "members_year": {
+                "type": "Select",
+                "config": {
+                  "options": ["2022", "2021", "2020", "2019", "2018", "2017"],
+                  "default_value": "2022",
+                  "label": "Members Year",
+                  "placeholder": "Select the year of members list"
+                }
+              }
+            },
+            "repeat": {
+              "member": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["members"],
+                  "tags": ["Member"],
+                  "label": "Member",
+                  "placeholder": "Select the member"
                 }
               },
-              "repeat" : {
-                "member" : {
-                  "type" : "Link",
-                  "config" : {
-                    "select" : "document",
-                    "customtypes" : [ "members" ],
-                    "tags" : [ "Member" ],
-                    "label" : "Member",
-                    "placeholder" : "Select the member"
-                  }
-                },
-                "member_position" : {
-                  "type" : "StructuredText",
-                  "config" : {
-                    "single" : "heading5",
-                    "label" : "Member Position",
-                    "placeholder" : "Enter the position of Member"
-                  }
-                },
-                "show_member" : {
-                  "type" : "Boolean",
-                  "config" : {
-                    "default_value" : true,
-                    "label" : "Show Member"
-                  }
+              "member_position": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading5",
+                  "label": "Member Position",
+                  "placeholder": "Enter the position of Member"
+                }
+              },
+              "show_member": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": true,
+                  "label": "Show Member"
                 }
               }
             }
@@ -56,3 +55,4 @@
       }
     }
   }
+}

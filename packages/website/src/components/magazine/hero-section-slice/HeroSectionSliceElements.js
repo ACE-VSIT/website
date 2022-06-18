@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter, Heading } from "../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter, Heading } from '../../../styles/sharedStyles'
 
 export const HeroSectionWrapper = styled(FlexCenter)`
   flex-direction: row;

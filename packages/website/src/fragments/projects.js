@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 
 export const ProjectPage = graphql`
   fragment ProjectPage on PrismicProjects {

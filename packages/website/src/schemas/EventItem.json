@@ -43,10 +43,7 @@
     "event_type": {
       "type": "Select",
       "config": {
-        "options": [
-          "Event",
-          "ACE Hour"
-        ],
+        "options": ["Event", "ACE Hour"],
         "default_value": "Event",
         "label": "Event type",
         "placeholder": "Enter Event type"

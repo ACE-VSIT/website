@@ -6,10 +6,10 @@ import {
   EventName,
   DateWrapper,
   EventDescription,
-} from "./EventCardElements"
-import AnimateIn from "../../animations/AnimateIn"
-import React from "react"
-import { CalendarOutlined } from "@ant-design/icons"
+} from './EventCardElements'
+import AnimateIn from '../../animations/AnimateIn'
+import React from 'react'
+import { CalendarOutlined } from '@ant-design/icons'
 
 export default function EventCard({ name, img, date, description, link }) {
   const Redirect = link => {

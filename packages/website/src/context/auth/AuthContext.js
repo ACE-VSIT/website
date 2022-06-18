@@ -1,5 +1,5 @@
-import React, { createContext, useReducer } from "react"
-import AuthReducer from "./AuthReducer"
+import React, { createContext, useReducer } from 'react'
+import AuthReducer from './AuthReducer'
 
 export const INITIAL_STATE = {
   user: null,

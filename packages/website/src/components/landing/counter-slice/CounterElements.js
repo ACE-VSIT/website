@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../../styles/sharedStyles"
-import PlusOutlined from "@ant-design/icons/PlusOutlined"
+import styled from 'styled-components'
+import { FlexCenter } from '../../../styles/sharedStyles'
+import PlusOutlined from '@ant-design/icons/PlusOutlined'
 
 export const CounterWrapper = styled(FlexCenter)`
   width: 100vw;

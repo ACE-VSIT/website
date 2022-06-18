@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Heading, FlexCenter } from "../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { Heading, FlexCenter } from '../../../styles/sharedStyles'
 
 export const EventsCardWrapper = styled.div`
   width: 21rem;

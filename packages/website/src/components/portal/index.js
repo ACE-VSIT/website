@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
-import Form from "./components/Form/Form"
-import { AuthContext } from "../../context/auth/AuthContext"
-import { FlexCenter } from "../../styles/sharedStyles"
-import LoginWithGoogle from "./components/Google/LoginWithGoogle"
-import Loading from "../animations/Loading"
+import React, { useContext, useEffect, useState } from 'react'
+import Form from './components/Form/Form'
+import { AuthContext } from '../../context/auth/AuthContext'
+import { FlexCenter } from '../../styles/sharedStyles'
+import LoginWithGoogle from './components/Google/LoginWithGoogle'
+import Loading from '../animations/Loading'
 
 export default function PortalForm() {
   const { user, loading } = useContext(AuthContext)
@@ -19,7 +19,7 @@ export default function PortalForm() {
 
   return (
     <>
-      <FlexCenter style={{ flexDirection: "column" }}>
+      <FlexCenter style={{ flexDirection: 'column' }}>
         {loading ? (
           <Loading />
         ) : (

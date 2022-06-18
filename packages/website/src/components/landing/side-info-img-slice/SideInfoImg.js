@@ -1,26 +1,26 @@
-import React from "react"
+import React from 'react'
 import {
   SliderInfoWrapper,
   SliderInfoTextWrapper,
   SliderInfoHeading,
   SliderInfoPara,
   SliderImageWrapper,
-} from "./SideInfoImgElements"
-import { GatsbyImage } from "gatsby-plugin-image"
-import AnimateIn from "../../animations/AnimateIn"
+} from './SideInfoImgElements'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import AnimateIn from '../../animations/AnimateIn'
 
 export default function SideInfoImg({ img, title, subtitle }) {
   const imgStyles = {
-    width: "100%",
-    height: "100%",
-    filter: "brightness(85%)",
+    width: '100%',
+    height: '100%',
+    filter: 'brightness(85%)',
   }
 
   return (
     <SliderInfoWrapper>
       {img && (
         <SliderImageWrapper>
-          <GatsbyImage image={img} alt={""} style={imgStyles} />
+          <GatsbyImage image={img} alt={''} style={imgStyles} />
         </SliderImageWrapper>
       )}
       <SliderInfoTextWrapper>

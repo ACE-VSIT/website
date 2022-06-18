@@ -66,12 +66,8 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": [
-                    "members"
-                  ],
-                  "tags": [
-                    "Member"
-                  ],
+                  "customtypes": ["members"],
+                  "tags": ["Member"],
                   "label": "Developed by",
                   "placeholder": "Enter the member"
                 }

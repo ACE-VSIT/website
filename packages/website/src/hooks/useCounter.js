@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect } from 'react'
 
 // Thanks to this https://stackoverflow.com/questions/53395147/use-react-hook-to-implement-a-self-increment-counter
 

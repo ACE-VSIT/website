@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter, Heading } from "../../../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter, Heading } from '../../../../../styles/sharedStyles'
 
 // Component CSS
 export const TimelinePoint = styled(FlexCenter)`

@@ -1,13 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Seo from "../components/SEO"
-import { Router } from "@reach/router"
-import Homepage from "./register/homepage"
-import Questions from "./register/question"
-import Route from "../components/routes/Routes"
-import Layout from "../components/Layout/index"
-import QuestionType from "../templates/QuestionsType"
-import PrivateRoute from "../components/private-routes/PrivateRoute"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Seo from '../components/SEO'
+import { Router } from '@reach/router'
+import Homepage from './register/homepage'
+import Questions from './register/question'
+import Route from '../components/routes/Routes'
+import Layout from '../components/Layout/index'
+import QuestionType from '../templates/QuestionsType'
+import PrivateRoute from '../components/private-routes/PrivateRoute'
 
 const Register = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body

@@ -1,6 +1,6 @@
-import React, { useRef } from "react"
-import { FlexCenter } from "../../../styles/sharedStyles"
-import styled from "styled-components"
+import React, { useRef } from 'react'
+import { FlexCenter } from '../../../styles/sharedStyles'
+import styled from 'styled-components'
 
 export default function ProjectFilter({ categories, setState, ...rest }) {
   const optionRef = useRef()
@@ -41,7 +41,7 @@ const SortWrapper = styled(FlexCenter)`
 const SortText = styled.p`
   font-size: 1rem;
   letter-spacing: 0.5px;
-  border: 1px solid ${props => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
   border-right: none;
   white-space: nowrap;
   padding: 0.05rem 0 0.05rem 0.5rem;
@@ -50,7 +50,7 @@ const SortSelect = styled.select`
   width: max-content;
   text-align: center;
   font-size: 1rem;
-  border: 1px solid ${props => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
   background: ${props => props.theme.bg};
   border-left: none;
   color: ${props => props.theme.font};

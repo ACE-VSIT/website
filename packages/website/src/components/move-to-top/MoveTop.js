@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react"
-import styled from "styled-components"
-import ArrowUpOutlined from "@ant-design/icons/ArrowUpOutlined"
-import { FlexCenter } from "../../styles/sharedStyles"
+import React, { useState, useEffect, useCallback } from 'react'
+import styled from 'styled-components'
+import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined'
+import { FlexCenter } from '../../styles/sharedStyles'
 
 export default function MoveTop() {
   const [showScroll, setShowScroll] = useState(false)
 
   const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const checkScrollTop = useCallback(() => {
@@ -19,7 +19,7 @@ export default function MoveTop() {
   }, [showScroll])
 
   useEffect(() => {
-    window.addEventListener("scroll", checkScrollTop)
+    window.addEventListener('scroll', checkScrollTop)
   }, [checkScrollTop])
 
   return (
@@ -36,7 +36,7 @@ export default function MoveTop() {
 const MoveTopWrapper = styled(FlexCenter)`
   width: 3rem;
   height: 3rem;
-  border: 1px solid ${props => props.theme.font + "75"};
+  border: 1px solid ${props => props.theme.font + '75'};
   background: ${props => props.theme.bg};
   cursor: pointer;
   position: fixed;
@@ -48,7 +48,7 @@ const MoveTopWrapper = styled(FlexCenter)`
   * {
     transition: 0.375s all ease-in-out;
     font-size: 1.75rem;
-    color: ${props => props.theme.font + "75"};
+    color: ${props => props.theme.font + '75'};
   }
 
   &:hover,

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 import {
   FooterBottom,
   FooterItemsWrapper,
@@ -7,9 +7,9 @@ import {
   FooterSubscribeSendBtn,
   FooterTitle,
   FooterWrapper,
-} from "./FooterElements"
-import { ThemeContext } from "../../../../context/ThemeContext"
-import { StaticImage } from "gatsby-plugin-image"
+} from './FooterElements'
+import { ThemeContext } from '../../../../context/ThemeContext'
+import { StaticImage } from 'gatsby-plugin-image'
 
 export default function Footer({ itemList, footerList }) {
   const { isDarkTheme } = useContext(ThemeContext)
@@ -19,17 +19,17 @@ export default function Footer({ itemList, footerList }) {
         <FooterItemsWrapper>
           <StaticImage
             placeholder="BLURRED"
-            src={"../../../../images/ACELogoBlack.svg"}
+            src={'../../../../images/ACELogoBlack.svg'}
             alt="ACE Logo"
             width={175}
-            imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
+            imgStyle={{ filter: isDarkTheme ? 'invert(1)' : '' }}
           />
           <FooterTitle subtitle={true}>
             To know more about the upcoming events and opportunities, connect
             with us via our newsletter
           </FooterTitle>
           <div>
-            <FooterSubscribe placeholder={"Your Email Address"} />
+            <FooterSubscribe placeholder={'Your Email Address'} />
             <FooterSubscribeSendBtn />
           </div>
         </FooterItemsWrapper>
@@ -38,7 +38,7 @@ export default function Footer({ itemList, footerList }) {
             return (
               <div key={key}>
                 <FooterLinks
-                  to={`/${e.navbar_link.url.replace(/(^\w+:|^)\/\//, "")}`}
+                  to={`/${e.navbar_link.url.replace(/(^\w+:|^)\/\//, '')}`}
                 >
                   {e.navbar_link_name.text}
                 </FooterLinks>
@@ -51,7 +51,7 @@ export default function Footer({ itemList, footerList }) {
             return (
               <div key={key}>
                 <FooterLinks
-                  to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, "")}`}
+                  to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, '')}`}
                 >
                   {e.footer_item_name.text}
                 </FooterLinks>

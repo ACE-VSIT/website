@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef } from 'react'
 import {
   NavbarBrandImg,
   NavbarList,
@@ -11,13 +11,13 @@ import {
   NavbarSocialHeading,
   NavbarSocialItem,
   NavbarSliderThemeIcon,
-} from "./NavbarElements"
-import RichText from "../../../rich-text/index"
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
-import { navigate } from "gatsby"
-import { useTrail, useSpring, animated } from "react-spring"
-import useOutsideAlerter from "../../../../hooks/useOutsideTouch"
-import { FlexCenter } from "../../../../styles/sharedStyles"
+} from './NavbarElements'
+import RichText from '../../../rich-text/index'
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
+import { navigate } from 'gatsby'
+import { useTrail, useSpring, animated } from 'react-spring'
+import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
+import { FlexCenter } from '../../../../styles/sharedStyles'
 
 export default function Navbar({
   img,
@@ -35,10 +35,10 @@ export default function Navbar({
   useOutsideAlerter(sliderRef, setToggleSlider)
 
   const closeBtnStyles = {
-    width: "5rem",
-    height: "5rem",
-    filter: "opacity(0.75)",
-    cursor: "pointer",
+    width: '5rem',
+    height: '5rem',
+    filter: 'opacity(0.75)',
+    cursor: 'pointer',
     zIndex: 1005,
   }
 
@@ -48,7 +48,7 @@ export default function Navbar({
   })
 
   const toggleStyles = {
-    display: toggleSlider ? "flex" : "none",
+    display: toggleSlider ? 'flex' : 'none',
   }
 
   const trailVertical = useTrail(itemList?.length ?? 1, {
@@ -78,20 +78,20 @@ export default function Navbar({
 
   const handleThemeChange = () => {
     setIsDarkTheme(!isDarkTheme)
-    localStorage.setItem("theme", `${!isDarkTheme ? "dark" : "light"}`)
+    localStorage.setItem('theme', `${!isDarkTheme ? 'dark' : 'light'}`)
   }
 
   return (
     <NavbarWrapper>
       {brandImg && (
-        <NavbarBrandImg onClick={() => navigate("/")}>
+        <NavbarBrandImg onClick={() => navigate('/')}>
           <GatsbyImage image={brandImg} alt="" />
         </NavbarBrandImg>
       )}
       <NavbarList>
         {itemList &&
           trailVertical.map(({ x, height, ...rest }, index) => {
-            const link = itemList[index].navbar_link.url.replace("https://", "")
+            const link = itemList[index].navbar_link.url.replace('https://', '')
             return (
               <animated.div
                 key={index}
@@ -112,22 +112,22 @@ export default function Navbar({
       ) : (
         <FlexCenter style={closeBtnStyles}>
           <StaticImage
-            src={"../../../../images/close.svg"}
+            src={'../../../../images/close.svg'}
             placeholder="BLURRED"
             alt="ACE Logo"
             width={20}
             height={20}
-            imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
+            imgStyle={{ filter: isDarkTheme ? 'invert(1)' : '' }}
           />
         </FlexCenter>
       )}
       <NavbarSlider ref={sliderRef} style={toggleStyles}>
         <NavbarSliderThemeIcon onClick={handleThemeChange}>
           <StaticImage
-            src={"../../../../images/themeIcon.svg"}
+            src={'../../../../images/themeIcon.svg'}
             placeholder="BLURRED"
             alt=""
-            imgStyle={{ filter: isDarkTheme ? "invert(1)" : "" }}
+            imgStyle={{ filter: isDarkTheme ? 'invert(1)' : '' }}
           />
         </NavbarSliderThemeIcon>
         <animated.div style={navbarSliderAnimation}>
@@ -139,7 +139,7 @@ export default function Navbar({
           trailMobile.map(({ x, height, ...rest }, index) => {
             const link = itemList[index].navbar_link.url.replace(
               /(^\w+:|^)\/\//,
-              ""
+              ''
             )
             return (
               <animated.div
@@ -157,7 +157,7 @@ export default function Navbar({
           })}
       </NavbarSlider>
       <NavbarVertical left>
-        <NavbarSocialHeading>{"Follow Us"}</NavbarSocialHeading>
+        <NavbarSocialHeading>{'Follow Us'}</NavbarSocialHeading>
         {socialList &&
           trailHorizontal.map(({ y, height, ...rest }, index) => {
             return (
@@ -170,8 +170,8 @@ export default function Navbar({
               >
                 <NavbarSocialItem
                   href={socialList[index].navbar_social_link.url}
-                  target={"_blank"}
-                  rel={"noreferrer"}
+                  target={'_blank'}
+                  rel={'noreferrer'}
                   style={{ height }}
                 >
                   {socialList[index].navbar_social_item_name.text}

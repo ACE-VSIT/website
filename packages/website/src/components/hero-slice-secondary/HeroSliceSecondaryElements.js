@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { Heading } from "../../styles/sharedStyles"
+import styled from 'styled-components'
+import { Heading } from '../../styles/sharedStyles'
 
 export const HeroSliceBgWrapper = styled.div`
   width: calc(100vw - 10rem - 2px);

@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import CloseOutlined from "@ant-design/icons/CloseOutlined"
+import styled, { css } from 'styled-components'
+import CloseOutlined from '@ant-design/icons/CloseOutlined'
 
 export const FlexCenter = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ export const Heading = styled.h1`
     topLine &&
     css`
       &::before {
-        content: "";
+        content: '';
         width: 2.25rem;
         display: block;
         background: ${props => props.theme.font};

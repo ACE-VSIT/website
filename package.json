@@ -7,11 +7,12 @@
     "nx": "^14.3.6"
   },
   "scripts": {
-    "start": "lerna run start",
+    "diff": "lerna diff",
     "test": "lerna run test",
     "build": "lerna run build",
+    "start": "lerna run start",
     "new-version": "lerna version --conventional-commits --yes",
-    "diff": "lerna diff"
+    "format": "lerna run format"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

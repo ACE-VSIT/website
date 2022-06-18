@@ -1,13 +1,13 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import {
   MemberCardWrapper,
   MemberImageWrapper,
   MemberName,
   MemberTitle,
-} from "./MemberCardElements"
-import MemberInfoCard from "./MemberInfoCard"
-import { GatsbyImage } from "gatsby-plugin-image"
-import AnimateIn from "../../animations/AnimateIn"
+} from './MemberCardElements'
+import MemberInfoCard from './MemberInfoCard'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import AnimateIn from '../../animations/AnimateIn'
 
 export default function MemberCard({
   name,
@@ -27,13 +27,13 @@ export default function MemberCard({
       <AnimateIn delay={150} duration={500}>
         <MemberCardWrapper onClick={() => setShowMemberInfoCard(true)}>
           <MemberImageWrapper>
-            <GatsbyImage image={img} alt={""} />
+            <GatsbyImage image={img} alt={''} />
           </MemberImageWrapper>
           {name && <MemberName>{name}</MemberName>}
           {title && parseInt(endingYear) === parseInt(selectedYear) ? (
             <MemberTitle>{title}</MemberTitle>
           ) : (
-            <MemberTitle>{!forceShowPosition ? "Member" : title}</MemberTitle>
+            <MemberTitle>{!forceShowPosition ? 'Member' : title}</MemberTitle>
           )}
         </MemberCardWrapper>
       </AnimateIn>
@@ -41,7 +41,7 @@ export default function MemberCard({
         <MemberInfoCard
           name={name}
           title={
-            parseInt(endingYear) === parseInt(selectedYear) ? title : "Member"
+            parseInt(endingYear) === parseInt(selectedYear) ? title : 'Member'
           }
           img={img}
           social={social}
@@ -51,7 +51,7 @@ export default function MemberCard({
           setShowMemberInfoCard={setShowMemberInfoCard}
         />
       ) : (
-        ""
+        ''
       )}
     </>
   )

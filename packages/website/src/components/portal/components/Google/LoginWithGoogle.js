@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
-import { loginWithGoogleAccount } from "../../../../firebase"
-import { AuthContext } from "../../../../context/auth/AuthContext"
-import { ButtonWrapper } from "./LoginElements"
-import GoogleOutlined from "@ant-design/icons/GoogleOutlined"
+import React, { useContext } from 'react'
+import { loginWithGoogleAccount } from '../../../../firebase'
+import { AuthContext } from '../../../../context/auth/AuthContext'
+import { ButtonWrapper } from './LoginElements'
+import GoogleOutlined from '@ant-design/icons/GoogleOutlined'
 
 export default function LoginWithGoogle() {
   let { dispatch } = useContext(AuthContext)
@@ -14,7 +14,7 @@ export default function LoginWithGoogle() {
 
   return (
     <div>
-      <ButtonWrapper onClick={handleGoogleLogin} md={"md"}>
+      <ButtonWrapper onClick={handleGoogleLogin} md={'md'}>
         <GoogleOutlined />
         <span>Login with Google</span>
       </ButtonWrapper>

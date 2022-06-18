@@ -65,7 +65,7 @@ export const getTableData = async (user: userContextType) => {
       )
       let users: IUser[] = []
       console.log(users)
-      userSnapshot.forEach((doc) => {
+      userSnapshot.forEach(doc => {
         users.push(doc.data() as IUser)
       })
       return users
@@ -91,7 +91,7 @@ export async function signInStatus(
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   setLoading(true)
-  onAuthStateChanged(auth, async (user) => {
+  onAuthStateChanged(auth, async user => {
     if (user) {
       const userRef = doc(db, 'users', `${user.email}`)
       const userInfo = await getDoc(userRef)

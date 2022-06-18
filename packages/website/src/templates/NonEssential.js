@@ -1,10 +1,10 @@
-import * as React from "react"
-import Layout from "../components/Layout/index"
-import Seo from "../components/SEO"
-import { graphql } from "gatsby"
-import RichText from "../components/rich-text"
-import { NonEssentialWrapper } from "../views/non-essential/NonEssentialElements"
-import { Heading } from "../styles/sharedStyles"
+import * as React from 'react'
+import Layout from '../components/Layout/index'
+import Seo from '../components/SEO'
+import { graphql } from 'gatsby'
+import RichText from '../components/rich-text'
+import { NonEssentialWrapper } from '../views/non-essential/NonEssentialElements'
+import { Heading } from '../styles/sharedStyles'
 
 const NonEssential = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body

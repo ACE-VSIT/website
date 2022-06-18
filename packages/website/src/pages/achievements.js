@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Seo from "../components/SEO"
-import Layout from "../components/Layout/index"
-import Table from "../components/achievements/achievements-table-slice/Table"
-import { getImage } from "gatsby-plugin-image"
-import HeroSliceSecondary from "../components/hero-slice-secondary/HeroSliceSecondary"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Seo from '../components/SEO'
+import Layout from '../components/Layout/index'
+import Table from '../components/achievements/achievements-table-slice/Table'
+import { getImage } from 'gatsby-plugin-image'
+import HeroSliceSecondary from '../components/hero-slice-secondary/HeroSliceSecondary'
 
 const AchievementsPage = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body

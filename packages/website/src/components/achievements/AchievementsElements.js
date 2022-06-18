@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 export const Header = styled.header`
   padding: 50px 15px;
   background-color: ${props => props.theme.bg};

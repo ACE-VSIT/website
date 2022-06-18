@@ -4,18 +4,18 @@ import React, {
   useEffect,
   useState,
   useContext,
-} from "react"
-import { AuthContext } from "./auth/AuthContext"
-import { signInStatus, auth } from "../firebase"
+} from 'react'
+import { AuthContext } from './auth/AuthContext'
+import { signInStatus, auth } from '../firebase'
 import {
   query,
   collection,
   where,
   getDocs,
   getFirestore,
-} from "firebase/firestore"
+} from 'firebase/firestore'
 
-export const FirebaseContext = createContext("")
+export const FirebaseContext = createContext('')
 
 export function FirebaseContextProvider({ children }) {
   const { dispatch, user } = useContext(AuthContext)
@@ -25,8 +25,8 @@ export function FirebaseContextProvider({ children }) {
   const getPersonalDetails = useCallback(async email => {
     const db = getFirestore()
     const checkIfUserExists = query(
-      collection(db, "users"),
-      where("user", "==", email)
+      collection(db, 'users'),
+      where('user', '==', email)
     )
     let personalInfo = []
     const queryData = await getDocs(checkIfUserExists)

@@ -1,4 +1,4 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
@@ -35,30 +35,30 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-prismic",
+      resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.PRISMIC_REPO_NAME,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         schemas: {
-          homepage: require("./src/schemas/Homepage.json"),
-          layout: require("./src/schemas/Layout.json"),
-          members: require("./src/schemas/Members.json"),
-          projects: require("./src/schemas/Projects.json"),
-          achievements: require("./src/schemas/Achievements.json"),
-          eventpage: require("./src/schemas/EventPage.json"),
-          eventitem: require("./src/schemas/EventItem.json"),
-          magazine: require("./src/schemas/Magazine.json"),
-          questions: require("./src/schemas/Questions.json"),
-          gallery: require("./src/schemas/Gallery.json"),
-          "members_array": require("./src/schemas/MembersArray.json"),
-          "non-essential": require("./src/schemas/NonEssential.json"),
+          homepage: require('./src/schemas/Homepage.json'),
+          layout: require('./src/schemas/Layout.json'),
+          members: require('./src/schemas/Members.json'),
+          projects: require('./src/schemas/Projects.json'),
+          achievements: require('./src/schemas/Achievements.json'),
+          eventpage: require('./src/schemas/EventPage.json'),
+          eventitem: require('./src/schemas/EventItem.json'),
+          magazine: require('./src/schemas/Magazine.json'),
+          questions: require('./src/schemas/Questions.json'),
+          gallery: require('./src/schemas/Gallery.json'),
+          members_array: require('./src/schemas/MembersArray.json'),
+          'non-essential': require('./src/schemas/NonEssential.json'),
         },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),
       },
     },
     {
-      resolve: "gatsby-plugin-firebase-v9.0",
+      resolve: 'gatsby-plugin-firebase-v9.0',
       options: {
         credentials: {
           apiKey: process.env.FIREBASE_API_KEY,

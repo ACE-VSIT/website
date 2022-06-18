@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react"
-import styled from "styled-components"
-import useOnScreen from "../../hooks/useOnScreen"
+import React, { useEffect, useRef } from 'react'
+import styled from 'styled-components'
+import useOnScreen from '../../hooks/useOnScreen'
 
 export default function AnimateIn({
   ref,
@@ -21,8 +21,8 @@ export default function AnimateIn({
     }
     !enableScroll &&
       document
-        .querySelector("#animateFixScrollIssue")
-        .addEventListener("wheel", preventScroll, { passive: false })
+        .querySelector('#animateFixScrollIssue')
+        .addEventListener('wheel', preventScroll, { passive: false })
   }, [enableScroll])
 
   return (

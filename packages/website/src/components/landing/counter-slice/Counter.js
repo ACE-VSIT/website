@@ -1,12 +1,12 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import {
   CounterValueWrapper,
   CounterValue,
   CounterValueSubtitle,
   CounterPlus,
-} from "./CounterElements"
-import useCounter from "../../../hooks/useCounter"
-import AnimateIn from "../../animations/AnimateIn"
+} from './CounterElements'
+import useCounter from '../../../hooks/useCounter'
+import AnimateIn from '../../animations/AnimateIn'
 
 const Counter = ({ e, startVal }) => {
   const [counter, setCounter] = useState(startVal ?? 0)
@@ -24,7 +24,7 @@ const Counter = ({ e, startVal }) => {
     <AnimateIn once={true} duration={375}>
       <CounterValueWrapper>
         <CounterValue>
-          {`${counter}${intSplitArr[1] ?? ""}`}
+          {`${counter}${intSplitArr[1] ?? ''}`}
           <CounterPlus />
         </CounterValue>
         <CounterValueSubtitle>{e.numbers_subtitile.text}</CounterValueSubtitle>

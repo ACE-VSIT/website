@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby'
 
 export const landingInfo = graphql`
   fragment landingInfo on PrismicHomepage {

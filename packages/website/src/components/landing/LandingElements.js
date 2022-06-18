@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter } from "../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter } from '../../styles/sharedStyles'
 
 export const FacultyWrapper = styled(FlexCenter)`
   flex-direction: column;

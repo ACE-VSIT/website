@@ -1,8 +1,8 @@
-import * as React from "react"
-import Layout from "../components/Layout/index"
-import Seo from "../components/SEO"
-import { graphql } from "gatsby"
-import MembersPage from "../components/members"
+import * as React from 'react'
+import Layout from '../components/Layout/index'
+import Seo from '../components/SEO'
+import { graphql } from 'gatsby'
+import MembersPage from '../components/members'
 
 const members = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body

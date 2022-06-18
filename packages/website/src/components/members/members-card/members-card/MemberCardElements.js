@@ -1,12 +1,12 @@
-import styled, { css } from "styled-components"
-import { FlexCenter } from "../../../styles/sharedStyles"
-import LinkedinOutlined from "@ant-design/icons/LinkedinOutlined"
-import GithubOutlined from "@ant-design/icons/GithubOutlined"
-import TwitterOutlined from "@ant-design/icons/TwitterOutlined"
-import InstagramOutlined from "@ant-design/icons/InstagramOutlined"
-import FacebookOutlined from "@ant-design/icons/FacebookOutlined"
-import BehanceOutlined from "@ant-design/icons/BehanceOutlined"
-import DribbbleOutlined from "@ant-design/icons/DribbbleOutlined"
+import styled, { css } from 'styled-components'
+import { FlexCenter } from '../../../styles/sharedStyles'
+import LinkedinOutlined from '@ant-design/icons/LinkedinOutlined'
+import GithubOutlined from '@ant-design/icons/GithubOutlined'
+import TwitterOutlined from '@ant-design/icons/TwitterOutlined'
+import InstagramOutlined from '@ant-design/icons/InstagramOutlined'
+import FacebookOutlined from '@ant-design/icons/FacebookOutlined'
+import BehanceOutlined from '@ant-design/icons/BehanceOutlined'
+import DribbbleOutlined from '@ant-design/icons/DribbbleOutlined'
 
 export const MemberCardWrapper = styled(FlexCenter)`
   flex-direction: column;
@@ -47,7 +47,7 @@ export const MemberCardWrapper = styled(FlexCenter)`
       flex-direction: row;
       padding: 0.5rem;
       cursor: default;
-      border: 1px solid ${props => props.theme.font + "45"};
+      border: 1px solid ${props => props.theme.font + '45'};
       z-index: 1005;
 
       ${MemberImageWrapper} {

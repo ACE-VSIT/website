@@ -1,5 +1,5 @@
-import React from "react"
-import { ButtonComponent } from "./ButtonElements"
+import React from 'react'
+import { ButtonComponent } from './ButtonElements'
 
 export default function Button({
   to,

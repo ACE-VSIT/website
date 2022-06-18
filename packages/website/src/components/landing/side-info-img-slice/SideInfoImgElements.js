@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { FlexCenter, Heading } from "../../../styles/sharedStyles"
+import styled from 'styled-components'
+import { FlexCenter, Heading } from '../../../styles/sharedStyles'
 
 export const SliderInfoWrapper = styled(FlexCenter)`
   min-height: 100vh;
@@ -38,7 +38,7 @@ export const SliderInfoHeading = styled(Heading)`
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     width: 3rem;
     display: block;
     background: ${props => props.theme.font};
