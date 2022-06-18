@@ -11,8 +11,10 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "start": "lerna run start",
-    "new-version": "lerna version --conventional-commits --yes",
-    "format": "lerna run format"
+    "start:website": "lerna run start --scope=ace-website",
+    "start:admintable": "lerna run start --scope=firebase-table",
+    "format": "lerna run format",
+    "new-version": "lerna version --conventional-commits --yes"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
