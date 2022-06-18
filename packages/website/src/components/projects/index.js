@@ -16,7 +16,6 @@ export default function ProjectPage({ projectList }) {
         setList(projectList.filter(e => e?.data?.project_type === active))
       }
     }
-    console.log(active)
   }, [active, projectList])
 
   const cardWrapperStyles = {

@@ -9,7 +9,7 @@ import axios from "axios"
 export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [submitData, setSubmitData] = useState([])
-  const [openPicker, data,] = useDrivePicker()
+  const [openPicker, data] = useDrivePicker()
   const wrapper = useRef()
 
   const getHeight = useCallback(() => {
@@ -63,10 +63,6 @@ export default function Timeline({ timeLine, name }) {
       })
     }
   }, [data, setSubmitData])
-
-  useEffect(() => {
-    console.log(submitData)
-  }, [submitData])
 
   useEffect(() => {
     setTimeout(getHeight, 500)

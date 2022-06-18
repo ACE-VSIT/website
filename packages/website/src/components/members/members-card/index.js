@@ -42,7 +42,6 @@ export default function MembersPage({ data }) {
           e.data.member_position.text.includes("Head") &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
-      console.log(heads)
       const coreMembers = filterYear.filter(
         e =>
           e.data.member_position.text.includes("Core") &&

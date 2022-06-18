@@ -21,12 +21,13 @@ const QuestionType = ({ data }) => {
       setIs404(true)
     }
   }, [id, data])
-  console.log(filtered)
 
   return (
     <>
       {!is404 ? (
-        <>{filtered?.length > 0 && <Timeline timeLine={filtered} name={name} />}</>
+        <>
+          {filtered?.length > 0 && <Timeline timeLine={filtered} name={name} />}
+        </>
       ) : (
         <NotFound />
       )}

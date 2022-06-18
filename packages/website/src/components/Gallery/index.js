@@ -5,7 +5,6 @@ import AnimateIn from "../animations/AnimateIn"
 import { getImage } from "gatsby-plugin-image"
 
 export default function GalleryPage({ title, subTitle, imgArr }) {
-  console.log(imgArr)
   return (
     <>
       <Heading>{title}</Heading>

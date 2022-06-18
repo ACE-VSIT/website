@@ -23,7 +23,6 @@ export function FirebaseContextProvider({ children }) {
   const [isVerified, setIsVerified] = useState(false)
 
   const getPersonalDetails = useCallback(async email => {
-    console.log("fired")
     const db = getFirestore()
     const checkIfUserExists = query(
       collection(db, "users"),
