@@ -1,0 +1,146 @@
+{
+  "Main": {
+    "main_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Main Image"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "title",
+        "placeholder": "Enter the title for Current Magazine"
+      }
+    },
+    "date": {
+      "type": "Date",
+      "config": {
+        "label": "date",
+        "placeholder": "Enter the release date for current magazine"
+      }
+    },
+    "link": {
+      "type": "Link",
+      "config": {
+        "label": "Link",
+        "placeholder": "Enter the Link for Magazine",
+        "select": null
+      }
+    },
+    "info": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "label": "Info",
+        "placeholder": "Enter the info for current magazine"
+      }
+    },
+    "body1": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": null,
+        "choices": {
+          "magazine__card": {
+            "type": "Slice",
+            "fieldset": "Magazine  Card",
+            "description": "Magazine Info Card ",
+            "icon": "add_to_photos",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "magazine_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Magazine Image"
+                }
+              },
+              "magazine_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label": "Magazine Title",
+                  "placeholder": "Enter the title for the Magazine"
+                }
+              },
+              "magazine_info": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "label": "Magazine Info",
+                  "placeholder": "Enter brief info about the Magazine"
+                }
+              },
+              "release_date": {
+                "type": "Date",
+                "config": {
+                  "label": "Release Date",
+                  "placeholder": "Enter the release date of Magazine"
+                }
+              },
+              "magazine_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Magazine Link",
+                  "placeholder": "Enter the link for the Magazine"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Seo": {
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "website_meta_info": {
+            "type": "Slice",
+            "fieldset": "Website Meta Info",
+            "description": "Website Meta info slice for SEO",
+            "icon": "airplay",
+            "non-repeat": {
+              "meta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Meta Title",
+                  "placeholder": "Meta Title for SEO"
+                }
+              },
+              "meta_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Description",
+                  "placeholder": "Meta Description for SEO"
+                }
+              },
+              "meta_keywords": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Keywords",
+                  "placeholder": "Meta Keywords for SEO"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}
