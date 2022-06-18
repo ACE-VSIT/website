@@ -33,7 +33,6 @@ export default function HeroSection({ data }) {
       img,
     })
   }, [data])
-  console.log(data?.primary?.hero_button)
 
   return (
     <>

@@ -21,7 +21,6 @@ const QuestionType = ({ data }) => {
       setIs404(true)
     }
   }, [id, data])
-  console.log(filtered)
 
   return (
     <>

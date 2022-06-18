@@ -51,7 +51,7 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
     flag.push(doc.id)
   })
   if (flag.includes(email)) {
-    console.log("exists")
+    // console.log("exists")
   } else {
     await setDoc(doc(db, "users", email), {
       user: email,
@@ -62,7 +62,6 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
       photoURL,
       emailVerified,
     })
-    console.log("saved")
   }
 }
 
@@ -83,7 +82,6 @@ export const savePersonalDetails = async (email, personalDetails) => {
       completed: true,
     },
   })
-  console.log("saved personal details")
 }
 
 export const createUserAccount = async (
@@ -184,7 +182,6 @@ export const checkEmailVerfiy = async setIsVerified => {
 export const signOutUser = async dispatch => {
   try {
     signOut(auth).then(() => {
-      console.log("Sign Out success")
       dispatch({ type: "LOGOUT_SUCCESS" })
     })
   } catch (err) {

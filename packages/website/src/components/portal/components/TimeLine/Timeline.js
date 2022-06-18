@@ -65,10 +65,6 @@ export default function Timeline({ timeLine, name }) {
   }, [data, setSubmitData])
 
   useEffect(() => {
-    console.log(submitData)
-  }, [submitData])
-
-  useEffect(() => {
     setTimeout(getHeight, 500)
   }, [getHeight])
 

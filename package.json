@@ -9,6 +9,7 @@
   "scripts": {
     "start": "lerna run start",
     "test": "lerna run test",
+    "build": "lerna run build",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff"
   },
