@@ -6,7 +6,10 @@ input:
   GITHUB_TOKEN:
     description: 'Github Token'
     required: true
+  TENOR_TOKEN:
+    description: 'Tenor Token'
+    required: true
 
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'dist/vercel.js'
