@@ -7,15 +7,17 @@
     "nx": "14.3.6"
   },
   "scripts": {
+    "build": "nx run-many --parallel --target=build --projects=@ace/admin-table,@ace/website",
+    "clean": "nx run-many --parallel --target=clean --projects=@ace/admin-table,@ace/website",
     "diff": "lerna diff",
-    "test": "lerna run test",
-    "nx:graph": "nx dep-graph",
     "format": "nx format --all",
-    "build": "nx run-many --target=build --all",
-    "start": "nx run-many --target=start --all",
-    "start:website": "nx start @ace/website",
+    "new-version": "lerna version --conventional-commits --yes",
+    "nx:graph": "nx dep-graph",
+    "serve": "nx run-many --parallel --target=serve --projects=@ace/admin-table,@ace/website",
+    "start": "nx run-many --parallel --target=start --projects=@ace/admin-table,@ace/website",
     "start:admintable": "nx start @ace/admin-table",
-    "new-version": "lerna version --conventional-commits --yes"
+    "start:website": "nx start @ace/website",
+    "test": "lerna run test"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

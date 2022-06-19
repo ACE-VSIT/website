@@ -8,6 +8,10 @@
     "@ace/website": {
       "root": "packages/website",
       "type": "library"
+    },
+    "@ace/common": {
+      "root": "packages/common",
+      "type": "library"
     }
   }
 }

@@ -6,8 +6,10 @@ import {
   HeroTitle,
   HeroInfo,
 } from './HeroElements'
-import Button from '../../button/Button'
+// import Button from '../../button/Button'
 import AnimateIn from '../../animations/AnimateIn'
+import { Button } from '@ace/common'
+import { navigate } from 'gatsby'
 
 export default function HeroSection({ data }) {
   const [hero, setHero] = useState(null)
@@ -60,12 +62,12 @@ export default function HeroSection({ data }) {
             </AnimateIn>
             {hero?.heroBtn && (
               <Button
-                to={hero?.heroBtnLink}
+                onClick={() => navigate(hero?.heroBtnLink)}
                 value={hero?.heroBtnTitle}
                 target={hero?.heroBtnTarget ?? '_self'}
                 style={{ marginRight: 'auto' }}
                 md={
-                  'md'
+                  true
                 } /* Passing random string to avoid `Received `true` for a non-boolean attribute `md`.` */
               />
             )}
