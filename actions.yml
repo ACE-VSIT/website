@@ -1,0 +1,12 @@
+name: 'Actions.yml'
+description: 'Actions.yml testing github actions'
+author: 'Naman Parashar'
+
+input:
+  GITHUB_TOKEN:
+    description: 'Github Token'
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/vercel.js'
