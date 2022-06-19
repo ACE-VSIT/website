@@ -1,15 +1,15 @@
-name: 'Actions.yml'
-description: 'Actions.yml testing github actions'
-author: 'Naman Parashar'
+name: 'Thank You Action'
+description: 'Say "Thank You" to new pull requests'
+author: '[Your Name]'
 
-input:
+inputs:
   GITHUB_TOKEN:
-    description: 'Github Token'
+    description: 'GitHub token'
     required: true
   TENOR_TOKEN:
-    description: 'Tenor Token'
+    description: 'Tenor API token'
     required: true
 
 runs:
   using: 'node12'
-  main: 'dist/vercel.js'
+  main: 'dist/index.js'
