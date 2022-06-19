@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
-  ButtonComponent,
+  // ButtonComponent,
   LoginHeading,
   LoginWrapper,
   Wrapper,
 } from '../components/Index/IndexElements'
 import { useAuth } from '../context/AuthContext'
+import { Button } from '@ace/common'
 import { loginWithGoogleAccount } from '../utils/firebase'
 
 const Index: React.FC = () => {
@@ -23,12 +24,11 @@ const Index: React.FC = () => {
     <Wrapper>
       <LoginWrapper>
         <LoginHeading>Admin Panel</LoginHeading>
-        <ButtonComponent
+        <Button
           md={true}
+          value={!loading ? 'Sign In' : 'Loading...'}
           onClick={() => loginWithGoogleAccount(login)}
-        >
-          {!loading ? 'Sign In' : 'Loading...'}
-        </ButtonComponent>
+        />
       </LoginWrapper>
     </Wrapper>
   )
