@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "projects": {
+    "@ace/admin-table": {
+      "root": "packages/admintable",
+      "type": "library"
+    },
+    "@ace/website": {
+      "root": "packages/website",
+      "type": "library"
+    }
+  }
+}

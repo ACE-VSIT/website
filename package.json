@@ -4,16 +4,17 @@
   "version": "1.0.0",
   "devDependencies": {
     "lerna": "^5.1.4",
-    "nx": "^14.3.6"
+    "nx": "14.3.6"
   },
   "scripts": {
     "diff": "lerna diff",
     "test": "lerna run test",
-    "build": "lerna run build",
-    "start": "lerna run start",
-    "start:website": "lerna run start --scope=@ace/ace-website",
-    "start:admintable": "lerna run start --scope=@ace/admin-table",
-    "format": "lerna run format",
+    "nx:graph": "nx dep-graph",
+    "format": "nx format --all",
+    "build": "nx run-many --target=build --all",
+    "start": "nx run-many --target=start --all",
+    "start:website": "nx start @ace/website",
+    "start:admintable": "nx start @ace/admin-table",
     "new-version": "lerna version --conventional-commits --yes"
   },
   "dependencies": {

@@ -1,18 +1,35 @@
 {
+  "npmScope": "root",
   "implicitDependencies": {
-    "package.json": "*"
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "nx.json": "*"
   },
+  "extends": "nx/presets/npm.json",
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "public"]
+        "cacheableOperations": [
+          "build",
+          "format",
+          "test",
+          "eject",
+          "develop",
+          "clean"
+        ]
       }
     }
   },
-  "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": false
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
     }
+  },
+  "affected": {
+    "defaultBase": "main"
   }
 }
