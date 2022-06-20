@@ -36,8 +36,10 @@ export const auth = getAuth()
 const db = getFirestore()
 
 export const loginWithGoogleAccount = async (
-  login: (user: userContextType) => void
+  login: (user: userContextType) => void,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+  setLoading(true)
   try {
     const res = await signInWithPopup(auth, provider)
     const userRef = doc(db, 'users', `${res.user.email}`)
@@ -49,7 +51,9 @@ export const loginWithGoogleAccount = async (
         name: userInfo.data()?.name,
         uid: userInfo.data()?.uid,
       })
+      setLoading(false)
     } else {
+      setLoading(false)
       throw new Error('Only admins can access this page')
     }
   } catch (err) {
@@ -103,11 +107,11 @@ export async function signInStatus(
           uid: userInfo.data()?.uid,
         })
       }
-      setLoading(true)
+      setLoading(false)
     } else {
       // window.location.replace("/");
       // console.log("Signed Out");
-      setLoading(true)
+      setLoading(false)
     }
   })
 }

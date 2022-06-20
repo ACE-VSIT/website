@@ -12,6 +12,7 @@ export type authContextType = {
   login: (user: userContextType) => void
   logout: () => void
   loading: boolean
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export type userContextType = {
@@ -28,9 +29,9 @@ const authContextDefaultValues: authContextType = {
     name: null,
     uid: null,
   },
-  login: () => {},
-  logout: () => {},
-  loading: true,
+  login: () => { },
+  logout: () => { },
+  loading: false,
 }
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues)
@@ -70,6 +71,7 @@ export function AuthProvider({ children }: Props) {
     login,
     logout,
     loading,
+    setLoading
   }
 
   useEffect(() => {

@@ -12,7 +12,7 @@ import { loginWithGoogleAccount } from '../utils/firebase'
 
 const Index: React.FC = () => {
   const navigate = useNavigate()
-  const { login, user, loading } = useAuth()
+  const { login, user, loading, setLoading } = useAuth()
 
   useEffect(() => {
     if (user.admin && user.email && user.name && user.uid) {
@@ -27,7 +27,7 @@ const Index: React.FC = () => {
         <Button
           md={true}
           value={!loading ? 'Sign In' : 'Loading...'}
-          onClick={() => loginWithGoogleAccount(login)}
+          onClick={() => loginWithGoogleAccount(login, setLoading!)}
         />
       </LoginWrapper>
     </Wrapper>
