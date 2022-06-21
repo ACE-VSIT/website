@@ -7,6 +7,8 @@ import { cols } from './Config'
 import { useSortBy, useTable } from 'react-table'
 import { IUser } from '../utils/interfaces'
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
+import { Navbar } from '@ace/common'
+import { NavbarConfig } from '../configs/Navbar.config'
 
 const Dashboard: React.FC = () => {
   const [data, setData] = useState<IUser[] | []>([])
@@ -27,50 +29,66 @@ const Dashboard: React.FC = () => {
   }, [getData])
 
   return (
-    <Wrapper>
-      <table  {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th
-                  {...column.getHeaderProps()} onClick={() => {
-                    (column as any).toggleSortBy()
-                  }} >{column.render('Header')}
-                  <span>
-                    {(column as any).isSorted ? ((column as any).isSortedDesc ? <CaretDownOutlined /> : <CaretUpOutlined />) : null}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row)
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  if (cell.column.id === 'photoURL') {
-                    return (
-                      <td>
-                        <img
-                          src={cell.value}
-                          alt={cell.column.id}
-                          width={75}
-                          height={75}
-                        />
-                      </td>
-                    )
-                  }
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                })}
+    <>
+      <div style={{ paddingBottom: '5rem' }}>
+        <Navbar img="/assets/imgs/AceLogo.svg" itemList={NavbarConfig} />
+      </div>
+      <Wrapper>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <th
+                    {...column.getHeaderProps()}
+                    onClick={() => {
+                      ;(column as any).toggleSortBy()
+                    }}
+                  >
+                    {column.render('Header')}
+                    <span>
+                      {(column as any).isSorted ? (
+                        (column as any).isSortedDesc ? (
+                          <CaretDownOutlined />
+                        ) : (
+                          <CaretUpOutlined />
+                        )
+                      ) : null}
+                    </span>
+                  </th>
+                ))}
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </Wrapper>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row, i) => {
+              prepareRow(row)
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map(cell => {
+                    if (cell.column.id === 'photoURL') {
+                      return (
+                        <td>
+                          <img
+                            src={cell.value}
+                            alt={cell.column.id}
+                            width={75}
+                            height={75}
+                          />
+                        </td>
+                      )
+                    }
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </Wrapper>
+    </>
   )
 }
 
