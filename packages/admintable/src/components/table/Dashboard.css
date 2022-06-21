@@ -5,9 +5,9 @@ table {
 table,
 th,
 td {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   border: 1px solid #32486150;
   border-collapse: collapse;
   padding: 1.25rem 1rem;
