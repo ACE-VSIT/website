@@ -6,6 +6,8 @@ import { useAuth } from '../../context/AuthContext'
 import { getTableData } from '../../utils/firebase'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
+import InputText from './components/inputs/InputText'
+import { Table, Tbody, Thead } from './components/Elements'
 
 const TableContainer = () => {
   const [data, setData] = useState<IUser[] | []>([])
@@ -25,8 +27,8 @@ const TableContainer = () => {
     getData()
   }, [getData])
   return (
-    <table {...getTableProps()}>
-      <thead>
+    <Table {...getTableProps()}>
+      <Thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
@@ -50,8 +52,8 @@ const TableContainer = () => {
             ))}
           </tr>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
+      </Thead>
+      <Tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row)
           return (
@@ -69,13 +71,13 @@ const TableContainer = () => {
                     </td>
                   )
                 }
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                return <InputText customVal={cell.value}></InputText>
               })}
             </tr>
           )
         })}
-      </tbody>
-    </table>
+      </Tbody>
+    </Table>
   )
 }
 
