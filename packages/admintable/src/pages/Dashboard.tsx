@@ -6,6 +6,7 @@ import './Dashboard.css'
 import { cols } from './Config'
 import { useSortBy, useTable } from 'react-table'
 import { IUser } from '../utils/interfaces'
+import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
 
 const Dashboard: React.FC = () => {
   const [data, setData] = useState<IUser[] | []>([])
@@ -27,12 +28,19 @@ const Dashboard: React.FC = () => {
 
   return (
     <Wrapper>
-      <table {...getTableProps()}>
+      <table  {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <th
+                  {...column.getHeaderProps()} onClick={() => {
+                    (column as any).toggleSortBy()
+                  }} >{column.render('Header')}
+                  <span>
+                    {(column as any).isSorted ? ((column as any).isSortedDesc ? <CaretDownOutlined /> : <CaretUpOutlined />) : null}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}
