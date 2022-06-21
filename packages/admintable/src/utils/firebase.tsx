@@ -68,7 +68,6 @@ export const getTableData = async (user: userContextType) => {
         collection(db, 'users')
       )
       let users: IUser[] = []
-      console.log(users)
       userSnapshot.forEach(doc => {
         users.push(doc.data() as IUser)
       })

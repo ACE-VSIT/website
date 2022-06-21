@@ -8,7 +8,7 @@ td {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  border: 1px solid;
+  border: 1px solid #32486150;
   border-collapse: collapse;
   padding: 1.25rem 1rem;
 }
