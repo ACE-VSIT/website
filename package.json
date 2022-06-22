@@ -9,6 +9,7 @@
   "scripts": {
     "build:website": "nx build @ace/website",
     "build:admintable": "nx build @ace/admin-table",
+    "build:common": "nx build @ace/common",
     "build": "nx run-many --parallel --target=build --projects=@ace/admin-table,@ace/website",
     "clean": "nx run-many --parallel --target=clean --projects=@ace/admin-table,@ace/website",
     "diff": "lerna diff",
@@ -19,6 +20,7 @@
     "start": "nx run-many --parallel --target=start --projects=@ace/admin-table,@ace/website",
     "start:admintable": "nx start @ace/admin-table",
     "start:website": "nx start @ace/website",
+    "start:common": "nx start @ace/common",
     "test": "lerna run test"
   },
   "dependencies": {
