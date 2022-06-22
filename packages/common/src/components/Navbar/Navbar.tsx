@@ -5,6 +5,7 @@ import {
   NavbarListItem,
   NavbarSlider,
   NavbarSliderIcon,
+  NavbarUser,
   NavbarWrapper,
 } from './NavbarElements'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +13,7 @@ import { FlexCenter } from '../shared/sharedStyles'
 import { INavbar } from '../../interfaces/INavbar'
 import useIsMobile from '../../hooks/useIsMobile'
 
-const Navbar: React.FC<INavbar> = ({ img, itemList }) => {
+const Navbar: React.FC<INavbar> = ({ img, itemList, userImg }) => {
   const [toggleSlider, setToggleSlider] = useState(false)
   const sliderRef = useRef()
   const isMobile = useIsMobile()
@@ -49,6 +50,7 @@ const Navbar: React.FC<INavbar> = ({ img, itemList }) => {
             )
           })}
       </NavbarList>
+      {userImg && <NavbarUser src={userImg} alt={userImg} />}
       {isMobile && (
         <>
           {!toggleSlider ? (

@@ -241,3 +241,13 @@ export const NavbarSliderThemeIcon = styled(FlexCenter)`
     border: 1px solid ${props => props.theme.font + '50'};
   }
 `
+export const NavbarUser = styled.img`
+  height: 3rem;
+  width: 3.25rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 1rem;
+  outline-offset: 1px;
+  outline: 2px solid ${props => props.theme.font + 75};
+`

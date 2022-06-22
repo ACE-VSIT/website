@@ -1,5 +1,6 @@
 export interface INavbar {
   img: string
+  userImg: string
   itemList: IItemList[]
 }
 
