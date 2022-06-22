@@ -1,5 +1,5 @@
 import React from 'react'
-import { IProfileList, Navbar } from '@ace/common'
+import Navbar from 'remote/Navbar'
 import TableContainer from '../components/table'
 import { NavbarConfig } from '../configs/Navbar.config'
 import { Wrapper } from '../components/Index/IndexElements'
@@ -9,7 +9,7 @@ import { signOutUser } from '../utils/firebase'
 const Dashboard: React.FC = () => {
   const { user, logout } = useAuth()
 
-  const NavbarUserProfileConfig: IProfileList[] = [
+  const NavbarUserProfileConfig: any[] = [
     {
       name: 'Sign Out',
       onClick: () => signOutUser(logout),

@@ -9,16 +9,18 @@
   "scripts": {
     "build:website": "nx build @ace/website",
     "build:admintable": "nx build @ace/admin-table",
-    "build": "nx run-many --parallel --target=build --projects=@ace/admin-table,@ace/website",
-    "clean": "nx run-many --parallel --target=clean --projects=@ace/admin-table,@ace/website",
+    "build:common": "nx build @ace/common",
+    "build": "nx run-many --parallel --target=build --all",
+    "clean": "nx run-many --parallel --target=clean --all",
     "diff": "lerna diff",
     "format": "nx format --all",
     "new-version": "lerna version --conventional-commits --yes",
     "nx:graph": "nx dep-graph",
-    "serve": "nx run-many --parallel --target=serve --projects=@ace/admin-table,@ace/website",
-    "start": "nx run-many --parallel --target=start --projects=@ace/admin-table,@ace/website",
+    "serve": "nx run-many --parallel --target=serve --all",
+    "start": "nx run-many --parallel --target=start --all",
     "start:admintable": "nx start @ace/admin-table",
     "start:website": "nx start @ace/website",
+    "start:common": "nx start @ace/common",
     "test": "lerna run test"
   },
   "dependencies": {
