@@ -2,7 +2,7 @@
   "name": "@ace/common",
   "version": "1.0.1",
   "private": true,
-  "main": "./src/index.tsx",
+  "main": "./src/exports.tsx",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
