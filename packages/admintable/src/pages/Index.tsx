@@ -7,7 +7,7 @@ import {
   Wrapper,
 } from '../components/Index/IndexElements'
 import { useAuth } from '../context/AuthContext'
-import { Button } from '@ace/common'
+import Button from 'remote/Button'
 import { loginWithGoogleAccount } from '../utils/firebase'
 
 const Index: React.FC = () => {

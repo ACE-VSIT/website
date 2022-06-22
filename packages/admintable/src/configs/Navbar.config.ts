@@ -1,4 +1,4 @@
-import { IItemList } from '@ace/common'
+import { IItemList } from '@ace/common/src/interfaces/INavbar'
 
 export const NavbarConfig: IItemList[] = [
   {
