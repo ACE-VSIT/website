@@ -34,9 +34,7 @@ const TableContainer = () => {
             {headerGroup.headers.map(column => (
               <th
                 {...column.getHeaderProps()}
-                onClick={() => {
-                  ;(column as any).toggleSortBy()
-                }}
+                onClick={() => (column as any).toggleSortBy()}
               >
                 {column.render('Header')}
                 <span>

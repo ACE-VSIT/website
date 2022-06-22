@@ -12,9 +12,11 @@ import { useNavigate } from 'react-router-dom'
 import { FlexCenter } from '../shared/sharedStyles'
 import { INavbar } from '../../interfaces/INavbar'
 import useIsMobile from '../../hooks/useIsMobile'
+import NavbarUserProfileCard from './NavbarUserProfileCard'
 
-const Navbar: React.FC<INavbar> = ({ img, itemList, userImg }) => {
+const Navbar: React.FC<INavbar> = ({ img, itemList, userImg, profileList }) => {
   const [toggleSlider, setToggleSlider] = useState(false)
+  const [showUserProfileCard, setShowUserProfileCard] = useState(false)
   const sliderRef = useRef()
   const isMobile = useIsMobile()
   const navigate = useNavigate()
@@ -50,7 +52,19 @@ const Navbar: React.FC<INavbar> = ({ img, itemList, userImg }) => {
             )
           })}
       </NavbarList>
-      {userImg && <NavbarUser src={userImg} alt={userImg} />}
+      {userImg && (
+        <NavbarUser
+          src={userImg}
+          alt={userImg}
+          onClick={() => setShowUserProfileCard(!showUserProfileCard)}
+        />
+      )}
+      {showUserProfileCard && profileList?.length !== 0 && (
+        <NavbarUserProfileCard
+          profileList={profileList!}
+          setState={setShowUserProfileCard}
+        />
+      )}
       {isMobile && (
         <>
           {!toggleSlider ? (

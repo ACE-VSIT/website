@@ -100,7 +100,6 @@ export async function signInStatus(
       const userRef = doc(db, 'users', `${user.email}`)
       const userInfo = await getDoc(userRef)
       if (userInfo.data()?.admin) {
-        console.log(userInfo.data())
         login({
           email: userInfo.data()?.user,
           admin: userInfo.data()?.admin,

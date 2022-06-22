@@ -250,4 +250,27 @@ export const NavbarUser = styled.img`
   margin-right: 1rem;
   outline-offset: 1px;
   outline: 2px solid ${props => props.theme.font + 75};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+export const NavbarUserProfileCardWrapper = styled(FlexCenter)`
+  top: 5rem;
+  right: 1rem;
+  min-width: 5rem;
+  max-width: 12rem;
+  position: absolute;
+  align-items: center;
+  height: max-content;
+  padding: 1.25rem 1rem;
+  flex-direction: column;
+  justify-content: center;
+  background-color: ${props => props.theme.bg};
+  border: 1px solid ${props => props.theme.font + 75};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `

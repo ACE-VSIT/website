@@ -61,6 +61,7 @@ export function AuthProvider({ children }: Props) {
   }
 
   const logout = () => {
+    console.log('logout')
     setUser({
       email: null,
       admin: null,
