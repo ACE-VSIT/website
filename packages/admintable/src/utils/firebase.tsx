@@ -50,6 +50,7 @@ export const loginWithGoogleAccount = async (
         admin: userInfo.data()?.admin,
         name: userInfo.data()?.name,
         uid: userInfo.data()?.uid,
+        photoUrl: userInfo.data()?.photoURL,
       })
       setLoading(false)
     } else {
@@ -99,11 +100,13 @@ export async function signInStatus(
       const userRef = doc(db, 'users', `${user.email}`)
       const userInfo = await getDoc(userRef)
       if (userInfo.data()?.admin) {
+        console.log(userInfo.data())
         login({
           email: userInfo.data()?.user,
           admin: userInfo.data()?.admin,
           name: userInfo.data()?.name,
           uid: userInfo.data()?.uid,
+          photoUrl: userInfo.data()?.photoURL,
         })
       }
       setLoading(false)

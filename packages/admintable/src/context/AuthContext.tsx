@@ -20,6 +20,7 @@ export type userContextType = {
   admin: string | null
   name: string | null
   uid: string | null
+  photoUrl: string | null
 }
 
 const authContextDefaultValues: authContextType = {
@@ -28,9 +29,10 @@ const authContextDefaultValues: authContextType = {
     admin: null,
     name: null,
     uid: null,
+    photoUrl: null,
   },
-  login: () => { },
-  logout: () => { },
+  login: () => {},
+  logout: () => {},
   loading: false,
 }
 
@@ -50,6 +52,7 @@ export function AuthProvider({ children }: Props) {
     admin: null,
     name: null,
     uid: null,
+    photoUrl: null,
   })
   const [loading, setLoading] = useState(false)
 
@@ -63,6 +66,7 @@ export function AuthProvider({ children }: Props) {
       admin: null,
       name: null,
       uid: null,
+      photoUrl: null,
     })
   }
 
@@ -71,7 +75,7 @@ export function AuthProvider({ children }: Props) {
     login,
     logout,
     loading,
-    setLoading
+    setLoading,
   }
 
   useEffect(() => {
