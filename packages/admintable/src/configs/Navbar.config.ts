@@ -1,39 +1,9 @@
-import { IItemList } from '@ace/common'
+import { IItemList } from '@ace/common/src/interfaces/INavbar'
 
 export const NavbarConfig: IItemList[] = [
   {
-    url: 'https://vipsace.org/events',
-    text: 'Events',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/members',
-    text: 'Members',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/projects',
-    text: 'Projects',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/achievements',
-    text: 'Achievements',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/magazine',
-    text: 'Magazine',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/gallery',
-    text: 'Gallery',
-    target: '_blank',
-  },
-  {
-    url: 'https://vipsace.org/register',
-    text: 'Register',
+    url: 'https://vipsace.org/',
+    text: 'Vips Ace',
     target: '_blank',
   },
 ]

@@ -50,6 +50,7 @@ export const loginWithGoogleAccount = async (
         admin: userInfo.data()?.admin,
         name: userInfo.data()?.name,
         uid: userInfo.data()?.uid,
+        photoUrl: userInfo.data()?.photoURL,
       })
       setLoading(false)
     } else {
@@ -104,6 +105,7 @@ export async function signInStatus(
           admin: userInfo.data()?.admin,
           name: userInfo.data()?.name,
           uid: userInfo.data()?.uid,
+          photoUrl: userInfo.data()?.photoURL,
         })
       }
       setLoading(false)

@@ -60,3 +60,9 @@ export const ButtonComponent = styled.button<IButtonComponents>`
       line-height: 90px;
     `}
 `
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+`
