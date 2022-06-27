@@ -3,7 +3,11 @@ const { dependencies } = require('./package.json')
 module.exports = {
   name: 'host',
   remotes: {
-    remote: 'remote@http://localhost:3001/remoteEntry.js',
+    remote:
+      process.env.NODE_ENV === 'development'
+        ? 'remote@http://localhost:3001/remoteEntry.js'
+        : process.env.NODE_ENV === 'production' &&
+          'remote@https://ace-common.vercel.app/remoteEntry.js',
   },
   shared: {
     ...dependencies,
