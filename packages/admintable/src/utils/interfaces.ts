@@ -18,3 +18,16 @@ export interface IUser {
     lastName: string
   }
 }
+
+export interface IUserItem {
+  name: string
+  photoURL: string
+  uid: string
+  user: string
+  personalDetails: {
+    dob: string
+    enrollmentNo: string
+    mobile: string
+    section: string
+  }
+}

@@ -7,7 +7,7 @@ export const ButtonComponent = styled.button<IButtonComponents>`
   line-height: 80px;
   position: relative;
   display: block;
-  overflow: hidden;
+  overflow: hidden !important;
   width: 100%;
   height: 80px;
   max-width: 250px;

@@ -13,10 +13,11 @@ import {
   collection,
   DocumentData,
   QuerySnapshot,
+  updateDoc,
 } from 'firebase/firestore'
 import { initializeApp, getApps } from 'firebase/app'
 import { userContextType } from '../context/AuthContext'
-import { IUser } from './interfaces'
+import { IUser, IUserItem } from './interfaces'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -74,6 +75,15 @@ export const getTableData = async (user: userContextType) => {
       })
       return users
     }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const setTableUserInfo = async (user: IUserItem) => {
+  try {
+    const userRef = doc(db, 'users', `${user.user}`)
+    await updateDoc(userRef, { ...user })
   } catch (error) {
     console.log(error)
   }

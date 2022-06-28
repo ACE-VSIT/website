@@ -1,20 +1,27 @@
 import Index from './pages/Index'
-import React from 'react'
+import React, { useEffect } from 'react'
 import SignOut from './pages/SignOut'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './utils/PrivateRoutes'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
-import { GlobalStyle, lightTheme } from './theme/GlobalStyles'
+import { darkTheme, GlobalStyle, lightTheme } from './theme/GlobalStyles'
+import useThemeContext from './context/ThemeContext'
 
 const App: React.FC = () => {
   const user = useAuth()
+  const { isDarkTheme, setIsDarkTheme } = useThemeContext()
+
+  useEffect(() => {
+    const res = localStorage.getItem('isDarkTheme') === 'true' ? true : false
+    setIsDarkTheme(res)
+  }, [setIsDarkTheme])
 
   return (
     <BrowserRouter>
       <AuthProvider>
-        <ThemeProvider theme={lightTheme}>
+        <ThemeProvider theme={!isDarkTheme ? lightTheme : darkTheme}>
           <GlobalStyle />
           <Routes>
             <Route

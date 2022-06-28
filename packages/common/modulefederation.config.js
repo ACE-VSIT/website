@@ -5,6 +5,10 @@ module.exports = {
   exposes: {
     './Button': './src/components/Button/Button.tsx',
     './Navbar': './src/components/Navbar/Navbar.tsx',
+    './useIsMobile': './src/hooks/useIsMobile.tsx',
+    './useOnScreen': './src/hooks/useOnScreen.tsx',
+    './useOutsideTouch': './src/hooks/useOutsideTouch.tsx',
+    './useWindowSize': './src/hooks/useWindowSize.tsx',
   },
   filename: 'remoteEntry.js',
   shared: {

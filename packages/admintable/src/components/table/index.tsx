@@ -4,13 +4,16 @@ import { IUser } from '../../utils/interfaces'
 import { useTable, useSortBy } from 'react-table'
 import { useAuth } from '../../context/AuthContext'
 import { getTableData } from '../../utils/firebase'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
 import InputText from './components/inputs/InputText'
-import { Table, Tbody, Thead } from './components/Elements'
+import { Table, Tbody, Td, Th, Thead } from './components/Elements'
+import useUserInfo from '../../context/UserInfoContext'
+import Updater from './components/updater/Updater'
 
 const TableContainer = () => {
   const [data, setData] = useState<IUser[] | []>([])
+  const { setUserInfo } = useUserInfo()
 
   const { user } = useAuth()
   const getData = useCallback(async () => {
@@ -31,23 +34,50 @@ const TableContainer = () => {
       <Thead>
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th
-                {...column.getHeaderProps()}
-                onClick={() => (column as any).toggleSortBy()}
-              >
-                {column.render('Header')}
-                <span>
-                  {(column as any).isSorted ? (
-                    (column as any).isSortedDesc ? (
-                      <CaretDownOutlined />
-                    ) : (
-                      <CaretUpOutlined />
-                    )
-                  ) : null}
-                </span>
-              </th>
-            ))}
+            {headerGroup.headers.map((column, index) => {
+              if (headerGroup.headers.length === index + 1) {
+                return (
+                  <>
+                    <Th
+                      {...column.getHeaderProps()}
+                      onClick={() => (column as any).toggleSortBy()}
+                    >
+                      {column.render('Header')}
+                      <span>
+                        {(column as any).isSorted ? (
+                          (column as any).isSortedDesc ? (
+                            <CaretDownOutlined />
+                          ) : (
+                            <CaretUpOutlined />
+                          )
+                        ) : null}
+                      </span>
+                    </Th>
+                    <Th {...column.getHeaderProps()} key={'updater'}>
+                      Updater
+                      <span></span>
+                    </Th>
+                  </>
+                )
+              }
+              return (
+                <Th
+                  {...column.getHeaderProps()}
+                  onClick={() => (column as any).toggleSortBy()}
+                >
+                  {column.render('Header')}
+                  <span>
+                    {(column as any).isSorted ? (
+                      (column as any).isSortedDesc ? (
+                        <CaretDownOutlined />
+                      ) : (
+                        <CaretUpOutlined />
+                      )
+                    ) : null}
+                  </span>
+                </Th>
+              )
+            })}
           </tr>
         ))}
       </Thead>
@@ -55,21 +85,38 @@ const TableContainer = () => {
         {rows.map((row, i) => {
           prepareRow(row)
           return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
+            <tr
+              onClick={() => setUserInfo!(row.values as IUser)}
+              {...row.getRowProps()}
+            >
+              {row.cells.map((cell, index) => {
+                if (row.cells.length === index + 1) {
+                  return (
+                    <>
+                      <InputText customVal={cell.value}></InputText>
+                      <Updater />
+                    </>
+                  )
+                }
                 if (cell.column.id === 'photoURL') {
                   return (
-                    <td>
+                    <Td>
                       <img
                         src={cell.value}
                         alt={cell.column.id}
                         width={75}
                         height={75}
                       />
-                    </td>
+                    </Td>
                   )
                 }
-                return <InputText customVal={cell.value}></InputText>
+                return (
+                  <InputText
+                    customVal={cell.value}
+                    cellId={cell.column.id}
+                    disableUpdates={cell.column.id === 'uid'}
+                  />
+                )
               })}
             </tr>
           )
@@ -79,4 +126,4 @@ const TableContainer = () => {
   )
 }
 
-export default TableContainer
+export default memo(TableContainer)

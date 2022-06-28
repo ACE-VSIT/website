@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.font + 25};
   }
   ::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
     background: ${props => props.theme.font};
   }
   ::-webkit-scrollbar-thumb:hover {

@@ -7,7 +7,7 @@ module.exports = {
       process.env.NODE_ENV === 'development'
         ? 'remote@http://localhost:3001/remoteEntry.js'
         : process.env.NODE_ENV === 'production' &&
-          'remote@https://ace-common.vercel.app/remoteEntry.js',
+          'remote@https://common.vipsace.org/remoteEntry.js',
   },
   shared: {
     ...dependencies,
