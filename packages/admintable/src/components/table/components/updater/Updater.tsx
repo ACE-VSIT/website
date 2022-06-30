@@ -4,10 +4,11 @@ import styled, { keyframes } from 'styled-components'
 import { Td } from '../Elements'
 import { handleObjectSplit } from '../../../../utils/functions'
 import useUserInfo from '../../../../context/UserInfoContext'
+import { setTableUserInfo } from '../../../../utils/firebase'
 
 const Updater: React.FC = () => {
   const [trigger, setTrigger] = useState(false)
-  const { userInfo } = useUserInfo()
+  const { userInfo, clearUserInfo } = useUserInfo()
 
   const handleUpdate = () => {
     setTrigger(prev => !prev)
@@ -16,8 +17,8 @@ const Updater: React.FC = () => {
       ...unsplit,
       [splitValue]: split,
     }
-    console.log(userData)
-    // clearUserInfo!()
+    setTableUserInfo(userData)
+    clearUserInfo!()
   }
 
   return (

@@ -21,7 +21,7 @@ const InputText: FC<IInputText> = ({
         setTextVal(e?.target?.value)
         setUserInfo!({
           ...userInfo!,
-          [cellId!]: textVal,
+          [cellId!]: e?.target?.value,
         })
       }
     }

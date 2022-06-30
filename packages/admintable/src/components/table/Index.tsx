@@ -93,7 +93,10 @@ const TableContainer = () => {
                 if (row.cells.length === index + 1) {
                   return (
                     <>
-                      <InputText customVal={cell.value}></InputText>
+                      <InputText
+                        cellId={cell.column.id}
+                        customVal={cell.value}
+                      ></InputText>
                       <Updater />
                     </>
                   )
