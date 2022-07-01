@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { darkTheme, GlobalStyle, lightTheme } from './theme/GlobalStyles'
 import useThemeContext from './context/ThemeContext'
+import NotFound from './pages/NotFound'
 
 const App: React.FC = () => {
   const user = useAuth()
@@ -45,6 +46,7 @@ const App: React.FC = () => {
               }
             />
             <Route path="/" element={<Index />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
       </AuthProvider>
