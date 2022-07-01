@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  min-width: 100vw;
   min-height: 100vh;
-  width: 100%;
+  width: max-content;
+  align-items: center;
+  justify-content: center;
   background-color: ${props => props.theme.bg};
 `
 

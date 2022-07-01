@@ -30,9 +30,12 @@ export const GlobalStyle = createGlobalStyle`
     transition: all 0.375 ease-in-out;
     font-family: "Roboto Slab";
   }
+
   ::-webkit-scrollbar {
+    height: 6px;
     width: 4px;
   }
+
   ::-webkit-scrollbar-track {
     background: ${props => props.theme.font + 25};
   }

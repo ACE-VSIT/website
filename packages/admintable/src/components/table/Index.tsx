@@ -10,16 +10,35 @@ import InputText from './components/inputs/InputText'
 import { Table, Tbody, Td, Th, Thead } from './components/Elements'
 import useUserInfo from '../../context/UserInfoContext'
 import Updater from './components/updater/Updater'
+import { Resizable } from 're-resizable'
+
+interface IResizeWidth {
+  [key: string]: {
+    width: number
+  }
+}
 
 const TableContainer = () => {
   const [data, setData] = useState<IUser[] | []>([])
   const { setUserInfo } = useUserInfo()
+  const [resizeWidth, setResizeWidth] = useState<IResizeWidth>()
 
   const { user } = useAuth()
   const getData = useCallback(async () => {
     const data = await getTableData(user)
     setData(data ?? [])
   }, [user])
+
+  const defaultStyles = {
+    width: 150,
+    height: '100%',
+  }
+
+  const reSizeStyles = {
+    width: '100%',
+    height: '100%',
+    padding: '1.25rem 1rem',
+  }
 
   const columns = useMemo(() => cols, [])
 
@@ -40,22 +59,54 @@ const TableContainer = () => {
                   <>
                     <Th
                       {...column.getHeaderProps()}
+                      resizeWidth={resizeWidth?.index?.width ?? 150}
                       onClick={() => (column as any).toggleSortBy()}
                     >
-                      {column.render('Header')}
-                      <span>
-                        {(column as any).isSorted ? (
-                          (column as any).isSortedDesc ? (
-                            <CaretDownOutlined />
-                          ) : (
-                            <CaretUpOutlined />
-                          )
-                        ) : null}
-                      </span>
+                      <Resizable
+                        defaultSize={defaultStyles}
+                        style={reSizeStyles}
+                        onResizeStop={(e, direction, ref, d) => {
+                          setResizeWidth({
+                            ...resizeWidth,
+                            [index]: {
+                              width: d.width + 150,
+                            },
+                          })
+                        }}
+                        minWidth={150}
+                      >
+                        <span>{column.render('Header')}</span>
+                        <span>
+                          {(column as any).isSorted ? (
+                            (column as any).isSortedDesc ? (
+                              <CaretDownOutlined />
+                            ) : (
+                              <CaretUpOutlined />
+                            )
+                          ) : null}
+                        </span>
+                      </Resizable>
                     </Th>
-                    <Th {...column.getHeaderProps()} key={'updater'}>
-                      Updater
-                      <span></span>
+                    <Th
+                      {...column.getHeaderProps()}
+                      resizeWidth={resizeWidth?.[index + 1]?.width ?? 150}
+                      key="updater"
+                    >
+                      <Resizable
+                        defaultSize={defaultStyles}
+                        style={reSizeStyles}
+                        onResizeStop={(e, direction, ref, d) => {
+                          setResizeWidth({
+                            ...resizeWidth,
+                            [index + 1]: {
+                              width: d.width + 150,
+                            },
+                          })
+                        }}
+                        minWidth={150}
+                      >
+                        <span>{'Updater'}</span>
+                      </Resizable>
                     </Th>
                   </>
                 )
@@ -63,18 +114,33 @@ const TableContainer = () => {
               return (
                 <Th
                   {...column.getHeaderProps()}
+                  resizeWidth={resizeWidth?.index?.width ?? 150}
                   onClick={() => (column as any).toggleSortBy()}
                 >
-                  {column.render('Header')}
-                  <span>
-                    {(column as any).isSorted ? (
-                      (column as any).isSortedDesc ? (
-                        <CaretDownOutlined />
-                      ) : (
-                        <CaretUpOutlined />
-                      )
-                    ) : null}
-                  </span>
+                  <Resizable
+                    defaultSize={defaultStyles}
+                    minWidth={150}
+                    style={reSizeStyles}
+                    onResizeStop={(e, direction, ref, d) => {
+                      setResizeWidth({
+                        ...resizeWidth,
+                        [index]: {
+                          width: d.width + 150,
+                        },
+                      })
+                    }}
+                  >
+                    <span>{column.render('Header')}</span>
+                    <span>
+                      {(column as any).isSorted ? (
+                        (column as any).isSortedDesc ? (
+                          <CaretDownOutlined />
+                        ) : (
+                          <CaretUpOutlined />
+                        )
+                      ) : null}
+                    </span>
+                  </Resizable>
                 </Th>
               )
             })}
