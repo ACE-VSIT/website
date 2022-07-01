@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
           img={
             !isDarkTheme
               ? '/assets/imgs/AceLogo.svg'
-              : '/assets/imgs/AceLogoLight.svg'
+              : '/assets/imgs/ACELogoLight.svg'
           }
           profileList={NavbarUserProfileConfig}
         />
