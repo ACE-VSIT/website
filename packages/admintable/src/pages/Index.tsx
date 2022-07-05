@@ -21,7 +21,7 @@ const Index: React.FC = () => {
   }, [user, navigate])
 
   return (
-    <Wrapper>
+    <Wrapper style={{ justifyContent: 'center' }}>
       <LoginWrapper>
         <LoginHeading>Admin Panel</LoginHeading>
         <Button

@@ -61,6 +61,6 @@ export const TextInput = styled.input<{ disabled?: boolean }>`
 
   &:focus {
     outline-offset: calc(0.15rem - 2px);
-    outline: 2px solid #32486175;
+    outline: 2px solid ${props => props.theme.font + '75'};
   }
 `

@@ -60,6 +60,8 @@ const TableContainer = () => {
   useEffect(() => {
     if (tableFilters?.listLength) {
       trimData(tableFilters.listLength)
+    } else {
+      trimData(20)
     }
   }, [tableFilters?.listLength, trimData])
 
