@@ -6,6 +6,7 @@ import { Wrapper } from '../components/Index/IndexElements'
 import { useAuth } from '../context/AuthContext'
 import { signOutUser } from '../utils/firebase'
 import useThemeContext from '../context/ThemeContext'
+import Pagination from '../components/table/components/pagination/Pagination'
 
 const Dashboard: React.FC = () => {
   const { user, logout } = useAuth()
@@ -38,6 +39,7 @@ const Dashboard: React.FC = () => {
       </div>
       <Wrapper>
         <TableContainer />
+        <Pagination />
       </Wrapper>
     </>
   )

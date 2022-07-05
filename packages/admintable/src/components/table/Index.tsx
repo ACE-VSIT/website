@@ -11,7 +11,7 @@ import { Table, Tbody, Td, Th, Thead } from './components/Elements'
 import useUserInfo from '../../context/UserInfoContext'
 import Updater from './components/updater/Updater'
 import { Resizable } from 're-resizable'
-
+import useTableFilters from '../../context/TableContext'
 interface IResizeWidth {
   [key: string]: {
     width: number
@@ -19,14 +19,17 @@ interface IResizeWidth {
 }
 
 const TableContainer = () => {
-  const [data, setData] = useState<IUser[] | []>([])
+  const { tableFilters } = useTableFilters()
   const { setUserInfo } = useUserInfo()
+  const [data, setData] = useState<IUser[] | []>([])
+  const [unFiltered, setUnFiltered] = useState<IUser[] | []>([])
   const [resizeWidth, setResizeWidth] = useState<IResizeWidth>()
 
   const { user } = useAuth()
   const getData = useCallback(async () => {
     const data = await getTableData(user)
     setData(data ?? [])
+    setUnFiltered(data ?? [])
   }, [user])
 
   const defaultStyles = {
@@ -44,6 +47,20 @@ const TableContainer = () => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<any>({ columns, data }, useSortBy)
+
+  const trimData = useCallback(
+    (tableItemsLimit: number) => {
+      setData(unFiltered.slice(0, tableItemsLimit))
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [tableFilters?.listLength]
+  )
+
+  useEffect(() => {
+    if (tableFilters?.listLength) {
+      trimData(tableFilters.listLength)
+    }
+  }, [tableFilters?.listLength, trimData])
 
   useEffect(() => {
     getData()
