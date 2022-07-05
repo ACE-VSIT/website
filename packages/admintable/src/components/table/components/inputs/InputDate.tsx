@@ -1,11 +1,13 @@
 import { ChangeEvent, FC, memo, useRef, useState } from 'react'
 import styled from 'styled-components'
 import useUserInfo from '../../../../context/UserInfoContext'
-import { IInputText } from '../../interfaces/IInputText'
+import { IInputDate } from '../../interfaces/IInputDate'
 import { Td } from '../Elements'
 import useOnScreen from 'remote/useOnScreen'
+import {TextInput} from './InputText'
 
-const InputText: FC<IInputText> = ({
+
+const InputDate: FC<IInputDate> = ({
   customOnChange,
   customVal,
   cellId,
@@ -14,53 +16,42 @@ const InputText: FC<IInputText> = ({
   const ref = useRef()
   const isOnScreen: boolean = useOnScreen(ref)
   const { userInfo, setUserInfo } = useUserInfo()
-  const [textVal, setTextVal] = useState<string>(customVal ?? '')
+  const [dateVal, setDateVal] = useState<string>(customVal ?? '')
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!disableUpdates) {
       if (customOnChange) {
         customOnChange(e?.target?.value)
       } else {
-        setTextVal(e?.target?.value)
+        setDateVal(e?.target?.value)
+        console.log(userInfo)
         setUserInfo!({
           ...userInfo!,
           [cellId!]: e?.target?.value,
         })
       }
+      console.log(userInfo)
     }
   }
 
   return (
-    <TextWrapper ref={ref as unknown as any}>
+    <DateWrapper ref={ref as unknown as any}>
       {isOnScreen && (
-        <TextInput
-          value={textVal}
+        <DateInput
+          type="date"
+          value={dateVal}
           disabled={disableUpdates}
           onChange={e => handleOnChange(e)}
         />
       )}
-    </TextWrapper>
+    </DateWrapper>
   )
 }
 
-export default memo(InputText)
+export default memo(InputDate)
 
-const TextWrapper = styled(Td)`
+const DateWrapper = styled(Td)`
   width: max-content;
   padding: 2px;
 `
-export const TextInput = styled.input<{ disabled?: boolean }>`
-  height: 100%;
-  width: 100%;
-  border: none;
-  padding: 1rem 1.25rem;
-  border-collapse: collapse;
-  color: ${props => props.theme.font};
-  background: ${props => props.theme.bg};
-  cursor: ${props => (props.disabled ? 'not-allowed' : 'text')};
-
-  &:focus {
-    outline-offset: calc(0.15rem - 2px);
-    outline: 2px solid #32486175;
-  }
-`
+const DateInput = styled(TextInput)``

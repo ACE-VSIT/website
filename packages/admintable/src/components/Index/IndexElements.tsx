@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   width: max-content;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: ${props => props.theme.bg};
 `
 
