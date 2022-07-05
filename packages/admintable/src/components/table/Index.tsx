@@ -7,6 +7,7 @@ import { getTableData } from '../../utils/firebase'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
 import InputText from './components/inputs/InputText'
+import InputDate from './components/inputs/InputDate'
 import { Table, Tbody, Td, Th, Thead } from './components/Elements'
 import useUserInfo from '../../context/UserInfoContext'
 import Updater from './components/updater/Updater'
@@ -184,25 +185,38 @@ const TableContainer = () => {
                     </>
                   )
                 }
-                if (cell.column.id === 'photoURL') {
-                  return (
-                    <Td>
-                      <img
-                        src={cell.value}
-                        alt={cell.column.id}
-                        width={75}
-                        height={75}
+
+                switch(cell.column.id) {
+                  case 'photoURL':
+                    return (
+                      <Td>
+                        <img
+                          src={cell.value}
+                          alt={cell.column.id}
+                          width={75}
+                          height={75}
+                        />
+                      </Td>
+                    )
+                  
+                  case 'personalDetails.dob':
+                    return (
+                      <InputDate
+                        customVal={cell.value}
+                        cellId={cell.column.id}
                       />
-                    </Td>
-                  )
+
+                    )
+                  
+                  default: 
+                    return (
+                      <InputText
+                        customVal={cell.value}
+                        cellId={cell.column.id}
+                        disableUpdates={cell.column.id === 'uid'}
+                      />
+                    )
                 }
-                return (
-                  <InputText
-                    customVal={cell.value}
-                    cellId={cell.column.id}
-                    disableUpdates={cell.column.id === 'uid'}
-                  />
-                )
               })}
             </tr>
           )
