@@ -1,8 +1,9 @@
-import { ChangeEvent, FC, memo, useState } from 'react'
+import { ChangeEvent, FC, memo, useRef, useState } from 'react'
 import styled from 'styled-components'
 import useUserInfo from '../../../../context/UserInfoContext'
 import { IInputText } from '../../interfaces/IInputText'
 import { Td } from '../Elements'
+import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
   customOnChange,
@@ -10,10 +11,12 @@ const InputText: FC<IInputText> = ({
   cellId,
   disableUpdates = false,
 }) => {
-  const [textVal, setTextVal] = useState<string>(customVal ?? '')
+  const ref = useRef()
+  const isOnScreen: boolean = useOnScreen(ref)
   const { userInfo, setUserInfo } = useUserInfo()
+  const [textVal, setTextVal] = useState<string>(customVal ?? '')
 
-  const hangeOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!disableUpdates) {
       if (customOnChange) {
         customOnChange(e?.target?.value)
@@ -28,12 +31,14 @@ const InputText: FC<IInputText> = ({
   }
 
   return (
-    <TextWrapper>
-      <TextInput
-        value={textVal}
-        disabled={disableUpdates}
-        onChange={e => hangeOnChange(e)}
-      />
+    <TextWrapper ref={ref as unknown as any}>
+      {isOnScreen && (
+        <TextInput
+          value={textVal}
+          disabled={disableUpdates}
+          onChange={e => handleOnChange(e)}
+        />
+      )}
     </TextWrapper>
   )
 }

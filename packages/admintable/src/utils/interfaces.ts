@@ -31,3 +31,7 @@ export interface IUserItem {
     section: string
   }
 }
+
+export interface ITableFilter {
+  listLength: number
+}

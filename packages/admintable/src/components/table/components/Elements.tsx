@@ -5,7 +5,6 @@ export const Table = styled.table`
   height: 100%;
   overflow: scroll;
   user-select: none;
-  margin: 1rem 0.75rem;
   padding: 1.25rem 1rem;
   -ms-user-select: none;
   border-collapse: collapse;

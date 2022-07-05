@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
+  gap: 1rem;
   display: flex;
+  padding: 1rem;
   min-width: 100vw;
   min-height: 100vh;
   width: max-content;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   background-color: ${props => props.theme.bg};
 `
