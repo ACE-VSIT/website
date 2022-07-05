@@ -4,14 +4,18 @@ import { IPaginator } from '../../interfaces/IPaginator'
 
 const Paginator: React.FC<IPaginator> = ({
   length,
-  currentPage = 1,
-  pagesOffset = 3,
+  currentPage,
+  pagesOffset = 4,
 }) => {
-  const [active, setActive] = useState(currentPage - 1)
+  /* 
+    active will return active Index of the paginator
+    active page will be page + 1
+  */
+  const [active, setActive] = useState(currentPage ?? 0)
 
   useEffect(() => {
-    console.log(length - pagesOffset <= active)
-  }, [active, length, pagesOffset])
+    console.log(active + 1)
+  }, [active])
 
   return (
     <PaginatorWrapper>
@@ -29,10 +33,20 @@ const Paginator: React.FC<IPaginator> = ({
           length - pagesOffset <= active ? length : active + pagesOffset
         )
         .map((e, index) => {
-          const currentPage = active + index
+          const isLastOfIndexes = length - pagesOffset <= active
+          const currentPage = isLastOfIndexes ? active : active + index
           return (
-            <PaginatorBlocks key={index} active={currentPage === active}>
-              {currentPage + 1}
+            <PaginatorBlocks
+              key={index}
+              active={
+                !isLastOfIndexes
+                  ? currentPage === active
+                  : length - pagesOffset + index === active
+              }
+            >
+              {!isLastOfIndexes
+                ? currentPage + 1
+                : length - pagesOffset + index + 1}
             </PaginatorBlocks>
           )
         })}
