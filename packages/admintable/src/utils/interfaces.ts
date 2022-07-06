@@ -34,4 +34,7 @@ export interface IUserItem {
 
 export interface ITableFilter {
   listLength: number
+  currentPage: number
+  pageLength: number
+  totalItems: number
 }

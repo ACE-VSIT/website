@@ -7,7 +7,10 @@ const useStore = create<{
   clearTableFilters?: () => void
 }>(set => ({
   tableFilters: {
-    listLength: 0,
+    listLength: 5,
+    currentPage: 0,
+    pageLength: 0,
+    totalItems: 0,
   },
   setTableFilters: (userFilters: ITableFilter) => {
     set(state => ({

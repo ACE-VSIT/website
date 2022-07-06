@@ -20,9 +20,9 @@ interface IResizeWidth {
 }
 
 const TableContainer = () => {
-  const { tableFilters } = useTableFilters()
   const { setUserInfo } = useUserInfo()
   const [data, setData] = useState<IUser[] | []>([])
+  const { tableFilters, setTableFilters } = useTableFilters()
   const [unFiltered, setUnFiltered] = useState<IUser[] | []>([])
   const [resizeWidth, setResizeWidth] = useState<IResizeWidth>()
 
@@ -31,7 +31,12 @@ const TableContainer = () => {
     const data = await getTableData(user)
     setData(data ?? [])
     setUnFiltered(data ?? [])
-  }, [user])
+    setTableFilters!({
+      ...tableFilters!,
+      totalItems: data?.length ?? 0,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setTableFilters, user])
 
   const defaultStyles = {
     width: 150,
@@ -50,20 +55,23 @@ const TableContainer = () => {
     useTable<any>({ columns, data }, useSortBy)
 
   const trimData = useCallback(
-    (tableItemsLimit: number) => {
-      setData(unFiltered.slice(0, tableItemsLimit))
+    (tableItemsLimit: number, pageNumber: number) => {
+      setData(
+        unFiltered.slice(
+          tableItemsLimit * pageNumber,
+          tableItemsLimit * (pageNumber + 1)
+        )
+      )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [tableFilters?.listLength]
+    [tableFilters?.listLength, tableFilters?.pageLength]
   )
 
   useEffect(() => {
-    if (tableFilters?.listLength) {
-      trimData(tableFilters.listLength)
-    } else {
-      trimData(20)
+    if (tableFilters?.listLength || tableFilters?.currentPage) {
+      trimData(tableFilters?.listLength, tableFilters?.currentPage)
     }
-  }, [tableFilters?.listLength, trimData])
+  }, [tableFilters?.currentPage, tableFilters?.listLength, trimData])
 
   useEffect(() => {
     getData()
@@ -188,7 +196,7 @@ const TableContainer = () => {
                   )
                 }
 
-                switch(cell.column.id) {
+                switch (cell.column.id) {
                   case 'photoURL':
                     return (
                       <Td>
@@ -200,17 +208,16 @@ const TableContainer = () => {
                         />
                       </Td>
                     )
-                  
+
                   case 'personalDetails.dob':
                     return (
                       <InputDate
                         customVal={cell.value}
                         cellId={cell.column.id}
                       />
-
                     )
-                  
-                  default: 
+
+                  default:
                     return (
                       <InputText
                         customVal={cell.value}
