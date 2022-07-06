@@ -1,18 +1,17 @@
 import './Dashboard.css'
+import { Resizable } from 're-resizable'
 import { cols } from '../../pages/Config'
 import { IUser } from '../../utils/interfaces'
 import { useTable, useSortBy } from 'react-table'
+import Updater from './components/updater/Updater'
 import { useAuth } from '../../context/AuthContext'
 import { getTableData } from '../../utils/firebase'
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
-import InputText from './components/inputs/InputText'
-import InputDate from './components/inputs/InputDate'
-import { Table, Tbody, Td, Th, Thead } from './components/Elements'
 import useUserInfo from '../../context/UserInfoContext'
-import Updater from './components/updater/Updater'
-import { Resizable } from 're-resizable'
 import useTableFilters from '../../context/TableContext'
+import { Table, Tbody, Td, Th, Thead } from './components/Elements'
+import {InputText, InputDate, InputImage} from './components/inputs'
+import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 interface IResizeWidth {
   [key: string]: {
     width: number
@@ -189,14 +188,10 @@ const TableContainer = () => {
                 switch(cell.column.id) {
                   case 'photoURL':
                     return (
-                      <Td>
-                        <img
-                          src={cell.value}
-                          alt={cell.column.id}
-                          width={75}
-                          height={75}
-                        />
-                      </Td>
+                      <InputImage
+                        customVal={cell.value}
+                        cellId={cell.column.id}
+                      />
                     )
                   
                   case 'personalDetails.dob':

@@ -5,6 +5,7 @@ module.exports = {
   exposes: {
     './Button': './src/components/Button/Button.tsx',
     './Navbar': './src/components/Navbar/Navbar.tsx',
+    './AnimateIn': '/src/components/animations/AnimateIn.tsx',
     './useIsMobile': './src/hooks/useIsMobile.tsx',
     './useOnScreen': './src/hooks/useOnScreen.tsx',
     './useOutsideTouch': './src/hooks/useOutsideTouch.tsx',

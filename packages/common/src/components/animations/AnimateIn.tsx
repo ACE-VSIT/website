@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import useOnScreen from '../../hooks/useOnScreen'
 
-interface IAnimateIn {
+export interface IAnimateIn {
   delay?: number
   duration?: number
   enableScroll?: boolean
