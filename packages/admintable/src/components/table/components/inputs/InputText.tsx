@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import useUserInfo from '../../../../context/UserInfoContext'
 import { IInputText } from '../../interfaces/IInputText'
 import { Td } from '../Elements'
-import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
   customOnChange,
@@ -12,7 +11,6 @@ const InputText: FC<IInputText> = ({
   disableUpdates = false,
 }) => {
   const ref = useRef()
-  const isOnScreen: boolean = useOnScreen(ref)
   const { userInfo, setUserInfo } = useUserInfo()
   const [textVal, setTextVal] = useState<string>(customVal ?? '')
 
@@ -32,13 +30,11 @@ const InputText: FC<IInputText> = ({
 
   return (
     <TextWrapper ref={ref as unknown as any}>
-      {isOnScreen && (
-        <TextInput
-          value={textVal}
-          disabled={disableUpdates}
-          onChange={e => handleOnChange(e)}
-        />
-      )}
+      <TextInput
+        value={textVal}
+        disabled={disableUpdates}
+        onChange={e => handleOnChange(e)}
+      />
     </TextWrapper>
   )
 }
