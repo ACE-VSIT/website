@@ -6,7 +6,7 @@ import {
   LoginHeading,
   LoginWrapper,
   Wrapper,
-} from '../components/Index/IndexElements'
+} from '../components/Index/index-elements.styled'
 
 const SignOut: React.FC = () => {
   const { logout, user } = useAuth()

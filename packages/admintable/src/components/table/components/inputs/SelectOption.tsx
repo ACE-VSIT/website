@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { ISelectOption } from '../../interfaces/ISelectOption'
-import { Td } from '../Elements'
+import { ISelectOption } from '../../../../interfaces/select-option.interface'
+import { Td } from '../table-elements.styles'
 import useOnScreen from 'remote/useOnScreen'
 
 const SelectOption: React.FC<ISelectOption<string | number>> = ({

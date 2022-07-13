@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import useTableFilters from '../../../../context/TableContext'
-import { IPagination } from '../../interfaces/IPagination'
+import { IPagination } from '../../../../interfaces/pagination.interface'
 import SelectOption from '../inputs/SelectOption'
 
 const Pagination: React.FC<IPagination> = () => {

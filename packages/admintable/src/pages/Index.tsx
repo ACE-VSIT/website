@@ -5,7 +5,7 @@ import {
   LoginHeading,
   LoginWrapper,
   Wrapper,
-} from '../components/Index/IndexElements'
+} from '../components/Index/index-elements.styled'
 import { useAuth } from '../context/AuthContext'
 import Button from 'remote/Button'
 import { loginWithGoogleAccount } from '../utils/firebase'

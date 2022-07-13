@@ -1,5 +1,5 @@
 import create from 'zustand'
-import { ITableFilter } from '../utils/interfaces'
+import { ITableFilter } from '../interfaces/table.interface'
 
 const useStore = create<{
   tableFilters?: ITableFilter

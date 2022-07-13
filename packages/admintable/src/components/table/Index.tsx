@@ -1,17 +1,13 @@
 import './Dashboard.css'
-import { Resizable } from 're-resizable'
-import { cols } from '../../pages/Config'
-import { IUser } from '../../utils/interfaces'
+import { IUser } from '../../interfaces/user.interface'
 import { useTable, useSortBy } from 'react-table'
-import Updater from './components/updater/Updater'
 import { useAuth } from '../../context/AuthContext'
 import { getTableData } from '../../utils/firebase'
-import useUserInfo from '../../context/UserInfoContext'
 import useTableFilters from '../../context/TableContext'
-import { Table, Tbody, Td, Th, Thead } from './components/Elements'
-import {InputText, InputDate, InputImage} from './components/inputs'
-import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import TableComponent from './components/table/TableComponent'
+import { columns as userColumns } from '../../configs/user-table-config'
+
 interface IResizeWidth {
   [key: string]: {
     width: number
@@ -20,30 +16,18 @@ interface IResizeWidth {
 
 const TableContainer = () => {
   const { tableFilters } = useTableFilters()
-  const { setUserInfo } = useUserInfo()
   const [data, setData] = useState<IUser[] | []>([])
   const [unFiltered, setUnFiltered] = useState<IUser[] | []>([])
-  const [resizeWidth, setResizeWidth] = useState<IResizeWidth>()
 
   const { user } = useAuth()
+
   const getData = useCallback(async () => {
     const data = await getTableData(user)
     setData(data ?? [])
     setUnFiltered(data ?? [])
   }, [user])
 
-  const defaultStyles = {
-    width: 150,
-    height: '100%',
-  }
-
-  const reSizeStyles = {
-    width: '100%',
-    height: '100%',
-    padding: '1.25rem 1rem',
-  }
-
-  const columns = useMemo(() => cols, [])
+  const columns = useMemo(() => userColumns, [])
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<any>({ columns, data }, useSortBy)
@@ -65,159 +49,11 @@ const TableContainer = () => {
   useEffect(() => {
     getData()
   }, [getData])
+
   return (
-    <Table {...getTableProps()}>
-      <Thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column, index) => {
-              if (headerGroup.headers.length === index + 1) {
-                return (
-                  <>
-                    <Th
-                      {...column.getHeaderProps()}
-                      resizeWidth={resizeWidth?.index?.width ?? 150}
-                      onClick={() => (column as any).toggleSortBy()}
-                    >
-                      <Resizable
-                        defaultSize={defaultStyles}
-                        style={reSizeStyles}
-                        onResizeStop={(e, direction, ref, d) => {
-                          setResizeWidth({
-                            ...resizeWidth,
-                            [index]: {
-                              width: d.width + 150,
-                            },
-                          })
-                        }}
-                        minWidth={150}
-                      >
-                        <span>{column.render('Header')}</span>
-                        <span>
-                          {(column as any).isSorted ? (
-                            (column as any).isSortedDesc ? (
-                              <CaretDownOutlined />
-                            ) : (
-                              <CaretUpOutlined />
-                            )
-                          ) : null}
-                        </span>
-                      </Resizable>
-                    </Th>
-                    <Th
-                      {...column.getHeaderProps()}
-                      resizeWidth={resizeWidth?.[index + 1]?.width ?? 150}
-                      key="updater"
-                    >
-                      <Resizable
-                        defaultSize={defaultStyles}
-                        style={reSizeStyles}
-                        onResizeStop={(e, direction, ref, d) => {
-                          setResizeWidth({
-                            ...resizeWidth,
-                            [index + 1]: {
-                              width: d.width + 150,
-                            },
-                          })
-                        }}
-                        minWidth={150}
-                      >
-                        <span>{'Updater'}</span>
-                      </Resizable>
-                    </Th>
-                  </>
-                )
-              }
-              return (
-                <Th
-                  {...column.getHeaderProps()}
-                  resizeWidth={resizeWidth?.index?.width ?? 150}
-                  onClick={() => (column as any).toggleSortBy()}
-                >
-                  <Resizable
-                    defaultSize={defaultStyles}
-                    minWidth={150}
-                    style={reSizeStyles}
-                    onResizeStop={(e, direction, ref, d) => {
-                      setResizeWidth({
-                        ...resizeWidth,
-                        [index]: {
-                          width: d.width + 150,
-                        },
-                      })
-                    }}
-                  >
-                    <span>{column.render('Header')}</span>
-                    <span>
-                      {(column as any).isSorted ? (
-                        (column as any).isSortedDesc ? (
-                          <CaretDownOutlined />
-                        ) : (
-                          <CaretUpOutlined />
-                        )
-                      ) : null}
-                    </span>
-                  </Resizable>
-                </Th>
-              )
-            })}
-          </tr>
-        ))}
-      </Thead>
-      <Tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row)
-          return (
-            <tr
-              onClick={() => setUserInfo!(row.values as IUser)}
-              {...row.getRowProps()}
-            >
-              {row.cells.map((cell, index) => {
-                if (row.cells.length === index + 1) {
-                  return (
-                    <>
-                      <InputText
-                        cellId={cell.column.id}
-                        customVal={cell.value}
-                      ></InputText>
-                      <Updater />
-                    </>
-                  )
-                }
-
-                switch(cell.column.id) {
-                  case 'photoURL':
-                    return (
-                      <InputImage
-                        customVal={cell.value}
-                        cellId={cell.column.id}
-                      />
-                    )
-                  
-                  case 'personalDetails.dob':
-                    return (
-                      <InputDate
-                        customVal={cell.value}
-                        cellId={cell.column.id}
-                      />
-
-                    )
-                  
-                  default: 
-                    return (
-                      <InputText
-                        customVal={cell.value}
-                        cellId={cell.column.id}
-                        disableUpdates={cell.column.id === 'uid'}
-                      />
-                    )
-                }
-              })}
-            </tr>
-          )
-        })}
-      </Tbody>
-    </Table>
+    <>
+      <TableComponent headers={columns} data={data} /> 
+    </>
   )
 }
 

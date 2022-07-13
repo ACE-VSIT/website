@@ -1,10 +1,9 @@
-import { Td } from '../Elements'
+import { Td } from '../table-elements.styles'
 import Button from 'remote/Button'
 import styled from 'styled-components'
 import AnimateIn from 'remote/AnimateIn'
-import useOnScreen from 'remote/useOnScreen'
 import useOutsideTouch from 'remote/useOutsideTouch'
-import { IInputImage } from "../../interfaces/IInputImage"
+import { IInputImage } from '../../../../interfaces/input.interface'
 import { TextInput } from './InputText'
 import useUserInfo from '../../../../context/UserInfoContext'
 import { ChangeEvent, FC, memo, useEffect, useRef, useState } from 'react'
@@ -18,7 +17,6 @@ const InputImage: FC<IInputImage> = ({
 
   const ref = useRef()
   const popupRef = useRef(null)
-  const isOnScreen: boolean = useOnScreen(ref)
   const { userInfo, setUserInfo } = useUserInfo()
   const [imageSrc, setImageSrc] = useState<string>(customVal ?? '')
   const [selected, setSelected] = useState<boolean>(false)
@@ -47,33 +45,31 @@ const InputImage: FC<IInputImage> = ({
   return (
     <ImageWrapper ref={ref as unknown as any}
     >
-        {isOnScreen && (
-          <>
-            <img
-              src={imageSrc}
-              alt={cellId}
-              width={75}
-              height={75}
-              onClick={handlePopup}
-            /> 
-            {selected && 
-              <AnimateIn>
-                <PopupWrapper ref={popupRef}>
-                  <h3>{userInfo?.name}</h3>
-                  <SrcInput
-                    type="text"  
-                    value={imageSrc}
-                    onChange={e => handleOnChange(e)}
-                  />
-                  <Button
-                    value="Done"
-                    sm
-                    onClick={handlePopup}
-                  />
-                </PopupWrapper>
-              </AnimateIn>}
-          </>
-        )}
+      <>
+        <img
+          src={imageSrc}
+          alt={cellId}
+          width={75}
+          height={75}
+          onClick={handlePopup}
+        /> 
+        {selected && 
+          <AnimateIn>
+            <PopupWrapper ref={popupRef}>
+              <h3>{userInfo?.name}</h3>
+              <SrcInput
+                type="text"  
+                value={imageSrc}
+                onChange={e => handleOnChange(e)}
+              />
+              <Button
+                value="Done"
+                sm
+                onClick={handlePopup}
+              />
+            </PopupWrapper>
+          </AnimateIn>}
+        </>
       </ImageWrapper>
   )
 }
