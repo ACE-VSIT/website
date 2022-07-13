@@ -1,8 +1,7 @@
 import React, { ChangeEvent, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { ISelectOption } from '../../../../interfaces/select-option.interface'
-import { Td } from '../table-elements.styles'
-import useOnScreen from 'remote/useOnScreen'
+import { Td } from './styles/table-elements.styles'
 
 const SelectOption: React.FC<ISelectOption<string | number>> = ({
   name,
@@ -14,7 +13,6 @@ const SelectOption: React.FC<ISelectOption<string | number>> = ({
   disableUpdates = false,
 }) => {
   const ref = useRef()
-  const isOnScreen: boolean = useOnScreen(ref)
   const [selectVal, setSelectVal] = useState<string>()
 
   const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -29,22 +27,20 @@ const SelectOption: React.FC<ISelectOption<string | number>> = ({
 
   return (
     <OptionsWrapper ref={ref as unknown as any}>
-      {isOnScreen && (
-        <Option
-          name={name}
-          disabled={disableUpdates}
-          onChange={e => handleOnChange(e)}
-          value={showCustomValue ? customValue : selectVal ?? optionsValue![0]}
-        >
-          {options?.map((e, index) => {
-            return (
-              <option key={index} value={optionsValue![index] ?? e}>
-                {e}
-              </option>
-            )
-          })}
-        </Option>
-      )}
+      <Option
+        name={name}
+        disabled={disableUpdates}
+        onChange={e => handleOnChange(e)}
+        value={showCustomValue ? customValue : selectVal ?? optionsValue![0]}
+      >
+        {options?.map((e, index) => {
+          return (
+            <option key={index} value={optionsValue![index] ?? e}>
+              {e}
+            </option>
+          )
+        })}
+      </Option>
     </OptionsWrapper>
   )
 }

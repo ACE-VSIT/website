@@ -1,18 +1,10 @@
-import './Dashboard.css'
 import { IUser } from '../../interfaces/user.interface'
-import { useTable, useSortBy } from 'react-table'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { getTableData } from '../../utils/firebase'
-import useTableFilters from '../../context/TableContext'
+import useTableFilters from '../../contexts/TableContext'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import TableComponent from './components/table/TableComponent'
 import { columns as userColumns } from '../../configs/user-table-config'
-
-interface IResizeWidth {
-  [key: string]: {
-    width: number
-  }
-}
 
 const TableContainer = () => {
   const { tableFilters } = useTableFilters()
@@ -28,9 +20,6 @@ const TableContainer = () => {
   }, [user])
 
   const columns = useMemo(() => userColumns, [])
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable<any>({ columns, data }, useSortBy)
 
   const trimData = useCallback(
     (tableItemsLimit: number) => {

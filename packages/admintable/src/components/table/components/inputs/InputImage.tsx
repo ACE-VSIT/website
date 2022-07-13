@@ -1,11 +1,11 @@
-import { Td } from '../table-elements.styles'
+import { Td } from './styles/table-elements.styles'
 import Button from 'remote/Button'
 import styled from 'styled-components'
 import AnimateIn from 'remote/AnimateIn'
 import useOutsideTouch from 'remote/useOutsideTouch'
 import { IInputImage } from '../../../../interfaces/input.interface'
 import { TextInput } from './InputText'
-import useUserInfo from '../../../../context/UserInfoContext'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { ChangeEvent, FC, memo, useEffect, useRef, useState } from 'react'
 
 const InputImage: FC<IInputImage> = ({

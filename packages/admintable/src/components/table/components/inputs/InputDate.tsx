@@ -1,9 +1,8 @@
 import { ChangeEvent, FC, memo, useRef, useState } from 'react'
 import styled from 'styled-components'
-import useUserInfo from '../../../../context/UserInfoContext'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputDate } from '../../../../interfaces/input.interface'
-import { Td } from '../table-elements.styles'
-import useOnScreen from 'remote/useOnScreen'
+import { Td } from './styles/table-elements.styles'
 import {TextInput} from './InputText'
 
 
@@ -14,7 +13,6 @@ const InputDate: FC<IInputDate> = ({
   disableUpdates = false,
 }) => {
   const ref = useRef()
-  const isOnScreen: boolean = useOnScreen(ref)
   const { userInfo, setUserInfo } = useUserInfo()
   const [dateVal, setDateVal] = useState<string>(customVal ?? '')
 
@@ -36,14 +34,12 @@ const InputDate: FC<IInputDate> = ({
 
   return (
     <DateWrapper ref={ref as unknown as any}>
-      {isOnScreen && (
-        <DateInput
-          type="date"
-          value={dateVal}
-          disabled={disableUpdates}
-          onChange={e => handleOnChange(e)}
-        />
-      )}
+      <DateInput
+        type="date"
+        value={dateVal}
+        disabled={disableUpdates}
+        onChange={e => handleOnChange(e)}
+      />
     </DateWrapper>
   )
 }
