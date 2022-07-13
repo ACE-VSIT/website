@@ -1,10 +1,10 @@
-import { Th, Tbody, Table, Thead } from "../inputs/styles/table-elements.styles"
-import { InputText, InputDate, InputImage } from '../inputs'
-import { IInput } from '../../../../interfaces/input.interface'
-import { IUser } from '../../../../interfaces/user.interface'
-import Updater from '../updater/Updater'
-import useUserInfo from '../../../../contexts/UserInfoContext'
-import { ITableHeader } from '../../../../interfaces/table.interface'
+import { Th, Tbody, Table, Thead } from "./components/inputs/styles/table-elements.styles"
+import { InputText, InputDate, InputImage } from './components/inputs'
+import { IInput } from '../../interfaces/input.interface'
+import { IUser } from '../../interfaces/user.interface'
+import Updater from './components/updater/Updater'
+import useUserInfo from '../../contexts/UserInfoContext'
+import { ITableHeader } from '../../interfaces/table.interface'
 
 type TablePropTypes = {
   headers: ITableHeader[],

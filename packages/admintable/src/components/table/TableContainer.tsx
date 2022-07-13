@@ -1,29 +1,28 @@
 import { IUser } from '../../interfaces/user.interface'
 import { useAuth } from '../../contexts/AuthContext'
 import { getTableData } from '../../utils/firebase'
-import useTableFilters from '../../contexts/TableContext'
+import useTableProps from '../../contexts/TableContext'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import TableComponent from './components/table/TableComponent'
+import TableComponent from './TableComponent'
 import { columns as userColumns } from '../../configs/user-table-config'
 
 const TableContainer = () => {
-  const { tableFilters } = useTableFilters()
-  const [data, setData] = useState<IUser[] | []>([])
-  const [unFiltered, setUnFiltered] = useState<IUser[] | []>([])
+  const { tableFilters, tableData, setTableData } = useTableProps()
+  const [currentData, setCurrentData] = useState<IUser[]>([])
 
   const { user } = useAuth()
 
-  const getData = useCallback(async () => {
+  const pullData = useCallback(async () => {
     const data = await getTableData(user)
-    setData(data ?? [])
-    setUnFiltered(data ?? [])
+    setCurrentData(data ?? [])
+    setTableData!(data ?? [])
   }, [user])
 
   const columns = useMemo(() => userColumns, [])
 
   const trimData = useCallback(
     (tableItemsLimit: number) => {
-      setData(unFiltered.slice(0, tableItemsLimit))
+      setCurrentData(tableData!.slice(0, tableItemsLimit))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [tableFilters?.listLength]
@@ -36,12 +35,12 @@ const TableContainer = () => {
   }, [tableFilters?.listLength, trimData])
 
   useEffect(() => {
-    getData()
-  }, [getData])
+    pullData()
+  }, [pullData])
 
   return (
     <>
-      <TableComponent headers={columns} data={data} /> 
+      <TableComponent headers={columns} data={currentData} /> 
     </>
   )
 }

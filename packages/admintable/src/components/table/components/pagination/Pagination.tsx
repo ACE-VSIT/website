@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import useTableFilters from '../../../../contexts/TableContext'
+import useTableProps from '../../../../contexts/TableContext'
 import { IPagination } from '../../../../interfaces/pagination.interface'
 import SelectOption from '../inputs/SelectOption'
 
 const Pagination: React.FC<IPagination> = () => {
-  const { tableFilters, setTableFilters } = useTableFilters()
+  const { tableFilters, setTableFilters } = useTableProps()
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTableFilters!({
