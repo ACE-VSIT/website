@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import useTableFilters from '../../../../context/TableContext'
+import useTableFilters from '../../../../contexts/TableContext'
 import { IPagination } from '../../../../interfaces/pagination.interface'
 import SelectOption from '../inputs/SelectOption'
 

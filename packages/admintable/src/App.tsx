@@ -5,9 +5,9 @@ import Dashboard from './pages/Dashboard'
 import PrivateRoute from './utils/PrivateRoutes'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { AuthProvider, useAuth } from './context/AuthContext'
+import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { darkTheme, GlobalStyle, lightTheme } from './theme/GlobalStyles'
-import useThemeContext from './context/ThemeContext'
+import useThemeContext from './contexts/ThemeContext'
 import NotFound from './pages/NotFound'
 
 const App: React.FC = () => {

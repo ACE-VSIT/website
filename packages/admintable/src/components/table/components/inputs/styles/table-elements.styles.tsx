@@ -12,7 +12,10 @@ export const Table = styled.table`
   border: 1px solid ${props => props.theme.font + 75};
 `
 
-export const Thead = styled.thead``
+export const Thead = styled.thead`
+  position: relative;
+  z-index: 10;
+`
 
 export const Tbody = styled.tbody`
   overflow: scroll;

@@ -1,12 +1,12 @@
 import React from 'react'
 import { signOutUser, getTableData } from '../utils/firebase'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../contexts/AuthContext'
 import {
   ButtonComponent,
   LoginHeading,
   LoginWrapper,
   Wrapper,
-} from '../components/Index/index-elements.styled'
+} from '../components/index-elements.styles'
 
 const SignOut: React.FC = () => {
   const { logout, user } = useAuth()

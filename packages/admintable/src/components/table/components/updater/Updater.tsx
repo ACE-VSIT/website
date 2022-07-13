@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { SyncOutlined } from '@ant-design/icons'
 import styled, { keyframes } from 'styled-components'
-import { Td } from '../table-elements.styles'
-import { handleObjectSplit } from '../../../../utils/functions'
-import useUserInfo from '../../../../context/UserInfoContext'
+import { Td } from '../inputs/styles/table-elements.styles'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { setTableUserInfo } from '../../../../utils/firebase'
 import { IUserItem } from '../../../../interfaces/user.interface'
 

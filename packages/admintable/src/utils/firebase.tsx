@@ -18,7 +18,7 @@ import {
 } from 'firebase/firestore'
 
 import { initializeApp, getApps } from 'firebase/app'
-import { userContextType } from '../context/AuthContext'
+import { userContextType } from '../contexts/AuthContext'
 import { IUser, IUserItem } from '../interfaces/user.interface'
 
 const firebaseConfig = {

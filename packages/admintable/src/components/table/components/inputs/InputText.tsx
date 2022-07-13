@@ -1,8 +1,8 @@
 import { ChangeEvent, FC, memo, useRef, useState } from 'react'
 import styled from 'styled-components'
-import useUserInfo from '../../../../context/UserInfoContext'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputText } from '../../../../interfaces/input.interface'
-import { Td } from '../table-elements.styles'
+import { Td } from './styles/table-elements.styles'
 import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
