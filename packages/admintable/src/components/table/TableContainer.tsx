@@ -5,9 +5,11 @@ import useTableProps from '../../contexts/TableContext'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import TableComponent from './TableComponent'
 import { columns as userColumns } from '../../configs/user-table-config'
+import Toolbar from './components/toolbar/Toolbar'
 
 const TableContainer = () => {
-  const { tableFilters, tableData, setTableData } = useTableProps()
+  const { tableFilters, tableData, setTableData, filteredData } =
+    useTableProps()
   const [currentData, setCurrentData] = useState<IUser[]>([])
 
   const { user } = useAuth()
@@ -16,7 +18,7 @@ const TableContainer = () => {
     const data = await getTableData(user)
     setCurrentData(data ?? [])
     setTableData!(data ?? [])
-  }, [user])
+  }, [setTableData, user])
 
   const columns = useMemo(() => userColumns, [])
 
@@ -38,9 +40,16 @@ const TableContainer = () => {
     pullData()
   }, [pullData])
 
+  useEffect(() => {
+    if (filteredData?.length !== 0 && filteredData !== undefined) {
+      setCurrentData([...filteredData])
+    }
+  }, [filteredData])
+
   return (
     <>
-      <TableComponent headers={columns} data={currentData} /> 
+      <Toolbar />
+      <TableComponent headers={columns} data={currentData} />
     </>
   )
 }

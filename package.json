@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "devDependencies": {
+    "concurrently": "^7.2.2",
     "lerna": "^5.1.4",
     "nx": "14.3.6"
   },
@@ -18,8 +19,8 @@
     "nx:graph": "nx dep-graph",
     "serve": "nx run-many --parallel --target=serve --all",
     "start": "nx run-many --parallel --target=start --all",
-    "start:admintable": "nx start @ace/admin-table",
-    "start:website": "nx start @ace/website",
+    "start:admintable": "concurrently \"nx start @ace/admin-table\" \"nx start @ace/common\"",
+    "start:website": "concurrently \"nx start @ace/website\" \"nx start @ace/common\"",
     "start:common": "nx start @ace/common",
     "test": "lerna run test"
   },
