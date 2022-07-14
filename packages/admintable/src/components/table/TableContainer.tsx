@@ -8,7 +8,8 @@ import { columns as userColumns } from '../../configs/user-table-config'
 import Toolbar from './components/toolbar/Toolbar'
 
 const TableContainer = () => {
-  const { tableFilters, tableData, setTableData, filteredData } = useTableProps()
+  const { tableFilters, tableData, setTableData, filteredData } =
+    useTableProps()
   const [currentData, setCurrentData] = useState<IUser[]>([])
 
   const { user } = useAuth()
@@ -17,7 +18,7 @@ const TableContainer = () => {
     const data = await getTableData(user)
     setCurrentData(data ?? [])
     setTableData!(data ?? [])
-  }, [user])
+  }, [setTableData, user])
 
   const columns = useMemo(() => userColumns, [])
 
@@ -40,17 +41,15 @@ const TableContainer = () => {
   }, [pullData])
 
   useEffect(() => {
-    if(filteredData?.length !== 0 && filteredData !== undefined) {
-      console.log(filteredData)
+    if (filteredData?.length !== 0 && filteredData !== undefined) {
       setCurrentData([...filteredData])
     }
-  }, [JSON.stringify(filteredData)])
-
+  }, [filteredData])
 
   return (
     <>
-      <Toolbar/>
-      <TableComponent headers={columns} data={currentData} /> 
+      <Toolbar />
+      <TableComponent headers={columns} data={currentData} />
     </>
   )
 }

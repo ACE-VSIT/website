@@ -1,10 +1,9 @@
-import { ChangeEvent, FC, memo, useRef, useState } from 'react'
+import { ChangeEvent, FC, useRef, useState } from 'react'
 import styled from 'styled-components'
 import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputDate } from '../../../../interfaces/input.interface'
 import { Td } from './styles/table-elements.styles'
-import {TextInput} from './InputText'
-
+import { TextInput } from './InputText'
 
 const InputDate: FC<IInputDate> = ({
   customOnChange,
@@ -44,7 +43,7 @@ const InputDate: FC<IInputDate> = ({
   )
 }
 
-export default memo(InputDate)
+export default InputDate
 
 const DateWrapper = styled(Td)`
   width: max-content;

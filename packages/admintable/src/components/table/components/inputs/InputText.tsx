@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, memo, useRef, useState } from 'react'
+import { ChangeEvent, FC, useRef, useState } from 'react'
 import styled from 'styled-components'
 import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputText } from '../../../../interfaces/input.interface'
@@ -43,7 +43,7 @@ const InputText: FC<IInputText> = ({
   )
 }
 
-export default memo(InputText)
+export default InputText
 
 const TextWrapper = styled(Td)`
   width: max-content;

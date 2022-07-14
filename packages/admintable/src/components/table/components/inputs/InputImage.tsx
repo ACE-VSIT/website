@@ -6,7 +6,7 @@ import useOutsideTouch from 'remote/useOutsideTouch'
 import { IInputImage } from '../../../../interfaces/input.interface'
 import { TextInput } from './InputText'
 import useUserInfo from '../../../../contexts/UserInfoContext'
-import { ChangeEvent, FC, memo, useEffect, useRef, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 
 const InputImage: FC<IInputImage> = ({
   customOnChange,
@@ -14,7 +14,6 @@ const InputImage: FC<IInputImage> = ({
   cellId,
   disableUpdates = false,
 }) => {
-
   const ref = useRef()
   const popupRef = useRef(null)
   const { userInfo, setUserInfo } = useUserInfo()
@@ -35,16 +34,14 @@ const InputImage: FC<IInputImage> = ({
       }
     }
   }
-  useEffect(() => {
-  }, [popupRef])
+  useEffect(() => {}, [popupRef])
 
   const handlePopup = () => {
     setSelected(prev => !prev)
-  } 
+  }
 
   return (
-    <ImageWrapper ref={ref as unknown as any}
-    >
+    <ImageWrapper ref={ref as unknown as any}>
       <>
         <img
           src={imageSrc}
@@ -52,30 +49,27 @@ const InputImage: FC<IInputImage> = ({
           width={75}
           height={75}
           onClick={handlePopup}
-        /> 
-        {selected && 
+        />
+        {selected && (
           <AnimateIn>
             <PopupWrapper ref={popupRef}>
               <h3>{userInfo?.name}</h3>
               <SrcInput
-                type="text"  
+                type="text"
                 value={imageSrc}
                 onChange={e => handleOnChange(e)}
               />
-              <Button
-                value="Done"
-                sm
-                onClick={handlePopup}
-              />
+              <Button value="Done" sm onClick={handlePopup} />
             </PopupWrapper>
-          </AnimateIn>}
-        </>
-      </ImageWrapper>
+          </AnimateIn>
+        )}
+      </>
+    </ImageWrapper>
   )
 }
 
 const ImageWrapper = styled(Td)`
-  padding: .5em;
+  padding: 0.5em;
   height: 7rem;
   cursor: pointer;
   display: relative;
@@ -89,7 +83,7 @@ const PopupWrapper = styled.div`
   left: 50%;
   z-index: 999;
   display: flex;
-  position: fixed; 
+  position: fixed;
   padding: 2rem 3rem;
   align-items: center;
   flex-direction: column;
@@ -104,4 +98,4 @@ const SrcInput = styled(TextInput)`
   border: 1px solid ${props => props.theme.font};
 `
 
-export default memo(InputImage)
+export default InputImage
