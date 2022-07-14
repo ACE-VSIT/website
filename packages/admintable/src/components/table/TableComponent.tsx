@@ -5,6 +5,8 @@ import { IUser } from '../../interfaces/user.interface'
 import Updater from './components/updater/Updater'
 import useUserInfo from '../../contexts/UserInfoContext'
 import { ITableHeader } from '../../interfaces/table.interface'
+import useTableProps from '../../contexts/TableContext'
+import { useEffect } from "react"
 
 type TablePropTypes = {
   headers: ITableHeader[],
@@ -13,6 +15,7 @@ type TablePropTypes = {
 
 export default function TableComponent({headers, data}: TablePropTypes) {
   const {setUserInfo} = useUserInfo()
+  const { loading } = useTableProps()
 
   const getRow = (obj: any) => {
     const inputs: JSX.Element[] = []
@@ -42,16 +45,25 @@ export default function TableComponent({headers, data}: TablePropTypes) {
     return inputs
   }
 
+  useEffect(() => {
+    console.log(data)
+  }, [JSON.stringify(data)])
+
   return (
     <Table>
       <Thead>
         {headers.map((header, idx) => <Th key={idx}>{header.Header}</Th>)} 
       </Thead>
       <Tbody>
-        {data.map((obj, idx) => <tr
-          onClick={() => setUserInfo!(obj)}
-          key={idx}
-        > { getRow(obj).map(input => input)} <Updater/> </tr>) }
+        {!loading ? 
+         <>
+          {data.map((obj, idx) => <tr
+            onClick={() => setUserInfo!(obj)}
+            key={idx}
+          >{getRow(obj).map(input => input)}<Updater/></tr>)}
+        </> : <div>Loading</div>
+        }
+
       </Tbody>
     </Table>
   )

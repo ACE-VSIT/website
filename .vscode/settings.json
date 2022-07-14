@@ -3,5 +3,8 @@
   "editor.formatOnSave": true,
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 }
