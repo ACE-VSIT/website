@@ -1,5 +1,5 @@
 import create from 'zustand'
-import { IUser } from '../utils/interfaces'
+import { IUser } from '../interfaces/user.interface'
 
 const useStore = create<{
   userInfo?: IUser

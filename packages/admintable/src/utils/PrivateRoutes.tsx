@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom'
-import { authContextType, useAuth } from '../context/AuthContext'
+import { authContextType, useAuth } from '../contexts/AuthContext'
 
 export type ProtectedRouteProps = {
   isAuthenticated: authContextType

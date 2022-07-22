@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signOut,
 } from 'firebase/auth'
+
 import {
   getFirestore,
   getDoc,
@@ -15,9 +16,10 @@ import {
   QuerySnapshot,
   updateDoc,
 } from 'firebase/firestore'
+
 import { initializeApp, getApps } from 'firebase/app'
-import { userContextType } from '../context/AuthContext'
-import { IUser, IUserItem } from './interfaces'
+import { userContextType } from '../contexts/AuthContext'
+import { IUser, IUserItem } from '../interfaces/user.interface'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,

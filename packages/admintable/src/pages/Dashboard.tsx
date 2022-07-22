@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar from 'remote/Navbar'
-import TableContainer from '../components/table/Index'
-import { NavbarConfig } from '../configs/Navbar.config'
-import { Wrapper } from '../components/Index/IndexElements'
-import { useAuth } from '../context/AuthContext'
+import TableContainer from '../components/table/TableContainer'
+import { NavbarConfig } from '../configs/navbar.config'
+import { Wrapper } from '../components/index-elements.styles'
+import { useAuth } from '../contexts/AuthContext'
 import { signOutUser } from '../utils/firebase'
-import useThemeContext from '../context/ThemeContext'
+import useThemeContext from '../contexts/ThemeContext'
 import Pagination from '../components/table/components/pagination/Pagination'
 
 const Dashboard: React.FC = () => {

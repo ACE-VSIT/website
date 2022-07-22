@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { SyncOutlined } from '@ant-design/icons'
 import styled, { keyframes } from 'styled-components'
-import { Td } from '../Elements'
-import { handleObjectSplit } from '../../../../utils/functions'
-import useUserInfo from '../../../../context/UserInfoContext'
+import { Td } from '../inputs/styles/table-elements.styles'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { setTableUserInfo } from '../../../../utils/firebase'
+import { IUserItem } from '../../../../interfaces/user.interface'
 
 const Updater: React.FC = () => {
   const [trigger, setTrigger] = useState(false)
@@ -12,12 +12,7 @@ const Updater: React.FC = () => {
 
   const handleUpdate = () => {
     setTrigger(prev => !prev)
-    const { splitValue, unsplit, split } = handleObjectSplit(userInfo!)
-    const userData = {
-      ...unsplit,
-      [splitValue]: split,
-    }
-    setTableUserInfo(userData)
+    setTableUserInfo(userInfo as IUserItem)
     clearUserInfo!()
   }
 
@@ -54,6 +49,12 @@ const UpdateWrapper = styled(Td)<{ triggerAnimation?: boolean }>`
     animation-duration: 1s;
     animation-name: ${props =>
       props.triggerAnimation ? UpdateIconAnimation : ''};
+  }
+
+  @media (max-width: 768px) {
+    div {
+      height: 4.75rem; 
+    }
   }
 `
 const UpdateIcon = styled(SyncOutlined)`

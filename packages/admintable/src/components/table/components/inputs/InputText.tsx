@@ -1,8 +1,8 @@
-import { ChangeEvent, FC, memo, useRef, useState } from 'react'
+import { ChangeEvent, FC, useRef, useState } from 'react'
 import styled from 'styled-components'
-import useUserInfo from '../../../../context/UserInfoContext'
-import { IInputText } from '../../interfaces/IInputText'
-import { Td } from '../Elements'
+import useUserInfo from '../../../../contexts/UserInfoContext'
+import { IInputText } from '../../../../interfaces/input.interface'
+import { Td } from './styles/table-elements.styles'
 import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
@@ -43,7 +43,7 @@ const InputText: FC<IInputText> = ({
   )
 }
 
-export default memo(InputText)
+export default InputText
 
 const TextWrapper = styled(Td)`
   width: max-content;
