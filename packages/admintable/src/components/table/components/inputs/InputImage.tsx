@@ -17,7 +17,7 @@ const InputImage: FC<IInputImage> = ({
   const ref = useRef()
   const popupRef = useRef(null)
   const { userInfo, setUserInfo } = useUserInfo()
-  const [imageSource, setImageSource] = useState<string>(customVal ?? '')
+  const [profileImage, setImageSource] = useState<string>(customVal ?? '')
   const [selected, setSelected] = useState<boolean>(false)
   useOutsideTouch(popupRef, setSelected)
 
@@ -43,7 +43,7 @@ const InputImage: FC<IInputImage> = ({
   return (
     <ImageWrapper ref={ref as unknown as any}>
       <img
-        src={imageSource}
+        src={profileImage}
         alt={cellId}
         width={75}
         height={75}
@@ -54,9 +54,9 @@ const InputImage: FC<IInputImage> = ({
         <AnimateIn>
           <PopupWrapper ref={popupRef}>
             <h3>{userInfo?.name}</h3>
-            <SrcInput
+            <ImageInputContainer
               type="text"
-              value={imageSource}
+              value={profileImage}
               onChange={e => handleOnChange(e)}
             />
             <Button value="Done" sm onClick={handlePopup} />
@@ -93,7 +93,7 @@ const PopupWrapper = styled.div`
   filter: drop-shadow(0 0 5px ${props => props.theme.font + 75});
 `
 
-const SrcInput = styled(TextInput)`
+const ImageInputContainer = styled(TextInput)`
   border: 1px solid ${props => props.theme.font};
 `
 
