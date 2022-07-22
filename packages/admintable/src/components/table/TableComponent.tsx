@@ -13,6 +13,7 @@ import { ITableHeader } from '../../interfaces/table.interface'
 import { memo, useState, useEffect } from 'react'
 import { getNestedValue } from './helpers/helper-functions'
 import useTableProps from '../../contexts/TableContext'
+import React from 'react'
 
 type TablePropTypes = {
   headers: ITableHeader[]
@@ -61,7 +62,12 @@ function TableComponent({ headers, data }: TablePropTypes) {
         <Tbody>
           {currentData?.map(obj => (
             <tr onClick={() => setUserInfo!(obj)} key={obj.uid}>
-              {getRow(obj).map(input => input)}
+              {getRow(obj).map((input, idx) => {
+                let cloned = React.cloneElement(input, {
+                  key: idx,
+                })
+                return cloned
+              })}
               <Updater />
             </tr>
           ))}
