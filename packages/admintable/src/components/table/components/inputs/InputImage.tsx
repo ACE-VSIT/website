@@ -49,6 +49,7 @@ const InputImage: FC<IInputImage> = ({
           width={75}
           height={75}
           onClick={handlePopup}
+          referrerPolicy="no-referrer"
         />
         {selected && (
           <AnimateIn>
