@@ -42,29 +42,27 @@ const InputImage: FC<IInputImage> = ({
 
   return (
     <ImageWrapper ref={ref as unknown as any}>
-      <>
-        <img
-          src={imageSrc}
-          alt={cellId}
-          width={75}
-          height={75}
-          onClick={handlePopup}
-          referrerPolicy="no-referrer"
-        />
-        {selected && (
-          <AnimateIn>
-            <PopupWrapper ref={popupRef}>
-              <h3>{userInfo?.name}</h3>
-              <SrcInput
-                type="text"
-                value={imageSrc}
-                onChange={e => handleOnChange(e)}
-              />
-              <Button value="Done" sm onClick={handlePopup} />
-            </PopupWrapper>
-          </AnimateIn>
-        )}
-      </>
+      <img
+        src={imageSrc}
+        alt={cellId}
+        width={75}
+        height={75}
+        onClick={handlePopup}
+        referrerPolicy="no-referrer"
+      />
+      {selected && (
+        <AnimateIn>
+          <PopupWrapper ref={popupRef}>
+            <h3>{userInfo?.name}</h3>
+            <SrcInput
+              type="text"
+              value={imageSrc}
+              onChange={e => handleOnChange(e)}
+            />
+            <Button value="Done" sm onClick={handlePopup} />
+          </PopupWrapper>
+        </AnimateIn>
+      )}
     </ImageWrapper>
   )
 }
