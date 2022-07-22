@@ -17,7 +17,7 @@ const InputImage: FC<IInputImage> = ({
   const ref = useRef()
   const popupRef = useRef(null)
   const { userInfo, setUserInfo } = useUserInfo()
-  const [imageSrc, setImageSrc] = useState<string>(customVal ?? '')
+  const [imageSource, setImageSource] = useState<string>(customVal ?? '')
   const [selected, setSelected] = useState<boolean>(false)
   useOutsideTouch(popupRef, setSelected)
 
@@ -26,7 +26,7 @@ const InputImage: FC<IInputImage> = ({
       if (customOnChange) {
         customOnChange(e?.target?.value)
       } else {
-        setImageSrc(e?.target?.value)
+        setImageSource(e?.target?.value)
         setUserInfo!({
           ...userInfo!,
           [cellId!]: e?.target?.value,
@@ -43,7 +43,7 @@ const InputImage: FC<IInputImage> = ({
   return (
     <ImageWrapper ref={ref as unknown as any}>
       <img
-        src={imageSrc}
+        src={imageSource}
         alt={cellId}
         width={75}
         height={75}
@@ -56,7 +56,7 @@ const InputImage: FC<IInputImage> = ({
             <h3>{userInfo?.name}</h3>
             <SrcInput
               type="text"
-              value={imageSrc}
+              value={imageSource}
               onChange={e => handleOnChange(e)}
             />
             <Button value="Done" sm onClick={handlePopup} />
