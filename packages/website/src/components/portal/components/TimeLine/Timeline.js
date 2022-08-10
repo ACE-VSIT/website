@@ -1,16 +1,27 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { Heading } from '../../../../styles/sharedStyles'
 import TimelineCard from './TimelineCard/TimelineCard'
 import { TimelineWrapper } from './TimelineElements'
 import Loading from '../../../animations/Loading'
 import useDrivePicker from 'react-google-drive-picker'
 import axios from 'axios'
+import { saveSubmittionData } from '../../../../firebase'
+import { AuthContext } from '../../../../context/auth/AuthContext'
+import { FirebaseContext } from '../../../../context/FirebaseContext'
 
 export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
-  const [submitData, setSubmitData] = useState([])
-  const [openPicker, data] = useDrivePicker()
+  const [isSubmitted, setIsSubmitted] = useState([])
+  const [openPicker] = useDrivePicker()
   const wrapper = useRef()
+  const { user } = useContext(AuthContext)
+  const { getSubmissionDetails, submissions } = useContext(FirebaseContext)
 
   const getHeight = useCallback(() => {
     const height = wrapper?.current?.offsetHeight
@@ -18,7 +29,7 @@ export default function Timeline({ timeLine, name }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [height])
 
-  const handleOpenPicker = async () => {
+  const handleOpenPicker = async questionType => {
     try {
       const res = await axios.post(
         'https://www.googleapis.com/oauth2/v4/token',
@@ -42,6 +53,18 @@ export default function Timeline({ timeLine, name }) {
           multiselect: false,
           disableDefaultView: true,
           setParentFolder: process.env.GATSBY_GOOGLE_PARENT_FOLDER_ID,
+          callbackFunction: data => {
+            if (data.action === 'cancel') {
+              console.log('User clicked cancel/close button')
+            }
+            if (data.docs) {
+              saveSubmittionData(data.docs[0], questionType, user.email)
+              setIsSubmitted(prev => [
+                ...prev,
+                questionType.replace(/\s+/g, '-').toLowerCase(),
+              ])
+            }
+          },
           // customViews: customViewsArray, // custom view
         })
       }
@@ -50,19 +73,24 @@ export default function Timeline({ timeLine, name }) {
     }
   }
 
-  useEffect(() => {
-    if (data) {
-      const res = data.docs[0]
-      setSubmitData({
-        downloadUrl: res.downloadUrl,
-        id: res.id,
-        name: res.name,
-        uploadState: res.uploadState,
-        url: res.url,
-        mimeType: res.mimeType,
+  const viewSubmission = questionType => {
+    if (submissions) {
+      Object.keys(submissions).forEach(key => {
+        if (key === questionType) {
+          window.open(submissions[key]?.url)
+        }
       })
     }
-  }, [data, setSubmitData])
+  }
+
+  const getExistingSubmission = useCallback(async () => {
+    const res = await getSubmissionDetails(user.email)
+    Object.keys(res).forEach(key => {
+      setIsSubmitted(prev => [...prev, key])
+    })
+  }, [user?.email, getSubmissionDetails])
+
+  useEffect(() => getExistingSubmission(), [getExistingSubmission])
 
   useEffect(() => {
     setTimeout(getHeight, 500)
@@ -79,12 +107,20 @@ export default function Timeline({ timeLine, name }) {
             (e, index) =>
               e?.show_question && (
                 <TimelineCard
-                  key={index}
-                  heading={e?.question_name.text}
                   level={e?.difficulty_level}
+                  heading={e?.question_name.text}
                   info={e?.question_info.richText}
                   align={index % 2 ? 'start' : 'end'}
-                  openPicker={handleOpenPicker}
+                  key={`${e?.question_name.text}-${index}`}
+                  openPicker={() => handleOpenPicker(e?.question_name.text)}
+                  viewSubmission={() =>
+                    viewSubmission(
+                      e?.question_name?.text?.replace(/\s+/g, '-').toLowerCase()
+                    )
+                  }
+                  isSubmitted={isSubmitted.includes(
+                    e?.question_name?.text?.replace(/\s+/g, '-').toLowerCase()
+                  )}
                 />
               )
           )}

@@ -17,6 +17,8 @@ export default function TimelineCard({
   info,
   align,
   openPicker,
+  viewSubmission,
+  isSubmitted = false,
 }) {
   const styledFlex = {
     justifyContent: 'space-between',
@@ -43,8 +45,11 @@ export default function TimelineCard({
         )}
         <FlexCenter style={styledFlex}>
           {level && <TimelineDifficulty>#{level}</TimelineDifficulty>}
-          <ButtonWrapper onClick={e => openPicker()} sm={'sm'}>
-            Submit
+          <ButtonWrapper
+            onClick={e => (isSubmitted ? viewSubmission() : openPicker())}
+            sm={'sm'}
+          >
+            {isSubmitted ? 'View' : 'Submit'}
           </ButtonWrapper>
         </FlexCenter>
         <TimelinePoint>

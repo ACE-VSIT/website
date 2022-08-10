@@ -21,6 +21,7 @@ export function FirebaseContextProvider({ children }) {
   const { dispatch, user } = useContext(AuthContext)
   const [personalDetails, setPersonalDetails] = useState()
   const [isVerified, setIsVerified] = useState(false)
+  const [submissions, setSubmissions] = useState()
 
   const getPersonalDetails = useCallback(async email => {
     const db = getFirestore()
@@ -36,6 +37,21 @@ export function FirebaseContextProvider({ children }) {
     setPersonalDetails(personalInfo)
   }, [])
 
+  const getSubmissionDetails = useCallback(async email => {
+    const db = getFirestore()
+    const checkIfUserExists = query(
+      collection(db, 'users'),
+      where('user', '==', email)
+    )
+    let submissions
+    const queryData = await getDocs(checkIfUserExists)
+    queryData.forEach(doc => {
+      submissions = doc.data().submissions
+    })
+    setSubmissions(submissions)
+    return submissions
+  }, [])
+
   useEffect(() => {
     if (auth?.currentUser?.emailVerified) {
       setIsVerified(true)
@@ -43,6 +59,12 @@ export function FirebaseContextProvider({ children }) {
       setIsVerified(false)
     }
   }, [user])
+
+  useEffect(() => {
+    if (user?.email) {
+      getSubmissionDetails(user.email)
+    }
+  }, [user?.email, getSubmissionDetails])
 
   useEffect(() => {
     if (user?.email) {
@@ -60,6 +82,8 @@ export function FirebaseContextProvider({ children }) {
     setPersonalDetails,
     isVerified,
     setIsVerified,
+    getSubmissionDetails,
+    submissions,
   }
   return (
     <FirebaseContext.Provider value={value}>

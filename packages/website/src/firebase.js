@@ -84,6 +84,29 @@ export const savePersonalDetails = async (email, personalDetails) => {
   })
 }
 
+export const saveSubmittionData = async (data, questionType, email) => {
+  if (
+    questionType &&
+    data.downloadUrl &&
+    data?.url &&
+    data?.name &&
+    data?.lastEditedUtc &&
+    data?.mimeType &&
+    data?.uploadState &&
+    data?.id
+  ) {
+    const emailRef = doc(db, 'users', email)
+    const emailInfo = await getDoc(emailRef)
+    const submissions = emailInfo.data()?.submissions
+    await updateDoc(emailRef, {
+      submissions: {
+        ...submissions,
+        [questionType.replace(/\s+/g, '-').toLowerCase()]: { ...data },
+      },
+    })
+  }
+}
+
 export const createUserAccount = async (
   email,
   password,
