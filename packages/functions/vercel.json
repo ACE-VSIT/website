@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "src": "/googleDriveDelete",
+      "dest": "/api/googleDriveDelete.js",
+      "methods": ["POST"]
+    }
+  ]
+}

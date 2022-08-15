@@ -22,6 +22,7 @@
     "start:admintable": "concurrently \"nx start @ace/admin-table\" \"nx start @ace/common\"",
     "start:website": "concurrently \"nx start @ace/website\" \"nx start @ace/common\"",
     "start:common": "nx start @ace/common",
+    "start:functions": "nx start @ace/functions",
     "test": "lerna run test"
   },
   "dependencies": {

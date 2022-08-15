@@ -12,6 +12,10 @@
     "@ace/common": {
       "root": "packages/common",
       "type": "library"
+    },
+    "@ace/functions": {
+      "root": "packages/functions",
+      "type": "library"
     }
   }
 }
