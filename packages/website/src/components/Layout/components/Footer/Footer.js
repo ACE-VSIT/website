@@ -59,7 +59,16 @@ export default function Footer({ itemList, footerList }) {
             )
           })}
         </FooterItemsWrapper>
-        <FooterBottom>© 2022 ACE-VSIT, All Rights Reserved</FooterBottom>
+        <FooterBottom>
+          © 2022 ACE-VSIT, All Rights Reserved |
+          <a
+            href="https://github.com/ACE-VSIT/website"
+            target="_balnk"
+            style={{ textDecoration: 'none' }}
+          >
+            &nbsp;Github
+          </a>
+        </FooterBottom>
       </FooterWrapper>
     </>
   )

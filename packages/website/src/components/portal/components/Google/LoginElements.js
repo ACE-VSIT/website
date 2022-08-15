@@ -54,4 +54,12 @@ export const ButtonWrapper = styled.button`
       max-width: 150px;
       line-height: 50px;
     `}
+
+  ${({ sq }) =>
+    sq &&
+    css`
+      height: 50px;
+      width: 65px;
+      text-align: center;
+    `}
 `
