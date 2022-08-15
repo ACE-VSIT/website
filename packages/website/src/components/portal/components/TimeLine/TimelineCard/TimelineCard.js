@@ -10,6 +10,8 @@ import {
   TimelinePoint,
   TimelineDifficulty,
 } from './TimelineCardElements'
+import { EyeOutlined, UploadOutlined } from '@ant-design/icons'
+import useWindowSize from '../../../../../hooks/useWindowSize'
 
 export default function TimelineCard({
   heading,
@@ -32,6 +34,8 @@ export default function TimelineCard({
     marginRight: align === 'end' && '20rem',
   }
 
+  const { width } = useWindowSize()
+
   return (
     <Container id={'timelineCard'} align={'flex-end'} style={containerMargin}>
       <TimelineCardWrapper>
@@ -45,12 +49,37 @@ export default function TimelineCard({
         )}
         <FlexCenter style={styledFlex}>
           {level && <TimelineDifficulty>#{level}</TimelineDifficulty>}
-          <ButtonWrapper
-            onClick={e => (isSubmitted ? viewSubmission() : openPicker())}
-            sm={'sm'}
+          <FlexCenter
+            style={{
+              gap: 0,
+              flexDirection: 'row',
+              width: 'max-content',
+              justifyContent: 'flex-end',
+            }}
           >
-            {isSubmitted ? 'View' : 'Submit'}
-          </ButtonWrapper>
+            {isSubmitted && (
+              <ButtonWrapper onClick={() => viewSubmission()} sq>
+                <EyeOutlined />
+              </ButtonWrapper>
+            )}
+            <ButtonWrapper
+              onClick={e => openPicker()}
+              sm={width > 768}
+              sq={width < 768}
+            >
+              {isSubmitted ? (
+                !(width > 768) ? (
+                  <UploadOutlined />
+                ) : (
+                  'Re-Submit'
+                )
+              ) : !(width > 768) ? (
+                <UploadOutlined />
+              ) : (
+                'Submit'
+              )}
+            </ButtonWrapper>
+          </FlexCenter>
         </FlexCenter>
         <TimelinePoint>
           <span />

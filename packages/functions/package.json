@@ -1,0 +1,16 @@
+{
+  "name": "@ace/functions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ACE-VSIT/website",
+  "author": "nparashar150",
+  "license": "MIT",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/node": "^2.5.8",
+    "dotenv": "^16.0.1",
+    "googleapis": "^105.0.0"
+  }
+}
