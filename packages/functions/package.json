@@ -1,12 +1,13 @@
 {
   "name": "@ace/functions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/ACE-VSIT/website",
   "author": "nparashar150",
   "license": "MIT",
   "scripts": {
-    "start": "vercel dev"
+    "start": "vercel dev",
+    "prod": "vercel --prod"
   },
   "dependencies": {
     "@vercel/node": "^2.5.8",

@@ -1,9 +1,9 @@
 require('dotenv').config()
 import { google } from 'googleapis'
 
-export default (req, res) => {
+const handler = async (req, res) => {
   if (req.method === 'POST') {
-    const { fileId } = req.body
+    const { fileId } = JSON.parse(req.body)
 
     const CLIENT_ID = process.env.CLIENT_ID
     const CLIENT_SECRET = process.env.CLIENT_SECRET
@@ -46,3 +46,25 @@ export default (req, res) => {
     res.status(405).json({ message: 'Method Not Allowed' })
   }
 }
+
+const allowCors = fn => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // another common pattern
+  // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET,OPTIONS,PATCH,DELETE,POST,PUT'
+  )
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  )
+  if (req.method === 'OPTIONS') {
+    res.status(200).end()
+    return
+  }
+  return await fn(req, res)
+}
+
+export default allowCors(handler)

@@ -202,6 +202,25 @@ export const checkEmailVerfiy = async setIsVerified => {
   }
 }
 
+export const deleteFileFromStorage = async fileId => {
+  if (fileId) {
+    var raw = JSON.stringify({
+      fileId: `${fileId}`,
+    })
+
+    var requestOptions = {
+      method: 'POST',
+      body: raw,
+      redirect: 'follow',
+    }
+
+    fetch('https://ace-functions.vercel.app/googleDriveDelete', requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  }
+}
+
 export const signOutUser = async dispatch => {
   try {
     signOut(auth).then(() => {
