@@ -17,13 +17,21 @@ export default function Footer({ itemList, footerList }) {
     <>
       <FooterWrapper>
         <FooterItemsWrapper>
-          <StaticImage
-            placeholder="BLURRED"
-            src={'../../../../images/ACELogoBlack.svg'}
-            alt="ACE Logo"
-            width={175}
-            imgStyle={{ filter: isDarkTheme ? 'invert(1)' : '' }}
-          />
+          {isDarkTheme ? (
+            <StaticImage
+              placeholder="BLURRED"
+              src={'../../../../images/ACELogoWhite.svg'}
+              alt="ACE Logo"
+              width={175}
+            />
+          ) : (
+            <StaticImage
+              placeholder="BLURRED"
+              src={'../../../../images/ACELogoBlack.svg'}
+              alt="ACE Logo"
+              width={175}
+            />
+          )}
           <FooterTitle subtitle={true}>
             To know more about the upcoming events and opportunities, connect
             with us via our newsletter
