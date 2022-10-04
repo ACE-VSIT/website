@@ -16,6 +16,43 @@
         "placeholder": "Enter the subtitle of the page"
       }
     },
+    "show_register_page": {
+      "type": "Boolean",
+      "config": {
+        "default_value": true,
+        "label": "Show Register Page"
+      }
+    },
+    "registration_start_date": {
+      "type": "Timestamp",
+      "config": {
+        "label": "Registration Start Date",
+        "placeholder": "Enter the registration start date and time"
+      }
+    },
+    "registration_to_be_started_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Registration to be started text",
+        "placeholder": "Enter text for registration to be started text"
+      }
+    },
+    "registration_end_date": {
+      "type": "Timestamp",
+      "config": {
+        "label": "Registration End Date",
+        "placeholder": "Enter the registration end date and time"
+      }
+    },
+    "registration_closed_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Registration closed text",
+        "placeholder": "Enter text for registration closed text"
+      }
+    },
     "background_image": {
       "type": "Image",
       "config": {
@@ -75,7 +112,8 @@
                     "IOT",
                     "Audio / Visual",
                     "Content Writing",
-                    "Programming"
+                    "Programming",
+                    "Miscellaneous"
                   ],
                   "label": "Question Category",
                   "placeholder": "Select the category of Question"

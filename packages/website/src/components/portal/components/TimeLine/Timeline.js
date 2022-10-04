@@ -90,16 +90,20 @@ export default function Timeline({ timeLine, name }) {
   }
 
   const getExistingSubmission = useCallback(async () => {
-    const res = await getSubmissionDetails(user.email)
-    Object.keys(res).forEach(key => {
-      setIsSubmitted(prev => [...prev, key])
-    })
+    if (user?.email) {
+      const res = await getSubmissionDetails(user.email)
+      if (typeof res === 'object') {
+        Object.keys(res).forEach(key => {
+          setIsSubmitted(prev => [...prev, key])
+        })
+      }
+    }
   }, [user?.email, getSubmissionDetails])
 
   useEffect(() => getExistingSubmission(), [getExistingSubmission])
 
   useEffect(() => {
-    setTimeout(getHeight, 500)
+    setTimeout(getHeight, 100)
   }, [getHeight])
 
   return (
