@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "devDependencies": {
     "concurrently": "^7.2.2",
+    "husky": "^8.0.1",
     "lerna": "^5.1.4",
+    "lint-staged": "^13.0.3",
     "nx": "14.3.6"
   },
   "scripts": {
@@ -14,6 +16,7 @@
     "build": "nx run-many --parallel --target=build --all",
     "clean": "nx run-many --parallel --target=clean --all",
     "diff": "lerna diff",
+    "lint": "nx run-many --parallel --target=lint --all",
     "format": "nx format --all",
     "new-version": "lerna version --conventional-commits --yes",
     "nx:graph": "nx dep-graph",
@@ -24,6 +27,18 @@
     "start:common": "nx start @ace/common",
     "start:functions": "nx start @ace/functions",
     "test": "lerna run test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "yarn lint",
+      "yarn format",
+      "git add"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
