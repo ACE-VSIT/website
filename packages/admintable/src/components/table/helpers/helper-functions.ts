@@ -1,4 +1,4 @@
-import { IUser } from '../../../interfaces/user.interface'
+import { IUser } from '../../../interfaces/user.interface';
 
 type FilterHelperProps = {
   data: IUser[]
@@ -7,20 +7,20 @@ type FilterHelperProps = {
 }
 
 export const getNestedValue = (obj: any, key: string) => {
-  const keys = key.split('.')
-  let value = obj
+  const keys = key.split('.');
+  let value = obj;
   for (let i = 0; i < keys.length; i += 1) {
-    value = value[keys[i]]
+    value = value[keys[i]];
   }
-  return value
-}
+  return value;
+};
 
 export const filterEquals = ({ data, property, token }: FilterHelperProps) => {
   const filteredData: IUser[] = data.filter(
-    obj => getNestedValue(obj, property) === token
-  )
-  return filteredData
-}
+    (obj) => getNestedValue(obj, property) === token,
+  );
+  return filteredData;
+};
 
 export const filterNotEquals = ({
   data,
@@ -28,10 +28,10 @@ export const filterNotEquals = ({
   token,
 }: FilterHelperProps) => {
   const filteredData: IUser[] = data.filter(
-    obj => getNestedValue(obj, property) !== token
-  )
-  return filteredData
-}
+    (obj) => getNestedValue(obj, property) !== token,
+  );
+  return filteredData;
+};
 
 export const filterIncludes = ({
   data,
@@ -39,11 +39,9 @@ export const filterIncludes = ({
   token,
 }: FilterHelperProps) => {
   // eslint-disable-next-line max-len
-  const filteredData: IUser[] = data.filter(obj =>
-    getNestedValue(obj, property)?.toLowerCase()?.includes(token)
-  )
-  return filteredData
-}
+  const filteredData: IUser[] = data.filter((obj) => getNestedValue(obj, property)?.toLowerCase()?.includes(token));
+  return filteredData;
+};
 
 export const filterNotIncludes = ({
   data,
@@ -51,7 +49,7 @@ export const filterNotIncludes = ({
   token,
 }: FilterHelperProps) => {
   const filteredData: IUser[] = data.filter(
-    obj => !getNestedValue(obj, property)?.toLowerCase()?.includes(token)
-  )
-  return filteredData
-}
+    (obj) => !getNestedValue(obj, property)?.toLowerCase()?.includes(token),
+  );
+  return filteredData;
+};

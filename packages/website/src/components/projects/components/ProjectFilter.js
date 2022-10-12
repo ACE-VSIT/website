@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { FlexCenter } from '../../../styles/sharedStyles'
 import styled from 'styled-components'
 
-export default function ProjectFilter({ categories, setState, ...rest }) {
+export default function ProjectFilter ({ categories, setState, ...rest }) {
   const optionRef = useRef()
 
   const handleOptionChange = () => {

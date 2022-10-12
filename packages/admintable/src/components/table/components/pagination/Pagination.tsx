@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import useTableProps from '../../../../contexts/TableContext'
-import { IPagination } from '../../../../interfaces/pagination.interface'
-import SelectOption from '../inputs/SelectOption'
+import React from 'react';
+import styled from 'styled-components';
+import useTableProps from '../../../../contexts/TableContext';
+import { IPagination } from '../../../../interfaces/pagination.interface';
+import SelectOption from '../inputs/SelectOption';
 
 export const PaginationWrapper = styled.div`
   display: flex;
@@ -14,18 +14,18 @@ export const PaginationWrapper = styled.div`
 
   p {
     font-size: 0.85rem;
-    color: ${props => `${props.theme.font}DD`};
+    color: ${(props) => `${props.theme.font}DD`};
   }
-`
+`;
 
 const Pagination: React.FC<IPagination> = () => {
-  const { tableFilters, setTableFilters } = useTableProps()
+  const { tableFilters, setTableFilters } = useTableProps();
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTableFilters!({
       listLength: parseInt(e.target.value, 10),
-    })
-  }
+    });
+  };
 
   return (
     <PaginationWrapper>
@@ -39,7 +39,7 @@ const Pagination: React.FC<IPagination> = () => {
         options={['5', '20', '40', '50', '60', '80', '100']}
       />
     </PaginationWrapper>
-  )
-}
+  );
+};
 
-export default Pagination
+export default Pagination;

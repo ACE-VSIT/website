@@ -12,14 +12,14 @@ import Loading from '../../../animations/Loading'
 import { navigate } from 'gatsby'
 import { ButtonWrapper as ButtonElement } from '../Google/LoginElements'
 
-export default function Form() {
+export default function Form () {
   const [input, setInput] = useState({
     firstName: '',
     lastName: '',
     mobile: '',
     enrollmentNo: '',
     course: '',
-    section: '',
+    section: ''
   })
   const { user } = useContext(AuthContext)
   const { personalDetails, setIsVerified, isVerified } =
@@ -103,7 +103,7 @@ export default function Form() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
   }
 
   useEffect(() => {
@@ -193,7 +193,7 @@ export default function Form() {
                         style={{
                           gap: '0',
                           flexWrap: 'nowrap',
-                          flexDirection: 'row',
+                          flexDirection: 'row'
                         }}
                       >
                         <ErrorBox style={{ borderRight: '0' }}>

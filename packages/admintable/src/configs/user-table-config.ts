@@ -1,4 +1,4 @@
-import { ITableHeader } from '../interfaces/table.interface'
+import { ITableHeader } from '../interfaces/table.interface';
 
 const columns: ITableHeader[] = [
   {
@@ -46,6 +46,6 @@ const columns: ITableHeader[] = [
     accessor: '',
     type: 'update',
   },
-]
+];
 
-export default columns
+export default columns;

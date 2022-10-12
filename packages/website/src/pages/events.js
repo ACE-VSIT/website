@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import { FlexCenter } from '../styles/sharedStyles'
 import HeroSliceSecondary from '../components/hero-slice-secondary/HeroSliceSecondary'
 
-export default function Events({ data }) {
+export default function Events ({ data }) {
   // console.log(data)
   const nav = data?.prismicLayout?.data?.body
   const metaTitle = data?.prismicEventpage?.data?.meta_page_title?.text

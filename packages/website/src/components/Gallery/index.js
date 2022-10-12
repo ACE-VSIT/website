@@ -4,7 +4,7 @@ import ImageGrid from './components/ImageGrid/ImageGrid'
 import AnimateIn from '../animations/AnimateIn'
 import { getImage } from 'gatsby-plugin-image'
 
-export default function GalleryPage({ title, subTitle, imgArr }) {
+export default function GalleryPage ({ title, subTitle, imgArr }) {
   return (
     <>
       <Heading>{title}</Heading>
@@ -12,7 +12,7 @@ export default function GalleryPage({ title, subTitle, imgArr }) {
         style={{
           flexWrap: 'wrap',
           gap: '2rem',
-          width: '80vw',
+          width: '80vw'
         }}
       >
         {imgArr.map((e, index) => {

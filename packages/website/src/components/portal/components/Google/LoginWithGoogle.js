@@ -4,7 +4,7 @@ import { AuthContext } from '../../../../context/auth/AuthContext'
 import { ButtonWrapper } from './LoginElements'
 import GoogleOutlined from '@ant-design/icons/GoogleOutlined'
 
-export default function LoginWithGoogle() {
+export default function LoginWithGoogle () {
   const { dispatch } = useContext(AuthContext)
 
   const handleGoogleLogin = e => {

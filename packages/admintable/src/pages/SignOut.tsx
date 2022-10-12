@@ -1,21 +1,21 @@
-import React from 'react'
-import { signOutUser, getTableData } from '../utils/firebase'
-import { useAuth } from '../contexts/AuthContext'
+import React from 'react';
+import { signOutUser, getTableData } from '../utils/firebase';
+import { useAuth } from '../contexts/AuthContext';
 import {
   ButtonComponent,
   LoginHeading,
   LoginWrapper,
   Wrapper,
-} from '../components/index-elements.styles'
+} from '../components/index-elements.styles';
 
 const SignOut: React.FC = () => {
-  const { logout, user } = useAuth()
+  const { logout, user } = useAuth();
   const getData = async () => {
-    const data = await getTableData(user)
-    data?.forEach(e => {
-      console.log(e)
-    })
-  }
+    const data = await getTableData(user);
+    data?.forEach((e) => {
+      console.log(e);
+    });
+  };
 
   return (
     <Wrapper>
@@ -29,7 +29,7 @@ const SignOut: React.FC = () => {
         </ButtonComponent>
       </LoginWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default SignOut
+export default SignOut;

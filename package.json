@@ -7,7 +7,8 @@
     "husky": "^8.0.1",
     "lerna": "^5.1.4",
     "lint-staged": "^13.0.3",
-    "nx": "14.3.6"
+    "nx": "14.3.6",
+    "yarn-deduplicate": "^6.0.0"
   },
   "scripts": {
     "build:website": "nx build @ace/website",
@@ -16,7 +17,7 @@
     "build": "nx run-many --parallel --target=build --all",
     "clean": "nx run-many --parallel --target=clean --all",
     "diff": "lerna diff",
-    "lint": "nx run-many --parallel --target=lint --all",
+    "lint": "nx run-many --parallel --target=lint:fix --all",
     "format": "nx format --all",
     "new-version": "lerna version --conventional-commits --yes",
     "nx:graph": "nx dep-graph",
@@ -36,7 +37,6 @@
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "yarn lint",
-      "yarn format",
       "git add"
     ]
   },

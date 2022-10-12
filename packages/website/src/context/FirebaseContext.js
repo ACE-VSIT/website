@@ -3,7 +3,7 @@ import React, {
   useCallback,
   useEffect,
   useState,
-  useContext,
+  useContext
 } from 'react'
 import { AuthContext } from './auth/AuthContext'
 import { signInStatus, auth } from '../firebase'
@@ -12,12 +12,12 @@ import {
   collection,
   where,
   getDocs,
-  getFirestore,
+  getFirestore
 } from 'firebase/firestore'
 
 export const FirebaseContext = createContext('')
 
-export function FirebaseContextProvider({ children }) {
+export function FirebaseContextProvider ({ children }) {
   const { dispatch, user } = useContext(AuthContext)
   const [personalDetails, setPersonalDetails] = useState()
   const [isVerified, setIsVerified] = useState(false)
@@ -83,7 +83,7 @@ export function FirebaseContextProvider({ children }) {
     isVerified,
     setIsVerified,
     getSubmissionDetails,
-    submissions,
+    submissions
   }
   return (
     <FirebaseContext.Provider value={value}>

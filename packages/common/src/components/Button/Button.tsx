@@ -1,6 +1,6 @@
-import React from 'react'
-import { IButton, IButtonComponents } from '../../interfaces/IButton'
-import { ButtonComponent } from './ButtonElements'
+import React from 'react';
+import { IButton, IButtonComponents } from '../../interfaces/IButton';
+import { ButtonComponent } from './ButtonElements';
 
 const Button: React.FC<IButton & IButtonComponents> = ({
   value,
@@ -24,6 +24,6 @@ const Button: React.FC<IButton & IButtonComponents> = ({
   >
     {value}
   </ButtonComponent>
-)
+);
 
-export default Button
+export default Button;

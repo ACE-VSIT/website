@@ -1,17 +1,17 @@
-import React, { useRef } from 'react'
-import useOutsideAlerter from '../../hooks/useOutsideTouch'
-import { IUserProfileList } from '../../interfaces/INavbar'
-import AnimateIn from '../animations/AnimateIn'
-import Button from '../Button/Button'
-import { ButtonWrapper } from '../Button/ButtonElements'
-import { NavbarUserProfileCardWrapper } from './NavbarElements'
+import React, { useRef } from 'react';
+import useOutsideAlerter from '../../hooks/useOutsideTouch';
+import { IUserProfileList } from '../../interfaces/INavbar';
+import AnimateIn from '../animations/AnimateIn';
+import Button from '../Button/Button';
+import { ButtonWrapper } from '../Button/ButtonElements';
+import { NavbarUserProfileCardWrapper } from './NavbarElements';
 
 const NavbarUserProfileCard: React.FC<IUserProfileList> = ({
   setState,
   profileList,
 }) => {
-  const userProfileCardRef = useRef()
-  useOutsideAlerter(userProfileCardRef, setState)
+  const userProfileCardRef = useRef();
+  useOutsideAlerter(userProfileCardRef, setState);
 
   return (
     <AnimateIn duration={500} delay={250}>
@@ -23,7 +23,7 @@ const NavbarUserProfileCard: React.FC<IUserProfileList> = ({
         ))}
       </NavbarUserProfileCardWrapper>
     </AnimateIn>
-  )
-}
+  );
+};
 
-export default NavbarUserProfileCard
+export default NavbarUserProfileCard;

@@ -5,7 +5,7 @@ import HeroSectionSlice from './hero-section-slice/HeroSectionSlice'
 import { CardWrapper, Wrapper } from './Elements'
 import { Heading } from '../../styles/sharedStyles'
 
-export default function MagazinePage({ data }) {
+export default function MagazinePage ({ data }) {
   const date = data?.date
   const mainImage = getImage(data?.main_image)
   const title = data?.title?.text

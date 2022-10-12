@@ -1,15 +1,17 @@
-import React, { ChangeEvent, FC, useRef, useState } from 'react'
-import styled from 'styled-components'
-import useUserInfo from '../../../../contexts/UserInfoContext'
-import { IInputDate } from '../../../../interfaces/input.interface'
-import { Td } from './styles/table-elements.styles'
-import { TextInput } from './InputText'
+import React, {
+  ChangeEvent, FC, useRef, useState,
+} from 'react';
+import styled from 'styled-components';
+import useUserInfo from '../../../../contexts/UserInfoContext';
+import { IInputDate } from '../../../../interfaces/input.interface';
+import { Td } from './styles/table-elements.styles';
+import { TextInput } from './InputText';
 
 const DateWrapper = styled(Td)`
   width: max-content;
   padding: 2px;
-`
-const DateInput = styled(TextInput)``
+`;
+const DateInput = styled(TextInput)``;
 
 const InputDate: FC<IInputDate> = ({
   customOnChange,
@@ -17,25 +19,25 @@ const InputDate: FC<IInputDate> = ({
   cellId,
   disableUpdates = false,
 }) => {
-  const ref = useRef()
-  const { userInfo, setUserInfo } = useUserInfo()
-  const [dateVal, setDateVal] = useState<string>(customVal ?? '')
+  const ref = useRef();
+  const { userInfo, setUserInfo } = useUserInfo();
+  const [dateVal, setDateVal] = useState<string>(customVal ?? '');
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!disableUpdates) {
       if (customOnChange) {
-        customOnChange(e?.target?.value)
+        customOnChange(e?.target?.value);
       } else {
-        setDateVal(e?.target?.value)
-        console.log(userInfo)
+        setDateVal(e?.target?.value);
+        console.log(userInfo);
         setUserInfo!({
           ...userInfo!,
           [cellId!]: e?.target?.value,
-        })
+        });
       }
-      console.log(userInfo)
+      console.log(userInfo);
     }
-  }
+  };
 
   return (
     <DateWrapper ref={ref as unknown as any}>
@@ -43,10 +45,10 @@ const InputDate: FC<IInputDate> = ({
         type="date"
         value={dateVal}
         disabled={disableUpdates}
-        onChange={e => handleOnChange(e)}
+        onChange={(e) => handleOnChange(e)}
       />
     </DateWrapper>
-  )
-}
+  );
+};
 
-export default InputDate
+export default InputDate;

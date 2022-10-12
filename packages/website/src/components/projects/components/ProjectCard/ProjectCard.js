@@ -4,17 +4,17 @@ import {
   ProjectCardImageWrapper,
   ProjectCardInfo,
   ProjectCardTags,
-  ProjectCardWrapper,
+  ProjectCardWrapper
 } from './ProjectCardElements'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import AnimateIn from '../../../animations/AnimateIn'
 
-export default function ProjectCard({
+export default function ProjectCard ({
   type,
   content,
   img,
   title,
-  link = null,
+  link = null
 }) {
   return (
     <AnimateIn duration={500} delay={250}>

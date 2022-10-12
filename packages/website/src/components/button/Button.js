@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonComponent } from './ButtonElements'
 
-export default function Button({
+export default function Button ({
   to,
   value,
   sm,

@@ -3,13 +3,13 @@ import {
   MemberCardWrapper,
   MemberImageWrapper,
   MemberName,
-  MemberTitle,
+  MemberTitle
 } from './MemberCardElements'
 import MemberInfoCard from './MemberInfoCard'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import AnimateIn from '../../animations/AnimateIn'
 
-export default function MemberCard({
+export default function MemberCard ({
   name,
   title,
   img,
@@ -18,7 +18,7 @@ export default function MemberCard({
   joiningYear,
   selectedYear,
   endingYear,
-  forceShowPosition,
+  forceShowPosition
 }) {
   const [showMemberInfoCard, setShowMemberInfoCard] = useState(false)
 

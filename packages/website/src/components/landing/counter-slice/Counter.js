@@ -3,7 +3,7 @@ import {
   CounterValueWrapper,
   CounterValue,
   CounterValueSubtitle,
-  CounterPlus,
+  CounterPlus
 } from './CounterElements'
 import useCounter from '../../../hooks/useCounter'
 import AnimateIn from '../../animations/AnimateIn'

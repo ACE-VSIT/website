@@ -1,7 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2022": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -27,11 +27,14 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-filename-extension": [
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "react/jsx-no-useless-fragment": "off",
     "react/require-default-props": "off",
+    "import/no-unresolved": "off",
     "react/prop-types": "off",
     "multiline-ternary": "off",
     "import/extensions": [
@@ -49,6 +52,9 @@
     "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "node": {
         "paths": ["src"],

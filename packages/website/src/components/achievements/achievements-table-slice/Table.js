@@ -5,7 +5,7 @@ import {
   Td,
   TableContainer,
   TableContainerTitle,
-  TableContainerTable,
+  TableContainerTable
 } from '../AchievementsElements'
 import Loading from '../../animations/Loading'
 import AnimateIn from '../../animations/AnimateIn'
@@ -21,7 +21,7 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
     filter !== 'Achievement' ? 'Name' : 'Winner Name',
     filter === 'Achievement' && 'Position',
     filter !== 'Achievement' ? 'Position' : 'Event Name',
-    filter !== 'Achievement' ? 'Company' : 'College Name',
+    filter !== 'Achievement' ? 'Company' : 'College Name'
   ]
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
                     winner_name: winnerName,
                     position,
                     event_name: eventName,
-                    college_name: collegeName,
+                    college_name: collegeName
                   }) => {
                     return (
                       <tr key={eventDate + winnerName}>
@@ -116,7 +116,7 @@ Table.prototype = {
   tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
   headingColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  breakOn: PropTypes.oneOf(['small', 'medium', 'large']),
+  breakOn: PropTypes.oneOf(['small', 'medium', 'large'])
 }
 
 export default Table

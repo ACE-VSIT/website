@@ -5,7 +5,7 @@ import MemberCard from '../members/members-card/MemberCard'
 import { getImage } from 'gatsby-plugin-image'
 import Counter from './counter-slice/Counter'
 import {
-  CounterWrapper,
+  CounterWrapper
   // CounterSubTitle,
 } from './counter-slice/CounterElements'
 import useOnScreen from '../../hooks/useOnScreen'
@@ -13,7 +13,7 @@ import SliderInfoImg from './side-info-img-slice/SideInfoImg'
 import FooterInfo from '../footer-info/FooterInfo'
 import { FacultyWrapper } from './LandingElements'
 
-export default function HomePage({ data }) {
+export default function HomePage ({ data }) {
   const sliderInfoTitle =
     data?.prismicHomepage?.data?.body[1]?.primary?.slice_title?.text
   const sliderInfoSubTitle =

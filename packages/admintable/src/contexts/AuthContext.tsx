@@ -5,8 +5,8 @@ import React, {
   ReactNode,
   useState,
   useEffect,
-} from 'react'
-import { signInStatus } from '../utils/firebase'
+} from 'react';
+import { signInStatus } from '../utils/firebase';
 
 export type authContextType = {
   user: userContextType
@@ -35,12 +35,12 @@ const authContextDefaultValues: authContextType = {
   login: () => {},
   logout: () => {},
   loading: false,
-}
+};
 
-const AuthContext = createContext<authContextType>(authContextDefaultValues)
+const AuthContext = createContext<authContextType>(authContextDefaultValues);
 
 export function useAuth() {
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 type Props = {
@@ -54,12 +54,12 @@ export function AuthProvider({ children }: Props) {
     name: null,
     uid: null,
     photoUrl: null,
-  })
-  const [loading, setLoading] = useState(false)
+  });
+  const [loading, setLoading] = useState(false);
 
   const login = (userInfo: userContextType) => {
-    setUser(userInfo)
-  }
+    setUser(userInfo);
+  };
 
   const logout = () => {
     setUser({
@@ -68,8 +68,8 @@ export function AuthProvider({ children }: Props) {
       name: null,
       uid: null,
       photoUrl: null,
-    })
-  }
+    });
+  };
 
   const value = React.useMemo(() => {
     const obj = {
@@ -78,13 +78,13 @@ export function AuthProvider({ children }: Props) {
       logout,
       loading,
       setLoading,
-    }
-    return { ...obj }
-  }, [])
+    };
+    return { ...obj };
+  }, []);
 
   useEffect(() => {
-    signInStatus(login, setLoading)
-  }, [])
+    signInStatus(login, setLoading);
+  }, []);
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

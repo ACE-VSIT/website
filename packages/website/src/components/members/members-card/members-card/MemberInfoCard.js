@@ -12,7 +12,7 @@ import {
   Instagram,
   Facebook,
   Behance,
-  Globe,
+  Globe
 } from './MemberCardElements'
 import { FlexCenter, Close } from '../../../styles/sharedStyles'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
@@ -21,14 +21,14 @@ import useOutsideAlerter from '../../../hooks/useOutsideTouch'
 import useWindowSize from '../../../hooks/useWindowSize'
 import { ThemeContext } from '../../../context/ThemeContext'
 
-export default function MemberInfoCard({
+export default function MemberInfoCard ({
   name,
   title,
   img,
   social,
   info,
   showMemberInfoCard,
-  setShowMemberInfoCard,
+  setShowMemberInfoCard
 }) {
   const { isDarkTheme } = useContext(ThemeContext)
   const socialIconStyleConfig = {
@@ -36,7 +36,7 @@ export default function MemberInfoCard({
     width: '100%',
     justifyContent: 'flex-start',
     paddingTop: '.5rem',
-    gap: '1.5rem',
+    gap: '1.5rem'
   }
   const cardWrapperRef = useRef()
   const [isMobile, setIsMobile] = useState(false)
@@ -54,7 +54,7 @@ export default function MemberInfoCard({
     config: showMemberInfoCard ? { ...config.stiff } : { duration: 200 },
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    leave: { opacity: 0 }
   })
 
   const closeBtnStyles = {
@@ -65,7 +65,7 @@ export default function MemberInfoCard({
     width: '5rem',
     height: '5rem',
     filter: 'opacity(1)',
-    cursor: 'pointer',
+    cursor: 'pointer'
   }
 
   return modalTransition(
@@ -106,7 +106,7 @@ export default function MemberInfoCard({
                       width={20}
                       height={20}
                       style={{
-                        filter: isDarkTheme ? 'invert(1)' : '',
+                        filter: isDarkTheme ? 'invert(1)' : ''
                       }}
                     />
                   </FlexCenter>

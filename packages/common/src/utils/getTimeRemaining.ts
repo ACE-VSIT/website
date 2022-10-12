@@ -1,11 +1,11 @@
-import { IgetTimeRemaining } from '../interfaces/IGetTimeRemaning'
+import { IgetTimeRemaining } from '../interfaces/IGetTimeRemaning';
 
 const getTimeRemaining: IgetTimeRemaining = (endtime: string) => {
-  const total = Date.parse(endtime) - Date.parse(new Date().toString()) // total time remaining
-  const seconds = Math.floor((total / 1000) % 60) // seconds remaining
-  const minutes = Math.floor((total / 1000 / 60) % 60) // minutes remaining
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24) // hours remaining
-  const days = Math.floor(total / (1000 * 60 * 60 * 24)) // days remaining
+  const total = Date.parse(endtime) - Date.parse(new Date().toString()); // total time remaining
+  const seconds = Math.floor((total / 1000) % 60); // seconds remaining
+  const minutes = Math.floor((total / 1000 / 60) % 60); // minutes remaining
+  const hours = Math.floor((total / (1000 * 60 * 60)) % 24); // hours remaining
+  const days = Math.floor(total / (1000 * 60 * 60 * 24)); // days remaining
 
   return {
     total,
@@ -13,7 +13,7 @@ const getTimeRemaining: IgetTimeRemaining = (endtime: string) => {
     hours,
     minutes,
     seconds,
-  }
-}
+  };
+};
 
-export default getTimeRemaining
+export default getTimeRemaining;

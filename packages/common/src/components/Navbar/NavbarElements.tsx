@@ -1,17 +1,17 @@
-import styled, { css } from 'styled-components'
-import MenuOutlined from '@ant-design/icons/MenuOutlined'
-import FlexCenter from '../shared/sharedStyles'
+import styled, { css } from 'styled-components';
+import MenuOutlined from '@ant-design/icons/MenuOutlined';
+import FlexCenter from '../shared/sharedStyles';
 
 export const NavbarWrapper = styled(FlexCenter)`
   justify-content: space-between;
   height: 5rem;
   overflow: visible;
   gap: 0;
-  border-bottom: 1px solid ${props => `${props.theme.font}45`};
+  border-bottom: 1px solid ${(props) => `${props.theme.font}45`};
   position: fixed;
   width: 100%;
   z-index: 1000;
-  background: ${props => props.theme.bg};
+  background: ${(props) => props.theme.bg};
 
   * {
     overflow: visible;
@@ -25,7 +25,7 @@ export const NavbarWrapper = styled(FlexCenter)`
   @media (max-width: 330px) {
     height: 4rem;
   }
-`
+`;
 
 export const NavbarBrandImg = styled.div`
   width: 5rem;
@@ -42,7 +42,7 @@ export const NavbarBrandImg = styled.div`
   }
 
   @media (max-width: 768px) {
-    border-right: 1px solid ${props => `${props.theme.font}45`};
+    border-right: 1px solid ${(props) => `${props.theme.font}45`};
     z-index: 10;
   }
 
@@ -50,7 +50,7 @@ export const NavbarBrandImg = styled.div`
     height: 4rem;
     width: 4rem;
   }
-`
+`;
 export const NavbarListItem = styled.a`
   cursor: pointer;
   margin-bottom: -1px;
@@ -64,9 +64,9 @@ export const NavbarListItem = styled.a`
   text-align: center;
   text-decoration: none;
   text-transform: capitalize;
-  color: ${props => props.theme.font};
+  color: ${(props) => props.theme.font};
   font-weight: 400;
-`
+`;
 export const NavbarList = styled(FlexCenter)`
   gap: 0.5rem;
 
@@ -76,34 +76,34 @@ export const NavbarList = styled(FlexCenter)`
     &:hover,
     &:focus {
       ${NavbarListItem} {
-        color: ${props => props.theme.active};
+        color: ${(props) => props.theme.active};
       }
 
-      border-bottom: 1.5px solid ${props => props.theme.font};
+      border-bottom: 1.5px solid ${(props) => props.theme.font};
     }
   }
 
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 export const NavbarSliderIcon = styled(MenuOutlined)`
   transition: 0.5s all ease-in-out;
   font-size: 1.25rem;
   width: 5rem;
   cursor: pointer;
-  color: ${props => props.theme.font};
+  color: ${(props) => props.theme.font};
   height: 5rem;
   line-height: 5rem;
   z-index: 1005;
 
   &:hover,
   &:focus {
-    color: ${props => props.theme.active};
+    color: ${(props) => props.theme.active};
   }
 
   @media (max-width: 768px) {
-    border-left: 1px solid ${props => `${props.theme.font}45`};
+    border-left: 1px solid ${(props) => `${props.theme.font}45`};
   }
 
   @media (max-width: 330px) {
@@ -111,7 +111,7 @@ export const NavbarSliderIcon = styled(MenuOutlined)`
     line-height: 4rem;
     width: 4rem;
   }
-`
+`;
 export const NavbarSlider = styled(FlexCenter)`
   position: absolute;
   top: 0%;
@@ -125,8 +125,8 @@ export const NavbarSlider = styled(FlexCenter)`
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
-  background: ${props => props.theme.bg};
-  border-left: 1.5px solid ${props => `${props.theme.font}45`};
+  background: ${(props) => props.theme.bg};
+  border-left: 1.5px solid ${(props) => `${props.theme.font}45`};
 
   ${NavbarListItem} {
     display: none;
@@ -141,7 +141,7 @@ export const NavbarSlider = styled(FlexCenter)`
       border-bottom: 0;
     }
   }
-`
+`;
 
 export const NavSliderInfo = styled(FlexCenter)<{ isDarkTheme?: boolean }>`
   flex-direction: column;
@@ -151,7 +151,7 @@ export const NavSliderInfo = styled(FlexCenter)<{ isDarkTheme?: boolean }>`
   img {
     width: 10rem;
     height: 10rem;
-    filter: ${props => (props.isDarkTheme ? 'invert(1)' : '')};
+    filter: ${(props) => (props.isDarkTheme ? 'invert(1)' : '')};
   }
 
   h5,
@@ -170,7 +170,7 @@ export const NavSliderInfo = styled(FlexCenter)<{ isDarkTheme?: boolean }>`
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 export const NavbarVertical = styled(FlexCenter)<{
   left?: boolean
   right?: boolean
@@ -184,25 +184,23 @@ export const NavbarVertical = styled(FlexCenter)<{
   justify-content: space-evenly;
   overflow: hidden;
 
-  ${({ left }) =>
-    left &&
-    css`
+  ${({ left }) => left
+    && css`
       left: 0%;
       gap: 0;
-      border-right: 1px solid ${props => `${props.theme.font}45`};
+      border-right: 1px solid ${(props) => `${props.theme.font}45`};
     `}
 
-  ${({ right }) =>
-    right &&
-    css`
+  ${({ right }) => right
+    && css`
       right: 0%;
-      border-left: 1px solid ${props => `${props.theme.font}45`};
+      border-left: 1px solid ${(props) => `${props.theme.font}45`};
     `}
 
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 export const NavbarSocialHeading = styled.h1`
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -210,7 +208,7 @@ export const NavbarSocialHeading = styled.h1`
   font-weight: 500;
   transform: rotate(-90deg);
   white-space: nowrap;
-`
+`;
 export const NavbarSocialItem = styled.a`
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -220,13 +218,13 @@ export const NavbarSocialItem = styled.a`
   white-space: nowrap;
   text-decoration: none;
   transition: 0.5s all ease-in;
-  color: ${props => props.theme.font};
+  color: ${(props) => props.theme.font};
 
   &:hover,
   &:focus {
-    color: ${props => props.theme.active};
+    color: ${(props) => props.theme.active};
   }
-`
+`;
 export const NavbarSliderThemeIcon = styled(FlexCenter)`
   position: absolute;
   left: 0.5rem;
@@ -238,9 +236,9 @@ export const NavbarSliderThemeIcon = styled(FlexCenter)`
 
   > * {
     border-radius: 50%;
-    border: 1px solid ${props => `${props.theme.font}50`};
+    border: 1px solid ${(props) => `${props.theme.font}50`};
   }
-`
+`;
 export const NavbarUser = styled.img`
   height: 3rem;
   width: 3.25rem;
@@ -249,12 +247,12 @@ export const NavbarUser = styled.img`
   border-radius: 50%;
   margin-right: 1rem;
   outline-offset: 1px;
-  outline: 2px solid ${props => props.theme.font + 75};
+  outline: 2px solid ${(props) => props.theme.font + 75};
 
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 export const NavbarUserProfileCardWrapper = styled(FlexCenter)`
   top: 5rem;
@@ -267,10 +265,10 @@ export const NavbarUserProfileCardWrapper = styled(FlexCenter)`
   padding: 1.25rem 1rem;
   flex-direction: column;
   justify-content: center;
-  background-color: ${props => props.theme.bg};
-  border: 1px solid ${props => props.theme.font + 75};
+  background-color: ${(props) => props.theme.bg};
+  border: 1px solid ${(props) => props.theme.font + 75};
 
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;

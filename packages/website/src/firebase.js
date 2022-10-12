@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signOut,
-  sendEmailVerification,
+  sendEmailVerification
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -19,7 +19,7 @@ import {
   Timestamp,
   collection,
   query,
-  where,
+  where
 } from 'firebase/firestore'
 import { initializeApp, getApps } from 'firebase/app'
 
@@ -29,7 +29,7 @@ const firebaseConfig = {
   projectId: process.env.GATSBY_PROJECTID,
   storageBucket: process.env.GATSBY_STORAGEBUCKET,
   messagingSenderId: process.env.GATSBY_MESSAGINGSENDERID,
-  appId: process.env.GATSBY_APPID,
+  appId: process.env.GATSBY_APPID
 }
 
 if (getApps().length === 0) {
@@ -60,7 +60,7 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
       createdAt: Timestamp.fromDate(new Date()),
       personalDetails: '',
       photoURL,
-      emailVerified,
+      emailVerified
     })
   }
 }
@@ -80,8 +80,8 @@ export const savePersonalDetails = async (email, personalDetails) => {
       lastName,
       mobile,
       section,
-      completed: true,
-    },
+      completed: true
+    }
   })
 }
 
@@ -102,8 +102,8 @@ export const saveSubmittionData = async (data, questionType, email) => {
     await updateDoc(emailRef, {
       submissions: {
         ...submissions,
-        [questionType.replace(/\s+/g, '-').toLowerCase()]: { ...data },
-      },
+        [questionType.replace(/\s+/g, '-').toLowerCase()]: { ...data }
+      }
     })
   }
 }
@@ -124,7 +124,7 @@ export const createUserAccount = async (
     res.user &&
       dispatch({
         type: 'LOGIN_SUCCESS',
-        payload: { email: res.user.email, name: res.user.displayName },
+        payload: { email: res.user.email, name: res.user.displayName }
       })
   } catch (err) {
     dispatch({ type: 'LOGIN_FAILURE', payload: err })
@@ -139,7 +139,7 @@ export const loginUserAccount = async (email, password, user, dispatch) => {
     res.user &&
       dispatch({
         type: 'LOGIN_SUCCESS',
-        payload: { email, name: res.user.displayName },
+        payload: { email, name: res.user.displayName }
       })
   } catch (err) {
     dispatch({ type: 'LOGIN_FAILURE', payload: err })
@@ -172,7 +172,7 @@ export const loginWithGoogleAccount = async dispatch => {
     res.user &&
       dispatch({
         type: 'LOGIN_SUCCESS',
-        payload: res.user,
+        payload: res.user
       })
   } catch (err) {
     dispatch({ type: 'LOGIN_FAILURE', payload: err })
@@ -191,7 +191,7 @@ export const checkEmailVerfiy = async setIsVerified => {
         // Checking if user has verified and not saved of firestore
         if (auth.currentUser.emailVerified) {
           await updateDoc(emailRef, {
-            emailVerified: true,
+            emailVerified: true
           })
         } else {
           setIsVerified(false)
@@ -207,13 +207,13 @@ export const checkEmailVerfiy = async setIsVerified => {
 export const deleteFileFromStorage = async fileId => {
   if (fileId) {
     const raw = JSON.stringify({
-      fileId: `${fileId}`,
+      fileId: `${fileId}`
     })
 
     const requestOptions = {
       method: 'POST',
       body: raw,
-      redirect: 'follow',
+      redirect: 'follow'
     }
 
     fetch('https://ace-functions.vercel.app/googleDriveDelete', requestOptions)
@@ -233,7 +233,7 @@ export const signOutUser = async dispatch => {
   }
 }
 
-export function signInStatus(dispatch) {
+export function signInStatus (dispatch) {
   dispatch({ type: 'LOGIN_START' })
   onAuthStateChanged(auth, user => {
     if (user) {

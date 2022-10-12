@@ -4,7 +4,7 @@ import { navigate } from 'gatsby'
 import { Heading } from '../../../../styles/sharedStyles'
 import { QuestionWrapper, QuestionBox, Container } from './QuestionElements'
 
-export function Questions() {
+export function Questions () {
   return (
     <Container>
       <Heading>Round 1</Heading>

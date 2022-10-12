@@ -4,7 +4,7 @@ import Loading from '../../components/animations/Loading'
 import { FirebaseContext } from '../../context/FirebaseContext'
 import { Questions as QuestionHandler } from '../../components/portal/components/Questions/Questions'
 
-export default function Questions() {
+export default function Questions () {
   const { personalDetails } = useContext(FirebaseContext)
 
   return (

@@ -5,7 +5,7 @@ import { FlexCenter, Heading } from '../../styles/sharedStyles'
 import MembersSort from './members-sort/MembersSort'
 import Loading from '../animations/Loading'
 
-export default function MembersPage({ data }) {
+export default function MembersPage ({ data }) {
   const [members, setMembers] = React.useState([])
   const [faculty, setFaculty] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)

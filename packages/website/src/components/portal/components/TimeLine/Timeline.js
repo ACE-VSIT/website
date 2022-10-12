@@ -3,7 +3,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react'
 import { Heading } from '../../../../styles/sharedStyles'
 import TimelineCard from './TimelineCard/TimelineCard'
@@ -15,7 +15,7 @@ import { deleteFileFromStorage, saveSubmittionData } from '../../../../firebase'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
 
-export default function Timeline({ timeLine, name }) {
+export default function Timeline ({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [isSubmitted, setIsSubmitted] = useState([])
   const [openPicker] = useDrivePicker()
@@ -41,7 +41,7 @@ export default function Timeline({ timeLine, name }) {
           client_id: process.env.GATSBY_GOOGLE_CLIENT_ID,
           client_secret: process.env.GATSBY_GOOGLE_CLIENT_SECRET,
           refresh_token: process.env.GATSBY_GOOGLE_REFRESH_TOKEN,
-          grant_type: 'refresh_token',
+          grant_type: 'refresh_token'
         }
       )
 
@@ -66,11 +66,11 @@ export default function Timeline({ timeLine, name }) {
               saveSubmittionData(data.docs[0], questionType, user.email)
               setIsSubmitted(prev => [
                 ...prev,
-                questionType.replace(/\s+/g, '-').toLowerCase(),
+                questionType.replace(/\s+/g, '-').toLowerCase()
               ])
               getSubmissionDetails(user.email)
             }
-          },
+          }
           // customViews: customViewsArray, // custom view
         })
       }
@@ -139,10 +139,10 @@ export default function Timeline({ timeLine, name }) {
                           .toLowerCase()
                       )
                         ? submissions[
-                            e?.question_name?.text
-                              ?.replace(/\s+/g, '-')
-                              .toLowerCase()
-                          ].id
+                          e?.question_name?.text
+                            ?.replace(/\s+/g, '-')
+                            .toLowerCase()
+                        ].id
                         : ''
                     )
                   }

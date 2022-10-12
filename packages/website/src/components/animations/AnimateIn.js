@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import useOnScreen from '../../hooks/useOnScreen'
 
-export default function AnimateIn({
+export default function AnimateIn ({
   ref,
   enableScroll = true,
   duration = 375,
@@ -13,7 +13,7 @@ export default function AnimateIn({
   const onScreen = useOnScreen(animateInRef)
 
   useEffect(() => {
-    function preventScroll(e) {
+    function preventScroll (e) {
       e.preventDefault()
       e.stopPropagation()
 
@@ -31,7 +31,7 @@ export default function AnimateIn({
         transition: `opacity ${duration}ms, transform ${duration}ms`,
         transitionDelay: `${delay}ms`,
         opacity: onScreen ? 1 : 0,
-        transform: `translateY(${onScreen ? 0 : 50}px)`,
+        transform: `translateY(${onScreen ? 0 : 50}px)`
       }}
       id={'animateFixScrollIssue'}
       {...rest}
