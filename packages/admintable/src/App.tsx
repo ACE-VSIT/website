@@ -1,10 +1,10 @@
-import Index from './pages/Index'
 import React, { useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Index from './pages/Index'
 import SignOut from './pages/SignOut'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './utils/PrivateRoutes'
-import { ThemeProvider } from 'styled-components'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { darkTheme, GlobalStyle, lightTheme } from './theme/GlobalStyles'
 import useThemeContext from './contexts/ThemeContext'
@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const { isDarkTheme, setIsDarkTheme } = useThemeContext()
 
   useEffect(() => {
-    const res = localStorage.getItem('isDarkTheme') === 'true' ? true : false
+    const res = localStorage.getItem('isDarkTheme') === 'true'
     setIsDarkTheme(res)
   }, [setIsDarkTheme])
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
               element={
                 <PrivateRoute
                   isAuthenticated={user}
-                  authenticationPath={'/'}
+                  authenticationPath="/"
                   outlet={<Dashboard />}
                 />
               }
@@ -40,7 +40,7 @@ const App: React.FC = () => {
               element={
                 <PrivateRoute
                   isAuthenticated={user}
-                  authenticationPath={'/'}
+                  authenticationPath="/"
                   outlet={<SignOut />}
                 />
               }

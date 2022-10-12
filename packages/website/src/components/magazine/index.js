@@ -24,7 +24,7 @@ export default function MagazinePage({ data }) {
       <Wrapper>
         <Heading>Previous Magazines</Heading>
         <CardWrapper>
-          {data?.body1[0]?.items?.map(e => {
+          {data?.body1[0]?.items?.map((e, index) => {
             const magazineImage = getImage(e?.magazine_image)
             const title = e?.magazine_title?.text
             const info = e?.magazine_info?.text
@@ -38,6 +38,7 @@ export default function MagazinePage({ data }) {
                 img={magazineImage}
                 title={title}
                 link={link}
+                key={title + index}
               />
             )
           })}

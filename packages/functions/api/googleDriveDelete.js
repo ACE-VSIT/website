@@ -1,14 +1,17 @@
-require('dotenv').config()
+/* eslint-disable consistent-return */
+/* eslint-disable no-return-await */
 import { google } from 'googleapis'
+
+require('dotenv').config()
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
     const { fileId } = JSON.parse(req.body)
 
-    const CLIENT_ID = process.env.CLIENT_ID
-    const CLIENT_SECRET = process.env.CLIENT_SECRET
-    const REDIRECT_URI = process.env.REDIRECT_URI
-    const REFRESH_TOKEN = process.env.REFRESH_TOKEN
+    const { CLIENT_ID } = process.env
+    const { CLIENT_SECRET } = process.env
+    const { REDIRECT_URI } = process.env
+    const { REFRESH_TOKEN } = process.env
 
     const oauth2Client = new google.auth.OAuth2(
       CLIENT_ID,
@@ -23,10 +26,10 @@ const handler = async (req, res) => {
       auth: oauth2Client,
     })
 
-    const deleteFile = async fileId => {
+    const deleteFile = async driveFileId => {
       try {
         await drive.files.delete({
-          fileId,
+          driveFileId,
         })
         res.json({
           message: 'File deleted',

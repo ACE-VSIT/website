@@ -1,3 +1,7 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/jsx-props-no-spreading */
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import useOnScreen from '../../hooks/useOnScreen'
@@ -17,6 +21,8 @@ interface IPreventScroll {
   preventDefault: () => void
   stopPropagation: () => void
 }
+
+const AnimationContainer = styled.div``
 
 export default function AnimateIn({
   componentRef,
@@ -51,8 +57,15 @@ export default function AnimateIn({
     transition: `opacity ${duration}ms, transform ${duration}ms`,
   }
 
-  const animationType =
-    type === 'FadeUp' ? fadeUp : type === 'FadeIn' ? fadeIn : fadeDown
+  let animationType
+
+  if (type === 'FadeUp') {
+    animationType = fadeUp
+  } else if (type === 'FadeIn') {
+    animationType = fadeIn
+  } else {
+    animationType = fadeDown
+  }
 
   useEffect(() => {
     function preventScroll(e: IPreventScroll) {
@@ -61,17 +74,18 @@ export default function AnimateIn({
 
       return false
     }
+    // eslint-disable-next-line no-unused-expressions
     !enableScroll &&
       document
-        .querySelector('#animateFixScrollIssue')!
-        .addEventListener('wheel', preventScroll, { passive: false })
+        .querySelector('#animateFixScrollIssue')
+        ?.addEventListener('wheel', preventScroll, { passive: false })
   }, [enableScroll])
 
   return (
     <AnimationContainer
       onClick={onClick}
       style={animationType}
-      id={`animateFixScrollIssue`}
+      id="animateFixScrollIssue"
       {...rest}
       ref={animateInRef}
     >
@@ -79,5 +93,3 @@ export default function AnimateIn({
     </AnimationContainer>
   )
 }
-
-const AnimationContainer = styled.div``

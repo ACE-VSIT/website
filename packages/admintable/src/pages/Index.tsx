@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Button from 'remote/Button'
 import {
   // ButtonComponent,
   LoginHeading,
@@ -7,7 +8,6 @@ import {
   Wrapper,
 } from '../components/index-elements.styles'
 import { useAuth } from '../contexts/AuthContext'
-import Button from 'remote/Button'
 import { loginWithGoogleAccount } from '../utils/firebase'
 
 const Index: React.FC = () => {
@@ -25,7 +25,7 @@ const Index: React.FC = () => {
       <LoginWrapper>
         <LoginHeading>Admin Panel</LoginHeading>
         <Button
-          md={true}
+          md
           value={!loading ? 'Sign In' : 'Loading...'}
           onClick={() => loginWithGoogleAccount(login, setLoading!)}
         />

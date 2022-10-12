@@ -1,11 +1,10 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const NotFound = () => {
+function NotFound() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log('working')
     navigate('/')
   }, [navigate])
 

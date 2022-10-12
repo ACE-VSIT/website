@@ -19,7 +19,7 @@ export default function GalleryPage({ title, subTitle, imgArr }) {
           const image = getImage(e?.image)
           const tooltip = e?.event_title?.text
           return (
-            <AnimateIn>
+            <AnimateIn key={tooltip + index}>
               <ImageGrid
                 key={index}
                 image={image}

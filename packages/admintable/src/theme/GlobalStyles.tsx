@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { ITheme } from './theme'
+import { ITheme } from './theme.d'
 
 export const lightTheme: ITheme = {
   bg: '#FFFFFF',

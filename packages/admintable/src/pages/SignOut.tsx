@@ -21,10 +21,10 @@ const SignOut: React.FC = () => {
     <Wrapper>
       <LoginWrapper>
         <LoginHeading>Sign Out</LoginHeading>
-        <ButtonComponent md={true} onClick={() => signOutUser(logout)}>
+        <ButtonComponent md onClick={() => signOutUser(logout)}>
           SignOut
         </ButtonComponent>
-        <ButtonComponent md={true} onClick={() => getData()}>
+        <ButtonComponent md onClick={() => getData()}>
           Get UserData
         </ButtonComponent>
       </LoginWrapper>

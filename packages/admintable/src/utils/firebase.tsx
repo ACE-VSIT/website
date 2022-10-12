@@ -60,8 +60,8 @@ export const loginWithGoogleAccount = async (
       setLoading(false)
       throw new Error('Only admins can access this page')
     }
-  } catch (err) {
-    console.error(err)
+  } catch (err: any) {
+    throw new Error(err)
   }
 }
 
@@ -71,14 +71,15 @@ export const getTableData = async (user: userContextType) => {
       const userSnapshot: QuerySnapshot<DocumentData> = await getDocs(
         collection(db, 'users')
       )
-      let users: IUser[] = []
-      userSnapshot.forEach(doc => {
-        users.push(doc.data() as IUser)
+      const users: IUser[] = []
+      userSnapshot.forEach(snapshotDoc => {
+        users.push(snapshotDoc.data() as IUser)
       })
       return users
     }
-  } catch (error) {
-    console.log(error)
+    return null
+  } catch (error: any) {
+    throw new Error(error)
   }
 }
 
@@ -86,8 +87,8 @@ export const setTableUserInfo = async (user: IUserItem) => {
   try {
     const userRef = doc(db, 'users', `${user.user}`)
     await updateDoc(userRef, { ...user })
-  } catch (error) {
-    console.log(error)
+  } catch (error: any) {
+    throw new Error(error)
   }
 }
 
@@ -95,10 +96,9 @@ export const signOutUser = async (logout: () => void) => {
   try {
     signOut(auth).then(() => {
       logout()
-      console.log('Sign Out success')
     })
-  } catch (err) {
-    console.error(err)
+  } catch (err: any) {
+    throw new Error(err)
   }
 }
 

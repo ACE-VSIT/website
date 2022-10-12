@@ -44,7 +44,7 @@ export default function Navbar({
 
   const navbarSliderAnimation = useSpring({
     opacity: toggleSlider ? 1 : 0,
-    transform: toggleSlider ? `translateX(0)` : `translateX(100%)`,
+    transform: toggleSlider ? 'translateX(0)' : 'translateX(100%)',
   })
 
   const toggleStyles = {

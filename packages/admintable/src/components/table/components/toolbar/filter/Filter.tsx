@@ -1,6 +1,7 @@
 import Button from 'remote/Button'
-import { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import useOutsideTouch from 'remote/useOutsideTouch'
+import styled from 'styled-components'
 import FilterMenu from './FilterMenu'
 import { IUser } from '../../../../../interfaces/user.interface'
 import useTableProps from '../../../../../contexts/TableContext'
@@ -10,7 +11,6 @@ import {
   filterNotEquals,
   filterNotIncludes,
 } from '../../../helpers/helper-functions'
-import styled from 'styled-components'
 
 export type FilterType = {
   property: string
@@ -40,7 +40,7 @@ function Filter({
   filter: FilterType
   setFilters: React.Dispatch<React.SetStateAction<FilterType[]>>
 }) {
-  let temp = property.split('.').at(-1)
+  const temp = property.split('.').at(-1)
   const handleFilterDelete = () => {
     setFilters(curr =>
       curr.filter(
@@ -97,7 +97,7 @@ export default function FilterContainer() {
           return []
       }
     }
-    for (let i = 0; i < filters.length; i++) {
+    for (let i = 0; i < filters.length; i += 1) {
       fd = getFilterHelper(filters[i])
     }
     if (fd !== undefined) setFilteredData!(fd)
@@ -126,8 +126,8 @@ export default function FilterContainer() {
         md
         value={!isFiltered ? 'Filtered' : 'Filter'}
       />
-      {filters.map((f, idx) => (
-        <Filter key={idx} filter={f} setFilters={setFilters} />
+      {filters.map(f => (
+        <Filter key={f.value} filter={f} setFilters={setFilters} />
       ))}
       {show ? (
         <FilterMenu

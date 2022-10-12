@@ -16,13 +16,11 @@ const NavbarUserProfileCard: React.FC<IUserProfileList> = ({
   return (
     <AnimateIn duration={500} delay={250}>
       <NavbarUserProfileCardWrapper ref={userProfileCardRef.current}>
-        {profileList?.map((e: any, index) => {
-          return (
-            <ButtonWrapper onClick={e?.onClick} key={index}>
-              <Button value={e?.name} sm={true} />
-            </ButtonWrapper>
-          )
-        })}
+        {profileList?.map((e: any) => (
+          <ButtonWrapper onClick={e?.onClick} key={e.name}>
+            <Button value={e?.name} sm />
+          </ButtonWrapper>
+        ))}
       </NavbarUserProfileCardWrapper>
     </AnimateIn>
   )

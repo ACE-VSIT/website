@@ -1,13 +1,13 @@
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { IUser } from '../../interfaces/user.interface'
 import { useAuth } from '../../contexts/AuthContext'
 import { getTableData } from '../../utils/firebase'
 import useTableProps from '../../contexts/TableContext'
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import TableComponent from './TableComponent'
-import { columns as userColumns } from '../../configs/user-table-config'
+import * as userColumns from '../../configs/user-table-config'
 import Toolbar from './components/toolbar/Toolbar'
 
-const TableContainer = () => {
+function TableContainer() {
   const { tableFilters, tableData, setTableData } = useTableProps()
   const [currentData, setCurrentData] = useState<IUser[]>([])
 
@@ -42,7 +42,7 @@ const TableContainer = () => {
   return (
     <>
       <Toolbar />
-      <TableComponent headers={columns} data={currentData} />
+      <TableComponent headers={columns as any} data={currentData} />
     </>
   )
 }

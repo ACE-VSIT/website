@@ -33,7 +33,7 @@ export default function AnimateIn({
         opacity: onScreen ? 1 : 0,
         transform: `translateY(${onScreen ? 0 : 50}px)`,
       }}
-      id={`animateFixScrollIssue`}
+      id={'animateFixScrollIssue'}
       {...rest}
       ref={animateInRef}
     />

@@ -12,7 +12,7 @@ export default function useCounter(callback, delay) {
 
   // Set up the interval.
   useEffect(() => {
-    let id = setInterval(() => {
+    const id = setInterval(() => {
       savedCallback.current()
     }, delay)
     return () => clearInterval(id)

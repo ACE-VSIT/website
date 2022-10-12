@@ -1,10 +1,10 @@
-export const handleObjectSplit = (a: any) => {
+const handleObjectSplit = (a: any) => {
   const unsplit: any = {}
   const split: any = {}
-  let splitValue: string = ''
+  let splitValue = ''
   Object.keys(a).forEach((key: string) => {
-    console.log(key)
     if (key.split('.')[1]) {
+      // eslint-disable-next-line prefer-destructuring
       splitValue = key.split('.')[0]
       split[key.split('.')[1]] = a[key]
     } else {
@@ -14,3 +14,5 @@ export const handleObjectSplit = (a: any) => {
 
   return { splitValue, unsplit, split }
 }
+
+export default handleObjectSplit

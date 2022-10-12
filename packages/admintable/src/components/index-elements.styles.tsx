@@ -22,7 +22,7 @@ export const LoginWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding: 1rem 0.5rem;
-  border: 1px solid ${props => props.theme.font + '75'};
+  border: 1px solid ${props => `${props.theme.font}75`};
 
   @media (max-width: 768px) {
     width: 80vw;
@@ -49,7 +49,7 @@ export const ButtonComponent = styled.button<{
   width: 100%;
   height: 80px;
   max-width: 250px;
-  border: 1px solid ${props => props.theme.font + '75'};
+  border: 1px solid ${props => `${props.theme.font}75`};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
   cursor: pointer;
@@ -63,7 +63,7 @@ export const ButtonComponent = styled.button<{
     bottom: 0;
     left: 0;
     color: ${props => props.theme.font};
-    background-color: ${props => props.theme.font + '25'};
+    background-color: ${props => `${props.theme.font}25`};
     transform: translateX(-100%);
     transition: 0.375s all ease-in-out;
   }

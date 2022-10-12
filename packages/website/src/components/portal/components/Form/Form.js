@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import React, { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
@@ -43,7 +44,7 @@ export default function Form() {
         break
 
       case 'mobile':
-        const mobileRegExp = new RegExp('^([0|+[0-9]{1,5})?([7-9][0-9]{9})$')
+        const mobileRegExp = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -55,7 +56,7 @@ export default function Form() {
         }
         break
       case 'enrollmentNo':
-        const enrollmentNoRegExp = new RegExp('^[a-zA-Z0-9]{10,11}$')
+        const enrollmentNoRegExp = /^[a-zA-Z0-9]{10,11}$/
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -161,8 +162,8 @@ export default function Form() {
                             defaultValue={e.options[0]}
                             onChange={event => handleChange(event)}
                           >
-                            {e.options.map(e => (
-                              <Option>{e}</Option>
+                            {e.options.map((e, index) => (
+                              <Option key={e + index}>{e}</Option>
                             ))}
                           </Select>
                         )

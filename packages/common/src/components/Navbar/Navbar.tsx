@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   NavbarBrandImg,
   NavbarList,
@@ -8,9 +9,8 @@ import {
   NavbarUser,
   NavbarWrapper,
 } from './NavbarElements'
-import { useNavigate } from 'react-router-dom'
-import { FlexCenter } from '../shared/sharedStyles'
-import { INavbar } from '../../interfaces/INavbar'
+import FlexCenter from '../shared/sharedStyles'
+import { IItemList, INavbar } from '../../interfaces/INavbar'
 import useIsMobile from '../../hooks/useIsMobile'
 import NavbarUserProfileCard from './NavbarUserProfileCard'
 
@@ -42,15 +42,13 @@ const Navbar: React.FC<INavbar> = ({ img, itemList, userImg, profileList }) => {
       )}
       <NavbarList>
         {itemList &&
-          itemList.map((e, index) => {
-            return (
-              <div key={index}>
-                <NavbarListItem href={e?.url} target={e?.target}>
-                  {e.text}
-                </NavbarListItem>
-              </div>
-            )
-          })}
+          itemList.map(e => (
+            <div key={e?.url}>
+              <NavbarListItem href={e?.url} target={e?.target}>
+                {e.text}
+              </NavbarListItem>
+            </div>
+          ))}
       </NavbarList>
       {userImg && (
         <NavbarUser
@@ -66,6 +64,7 @@ const Navbar: React.FC<INavbar> = ({ img, itemList, userImg, profileList }) => {
         />
       )}
       {isMobile && (
+        // eslint-disable-next-line react/jsx-no-useless-fragment
         <>
           {!toggleSlider ? (
             <NavbarSliderIcon onClick={() => setToggleSlider(!toggleSlider)} />
@@ -75,7 +74,7 @@ const Navbar: React.FC<INavbar> = ({ img, itemList, userImg, profileList }) => {
               onClick={() => setToggleSlider(!toggleSlider)}
             >
               <img
-                src={'/assets/imgs/close.svg'}
+                src="/assets/imgs/close.svg"
                 alt="Close"
                 width={20}
                 height={20}
@@ -86,15 +85,13 @@ const Navbar: React.FC<INavbar> = ({ img, itemList, userImg, profileList }) => {
       )}
       <NavbarSlider ref={sliderRef.current} style={toggleStyles}>
         {itemList &&
-          itemList.map((e, index) => {
-            return (
-              <div key={index}>
-                <NavbarListItem href={e?.url} target={e?.target}>
-                  {e.text}
-                </NavbarListItem>
-              </div>
-            )
-          })}
+          itemList.map((e: IItemList) => (
+            <div key={e?.url}>
+              <NavbarListItem href={e?.url} target={e?.target}>
+                {e?.text}
+              </NavbarListItem>
+            </div>
+          ))}
       </NavbarSlider>
     </NavbarWrapper>
   )

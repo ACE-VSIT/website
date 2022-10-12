@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from 'remote/Navbar'
 import TableContainer from '../components/table/TableContainer'
-import { NavbarConfig } from '../configs/navbar.config'
+import NavbarConfig from '../configs/navbar.config'
 import { Wrapper } from '../components/index-elements.styles'
 import { useAuth } from '../contexts/AuthContext'
 import { signOutUser } from '../utils/firebase'

@@ -29,7 +29,7 @@ export function FirebaseContextProvider({ children }) {
       collection(db, 'users'),
       where('user', '==', email)
     )
-    let personalInfo = []
+    const personalInfo = []
     const queryData = await getDocs(checkIfUserExists)
     queryData.forEach(doc => {
       personalInfo.push(doc.data().personalDetails)

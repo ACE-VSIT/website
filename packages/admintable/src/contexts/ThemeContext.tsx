@@ -11,10 +11,8 @@ const useStore = create<{
   },
 }))
 
-const useThemeContext = () => {
-  return {
-    isDarkTheme: useStore(state => state.isDarkTheme),
-    setIsDarkTheme: useStore(state => state.setIsDarkTheme),
-  }
-}
+const useThemeContext = () => ({
+  isDarkTheme: useStore(state => state.isDarkTheme),
+  setIsDarkTheme: useStore(state => state.setIsDarkTheme),
+})
 export default useThemeContext

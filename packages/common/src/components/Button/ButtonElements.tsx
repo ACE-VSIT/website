@@ -11,7 +11,7 @@ export const ButtonComponent = styled.button<IButtonComponents>`
   width: 100%;
   height: 80px;
   max-width: 250px;
-  border: 1px solid ${props => props.theme.font + '75'};
+  border: 1px solid ${props => `${props.theme.font}75`};
   color: ${props => props.theme.font};
   background: ${props => props.theme.font + 25};
   cursor: pointer;
@@ -24,7 +24,7 @@ export const ButtonComponent = styled.button<IButtonComponents>`
     bottom: 0;
     left: 0;
     color: ${props => props.theme.font};
-    background-color: ${props => props.theme.font + '25'};
+    background-color: ${props => `${props.theme.font}25`};
     transform: translateX(-100%);
     transition: 0.375s all ease-in-out;
   }

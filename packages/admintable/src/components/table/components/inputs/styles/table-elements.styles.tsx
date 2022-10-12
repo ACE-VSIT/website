@@ -46,7 +46,7 @@ export const Td = styled.td`
   }
 
   @media (max-width: 768px) {
-    height: 7rem; 
+    height: 7rem;
   }
 `
 export const Th = styled.th<{ resizeWidth?: number }>`

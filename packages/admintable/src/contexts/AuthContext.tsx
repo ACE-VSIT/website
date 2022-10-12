@@ -1,4 +1,5 @@
-import {
+/* eslint-disable @typescript-eslint/no-empty-function */
+import React, {
   createContext,
   useContext,
   ReactNode,
@@ -56,12 +57,11 @@ export function AuthProvider({ children }: Props) {
   })
   const [loading, setLoading] = useState(false)
 
-  const login = (user: userContextType) => {
-    setUser(user)
+  const login = (userInfo: userContextType) => {
+    setUser(userInfo)
   }
 
   const logout = () => {
-    console.log('logout')
     setUser({
       email: null,
       admin: null,
@@ -71,21 +71,20 @@ export function AuthProvider({ children }: Props) {
     })
   }
 
-  const value = {
-    user,
-    login,
-    logout,
-    loading,
-    setLoading,
-  }
+  const value = React.useMemo(() => {
+    const obj = {
+      user,
+      login,
+      logout,
+      loading,
+      setLoading,
+    }
+    return { ...obj }
+  }, [])
 
   useEffect(() => {
     signInStatus(login, setLoading)
   }, [])
 
-  return (
-    <>
-      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-    </>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

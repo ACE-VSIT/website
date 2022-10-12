@@ -16,16 +16,6 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
   const [table, setTable] = useState(tableData)
   const [loading, setLoading] = useState(true)
 
-  let tableClass = 'table-container_table'
-
-  if (breakOn === 'small') {
-    tableClass += 'table-container__table--break-sm'
-  } else if (breakOn === 'medium') {
-    tableClass += 'table-container__table--break-md'
-  } else if (breakOn === 'large') {
-    tableClass += 'table-container__table--break-lg'
-  }
-
   const tableHeader = [
     'Date',
     filter !== 'Achievement' ? 'Name' : 'Winner Name',
@@ -39,24 +29,32 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
     setTimeout(() => {
       switch (filter) {
         case 'Placement':
-          const place = tableData.filter(e => e.type === 'Placement')
-          setTable(place)
-          setLoading(false)
+          {
+            const place = tableData.filter(e => e.type === 'Placement')
+            setTable(place)
+            setLoading(false)
+          }
           break
         case 'Internship':
-          const intern = tableData.filter(e => e.type === 'Internship')
-          setTable(intern)
-          setLoading(false)
+          {
+            const intern = tableData.filter(e => e.type === 'Internship')
+            setTable(intern)
+            setLoading(false)
+          }
           break
         case 'Freelance':
-          const freelance = tableData.filter(e => e.type === 'Freelance')
-          setTable(freelance)
-          setLoading(false)
+          {
+            const freelance = tableData.filter(e => e.type === 'Freelance')
+            setTable(freelance)
+            setLoading(false)
+          }
           break
         case 'Achievement':
-          const achieve = tableData.filter(e => e.type === 'Achievement')
-          setTable(achieve)
-          setLoading(false)
+          {
+            const achieve = tableData.filter(e => e.type === 'Achievement')
+            setTable(achieve)
+            setLoading(false)
+          }
           break
         default:
           setTable(tableData)
@@ -86,21 +84,19 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
               <tbody>
                 {table?.map(
                   ({
-                    event_date,
-                    winner_name,
+                    event_date: eventDate,
+                    winner_name: winnerName,
                     position,
-                    event_name,
-                    college_name,
+                    event_name: eventName,
+                    college_name: collegeName,
                   }) => {
                     return (
-                      <tr>
-                        <Td>{event_date}</Td>
-                        <Td>
-                          {winner_name?.document?.data?.member_name?.text}
-                        </Td>
+                      <tr key={eventDate + winnerName}>
+                        <Td>{eventDate}</Td>
+                        <Td>{winnerName?.document?.data?.member_name?.text}</Td>
                         <Td>{position ?? '-'}</Td>
-                        <Td>{event_name.text}</Td>
-                        <Td>{college_name.text}</Td>
+                        <Td>{eventName.text}</Td>
+                        <Td>{collegeName.text}</Td>
                       </tr>
                     )
                   }

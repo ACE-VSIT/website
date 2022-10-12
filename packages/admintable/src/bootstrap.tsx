@@ -1,6 +1,6 @@
-import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
 import '@fontsource/roboto-slab/100.css'
 import '@fontsource/roboto-slab/200.css'
 import '@fontsource/roboto-slab/300.css'

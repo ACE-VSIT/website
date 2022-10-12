@@ -12,7 +12,7 @@ const Layout = ({ children, navbar }) => {
   const themeContext = React.useContext(ThemeContext)
 
   React.useEffect(() => {
-    let theme = localStorage.getItem('theme')
+    const theme = localStorage.getItem('theme')
     if (theme) {
       if (theme === 'dark') {
         themeContext?.setIsDarkTheme(true)

@@ -46,7 +46,7 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
     where('user', '==', email)
   )
   const queryData = await getDocs(checkIfUserExists)
-  let flag = []
+  const flag = []
   queryData.forEach(doc => {
     flag.push(doc.id)
   })
@@ -68,8 +68,9 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
 export const savePersonalDetails = async (email, personalDetails) => {
   const { dob, enrollmentNo, firstName, lastName, mobile, section } =
     personalDetails
-  if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob)
+  if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob) {
     return
+  }
   const emailRef = doc(db, 'users', email)
   await updateDoc(emailRef, {
     personalDetails: {
@@ -158,8 +159,9 @@ export const loginWithGoogleAccount = async dispatch => {
   try {
     dispatch({ type: 'LOGIN_START' })
     const res = await signInWithPopup(auth, provider)
-    if (!auth.currentUser.emailVerified)
+    if (!auth.currentUser.emailVerified) {
       await sendEmailVerification(auth.currentUser)
+    }
     await saveUser(
       res.user.email,
       res.user.uid,
@@ -204,11 +206,11 @@ export const checkEmailVerfiy = async setIsVerified => {
 
 export const deleteFileFromStorage = async fileId => {
   if (fileId) {
-    var raw = JSON.stringify({
+    const raw = JSON.stringify({
       fileId: `${fileId}`,
     })
 
-    var requestOptions = {
+    const requestOptions = {
       method: 'POST',
       body: raw,
       redirect: 'follow',

@@ -40,7 +40,7 @@ export default function MemberInfoCard({
   }
   const cardWrapperRef = useRef()
   const [isMobile, setIsMobile] = useState(false)
-  let size = useWindowSize()
+  const size = useWindowSize()
   useOutsideAlerter(cardWrapperRef, setShowMemberInfoCard)
 
   useEffect(() => {

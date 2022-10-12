@@ -11,11 +11,9 @@ const useStore = create<{
   clearUserInfo: () => set(state => ({ ...state, userInfo: undefined })),
 }))
 
-const useUserInfo = () => {
-  return {
-    userInfo: useStore(state => state.userInfo),
-    setUserInfo: useStore(state => state.setUserInfo),
-    clearUserInfo: useStore(state => state.clearUserInfo),
-  }
-}
+const useUserInfo = () => ({
+  userInfo: useStore(state => state.userInfo),
+  setUserInfo: useStore(state => state.setUserInfo),
+  clearUserInfo: useStore(state => state.clearUserInfo),
+})
 export default useUserInfo
