@@ -4,6 +4,10 @@ import AnimateIn, { IAnimateIn } from './components/animations/AnimateIn';
 import getTimeRemaining from './utils/getTimeRemaining';
 import { IButton, IButtonComponents } from './interfaces/IButton';
 import { IgetTimeRemaining } from './interfaces/IGetTimeRemaning';
+import useOutsideAlerter from './hooks/useOutsideTouch';
+import useWindowSize from './hooks/useWindowSize';
+import useIsMobile from './hooks/useIsMobile';
+import useOnScreen from './hooks/useOnScreen';
 
 import {
   INavbar,
@@ -13,7 +17,14 @@ import {
 } from './interfaces/INavbar';
 
 export {
-  Button, Navbar, AnimateIn, getTimeRemaining,
+  Button,
+  Navbar,
+  AnimateIn,
+  getTimeRemaining,
+  useOutsideAlerter,
+  useWindowSize,
+  useIsMobile,
+  useOnScreen,
 };
 export type {
   IButton,
