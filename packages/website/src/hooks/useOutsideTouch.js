@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-export default function useOutsideAlerter(ref, setState) {
+export default function useOutsideAlerter (ref, setState) {
   useEffect(() => {
     /**
      * Alert if clicked on outside of element
      */
-    function handleClickOutside(event) {
+    function handleClickOutside (event) {
       if (ref.current && !ref.current.contains(event.target)) {
         setState(false)
       }

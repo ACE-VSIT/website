@@ -1,11 +1,12 @@
-import {
+/* eslint-disable @typescript-eslint/no-empty-function */
+import React, {
   createContext,
   useContext,
   ReactNode,
   useState,
   useEffect,
-} from 'react'
-import { signInStatus } from '../utils/firebase'
+} from 'react';
+import { signInStatus } from '../utils/firebase';
 
 export type authContextType = {
   user: userContextType
@@ -34,12 +35,12 @@ const authContextDefaultValues: authContextType = {
   login: () => {},
   logout: () => {},
   loading: false,
-}
+};
 
-const AuthContext = createContext<authContextType>(authContextDefaultValues)
+const AuthContext = createContext<authContextType>(authContextDefaultValues);
 
 export function useAuth() {
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 type Props = {
@@ -53,39 +54,37 @@ export function AuthProvider({ children }: Props) {
     name: null,
     uid: null,
     photoUrl: null,
-  })
-  const [loading, setLoading] = useState(false)
+  });
+  const [loading, setLoading] = useState(false);
 
-  const login = (user: userContextType) => {
-    setUser(user)
-  }
+  const login = (userInfo: userContextType) => {
+    setUser(userInfo);
+  };
 
   const logout = () => {
-    console.log('logout')
     setUser({
       email: null,
       admin: null,
       name: null,
       uid: null,
       photoUrl: null,
-    })
-  }
+    });
+  };
 
-  const value = {
-    user,
-    login,
-    logout,
-    loading,
-    setLoading,
-  }
+  const value = React.useMemo(() => {
+    const obj = {
+      user,
+      login,
+      logout,
+      loading,
+      setLoading,
+    };
+    return { ...obj };
+  }, []);
 
   useEffect(() => {
-    signInStatus(login, setLoading)
-  }, [])
+    signInStatus(login, setLoading);
+  }, []);
 
-  return (
-    <>
-      <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-    </>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

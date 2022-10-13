@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import useWindowSize from './useWindowSize'
+import { useEffect, useState } from 'react';
+import useWindowSize from './useWindowSize';
 
 const useIsMobile = () => {
-  const { width } = useWindowSize()
-  const [isMobile, setIsMobile] = useState(false)
+  const { width } = useWindowSize();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (width < 768) {
-      setIsMobile(true)
+      setIsMobile(true);
     } else {
-      setIsMobile(false)
+      setIsMobile(false);
     }
-  }, [width])
+  }, [width]);
 
-  return isMobile
-}
+  return isMobile;
+};
 
-export default useIsMobile
+export default useIsMobile;

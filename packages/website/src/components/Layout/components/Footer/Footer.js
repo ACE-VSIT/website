@@ -6,12 +6,12 @@ import {
   FooterSubscribe,
   FooterSubscribeSendBtn,
   FooterTitle,
-  FooterWrapper,
+  FooterWrapper
 } from './FooterElements'
 import { ThemeContext } from '../../../../context/ThemeContext'
 import { StaticImage } from 'gatsby-plugin-image'
 
-export default function Footer({ itemList, footerList }) {
+export default function Footer ({ itemList, footerList }) {
   const { isDarkTheme } = useContext(ThemeContext)
   return (
     <>

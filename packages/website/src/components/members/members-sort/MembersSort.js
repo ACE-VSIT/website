@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { FlexCenter } from '../../../styles/sharedStyles'
 import styled from 'styled-components'
 
-export default function MembersSort({ startingYear, setYear }) {
+export default function MembersSort ({ startingYear, setYear }) {
   const [optionYears, setOptionYears] = useState()
   const optionRef = useRef()
 

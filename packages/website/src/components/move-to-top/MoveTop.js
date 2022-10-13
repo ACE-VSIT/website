@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ArrowUpOutlined from '@ant-design/icons/ArrowUpOutlined'
 import { FlexCenter } from '../../styles/sharedStyles'
 
-export default function MoveTop() {
+export default function MoveTop () {
   const [showScroll, setShowScroll] = useState(false)
 
   const handleScrollTop = () => {

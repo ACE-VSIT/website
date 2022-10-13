@@ -4,7 +4,7 @@ import { FlexCenter, Heading } from '../../styles/sharedStyles'
 import { getImage } from 'gatsby-plugin-image'
 import ProjectFilter from './components/ProjectFilter'
 
-export default function ProjectPage({ projectList }) {
+export default function ProjectPage ({ projectList }) {
   const [active, setActive] = useState(null)
   const [list, setList] = useState(projectList)
 
@@ -20,7 +20,7 @@ export default function ProjectPage({ projectList }) {
 
   const cardWrapperStyles = {
     flexWrap: 'wrap',
-    padding: '2rem 0',
+    padding: '2rem 0'
   }
 
   return (
@@ -34,7 +34,7 @@ export default function ProjectPage({ projectList }) {
           'App Development',
           'Graphics Designing',
           'Data Science',
-          'Security',
+          'Security'
         ]}
         setState={e => setActive(e)}
       />

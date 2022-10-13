@@ -10,7 +10,7 @@ import {
   NavbarVertical,
   NavbarSocialHeading,
   NavbarSocialItem,
-  NavbarSliderThemeIcon,
+  NavbarSliderThemeIcon
 } from './NavbarElements'
 import RichText from '../../../rich-text/index'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
@@ -19,13 +19,13 @@ import { useTrail, useSpring, animated } from 'react-spring'
 import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
 import { FlexCenter } from '../../../../styles/sharedStyles'
 
-export default function Navbar({
+export default function Navbar ({
   img,
   sliderInfo,
   itemList,
   socialList,
   isDarkTheme,
-  setIsDarkTheme,
+  setIsDarkTheme
 }) {
   const [toggleSlider, setToggleSlider] = useState(false)
   const [awaitAnimate, setAwaitAnimate] = useState(false)
@@ -39,16 +39,16 @@ export default function Navbar({
     height: '5rem',
     filter: 'opacity(0.75)',
     cursor: 'pointer',
-    zIndex: 1005,
+    zIndex: 1005
   }
 
   const navbarSliderAnimation = useSpring({
     opacity: toggleSlider ? 1 : 0,
-    transform: toggleSlider ? `translateX(0)` : `translateX(100%)`,
+    transform: toggleSlider ? 'translateX(0)' : 'translateX(100%)'
   })
 
   const toggleStyles = {
-    display: toggleSlider ? 'flex' : 'none',
+    display: toggleSlider ? 'flex' : 'none'
   }
 
   const trailVertical = useTrail(itemList?.length ?? 1, {
@@ -57,7 +57,7 @@ export default function Navbar({
     x: 0,
     height: 80,
     onRest: () => setAwaitAnimate(true),
-    from: { opacity: 0, x: -20, height: 0 },
+    from: { opacity: 0, x: -20, height: 0 }
   })
 
   const trailMobile = useTrail(itemList?.length ?? 1, {
@@ -65,7 +65,7 @@ export default function Navbar({
     opacity: toggleSlider ? 1 : 0,
     x: toggleSlider ? 0 : -20,
     height: toggleSlider ? 80 : 0,
-    from: { opacity: 0, x: -20, height: 0 },
+    from: { opacity: 0, x: -20, height: 0 }
   })
 
   const trailHorizontal = useTrail(socialList?.length ?? 1, {
@@ -73,7 +73,7 @@ export default function Navbar({
     opacity: awaitAnimate ? 1 : 0,
     y: awaitAnimate ? 0 : -20,
     height: awaitAnimate ? 80 : 0,
-    from: { opacity: 0, y: -20, height: 0 },
+    from: { opacity: 0, y: -20, height: 0 }
   })
 
   const handleThemeChange = () => {
@@ -97,7 +97,7 @@ export default function Navbar({
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.to(x => `translate3d(0,${x}px,0)`),
+                  transform: x.to(x => `translate3d(0,${x}px,0)`)
                 }}
               >
                 <NavbarListItem to={`/${link}`} style={{ height }}>
@@ -146,7 +146,7 @@ export default function Navbar({
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.to(x => `translate3d(0,${x}px,0)`),
+                  transform: x.to(x => `translate3d(0,${x}px,0)`)
                 }}
               >
                 <NavbarListItem to={`/${link}`} style={{ height }}>
@@ -164,7 +164,7 @@ export default function Navbar({
               <animated.div
                 style={{
                   ...rest,
-                  transform: y.to(y => `translateY(${y}px) rotate(-90deg)`),
+                  transform: y.to(y => `translateY(${y}px) rotate(-90deg)`)
                 }}
                 key={index}
               >

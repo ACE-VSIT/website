@@ -1,11 +1,11 @@
 import React from 'react'
 import {
   HeroSliceBgWrapper,
-  HeroSliceHeading,
+  HeroSliceHeading
 } from './HeroSliceSecondaryElements'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-export default function HeroSliceSecondary({ image, heading }) {
+export default function HeroSliceSecondary ({ image, heading }) {
   return (
     <>
       <HeroSliceBgWrapper>

@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
   const [check, setCheck] = useState(false)
   const auth = getAuth()
   onAuthStateChanged(auth, user => {
-    if (!user && location.pathname !== `/register/questions`) {
+    if (!user && location.pathname !== '/register/questions') {
       navigate('/register/')
     } else {
       setCheck(true)

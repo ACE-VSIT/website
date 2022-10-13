@@ -4,14 +4,14 @@ import {
   HeroWrapper,
   HeroInfoWrapper,
   HeroTitle,
-  HeroInfo,
+  HeroInfo
 } from './HeroElements'
 // import Button from '../../button/Button'
 import AnimateIn from '../../animations/AnimateIn'
 import { Button } from '@ace/common'
 import { navigate } from 'gatsby'
 
-export default function HeroSection({ data }) {
+export default function HeroSection ({ data }) {
   const [hero, setHero] = useState(null)
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function HeroSection({ data }) {
       heroBtnTitle,
       heroBtnTarget,
       imgAlt,
-      img,
+      img
     })
   }, [data])
 
@@ -48,7 +48,7 @@ export default function HeroSection({ data }) {
                 height: 'calc(100vh - 5rem)',
                 filter: 'brightness(85%)',
                 position: 'absolute',
-                right: '5rem',
+                right: '5rem'
               }}
               alt={hero?.imgAlt}
             />

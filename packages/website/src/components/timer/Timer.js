@@ -5,7 +5,7 @@ const Timer = ({
   endDate,
   startDate,
   hasEndedText = '',
-  toBeStartedText = '',
+  toBeStartedText = ''
 }) => {
   const [time, setTime] = React.useState(() => {
     if (new Date(startDate) > new Date()) {

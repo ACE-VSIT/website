@@ -3,14 +3,14 @@ import loading from './loading.json'
 import Lottie from 'react-lottie'
 import { FlexCenter } from '../../styles/sharedStyles'
 
-export default function Loading({ loop = true, autoplay = true }) {
+export default function Loading ({ loop = true, autoplay = true }) {
   const defaultOptions = {
     loop,
     autoplay,
     animationData: loading,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
+      preserveAspectRatio: 'xMidYMid slice'
+    }
   }
 
   return (

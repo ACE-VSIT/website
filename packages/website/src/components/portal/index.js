@@ -5,7 +5,7 @@ import { FlexCenter } from '../../styles/sharedStyles'
 import LoginWithGoogle from './components/Google/LoginWithGoogle'
 import Loading from '../animations/Loading'
 
-export default function PortalForm() {
+export default function PortalForm () {
   const { user, loading } = useContext(AuthContext)
   const [showForm, setShowForm] = useState(false)
 

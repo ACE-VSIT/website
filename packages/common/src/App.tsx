@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
 const App: React.FC = () => {
   useEffect(() => {
-    window.location.replace('https://vipsace.org/')
-  }, [])
-  return <div>MF-CRA</div>
-}
+    window.location.replace('https://vipsace.org/');
+  }, []);
+  return <div>MF-CRA</div>;
+};
 
-export default App
+export default App;

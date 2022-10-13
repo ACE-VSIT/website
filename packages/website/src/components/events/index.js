@@ -3,7 +3,7 @@ import EventCard from './eventsCard-slice/EventCard'
 import ProjectFilter from '../projects/components/ProjectFilter'
 import { WrapperBody, Container } from './eventsCard-slice/EventCardElements'
 
-export default function Event({ data }) {
+export default function Event ({ data }) {
   const [filter, setFilter] = useState('Event')
   const [eventItems, setEventItems] = useState([])
   const filterSelect = ['Event', 'ACE Hour']

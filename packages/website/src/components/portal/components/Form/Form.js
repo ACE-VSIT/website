@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import React, { useState, useContext, useEffect } from 'react'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
@@ -11,14 +12,14 @@ import Loading from '../../../animations/Loading'
 import { navigate } from 'gatsby'
 import { ButtonWrapper as ButtonElement } from '../Google/LoginElements'
 
-export default function Form() {
+export default function Form () {
   const [input, setInput] = useState({
     firstName: '',
     lastName: '',
     mobile: '',
     enrollmentNo: '',
     course: '',
-    section: '',
+    section: ''
   })
   const { user } = useContext(AuthContext)
   const { personalDetails, setIsVerified, isVerified } =
@@ -43,7 +44,7 @@ export default function Form() {
         break
 
       case 'mobile':
-        const mobileRegExp = new RegExp('^([0|+[0-9]{1,5})?([7-9][0-9]{9})$')
+        const mobileRegExp = /^([0|+[0-9]{1,5})?([7-9][0-9]{9})$/
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -55,7 +56,7 @@ export default function Form() {
         }
         break
       case 'enrollmentNo':
-        const enrollmentNoRegExp = new RegExp('^[a-zA-Z0-9]{10,11}$')
+        const enrollmentNoRegExp = /^[a-zA-Z0-9]{10,11}$/
         if (!e.target.value) {
           setCustomError(false)
         } else {
@@ -102,7 +103,7 @@ export default function Form() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    width: '100%'
   }
 
   useEffect(() => {
@@ -161,8 +162,8 @@ export default function Form() {
                             defaultValue={e.options[0]}
                             onChange={event => handleChange(event)}
                           >
-                            {e.options.map(e => (
-                              <Option>{e}</Option>
+                            {e.options.map((e, index) => (
+                              <Option key={e + index}>{e}</Option>
                             ))}
                           </Select>
                         )
@@ -192,7 +193,7 @@ export default function Form() {
                         style={{
                           gap: '0',
                           flexWrap: 'nowrap',
-                          flexDirection: 'row',
+                          flexDirection: 'row'
                         }}
                       >
                         <ErrorBox style={{ borderRight: '0' }}>

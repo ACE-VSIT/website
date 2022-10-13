@@ -5,7 +5,7 @@ import {
   CardInfo,
   HeroCardHighlight,
   HeroSectionBg,
-  HeroSectionWrapper,
+  HeroSectionWrapper
 } from './HeroSectionSliceElements'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'

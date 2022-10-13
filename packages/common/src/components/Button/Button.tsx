@@ -1,6 +1,6 @@
-import React from 'react'
-import { IButton, IButtonComponents } from '../../interfaces/IButton'
-import { ButtonComponent } from './ButtonElements'
+import React from 'react';
+import { IButton, IButtonComponents } from '../../interfaces/IButton';
+import { ButtonComponent } from './ButtonElements';
 
 const Button: React.FC<IButton & IButtonComponents> = ({
   value,
@@ -11,22 +11,19 @@ const Button: React.FC<IButton & IButtonComponents> = ({
   style,
   onClick,
   ...rest
-}) => {
-  return (
-    <>
-      <ButtonComponent
-        sm={sm}
-        md={md}
-        lg={lg}
-        style={style}
-        onClick={onClick}
-        primary={primary}
-        {...rest}
-      >
-        {value}
-      </ButtonComponent>
-    </>
-  )
-}
+}) => (
+  <ButtonComponent
+    sm={sm}
+    md={md}
+    lg={lg}
+    style={style}
+    onClick={onClick}
+    primary={primary}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...rest}
+  >
+    {value}
+  </ButtonComponent>
+);
 
-export default Button
+export default Button;

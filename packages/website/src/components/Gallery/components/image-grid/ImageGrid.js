@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { ThemeContext } from '../../../../context/ThemeContext'
 import { ImageContainer, ImageElement } from './ImageGridElements'
 
-export default function ImageGrid({ image, tooltip, id }) {
+export default function ImageGrid ({ image, tooltip, id, userClick }) {
   const { isDarkTheme } = useContext(ThemeContext)
 
   return (
@@ -14,7 +14,7 @@ export default function ImageGrid({ image, tooltip, id }) {
         data-for={`tooltip-${id}`}
         data-place="top"
       >
-        <ImageElement>
+        <ImageElement onClick={() => userClick()}>
           <GatsbyImage image={image} alt={''} />
         </ImageElement>
         <ReactTooltip
