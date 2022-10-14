@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function NotFound() {
-  const navigate = useNavigate();
+const NotFound = () => {
+  const navigate = useNavigate()
 
   useEffect(() => {
-    navigate('/');
-  }, [navigate]);
+    console.log('working')
+    navigate('/')
+  }, [navigate])
 
-  return <></>;
+  return <></>
 }
 
-export default NotFound;
+export default NotFound

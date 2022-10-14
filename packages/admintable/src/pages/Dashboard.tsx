@@ -1,16 +1,16 @@
-import React from 'react';
-import Navbar from 'remote/Navbar';
-import TableContainer from '../components/table/TableContainer';
-import NavbarConfig from '../configs/navbar.config';
-import { Wrapper } from '../components/index-elements.styles';
-import { useAuth } from '../contexts/AuthContext';
-import { signOutUser } from '../utils/firebase';
-import useThemeContext from '../contexts/ThemeContext';
-import Pagination from '../components/table/components/pagination/Pagination';
+import React from 'react'
+import Navbar from 'remote/Navbar'
+import TableContainer from '../components/table/TableContainer'
+import { NavbarConfig } from '../configs/navbar.config'
+import { Wrapper } from '../components/index-elements.styles'
+import { useAuth } from '../contexts/AuthContext'
+import { signOutUser } from '../utils/firebase'
+import useThemeContext from '../contexts/ThemeContext'
+import Pagination from '../components/table/components/pagination/Pagination'
 
 const Dashboard: React.FC = () => {
-  const { user, logout } = useAuth();
-  const { isDarkTheme, setIsDarkTheme } = useThemeContext();
+  const { user, logout } = useAuth()
+  const { isDarkTheme, setIsDarkTheme } = useThemeContext()
 
   const NavbarUserProfileConfig: any[] = [
     {
@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
       name: 'Sign Out',
       onClick: () => signOutUser(logout),
     },
-  ];
+  ]
 
   return (
     <>
@@ -42,7 +42,7 @@ const Dashboard: React.FC = () => {
         <Pagination />
       </Wrapper>
     </>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
