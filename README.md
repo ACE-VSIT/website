@@ -32,9 +32,9 @@ _If you find anything which can be improved in the README.md then ping [me](http
 
        ```shell
        cd ~/Desktop
-       git clone https://github.com/ACE-VSIT/ACE-Website
-       cd ./ACE-Website
-       npx lerna bootstrap -- --legacy-peer-deps
+       git clone https://github.com/ACE-VSIT/website
+       cd ./website
+       yarn
        cd packages/website && touch .env.development
        cd packages/admintable && touch .env
        ```
@@ -45,9 +45,9 @@ _If you find anything which can be improved in the README.md then ping [me](http
        2. Run the following commands
 
        ```shell
-       git clone https://github.com/ACE-VSIT/ACE-Website
-       cd ./ACE-Website
-       npx lerna bootstrap -- --legacy-peer-deps
+       git clone https://github.com/ACE-VSIT/website
+       cd ./website
+       yarn
        create .env.development inside packages/website
        create .env inside packages/admintable
        ```
