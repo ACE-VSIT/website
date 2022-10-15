@@ -1,31 +1,9 @@
-import React, {
-  ChangeEvent, FC, useRef, useState,
-} from 'react';
-import styled from 'styled-components';
-import useOnScreen from 'remote/useOnScreen';
-import useUserInfo from '../../../../contexts/UserInfoContext';
-import { IInputText } from '../../../../interfaces/input.interface';
-import { Td } from './styles/table-elements.styles';
-
-const TextWrapper = styled(Td)`
-  width: max-content;
-  padding: 2px;
-`;
-export const TextInput = styled.input<{ disabled?: boolean }>`
-  height: 100%;
-  width: 100%;
-  border: none;
-  padding: 1rem 1.25rem;
-  border-collapse: collapse;
-  color: ${(props) => props.theme.font};
-  background: ${(props) => props.theme.bg};
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'text')};
-
-  &:focus {
-    outline-offset: calc(0.15rem - 2px);
-    outline: 2px solid #32486175;
-  }
-`;
+import { ChangeEvent, FC, useRef, useState } from 'react'
+import styled from 'styled-components'
+import useUserInfo from '../../../../contexts/UserInfoContext'
+import { IInputText } from '../../../../interfaces/input.interface'
+import { Td } from './styles/table-elements.styles'
+import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
   customOnChange,
@@ -33,24 +11,24 @@ const InputText: FC<IInputText> = ({
   cellId,
   disableUpdates = false,
 }) => {
-  const ref = useRef();
-  const isOnScreen: boolean = useOnScreen(ref);
-  const { userInfo, setUserInfo } = useUserInfo();
-  const [textVal, setTextVal] = useState<string>(customVal ?? '');
+  const ref = useRef()
+  const isOnScreen: boolean = useOnScreen(ref)
+  const { userInfo, setUserInfo } = useUserInfo()
+  const [textVal, setTextVal] = useState<string>(customVal ?? '')
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!disableUpdates) {
       if (customOnChange) {
-        customOnChange(e?.target?.value);
+        customOnChange(e?.target?.value)
       } else {
-        setTextVal(e?.target?.value);
+        setTextVal(e?.target?.value)
         setUserInfo!({
           ...userInfo!,
           [cellId!]: e?.target?.value,
-        });
+        })
       }
     }
-  };
+  }
 
   return (
     <TextWrapper ref={ref as unknown as any}>
@@ -58,11 +36,31 @@ const InputText: FC<IInputText> = ({
         <TextInput
           value={textVal}
           disabled={disableUpdates}
-          onChange={(e) => handleOnChange(e)}
+          onChange={e => handleOnChange(e)}
         />
       )}
     </TextWrapper>
-  );
-};
+  )
+}
 
-export default InputText;
+export default InputText
+
+const TextWrapper = styled(Td)`
+  width: max-content;
+  padding: 2px;
+`
+export const TextInput = styled.input<{ disabled?: boolean }>`
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding: 1rem 1.25rem;
+  border-collapse: collapse;
+  color: ${props => props.theme.font};
+  background: ${props => props.theme.bg};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'text')};
+
+  &:focus {
+    outline-offset: calc(0.15rem - 2px);
+    outline: 2px solid #32486175;
+  }
+`

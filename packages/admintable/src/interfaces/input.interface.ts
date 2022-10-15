@@ -5,6 +5,6 @@ export interface IInput {
   customOnChange?: (e: string) => void
 }
 
-export type IInputDate = IInput
-export type IInputImage = IInput
-export type IInputText = IInput
+export interface IInputDate extends IInput {}
+export interface IInputImage extends IInput {}
+export interface IInputText extends IInput {}

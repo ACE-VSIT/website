@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Table = styled.table`
   width: 100%;
@@ -9,13 +9,13 @@ export const Table = styled.table`
   -ms-user-select: none;
   border-collapse: collapse;
   -webkit-user-select: none;
-  border: 1px solid ${(props) => props.theme.font + 75};
-`;
+  border: 1px solid ${props => props.theme.font + 75};
+`
 
 export const Thead = styled.thead`
   position: relative;
   z-index: 10;
-`;
+`
 
 export const Tbody = styled.tbody`
   overflow: scroll;
@@ -25,7 +25,7 @@ export const Tbody = styled.tbody`
       display: flex;
     }
   }
-`;
+`
 
 export const Td = styled.td`
   user-select: none;
@@ -33,7 +33,7 @@ export const Td = styled.td`
   -ms-user-select: none;
   border-collapse: collapse;
   -webkit-user-select: none;
-  border: 1px solid ${(props) => props.theme.font + 75};
+  border: 1px solid ${props => props.theme.font + 75};
   width: max-content;
 
   img {
@@ -42,18 +42,18 @@ export const Td = styled.td`
     aspect-ratio: 1/1;
     border-radius: 50%;
     outline-offset: 2px;
-    outline: 1px solid ${(props) => props.theme.font + 75};
+    outline: 1px solid ${props => props.theme.font + 75};
   }
 
   @media (max-width: 768px) {
-    height: 7rem;
+    height: 7rem; 
   }
-`;
+`
 export const Th = styled.th<{ resizeWidth?: number }>`
   user-select: none;
   padding: 2rem;
   -ms-user-select: none;
   border-collapse: collapse;
   -webkit-user-select: none;
-  border: 1px solid ${(props) => props.theme.font + 75};
-`;
+  border: 1px solid ${props => props.theme.font + 75};
+`

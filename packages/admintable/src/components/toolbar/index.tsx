@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const Toolbar: React.FC = () => <div>Toolbar</div>;
+const Toolbar: React.FC = () => {
+  return <div>Toolbar</div>
+}
 
-export default Toolbar;
+export default Toolbar
