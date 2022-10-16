@@ -68,4 +68,20 @@ export const GlobalStyle = createGlobalStyle`
     width: 6px;
     display: block;
   }
+
+  // React Toastify Custom Styles
+  .Toastify__toast {
+    border-radius: 0;
+    background-color: ${props => props.theme.bg};
+    border: 1px solid ${props => props.theme.font + 75};
+  }
+  .Toastify__close-button {
+    fill: ${props => props.theme.font + 75};
+  }
+  .Toastify__toast-icon > svg {
+    fill: ${props => props.theme.font + 75};
+  }
+  .Toastify__progress-bar--error {
+    background: ${props => props.theme.font + 25};
+  }
 `

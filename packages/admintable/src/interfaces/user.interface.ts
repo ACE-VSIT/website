@@ -1,3 +1,21 @@
+export interface ISubmissionItem {
+  id: string
+  name: string
+  url: string
+  isNew: true
+  type: string
+  iconUrl: string
+  uploadId: string
+  mimeType: string
+  serviceId: string
+  downloadUrl: string
+  description: string
+  uploadState: string
+  lastEditedUtc: number
+}
+
+export type ISubmissionItemKey = keyof ISubmissionItem
+
 export interface IUser {
   photoURL: string
   emailVerified: boolean
@@ -16,6 +34,9 @@ export interface IUser {
     enrollmentNo: string
     firstName: string
     lastName: string
+  }
+  submissions?: {
+    [key: string]: ISubmissionItem
   }
 }
 

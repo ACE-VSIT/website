@@ -3,6 +3,7 @@ export interface IInput {
   cellId?: string
   disableUpdates?: boolean
   customOnChange?: (e: string) => void
+  centerText?: boolean
 }
 
 export interface IInputDate extends IInput {}

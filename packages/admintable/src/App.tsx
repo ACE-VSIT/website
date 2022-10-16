@@ -9,6 +9,8 @@ import { AuthProvider, useAuth } from './contexts/AuthContext'
 import { darkTheme, GlobalStyle, lightTheme } from './theme/GlobalStyles'
 import useThemeContext from './contexts/ThemeContext'
 import NotFound from './pages/NotFound'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 const App: React.FC = () => {
   const user = useAuth()
@@ -48,6 +50,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ToastContainer />
         </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
