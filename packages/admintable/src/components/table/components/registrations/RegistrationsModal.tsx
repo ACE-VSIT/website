@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 import styled, { keyframes } from 'styled-components'
 import useOutsideTouch from 'remote/useOutsideTouch'
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef } from 'react'
 import useUserInfo from '../../../../contexts/UserInfoContext'
 import useThemeContext from '../../../../contexts/ThemeContext'
 import { ISubmissionItemKey } from '../../../../interfaces/user.interface'
@@ -49,6 +49,7 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
   const regModalRef = useRef()
   const { userInfo } = useUserInfo()
   const { isDarkTheme } = useThemeContext()
+  const registrationsModalRef = useRef(false)
 
   // Another approach
   // const [registrationTableHeaderKeys, setRegistrationTableHeaderKeys] =
@@ -64,9 +65,11 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
 
   useOutsideTouch(regModalRef, setState)
 
-  const hasSubmissions = useCallback(() => {
+  const hasSubmissions = () => {
+    if (registrationsModalRef.current) return
     if (!userInfo?.submissions) {
       toast.error('No submissions found!', {
+        toastId: 'registrationsModalRefToast',
         position: 'top-right',
         autoClose: 3000,
         hideProgressBar: false,
@@ -76,9 +79,12 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
         progress: undefined,
         theme: isDarkTheme ? 'dark' : 'light',
       })
+      registrationsModalRef.current = true
       setState(false)
     }
-  }, [isDarkTheme, setState, userInfo?.submissions])
+  }
+
+  hasSubmissions()
 
   const getInputType = (type: string, value: string) => {
     switch (type) {
@@ -107,10 +113,6 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
         return null
     }
   }
-
-  useEffect(() => {
-    hasSubmissions()
-  }, [hasSubmissions])
 
   if (!userInfo?.submissions) {
     return null
