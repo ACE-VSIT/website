@@ -38,7 +38,7 @@ const UpdateIconAnimation = keyframes`
     transform: rotate(360deg);
   }
 `
-const UpdateWrapper = styled(Td)<{ triggerAnimation?: boolean }>`
+export const UpdateWrapper = styled(Td)<{ triggerAnimation?: boolean }>`
   width: max-content;
 
   div {
@@ -53,7 +53,7 @@ const UpdateWrapper = styled(Td)<{ triggerAnimation?: boolean }>`
 
   @media (max-width: 768px) {
     div {
-      height: 4.75rem; 
+      height: 4.75rem;
     }
   }
 `

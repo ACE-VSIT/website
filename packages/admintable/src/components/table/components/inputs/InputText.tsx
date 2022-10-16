@@ -9,6 +9,7 @@ const InputText: FC<IInputText> = ({
   customOnChange,
   customVal,
   cellId,
+  centerText = false,
   disableUpdates = false,
 }) => {
   const ref = useRef()
@@ -35,6 +36,7 @@ const InputText: FC<IInputText> = ({
       {isOnScreen && (
         <TextInput
           value={textVal}
+          centerText={centerText}
           disabled={disableUpdates}
           onChange={e => handleOnChange(e)}
         />
@@ -49,7 +51,10 @@ const TextWrapper = styled(Td)`
   width: max-content;
   padding: 2px;
 `
-export const TextInput = styled.input<{ disabled?: boolean }>`
+export const TextInput = styled.input<{
+  disabled?: boolean
+  centerText?: boolean
+}>`
   height: 100%;
   width: 100%;
   border: none;
@@ -58,6 +63,7 @@ export const TextInput = styled.input<{ disabled?: boolean }>`
   color: ${props => props.theme.font};
   background: ${props => props.theme.bg};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'text')};
+  text-align: ${props => (props.centerText ? 'center' : 'left')};
 
   &:focus {
     outline-offset: calc(0.15rem - 2px);

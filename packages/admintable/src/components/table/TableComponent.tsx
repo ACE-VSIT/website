@@ -14,6 +14,8 @@ import { memo, useState, useEffect } from 'react'
 import { getNestedValue } from './helpers/helper-functions'
 import useTableProps from '../../contexts/TableContext'
 import React from 'react'
+import RegistrationsButton from './components/registrations/RegistrationsButton'
+import RegistrationsModal from './components/registrations/RegistrationsModal'
 
 type TablePropTypes = {
   headers: ITableHeader[]
@@ -21,9 +23,11 @@ type TablePropTypes = {
 }
 
 function TableComponent({ headers, data }: TablePropTypes) {
-  const [currentData, setCurrentData] = useState<IUser[]>(data)
   const { setUserInfo } = useUserInfo()
   const { filteredData } = useTableProps()
+  const [currentData, setCurrentData] = useState<IUser[]>(data)
+  const [isRegistrationsModalOpen, setIsRegistrationsModalOpen] =
+    useState(false)
 
   useEffect(() => {
     if (filteredData !== undefined) {
@@ -68,10 +72,18 @@ function TableComponent({ headers, data }: TablePropTypes) {
                 })
                 return cloned
               })}
+              <RegistrationsButton
+                size="md"
+                value="Check Submission"
+                onClick={() => setIsRegistrationsModalOpen(prev => !prev)}
+              />
               <Updater />
             </tr>
           ))}
         </Tbody>
+        {isRegistrationsModalOpen && (
+          <RegistrationsModal setState={setIsRegistrationsModalOpen} />
+        )}
       </Table>
     </>
   )
@@ -79,7 +91,7 @@ function TableComponent({ headers, data }: TablePropTypes) {
 
 export default memo(TableComponent)
 
-function getInputComponent({
+export function getInputComponent({
   inputProps: { customVal, cellId },
   type,
 }: {
