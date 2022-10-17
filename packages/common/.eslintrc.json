@@ -20,6 +20,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
+    "linebreak-style": 0,
     "react/function-component-definition": [
       "error",
       {
