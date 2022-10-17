@@ -16,6 +16,7 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
+    "linebreak-style": 0,
     "react/prop-types": "off",
     "multiline-ternary": "off"
   }
