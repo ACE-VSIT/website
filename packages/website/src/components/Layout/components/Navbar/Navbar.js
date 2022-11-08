@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import {
   NavbarBrandImg,
   NavbarList,
@@ -12,9 +12,12 @@ import {
   NavbarSocialItem,
   NavbarSliderThemeIcon
 } from './NavbarElements'
+import { AuthContext } from '../../../../context/auth/AuthContext'
 import RichText from '../../../rich-text/index'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { navigate } from 'gatsby'
+import { Button } from '@ace/common'
+import { signOutUser } from '../../../../firebase'
 import { useTrail, useSpring, animated } from 'react-spring'
 import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
 import { FlexCenter } from '../../../../styles/sharedStyles'
@@ -32,6 +35,7 @@ export default function Navbar ({
   const springConfig = { mass: 5, tension: 1500, friction: 200 }
   const brandImg = getImage(img)
   const sliderRef = useRef()
+  const { dispatch } = useContext(AuthContext)
   useOutsideAlerter(sliderRef, setToggleSlider)
 
   const closeBtnStyles = {
@@ -155,6 +159,14 @@ export default function Navbar ({
               </animated.div>
             )
           })}
+        <Button
+          onClick={() => {
+            signOutUser(dispatch)
+            setToggleSlider(false)
+          }}
+          sm
+          value="Log Out"
+        />
       </NavbarSlider>
       <NavbarVertical left>
         <NavbarSocialHeading>{'Follow Us'}</NavbarSocialHeading>

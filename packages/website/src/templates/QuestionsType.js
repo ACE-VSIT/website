@@ -16,7 +16,29 @@ const QuestionType = ({ data }) => {
     if (found?.id) {
       setIs404(false)
       setName(found.name)
-      setFiltered(data.filter(e => e.question_category === found.name))
+      setFiltered(
+        data
+          .filter(e => e.question_category === found.name) // filter by question category
+          .sort((a, b) => {
+            // sort by question difficulty level
+            if (a.difficulty_level === b.difficulty_level) {
+              return 0
+            }
+            if (a.difficulty_level === 'Easy') {
+              return -1
+            }
+            if (b.difficulty_level === 'Easy') {
+              return 1
+            }
+            if (a.difficulty_level === 'Medium') {
+              return -1
+            }
+            if (b.difficulty_level === 'Medium') {
+              return 1
+            }
+            return 0
+          })
+      )
     } else {
       setIs404(true)
     }
