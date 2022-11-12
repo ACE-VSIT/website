@@ -8,30 +8,30 @@ import {
   TimelineCardTitle,
   TimelineCardWrapper,
   TimelinePoint,
-  TimelineDifficulty
+  TimelineDifficulty,
 } from './TimelineCardElements'
 import { EyeOutlined, UploadOutlined } from '@ant-design/icons'
 import useWindowSize from '../../../../../hooks/useWindowSize'
 
-export default function TimelineCard ({
+export default function TimelineCard({
   heading,
   level,
   info,
   align,
   openPicker,
   viewSubmission,
-  isSubmitted = false
+  isSubmitted = false,
 }) {
   const styledFlex = {
     justifyContent: 'space-between',
     flexWrap: 'nowrap',
     flexDirection: 'row',
-    paddingTop: '0.5rem'
+    paddingTop: '0.5rem',
   }
 
   const containerMargin = {
     marginLeft: align === 'start' && '20rem',
-    marginRight: align === 'end' && '20rem'
+    marginRight: align === 'end' && '20rem',
   }
 
   const { width } = useWindowSize()
@@ -54,7 +54,7 @@ export default function TimelineCard ({
               gap: 0,
               flexDirection: 'row',
               width: 'max-content',
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             {isSubmitted && (

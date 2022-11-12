@@ -4,6 +4,11 @@
       "src": "/googleDriveDelete",
       "dest": "/api/googleDriveDelete.js",
       "methods": ["POST"]
+    },
+    {
+      "src": "/googleDriveGeneratePublicURL",
+      "dest": "/api/googleDriveGeneratePublicURL.js",
+      "methods": ["POST"]
     }
   ]
 }

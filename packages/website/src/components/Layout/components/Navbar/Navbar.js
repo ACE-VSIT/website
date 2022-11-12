@@ -10,7 +10,7 @@ import {
   NavbarVertical,
   NavbarSocialHeading,
   NavbarSocialItem,
-  NavbarSliderThemeIcon
+  NavbarSliderThemeIcon,
 } from './NavbarElements'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import RichText from '../../../rich-text/index'
@@ -21,21 +21,24 @@ import { signOutUser } from '../../../../firebase'
 import { useTrail, useSpring, animated } from 'react-spring'
 import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
 import { FlexCenter } from '../../../../styles/sharedStyles'
+import { useLocation } from '@reach/router'
 
-export default function Navbar ({
+export default function Navbar({
   img,
   sliderInfo,
   itemList,
   socialList,
   isDarkTheme,
-  setIsDarkTheme
+  setIsDarkTheme,
 }) {
+  const sliderRef = useRef()
+  const location = useLocation()
+  const brandImg = getImage(img)
+  const { user } = useContext(AuthContext)
+  const { dispatch } = useContext(AuthContext)
   const [toggleSlider, setToggleSlider] = useState(false)
   const [awaitAnimate, setAwaitAnimate] = useState(false)
   const springConfig = { mass: 5, tension: 1500, friction: 200 }
-  const brandImg = getImage(img)
-  const sliderRef = useRef()
-  const { dispatch } = useContext(AuthContext)
   useOutsideAlerter(sliderRef, setToggleSlider)
 
   const closeBtnStyles = {
@@ -43,16 +46,16 @@ export default function Navbar ({
     height: '5rem',
     filter: 'opacity(0.75)',
     cursor: 'pointer',
-    zIndex: 1005
+    zIndex: 1005,
   }
 
   const navbarSliderAnimation = useSpring({
     opacity: toggleSlider ? 1 : 0,
-    transform: toggleSlider ? 'translateX(0)' : 'translateX(100%)'
+    transform: toggleSlider ? 'translateX(0)' : 'translateX(100%)',
   })
 
   const toggleStyles = {
-    display: toggleSlider ? 'flex' : 'none'
+    display: toggleSlider ? 'flex' : 'none',
   }
 
   const trailVertical = useTrail(itemList?.length ?? 1, {
@@ -61,7 +64,7 @@ export default function Navbar ({
     x: 0,
     height: 80,
     onRest: () => setAwaitAnimate(true),
-    from: { opacity: 0, x: -20, height: 0 }
+    from: { opacity: 0, x: -20, height: 0 },
   })
 
   const trailMobile = useTrail(itemList?.length ?? 1, {
@@ -69,7 +72,7 @@ export default function Navbar ({
     opacity: toggleSlider ? 1 : 0,
     x: toggleSlider ? 0 : -20,
     height: toggleSlider ? 80 : 0,
-    from: { opacity: 0, x: -20, height: 0 }
+    from: { opacity: 0, x: -20, height: 0 },
   })
 
   const trailHorizontal = useTrail(socialList?.length ?? 1, {
@@ -77,7 +80,7 @@ export default function Navbar ({
     opacity: awaitAnimate ? 1 : 0,
     y: awaitAnimate ? 0 : -20,
     height: awaitAnimate ? 80 : 0,
-    from: { opacity: 0, y: -20, height: 0 }
+    from: { opacity: 0, y: -20, height: 0 },
   })
 
   const handleThemeChange = () => {
@@ -101,7 +104,7 @@ export default function Navbar ({
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.to(x => `translate3d(0,${x}px,0)`)
+                  transform: x.to(x => `translate3d(0,${x}px,0)`),
                 }}
               >
                 <NavbarListItem to={`/${link}`} style={{ height }}>
@@ -150,7 +153,7 @@ export default function Navbar ({
                 key={index}
                 style={{
                   ...rest,
-                  transform: x.to(x => `translate3d(0,${x}px,0)`)
+                  transform: x.to(x => `translate3d(0,${x}px,0)`),
                 }}
               >
                 <NavbarListItem to={`/${link}`} style={{ height }}>
@@ -159,14 +162,16 @@ export default function Navbar ({
               </animated.div>
             )
           })}
-        <Button
-          onClick={() => {
-            signOutUser(dispatch)
-            setToggleSlider(false)
-          }}
-          sm
-          value="Log Out"
-        />
+        {location.pathname?.includes('/register') && user && (
+          <Button
+            onClick={() => {
+              signOutUser(dispatch)
+              setToggleSlider(false)
+            }}
+            sm
+            value="Log Out"
+          />
+        )}
       </NavbarSlider>
       <NavbarVertical left>
         <NavbarSocialHeading>{'Follow Us'}</NavbarSocialHeading>
@@ -176,7 +181,7 @@ export default function Navbar ({
               <animated.div
                 style={{
                   ...rest,
-                  transform: y.to(y => `translateY(${y}px) rotate(-90deg)`)
+                  transform: y.to(y => `translateY(${y}px) rotate(-90deg)`),
                 }}
                 key={index}
               >

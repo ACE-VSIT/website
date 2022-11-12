@@ -10,6 +10,9 @@
     "ecmaVersion": "latest"
   },
   "rules": {
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "semi": "off",
+    "arrow-parens": "off",
+    "comma-dangle": "off"
   }
 }

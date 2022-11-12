@@ -63,7 +63,10 @@ export const Container = styled(FlexCenter)`
   }
 
   @media (max-width: 768px) {
-    width: 90vw;
+    width: 100%;
+    display: flex;
+    padding: 0 2.5vw;
+    align-items: center;
     margin: 0 !important;
 
     &:nth-of-type(n) {

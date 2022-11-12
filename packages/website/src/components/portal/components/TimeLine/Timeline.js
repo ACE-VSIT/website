@@ -3,7 +3,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState
+  useState,
 } from 'react'
 import { Heading } from '../../../../styles/sharedStyles'
 import TimelineCard from './TimelineCard/TimelineCard'
@@ -11,11 +11,15 @@ import { TimelineWrapper } from './TimelineElements'
 import Loading from '../../../animations/Loading'
 import useDrivePicker from 'react-google-drive-picker'
 import axios from 'axios'
-import { deleteFileFromStorage, saveSubmittionData } from '../../../../firebase'
+import {
+  deleteFileFromStorage,
+  generatePublicURL,
+  saveSubmittionData,
+} from '../../../../firebase'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
 
-export default function Timeline ({ timeLine, name }) {
+export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [isSubmitted, setIsSubmitted] = useState([])
   const [openPicker] = useDrivePicker()
@@ -41,7 +45,7 @@ export default function Timeline ({ timeLine, name }) {
           client_id: process.env.GATSBY_GOOGLE_CLIENT_ID,
           client_secret: process.env.GATSBY_GOOGLE_CLIENT_SECRET,
           refresh_token: process.env.GATSBY_GOOGLE_REFRESH_TOKEN,
-          grant_type: 'refresh_token'
+          grant_type: 'refresh_token',
         }
       )
 
@@ -57,20 +61,23 @@ export default function Timeline ({ timeLine, name }) {
           multiselect: false,
           disableDefaultView: true,
           setParentFolder: process.env.GATSBY_GOOGLE_PARENT_FOLDER_ID,
-          callbackFunction: data => {
+          callbackFunction: async data => {
             if (data.action === 'cancel') {
               console.log('User clicked cancel/close button')
             }
             if (data.docs) {
-              deleteFile && fileId && deleteFileFromStorage(fileId)
-              saveSubmittionData(data.docs[0], questionType, user.email)
+              if (deleteFile && fileId) {
+                await deleteFileFromStorage(fileId)
+              }
+              await generatePublicURL(data.docs[0].id)
+              await saveSubmittionData(data.docs[0], questionType, user.email)
               setIsSubmitted(prev => [
                 ...prev,
-                questionType.replace(/\s+/g, '-').toLowerCase()
+                questionType.replace(/\s+/g, '-').toLowerCase(),
               ])
               getSubmissionDetails(user.email)
             }
-          }
+          },
           // customViews: customViewsArray, // custom view
         })
       }
@@ -139,11 +146,11 @@ export default function Timeline ({ timeLine, name }) {
                           .toLowerCase()
                       )
                         ? submissions[
-                          e?.question_name?.text
-                            ?.replace(/\s+/g, '-')
-                            .toLowerCase()
-                        ].id
-                        : ''
+                            e?.question_name?.text
+                              ?.replace(/\s+/g, '-')
+                              .toLowerCase()
+                          ].id
+                        : false
                     )
                   }
                   viewSubmission={() =>
