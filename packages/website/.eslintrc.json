@@ -18,6 +18,9 @@
   "rules": {
     "linebreak-style": 0,
     "react/prop-types": "off",
-    "multiline-ternary": "off"
+    "multiline-ternary": "off",
+    "comma-dangle": "off",
+    "space-before-function-paren": "off",
+    "indent": "off"
   }
 }

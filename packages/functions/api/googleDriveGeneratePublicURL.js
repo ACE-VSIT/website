@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-return-await */
 import { google } from 'googleapis'
 import allowCors from '../utils/allowCORS'
@@ -30,17 +29,26 @@ const handler = async (req, res) => {
   })
 
   try {
-    const response = await drive.files.delete({
+    await drive.permissions.create({
       fileId: Object.keys(fileId),
+      requestBody: {
+        role: 'reader',
+        type: 'anyone',
+      },
+    })
+    const result = await drive.files.get({
+      fileId: Object.keys(fileId),
+      fields: 'webViewLink, webContentLink',
     })
     res.json({
-      message: `File deleted: ${response.status} ${Object.keys(fileId)}`,
+      message: result.data,
       success: true,
     })
   } catch (error) {
     res.json({
-      message: `File delete error ${Object.keys(fileId)}`,
+      message: 'File generate public url error',
       success: false,
+      error,
     })
   }
 }
