@@ -10,7 +10,7 @@ const Updater: React.FC = () => {
   const [trigger, setTrigger] = useState(false)
   const { userInfo, clearUserInfo } = useUserInfo()
 
-  const handleUpdate = () => {
+  const updateUserInfo = () => {
     setTrigger(prev => !prev)
     setTableUserInfo(userInfo as IUserItem)
     clearUserInfo!()
@@ -19,7 +19,7 @@ const Updater: React.FC = () => {
   return (
     <UpdateWrapper triggerAnimation={trigger}>
       <div>
-        <UpdateIcon onClick={handleUpdate} />
+        <UpdateIcon onClick={updateUserInfo} />
       </div>
     </UpdateWrapper>
   )
@@ -57,8 +57,9 @@ export const UpdateWrapper = styled(Td)<{ triggerAnimation?: boolean }>`
     }
   }
 `
-const UpdateIcon = styled(SyncOutlined)`
+export const UpdateIcon = styled(SyncOutlined)`
   cursor: pointer;
   font-size: 1.25rem;
+  padding: 0 0.25rem;
   color: ${props => props.theme.font};
 `

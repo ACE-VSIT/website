@@ -65,7 +65,21 @@ export const loginWithGoogleAccount = async (
   }
 }
 
-export const getTableData = async (user: userContextType) => {
+export const getTableData = async (
+  user: userContextType,
+  fetchFromFirestore: boolean = false
+) => {
+  if (!fetchFromFirestore) {
+    const requestForCachedData = localStorage.getItem(
+      'ace-adminpanel-users-data'
+    )
+    if (requestForCachedData) {
+      return JSON.parse(requestForCachedData) as IUser[]
+    } else {
+      getTableData(user, true)
+    }
+  }
+
   try {
     if (user?.email && user?.admin && user?.name && user?.uid) {
       const userSnapshot: QuerySnapshot<DocumentData> = await getDocs(
@@ -75,6 +89,7 @@ export const getTableData = async (user: userContextType) => {
       userSnapshot.forEach(doc => {
         users.push(doc.data() as IUser)
       })
+      localStorage.setItem('ace-adminpanel-users-data', JSON.stringify(users))
       return users
     }
   } catch (error) {

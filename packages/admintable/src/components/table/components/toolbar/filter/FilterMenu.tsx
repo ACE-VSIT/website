@@ -95,7 +95,7 @@ const FilterMenuWrapper = styled('span')`
   align-items: center;
   justify-content: center;
   background: ${props => props.theme.bg};
-  border: 1px solid ${props => props.theme.font};
+  border: 1px solid ${props => props.theme.font + 75};
 `
 
 const ValueInput = styled(TextInput)`

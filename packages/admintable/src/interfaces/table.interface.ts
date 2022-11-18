@@ -1,5 +1,5 @@
 export interface ITableFilter {
-  listLength: number
+  listLength: number | '*'
 }
 
 export interface ITableHeader {

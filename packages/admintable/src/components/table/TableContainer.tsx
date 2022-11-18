@@ -13,17 +13,22 @@ const TableContainer = () => {
 
   const { user } = useAuth()
 
-  const pullData = useCallback(async () => {
-    const data = await getTableData(user)
-    setCurrentData(data ?? [])
-    setTableData!(data ?? [])
-  }, [setTableData, user])
+  const pullData = useCallback(
+    async (fromServer: boolean = false) => {
+      const data = await getTableData(user, fromServer)
+      setCurrentData(data ?? [])
+      setTableData!(data ?? [])
+    },
+    [setTableData, user]
+  )
 
   const columns = useMemo(() => userColumns, [])
 
   const trimData = useCallback(
-    (tableItemsLimit: number) => {
-      setCurrentData(tableData!.slice(0, tableItemsLimit))
+    (tableItemsLimit: number | '*') => {
+      if (typeof tableItemsLimit === 'number')
+        setCurrentData(tableData!.slice(0, tableItemsLimit))
+      else if (tableItemsLimit === '*') setCurrentData(tableData!)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [tableFilters?.listLength]
@@ -36,12 +41,12 @@ const TableContainer = () => {
   }, [tableFilters?.listLength, trimData])
 
   useEffect(() => {
-    pullData()
+    pullData(false)
   }, [pullData])
 
   return (
     <>
-      <Toolbar />
+      <Toolbar reFetchUserDataWithoutCache={() => pullData(true)} />
       <TableComponent headers={columns} data={currentData} />
     </>
   )

@@ -1,22 +1,35 @@
 import styled from 'styled-components'
-import Button from 'remote/Button'
-import { useRef, useState, useReducer, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import useOutsideTouch from 'remote/useOutsideTouch'
 import FilterContainer from './filter/Filter'
+import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 
-function Toolbar() {
-  const [show, setShow] = useState<boolean>(false)
+function Toolbar({
+  reFetchUserDataWithoutCache,
+}: {
+  reFetchUserDataWithoutCache: any
+}) {
   const filterMenuRef = useRef()
-
-  const handleShowState = () => {
-    setShow(curr => !curr)
-  }
-
+  const [, setShow] = useState<boolean>(false)
   useOutsideTouch(filterMenuRef, setShow)
+  const [trigger, setTrigger] = useState(false)
+
+  const triggerFetchUserData = () => {
+    setTrigger(trigger => !trigger)
+    reFetchUserDataWithoutCache()
+  }
 
   return (
     <ToolbarWrapper>
       <FilterContainer />
+      <UpdateWrapper
+        triggerAnimation={trigger}
+        onClick={() => triggerFetchUserData()}
+      >
+        <div>
+          <UpdateIcon />
+        </div>
+      </UpdateWrapper>
     </ToolbarWrapper>
   )
 }
@@ -24,9 +37,10 @@ function Toolbar() {
 export default Toolbar
 
 const ToolbarWrapper = styled('div')`
-  display: flex;
-  border: 1px solid ${props => props.theme.font};
-  width: 100%;
-  padding: 0.75rem;
   gap: 1rem;
+  width: 100%;
+  display: flex;
+  padding: 0.75rem;
+  justify-content: space-between;
+  border: 1px solid ${props => props.theme.font + 75};
 `
