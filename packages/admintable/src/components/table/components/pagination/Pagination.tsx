@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components'
 import useTableProps from '../../../../contexts/TableContext'
 import { IPagination } from '../../../../interfaces/pagination.interface'
 import SelectOption from '../inputs/SelectOption'
 
 const Pagination: React.FC<IPagination> = () => {
-  const { tableFilters, setTableFilters } = useTableProps()
+  const { tableData, tableFilters, setTableFilters } = useTableProps()
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target
+
     setTableFilters!({
-      listLength: parseInt(e.target.value),
+      listLength: value !== '*' ? parseInt(e.target.value) : '*',
     })
+    localStorage.setItem('ace-admintable-table-pagination', value)
   }
+
+  const onLoadPagination = useCallback(() => {
+    if (tableData?.length) {
+      const savedTablePagination = localStorage.getItem(
+        'ace-admintable-table-pagination'
+      )
+
+      savedTablePagination &&
+        setTableFilters!({
+          listLength:
+            savedTablePagination !== '*' ? parseInt(savedTablePagination) : '*',
+        })
+    }
+  }, [setTableFilters, tableData?.length])
+
+  useEffect(() => {
+    onLoadPagination()
+  }, [onLoadPagination])
 
   return (
     <PaginationWrapper>
@@ -21,8 +42,8 @@ const Pagination: React.FC<IPagination> = () => {
         name={'paginationOption'}
         customOnChange={onSelectChange}
         customValue={tableFilters?.listLength}
-        optionsValue={[5, 20, 40, 50, 60, 80, 100]}
-        options={['5', '20', '40', '50', '60', '80', '100']}
+        optionsValue={[5, 20, 40, 50, 60, 80, 100, 200, '*']}
+        options={['5', '20', '40', '50', '60', '80', '100', '200', 'MAX']}
       />
     </PaginationWrapper>
   )
