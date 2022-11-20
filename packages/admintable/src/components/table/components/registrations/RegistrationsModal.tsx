@@ -1,11 +1,20 @@
+import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
-import styled, { keyframes } from 'styled-components'
 import useOutsideTouch from 'remote/useOutsideTouch'
-import React, { useRef } from 'react'
-import useUserInfo from '../../../../contexts/UserInfoContext'
+import styled, { keyframes } from 'styled-components'
+import { registrationTableHeader } from '../../../../configs/registrations.config'
+import useTableProps from '../../../../contexts/TableContext'
 import useThemeContext from '../../../../contexts/ThemeContext'
-import { ISubmissionItemKey } from '../../../../interfaces/user.interface'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IRegisationsModal } from '../../../../interfaces/registrations.interface'
+import {
+  ISubmissionItemKey,
+  IUser,
+  IUserItem,
+} from '../../../../interfaces/user.interface'
+import { setTableUserInfo } from '../../../../utils/firebase'
+import { tableDataAndLocalStorage } from '../../../../utils/functions'
+import { TextInput } from '../inputs/InputText'
 import {
   Table,
   Tbody,
@@ -13,8 +22,7 @@ import {
   Th,
   Thead,
 } from '../inputs/styles/table-elements.styles'
-import { TextInput } from '../inputs/InputText'
-import { registrationTableHeader } from '../../../../configs/registrations.config'
+import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 
 const RegistrationsModalWrapperKeyframes = keyframes`
   0% {
@@ -25,31 +33,46 @@ const RegistrationsModalWrapperKeyframes = keyframes`
   }
 `
 
-const RegistrationsModalWrapper = styled.div`
-  top: 50%;
-  left: 50%;
+const RegistrationsModalWrapperBackdrop = styled.div`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  z-index: 999999999;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: ${RegistrationsModalWrapperKeyframes} 0.3s ease-in-out;
+`
+
+const RegistrationsModalWrapper = styled.div<{ isDarkTheme?: boolean }>`
   gap: 1rem;
   width: 60vw;
-  z-index: 99;
   height: 60vh;
   display: flex;
   padding: 0.5rem;
-  position: fixed;
   overflow: scroll;
-  align-items: flex-start;
+  outline-offset: 2px;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: flex-start;
-  transform: translate(-50%, -50%);
   background-color: ${props => props.theme.bg};
   border: 1px solid ${props => props.theme.font};
+  outline: 4px solid
+    ${props => (props.isDarkTheme ? props.theme.font : props.theme.bg)};
   animation: ${RegistrationsModalWrapperKeyframes} 0.3s ease-in-out;
 `
 
 const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
   const regModalRef = useRef()
-  const { userInfo } = useUserInfo()
   const { isDarkTheme } = useThemeContext()
   const registrationsModalRef = useRef(false)
+  const triggerUpdateAnimationRef = useRef(false)
+  const { userInfo, setUserInfo } = useUserInfo()
+  const { tableData, setTableData, currentData, setCurrentData } =
+    useTableProps()
 
   // Another approach
   // const [registrationTableHeaderKeys, setRegistrationTableHeaderKeys] =
@@ -86,65 +109,227 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
 
   hasSubmissions()
 
-  const getInputType = (type: string, value: string) => {
-    switch (type) {
+  const updateUserInfoHandler = async (
+    value: string | boolean,
+    taskName: string,
+    name: string
+  ) => {
+    let newUserInfo: any = { ...userInfo }
+    newUserInfo = {
+      ...newUserInfo,
+      submissions: {
+        ...(newUserInfo.submissions && newUserInfo.submissions),
+        [taskName]: {
+          ...(newUserInfo.submissions && newUserInfo.submissions[taskName]),
+          [name]: value,
+        },
+      },
+    }
+
+    // Update table data in both Current and non-Current data table
+    const userIndex = tableData?.findIndex(
+      (user: IUserItem) => user.uid === userInfo!.uid
+    )
+    const currentDataIndex = currentData?.findIndex(
+      (user: IUserItem) => user.uid === userInfo!.uid
+    )
+    const newCurrentTableData = [...(currentData as IUserItem[])]
+    const newTableData = [...(tableData as IUserItem[])]
+    if (userIndex && newCurrentTableData) {
+      newTableData[userIndex] = newUserInfo
+      newCurrentTableData[currentDataIndex!] = newUserInfo
+      setTableData!(newTableData as IUser[])
+      setCurrentData(newCurrentTableData as IUser[])
+      tableDataAndLocalStorage().setData(newTableData)
+    }
+
+    setUserInfo!(newUserInfo as IUser)
+  }
+
+  const saveUserInfoHandler = async () => {
+    try {
+      triggerUpdateAnimationRef.current = true
+      await setTableUserInfo(userInfo as IUserItem)
+      toast.success('User sumission Status updated', {
+        toastId: 'userSubmissionStatusModalRefToast',
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: isDarkTheme ? 'dark' : 'light',
+      })
+    } catch (error) {
+      toast.error('Something went wrong!', {
+        toastId: 'userSubmissionStatusModalRefToast',
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: isDarkTheme ? 'dark' : 'light',
+      })
+    }
+  }
+
+  const getInputType = (
+    el: typeof registrationTableHeader[0],
+    value: string,
+    taskName: string
+  ) => {
+    switch (el.type) {
       case 'text':
-        return <TextInput readOnly centerText value={value} />
+        return (
+          <TextInput
+            readOnly={el.readonly}
+            centerText
+            value={value}
+            onChange={e => {
+              !el.readonly &&
+                updateUserInfoHandler(
+                  e.target.value.toString(),
+                  taskName,
+                  el.accessor
+                )
+            }}
+          />
+        )
       case 'image':
         return (
           <img
             src={value}
             width={75}
             height={75}
-            alt="submission"
-            referrerPolicy="no-referrer"
+            alt={'submission'}
+            referrerPolicy={'no-referrer'}
           />
         )
       case 'date':
         const date = new Date(value)
-        return <TextInput readOnly centerText value={date.toDateString()} />
+        return (
+          <TextInput
+            centerText
+            readOnly={el.readonly}
+            value={date.toDateString()}
+            onChange={e => {
+              !el.readonly &&
+                updateUserInfoHandler(
+                  e.target.value.toString(),
+                  taskName,
+                  el.accessor
+                )
+            }}
+          />
+        )
       case 'link':
         return (
           <a href={value} target="_blank" rel="noreferrer">
-            <TextInput readOnly centerText value={'Open URL'} />
+            <TextInput
+              pointer
+              centerText
+              value={'Open Link'}
+              readOnly={el.readonly}
+            />
           </a>
+        )
+      case 'checkbox':
+        return (
+          <div style={{ width: '100%', height: '50%' }}>
+            <TextInput
+              centerText
+              type={'checkbox'}
+              readOnly={el.readonly}
+              checked={value === 'true'}
+              onChange={e => {
+                !el.readonly &&
+                  updateUserInfoHandler(
+                    e.target.checked.toString(),
+                    taskName,
+                    el.accessor
+                  )
+              }}
+            />
+          </div>
         )
       default:
         return null
     }
   }
 
+  useEffect(() => {
+    if (triggerUpdateAnimationRef.current) {
+      setTimeout(() => {
+        triggerUpdateAnimationRef.current = false
+      }, 500)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [triggerUpdateAnimationRef.current])
+
   if (!userInfo?.submissions) {
     return null
   }
+
   return (
-    <RegistrationsModalWrapper ref={regModalRef as any}>
-      <Table style={{ height: 'max-content', width: 'max-content' }}>
-        <Thead>
-          {registrationTableHeader.map(el => {
-            return <Th key={el.accessor}>{el.Header}</Th>
-          })}
-        </Thead>
-        <Tbody>
-          {Object.keys(userInfo?.submissions!)?.map((submissionItem, index) => (
-            <tr key={`${userInfo?.uid}${index}`}>
-              {registrationTableHeader.map(el => {
-                return (
-                  <Td key={el.accessor}>
-                    {getInputType(
-                      el.type,
-                      userInfo?.submissions![submissionItem]![
-                        el.accessor as ISubmissionItemKey
-                      ]! as string
-                    )}
-                  </Td>
-                )
-              })}
-            </tr>
-          ))}
-        </Tbody>
-      </Table>
-    </RegistrationsModalWrapper>
+    <RegistrationsModalWrapperBackdrop>
+      <RegistrationsModalWrapper
+        ref={regModalRef as any}
+        isDarkTheme={isDarkTheme}
+      >
+        <UpdateWrapper triggerAnimation={triggerUpdateAnimationRef.current}>
+          <div>
+            <UpdateIcon onClick={() => saveUserInfoHandler()} />
+          </div>
+        </UpdateWrapper>
+        <Table style={{ height: 'max-content', width: 'max-content' }}>
+          <Thead>
+            {registrationTableHeader.map(el => {
+              return <Th key={el.accessor}>{el.Header}</Th>
+            })}
+          </Thead>
+          <Tbody>
+            {Object.keys(userInfo?.submissions!)?.map(
+              (submissionItem, index) => (
+                <tr key={`${userInfo?.uid}${index}`}>
+                  {registrationTableHeader.map(el => {
+                    if (el.accessor === 'taskname') {
+                      return (
+                        <Td key={el.accessor}>
+                          {getInputType(
+                            el,
+                            submissionItem
+                              .split('-')
+                              .join(' ')
+                              .charAt(0)
+                              .toUpperCase() +
+                              submissionItem.split('-').join(' ').slice(1),
+                            submissionItem
+                          )}
+                        </Td>
+                      )
+                    }
+                    return (
+                      <Td key={el.accessor}>
+                        {getInputType(
+                          el,
+                          userInfo?.submissions![submissionItem]![
+                            el.accessor as ISubmissionItemKey
+                          ]! as string,
+                          submissionItem
+                        )}
+                      </Td>
+                    )
+                  })}
+                </tr>
+              )
+            )}
+          </Tbody>
+        </Table>
+      </RegistrationsModalWrapper>
+    </RegistrationsModalWrapperBackdrop>
   )
 }
 

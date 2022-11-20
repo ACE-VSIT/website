@@ -1,25 +1,26 @@
 import {
   getAuth,
-  signInWithPopup,
-  onAuthStateChanged,
   GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
   signOut,
 } from 'firebase/auth'
 
 import {
-  getFirestore,
-  getDoc,
-  doc,
-  getDocs,
   collection,
+  doc,
   DocumentData,
+  getDoc,
+  getDocs,
+  getFirestore,
   QuerySnapshot,
   updateDoc,
 } from 'firebase/firestore'
 
-import { initializeApp, getApps } from 'firebase/app'
+import { getApps, initializeApp } from 'firebase/app'
 import { userContextType } from '../contexts/AuthContext'
 import { IUser, IUserItem } from '../interfaces/user.interface'
+import { tableDataAndLocalStorage } from './functions'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -70,11 +71,9 @@ export const getTableData = async (
   fetchFromFirestore: boolean = false
 ) => {
   if (!fetchFromFirestore) {
-    const requestForCachedData = localStorage.getItem(
-      'ace-adminpanel-users-data'
-    )
-    if (requestForCachedData) {
-      return JSON.parse(requestForCachedData) as IUser[]
+    const requestForCachedData: [] = tableDataAndLocalStorage().getData()
+    if (requestForCachedData.length) {
+      return requestForCachedData
     } else {
       getTableData(user, true)
     }
@@ -89,7 +88,7 @@ export const getTableData = async (
       userSnapshot.forEach(doc => {
         users.push(doc.data() as IUser)
       })
-      localStorage.setItem('ace-adminpanel-users-data', JSON.stringify(users))
+      tableDataAndLocalStorage().setData(users)
       return users
     }
   } catch (error) {

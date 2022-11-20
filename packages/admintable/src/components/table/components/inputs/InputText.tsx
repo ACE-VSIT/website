@@ -1,9 +1,9 @@
-import { ChangeEvent, FC, useRef, useState } from 'react'
-import styled from 'styled-components'
+import { ChangeEvent, FC, memo, useRef, useState } from 'react'
+import useOnScreen from 'remote/useOnScreen'
+import styled, { css } from 'styled-components'
 import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputText } from '../../../../interfaces/input.interface'
 import { Td } from './styles/table-elements.styles'
-import useOnScreen from 'remote/useOnScreen'
 
 const InputText: FC<IInputText> = ({
   customOnChange,
@@ -45,7 +45,7 @@ const InputText: FC<IInputText> = ({
   )
 }
 
-export default InputText
+export default memo(InputText)
 
 const TextWrapper = styled(Td)`
   width: max-content;
@@ -54,6 +54,7 @@ const TextWrapper = styled(Td)`
 export const TextInput = styled.input<{
   disabled?: boolean
   centerText?: boolean
+  pointer?: boolean
 }>`
   height: 100%;
   width: 100%;
@@ -69,4 +70,10 @@ export const TextInput = styled.input<{
     outline-offset: calc(0.15rem - 2px);
     outline: 2px solid #32486175;
   }
+
+  ${({ pointer }) =>
+    pointer &&
+    css`
+      cursor: pointer;
+    `}
 `

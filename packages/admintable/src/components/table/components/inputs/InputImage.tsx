@@ -1,12 +1,12 @@
-import { Td } from './styles/table-elements.styles'
-import Button from 'remote/Button'
-import styled from 'styled-components'
+import { ChangeEvent, FC, memo, useEffect, useRef, useState } from 'react'
 import AnimateIn from 'remote/AnimateIn'
+import Button from 'remote/Button'
 import useOutsideTouch from 'remote/useOutsideTouch'
+import styled from 'styled-components'
+import useUserInfo from '../../../../contexts/UserInfoContext'
 import { IInputImage } from '../../../../interfaces/input.interface'
 import { TextInput } from './InputText'
-import useUserInfo from '../../../../contexts/UserInfoContext'
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
+import { Td } from './styles/table-elements.styles'
 
 const InputImage: FC<IInputImage> = ({
   customOnChange,
@@ -97,4 +97,4 @@ const ImageInputContainer = styled(TextInput)`
   border: 1px solid ${props => props.theme.font};
 `
 
-export default InputImage
+export default memo(InputImage)

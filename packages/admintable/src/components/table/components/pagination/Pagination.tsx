@@ -36,7 +36,7 @@ const Pagination: React.FC<IPagination> = () => {
 
   return (
     <PaginationWrapper>
-      <p>Filter items to show on Page</p>
+      <p>Limit items to show on Page</p>
       <SelectOption
         showCustomValue={true}
         name={'paginationOption'}

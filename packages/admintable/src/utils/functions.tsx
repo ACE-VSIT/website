@@ -29,3 +29,21 @@ export const camel2title = (camelCase: string) => {
       })
   )
 }
+
+export const tableDataAndLocalStorage = () => {
+  return {
+    getData: () => {
+      const tableData = localStorage.getItem('ace-adminpanel-users-data')
+      if (tableData) {
+        return JSON.parse(tableData)
+      }
+      return []
+    },
+    setData: (tableData: any[]) => {
+      localStorage.setItem(
+        'ace-adminpanel-users-data',
+        JSON.stringify(tableData)
+      )
+    },
+  }
+}
