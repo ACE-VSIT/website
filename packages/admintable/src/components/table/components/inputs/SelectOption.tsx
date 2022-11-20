@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from 'react'
+import React, { ChangeEvent, memo, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { ISelectOption } from '../../../../interfaces/select-option.interface'
 import { Td } from './styles/table-elements.styles'
@@ -45,7 +45,7 @@ const SelectOption: React.FC<ISelectOption<string | number>> = ({
   )
 }
 
-export default SelectOption
+export default memo(SelectOption)
 
 const OptionsWrapper = styled(Td)`
   width: max-content;

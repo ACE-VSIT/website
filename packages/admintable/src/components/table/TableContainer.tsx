@@ -1,25 +1,29 @@
-import { IUser } from '../../interfaces/user.interface'
-import { useAuth } from '../../contexts/AuthContext'
-import { getTableData } from '../../utils/firebase'
-import useTableProps from '../../contexts/TableContext'
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import TableComponent from './TableComponent'
+import { memo, useCallback, useEffect, useMemo } from 'react'
 import { columns as userColumns } from '../../configs/user-table-config'
+import { useAuth } from '../../contexts/AuthContext'
+import useTableProps from '../../contexts/TableContext'
+import { IUser } from '../../interfaces/user.interface'
+import { getTableData } from '../../utils/firebase'
 import Toolbar from './components/toolbar/Toolbar'
+import TableComponent from './TableComponent'
 
 const TableContainer = () => {
-  const { tableFilters, tableData, setTableData } = useTableProps()
-  const [currentData, setCurrentData] = useState<IUser[]>([])
-
+  const {
+    tableFilters,
+    tableData,
+    setTableData,
+    currentData = [],
+    setCurrentData,
+  } = useTableProps()
   const { user } = useAuth()
 
   const pullData = useCallback(
     async (fromServer: boolean = false) => {
       const data = await getTableData(user, fromServer)
-      setCurrentData(data ?? [])
-      setTableData!(data ?? [])
+      setCurrentData(data || [])
+      setTableData!(data || [])
     },
-    [setTableData, user]
+    [setCurrentData, setTableData, user]
   )
 
   const columns = useMemo(() => userColumns, [])
@@ -47,7 +51,7 @@ const TableContainer = () => {
   return (
     <>
       <Toolbar reFetchUserDataWithoutCache={() => pullData(true)} />
-      <TableComponent headers={columns} data={currentData} />
+      <TableComponent headers={columns} data={currentData as IUser[]} />
     </>
   )
 }

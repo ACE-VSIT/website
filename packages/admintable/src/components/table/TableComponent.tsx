@@ -1,21 +1,20 @@
+import React, { memo, useEffect, useState } from 'react'
+import useTableProps from '../../contexts/TableContext'
+import useUserInfo from '../../contexts/UserInfoContext'
+import { IInput } from '../../interfaces/input.interface'
+import { ITableHeader } from '../../interfaces/table.interface'
+import { IUser } from '../../interfaces/user.interface'
+import { InputDate, InputImage, InputText } from './components/inputs'
 import {
-  Th,
-  Tbody,
   Table,
+  Tbody,
+  Th,
   Thead,
 } from './components/inputs/styles/table-elements.styles'
-import { InputText, InputDate, InputImage } from './components/inputs'
-import { IInput } from '../../interfaces/input.interface'
-import { IUser } from '../../interfaces/user.interface'
-import Updater from './components/updater/Updater'
-import useUserInfo from '../../contexts/UserInfoContext'
-import { ITableHeader } from '../../interfaces/table.interface'
-import { memo, useState, useEffect } from 'react'
-import { getNestedValue } from './helpers/helper-functions'
-import useTableProps from '../../contexts/TableContext'
-import React from 'react'
 import RegistrationsButton from './components/registrations/RegistrationsButton'
 import RegistrationsModal from './components/registrations/RegistrationsModal'
+import Updater from './components/updater/Updater'
+import { getNestedValue } from './helpers/helper-functions'
 
 type TablePropTypes = {
   headers: ITableHeader[]

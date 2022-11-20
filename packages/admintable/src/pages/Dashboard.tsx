@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Navbar from 'remote/Navbar'
+import { Wrapper } from '../components/index-elements.styles'
+import Pagination from '../components/table/components/pagination/Pagination'
 import TableContainer from '../components/table/TableContainer'
 import { NavbarConfig } from '../configs/navbar.config'
-import { Wrapper } from '../components/index-elements.styles'
 import { useAuth } from '../contexts/AuthContext'
-import { signOutUser } from '../utils/firebase'
 import useThemeContext from '../contexts/ThemeContext'
-import Pagination from '../components/table/components/pagination/Pagination'
+import ErrorBoundary from '../utils/ErrorBoundary'
+import { signOutUser } from '../utils/firebase'
 
 const Dashboard: React.FC = () => {
   const { user, logout } = useAuth()
@@ -37,12 +38,14 @@ const Dashboard: React.FC = () => {
           profileList={NavbarUserProfileConfig}
         />
       </div>
-      <Wrapper>
-        <TableContainer />
-        <Pagination />
-      </Wrapper>
+      <ErrorBoundary>
+        <Wrapper>
+          <TableContainer />
+          <Pagination />
+        </Wrapper>
+      </ErrorBoundary>
     </>
   )
 }
 
-export default Dashboard
+export default memo(Dashboard)

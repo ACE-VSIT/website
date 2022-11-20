@@ -81,7 +81,10 @@ export const GlobalStyle = createGlobalStyle`
   .Toastify__toast-icon > svg {
     fill: ${props => props.theme.font + 75};
   }
-  .Toastify__progress-bar--error {
+  .Toastify__progress-bar--error,
+  .Toastify__progress-bar--success,
+  .Toastify__progress-bar--info,
+  .Toastify__progress-bar--warning {
     background: ${props => props.theme.font + 25};
   }
 `

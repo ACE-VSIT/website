@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import { memo, useReducer } from 'react'
 import Button from 'remote/Button'
-import { useReducer } from 'react'
-import { TextInput } from '../../inputs/InputText'
+import styled from 'styled-components'
 import { columns } from '../../../../../configs/user-table-config'
+import { TextInput } from '../../inputs/InputText'
 import { FilterType } from './Filter'
 
 type ActionType = {
@@ -113,4 +113,4 @@ const Select = styled('select')`
   background-color: white;
 `
 
-export default FilterMenu
+export default memo(FilterMenu)

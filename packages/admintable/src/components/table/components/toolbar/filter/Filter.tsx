@@ -1,16 +1,16 @@
+import { memo, useEffect, useRef, useState } from 'react'
 import Button from 'remote/Button'
-import { useRef, useState, useEffect } from 'react'
 import useOutsideTouch from 'remote/useOutsideTouch'
-import FilterMenu from './FilterMenu'
-import { IUser } from '../../../../../interfaces/user.interface'
+import styled from 'styled-components'
 import useTableProps from '../../../../../contexts/TableContext'
+import { IUser } from '../../../../../interfaces/user.interface'
 import {
   filterEquals,
   filterIncludes,
   filterNotEquals,
   filterNotIncludes,
 } from '../../../helpers/helper-functions'
-import styled from 'styled-components'
+import FilterMenu from './FilterMenu'
 
 export type FilterType = {
   property: string
@@ -56,7 +56,7 @@ function Filter({
   )
 }
 
-export default function FilterContainer() {
+function FilterContainer() {
   const [show, setShow] = useState<boolean>(false)
   const [filters, setFilters] = useState<FilterType[]>([])
   const [isFiltered, setIsFiltered] = useState<boolean>(false)
@@ -139,3 +139,5 @@ export default function FilterContainer() {
     </>
   )
 }
+
+export default memo(FilterContainer)
