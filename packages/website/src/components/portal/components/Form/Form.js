@@ -1,25 +1,25 @@
 /* eslint-disable no-case-declarations */
-import React, { useState, useContext, useEffect } from 'react'
+import { navigate } from 'gatsby'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
-import { Input, Select, FormWrapper, Option, ErrorBox } from './FormElements'
-import Button from '../../../button/Button'
-import config from './FormConfig.json'
 import { checkEmailVerfiy, savePersonalDetails } from '../../../../firebase'
 import { FlexCenter, Heading } from '../../../../styles/sharedStyles'
 import Check from '../../../animations/Check'
 import Loading from '../../../animations/Loading'
-import { navigate } from 'gatsby'
+import Button from '../../../button/Button'
 import { ButtonWrapper as ButtonElement } from '../Google/LoginElements'
+import config from './FormConfig.json'
+import { ErrorBox, FormWrapper, Input, Option, Select } from './FormElements'
 
-export default function Form () {
+export default function Form() {
   const [input, setInput] = useState({
     firstName: '',
     lastName: '',
     mobile: '',
     enrollmentNo: '',
     course: '',
-    section: ''
+    section: '',
   })
   const { user } = useContext(AuthContext)
   const { personalDetails, setIsVerified, isVerified } =
@@ -103,7 +103,7 @@ export default function Form () {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   }
 
   useEffect(() => {
@@ -118,7 +118,7 @@ export default function Form () {
     if (success) {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setTimeout(() => {
-        window.location.href = '/register/question/'
+        window.location.reload('/register/question/')
       }, 3500)
     }
   }, [success])
@@ -193,7 +193,7 @@ export default function Form () {
                         style={{
                           gap: '0',
                           flexWrap: 'nowrap',
-                          flexDirection: 'row'
+                          flexDirection: 'row',
                         }}
                       >
                         <ErrorBox style={{ borderRight: '0' }}>
