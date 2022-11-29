@@ -1,28 +1,28 @@
+import axios from 'axios'
+import { getApps, initializeApp } from 'firebase/app'
 import {
-  getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signInWithPopup,
-  onAuthStateChanged,
+  getAuth,
   GoogleAuthProvider,
-  signOut,
+  onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
 } from 'firebase/auth'
 import {
-  getFirestore,
-  doc,
-  setDoc,
-  updateDoc,
-  getDocs,
-  getDoc,
-  Timestamp,
   collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
   query,
+  setDoc,
+  Timestamp,
+  updateDoc,
   where,
 } from 'firebase/firestore'
-import { initializeApp, getApps } from 'firebase/app'
-import axios from 'axios'
 
 const firebaseConfig = {
   apiKey: process.env.GATSBY_APIKEY,
@@ -210,7 +210,7 @@ export const generatePublicURL = async fileId => {
 
   try {
     const response = await axios.post(
-      'http://localhost:3000/googleDriveGeneratePublicURL',
+      'https://ace-functions.vercel.app/googleDriveGeneratePublicURL',
       fileId
     )
     console.log(response.data)
@@ -225,7 +225,7 @@ export const deleteFileFromStorage = async fileId => {
 
   try {
     const response = await axios.post(
-      'http://localhost:3000/googleDriveDelete',
+      'https://ace-functions.vercel.app/googleDriveDelete',
       fileId
     )
     console.log(response.data)
