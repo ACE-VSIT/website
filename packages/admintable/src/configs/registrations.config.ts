@@ -3,6 +3,7 @@ export const registrationTableHeader: {
   accessor: string
   type: string
   readonly?: boolean
+  customWidth?: string
 }[] = [
   {
     Header: 'Task Name',
@@ -34,34 +35,42 @@ export const registrationTableHeader: {
     type: 'text',
     readonly: true,
   },
-  {
-    Header: 'Upload State',
-    accessor: 'uploadState',
-    type: 'text',
-    readonly: true,
-  },
-  {
-    Header: 'Last Edited',
-    accessor: 'lastEditedUtc',
-    type: 'date',
-    readonly: true,
-  },
-  {
-    Header: 'Mime Type',
-    accessor: 'mimeType',
-    type: 'text',
-    readonly: true,
-  },
-  {
-    Header: 'Type',
-    accessor: 'type',
-    type: 'text',
-    readonly: true,
-  },
+  // {
+  //   Header: 'Upload State',
+  //   accessor: 'uploadState',
+  //   type: 'text',
+  //   readonly: true,
+  // },
+  // {
+  //   Header: 'Last Edited',
+  //   accessor: 'lastEditedUtc',
+  //   type: 'date',
+  //   readonly: true,
+  // },
+  // {
+  //   Header: 'Mime Type',
+  //   accessor: 'mimeType',
+  //   type: 'text',
+  //   readonly: true,
+  // },
+  // {
+  //   Header: 'Type',
+  //   accessor: 'type',
+  //   type: 'text',
+  //   readonly: true,
+  // },
   {
     Header: 'Selection Status',
     accessor: 'selectionStatus',
     type: 'checkbox',
     readonly: false,
+  },
+  {
+    Header: 'Note',
+    accessor: 'note',
+
+    type: 'text',
+    readonly: false,
+    customWidth: '300px',
   },
 ]

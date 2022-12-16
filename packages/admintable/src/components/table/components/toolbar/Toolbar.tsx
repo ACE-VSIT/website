@@ -49,7 +49,6 @@ function Toolbar({
 
   return (
     <ToolbarWrapper>
-      <FilterContainer />
       <UpdateWrapper
         triggerAnimation={trigger}
         onClick={() => triggerFetchUserData()}
@@ -58,6 +57,7 @@ function Toolbar({
           <UpdateIcon />
         </div>
       </UpdateWrapper>
+      <FilterContainer />
     </ToolbarWrapper>
   )
 }
@@ -69,6 +69,6 @@ const ToolbarWrapper = styled('div')`
   width: 100%;
   display: flex;
   padding: 0.75rem;
-  justify-content: space-between;
+  justify-content: flex-start;
   border: 1px solid ${props => props.theme.font + 75};
 `

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
 import { SyncOutlined } from '@ant-design/icons'
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Td } from '../inputs/styles/table-elements.styles'
 import useUserInfo from '../../../../contexts/UserInfoContext'
-import { setTableUserInfo } from '../../../../utils/firebase'
 import { IUserItem } from '../../../../interfaces/user.interface'
+import { setTableUserInfo } from '../../../../utils/firebase'
+import { Td } from '../inputs/styles/table-elements.styles'
 
 const Updater: React.FC = () => {
   const [trigger, setTrigger] = useState(false)
