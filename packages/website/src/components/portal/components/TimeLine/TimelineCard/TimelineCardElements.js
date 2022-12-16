@@ -19,7 +19,7 @@ export const TimelinePoint = styled(FlexCenter)`
     transition: 0.375s all ease-in-out;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `
@@ -62,7 +62,7 @@ export const Container = styled(FlexCenter)`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 100%;
     display: flex;
     padding: 0 2.5vw;

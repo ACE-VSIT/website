@@ -17,7 +17,7 @@ export const TimelineWrapper = styled(FlexCenter)`
     overflow: visible !important;
     background: ${props => props.theme.font + 75};
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   }
