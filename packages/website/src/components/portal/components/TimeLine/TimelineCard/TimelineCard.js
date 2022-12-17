@@ -1,17 +1,17 @@
+import { EyeOutlined, UploadOutlined } from '@ant-design/icons'
 import React from 'react'
+import useWindowSize from '../../../../../hooks/useWindowSize'
 import { FlexCenter } from '../../../../../styles/sharedStyles'
-import { ButtonWrapper } from '../../Google/LoginElements'
 import RichText from '../../../../rich-text'
+import { ButtonWrapper } from '../../Google/LoginElements'
 import {
   Container,
   TimelineCardInfo,
   TimelineCardTitle,
   TimelineCardWrapper,
-  TimelinePoint,
   TimelineDifficulty,
+  TimelinePoint,
 } from './TimelineCardElements'
-import { EyeOutlined, UploadOutlined } from '@ant-design/icons'
-import useWindowSize from '../../../../../hooks/useWindowSize'
 
 export default function TimelineCard({
   heading,
@@ -21,6 +21,7 @@ export default function TimelineCard({
   openPicker,
   viewSubmission,
   isSubmitted = false,
+  isSubmitting = false,
 }) {
   const styledFlex = {
     justifyContent: 'space-between',
@@ -66,17 +67,22 @@ export default function TimelineCard({
               onClick={e => openPicker()}
               sm={width > 768}
               sq={width < 768}
+              disabled={isSubmitting}
             >
               {isSubmitted ? (
                 !(width > 768) ? (
                   <UploadOutlined />
-                ) : (
+                ) : !isSubmitting ? (
                   'Re-Submit'
+                ) : (
+                  'Processing...'
                 )
               ) : !(width > 768) ? (
                 <UploadOutlined />
-              ) : (
+              ) : !isSubmitting ? (
                 'Submit'
+              ) : (
+                'Processing...'
               )}
             </ButtonWrapper>
           </FlexCenter>
