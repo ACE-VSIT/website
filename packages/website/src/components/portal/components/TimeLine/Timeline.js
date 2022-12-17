@@ -1,3 +1,5 @@
+import { toSnakeCase } from '@ace/common'
+import axios from 'axios'
 import React, {
   useCallback,
   useContext,
@@ -5,23 +7,23 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Heading } from '../../../../styles/sharedStyles'
-import TimelineCard from './TimelineCard/TimelineCard'
-import { TimelineWrapper } from './TimelineElements'
-import Loading from '../../../animations/Loading'
 import useDrivePicker from 'react-google-drive-picker'
-import axios from 'axios'
+import { AuthContext } from '../../../../context/auth/AuthContext'
+import { FirebaseContext } from '../../../../context/FirebaseContext'
 import {
   deleteFileFromStorage,
   generatePublicURL,
   saveSubmittionData,
 } from '../../../../firebase'
-import { AuthContext } from '../../../../context/auth/AuthContext'
-import { FirebaseContext } from '../../../../context/FirebaseContext'
+import { Heading } from '../../../../styles/sharedStyles'
+import Loading from '../../../animations/Loading'
+import TimelineCard from './TimelineCard/TimelineCard'
+import { TimelineWrapper } from './TimelineElements'
 
 export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [isSubmitted, setIsSubmitted] = useState([])
+  const [isSubmitting, setIsSubmitting] = useState([])
   const [openPicker] = useDrivePicker()
   const wrapper = useRef()
   const { user } = useContext(AuthContext)
@@ -39,6 +41,7 @@ export default function Timeline({ timeLine, name }) {
     fileId = ''
   ) => {
     try {
+      setIsSubmitting(prev => [...prev, toSnakeCase(questionType)])
       const res = await axios.post(
         'https://www.googleapis.com/oauth2/v4/token',
         {
@@ -48,7 +51,6 @@ export default function Timeline({ timeLine, name }) {
           grant_type: 'refresh_token',
         }
       )
-
       if (res.data.access_token) {
         openPicker({
           clientId: process.env.GATSBY_GOOGLE_CLIENT_ID,
@@ -64,6 +66,9 @@ export default function Timeline({ timeLine, name }) {
           callbackFunction: async data => {
             if (data.action === 'cancel') {
               console.log('User clicked cancel/close button')
+              setIsSubmitting(prev =>
+                prev.filter(item => item !== toSnakeCase(questionType))
+              )
             }
             if (data.docs) {
               if (deleteFile && fileId) {
@@ -71,11 +76,11 @@ export default function Timeline({ timeLine, name }) {
               }
               await generatePublicURL(data.docs[0].id)
               await saveSubmittionData(data.docs[0], questionType, user.email)
-              setIsSubmitted(prev => [
-                ...prev,
-                questionType.replace(/\s+/g, '-').toLowerCase(),
-              ])
-              getSubmissionDetails(user.email)
+              setIsSubmitted(prev => [...prev, toSnakeCase(questionType)])
+              await getSubmissionDetails(user.email)
+              setIsSubmitting(prev =>
+                prev.filter(item => item !== toSnakeCase(questionType))
+              )
             }
           },
           // customViews: customViewsArray, // custom view
@@ -127,39 +132,28 @@ export default function Timeline({ timeLine, name }) {
                   level={e?.difficulty_level}
                   heading={e?.question_name.text}
                   info={e?.question_info.richText}
+                  isSubmitting={isSubmitting.includes(
+                    toSnakeCase(e?.question_name?.text)
+                  )}
                   align={index % 2 ? 'start' : 'end'}
                   key={`${e?.question_name.text}-${index}`}
-                  openPicker={() =>
-                    handleOpenPicker(
+                  openPicker={async () =>
+                    await handleOpenPicker(
                       // Pass QuestionName
                       e?.question_name.text,
                       // Check if its firstSubmit or reSubmit
-                      isSubmitted.includes(
-                        e?.question_name?.text
-                          ?.replace(/\s+/g, '-')
-                          .toLowerCase()
-                      ),
+                      isSubmitted.includes(toSnakeCase(e?.question_name?.text)),
                       // If reSubmit, pass fileId
-                      isSubmitted.includes(
-                        e?.question_name?.text
-                          ?.replace(/\s+/g, '-')
-                          .toLowerCase()
-                      )
-                        ? submissions[
-                            e?.question_name?.text
-                              ?.replace(/\s+/g, '-')
-                              .toLowerCase()
-                          ].id
+                      isSubmitted.includes(toSnakeCase(e?.question_name?.text))
+                        ? submissions[toSnakeCase(e?.question_name?.text)].id
                         : false
                     )
                   }
                   viewSubmission={() =>
-                    viewSubmission(
-                      e?.question_name?.text?.replace(/\s+/g, '-').toLowerCase()
-                    )
+                    viewSubmission(toSnakeCase(e?.question_name?.text))
                   }
                   isSubmitted={isSubmitted.includes(
-                    e?.question_name?.text?.replace(/\s+/g, '-').toLowerCase()
+                    toSnakeCase(e?.question_name?.text)
                   )}
                 />
               )
