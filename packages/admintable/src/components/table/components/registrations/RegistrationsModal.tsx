@@ -49,7 +49,7 @@ const RegistrationsModalWrapperBackdrop = styled.div`
 
 const RegistrationsModalWrapper = styled.div<{ isDarkTheme?: boolean }>`
   gap: 1rem;
-  width: 60vw;
+  width: 75vw;
   height: 60vh;
   display: flex;
   padding: 0.5rem;
@@ -148,7 +148,6 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
 
   const saveUserInfoHandler = async () => {
     try {
-      triggerUpdateAnimationRef.current = true
       await setTableUserInfo(userInfo as IUserItem)
       toast.success('User sumission Status updated', {
         toastId: 'userSubmissionStatusModalRefToast',
@@ -188,6 +187,7 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
             readOnly={el.readonly}
             centerText
             value={value}
+            customWidth={el.customWidth}
             onChange={e => {
               !el.readonly &&
                 updateUserInfoHandler(
@@ -291,8 +291,14 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
             })}
           </Thead>
           <Tbody>
-            {Object.keys(userInfo?.submissions!)?.map(
-              (submissionItem, index) => (
+            {Object.keys(userInfo?.submissions!)
+              ?.sort(
+                (a, b) =>
+                  userInfo?.submissions![a]!.name!.localeCompare(
+                    userInfo?.submissions![b]!.name!
+                  ) || 0
+              )
+              ?.map((submissionItem, index) => (
                 <tr key={`${userInfo?.uid}${index}`}>
                   {registrationTableHeader.map(el => {
                     if (el.accessor === 'taskname') {
@@ -324,8 +330,7 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
                     )
                   })}
                 </tr>
-              )
-            )}
+              ))}
           </Tbody>
         </Table>
       </RegistrationsModalWrapper>

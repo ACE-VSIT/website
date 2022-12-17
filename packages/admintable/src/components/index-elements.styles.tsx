@@ -29,6 +29,11 @@ export const LoginWrapper = styled.div`
   }
 `
 
+export const LoginImage = styled.img`
+  width: 25%;
+  height: 25%;
+`
+
 export const LoginHeading = styled.h1`
   font-size: 1.4rem;
   font-weight: 300;

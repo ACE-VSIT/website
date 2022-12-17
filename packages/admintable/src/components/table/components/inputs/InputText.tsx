@@ -55,9 +55,9 @@ export const TextInput = styled.input<{
   disabled?: boolean
   centerText?: boolean
   pointer?: boolean
+  customWidth?: string
 }>`
   height: 100%;
-  width: 100%;
   border: none;
   padding: 1rem 1.25rem;
   border-collapse: collapse;
@@ -65,6 +65,7 @@ export const TextInput = styled.input<{
   background: ${props => props.theme.bg};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'text')};
   text-align: ${props => (props.centerText ? 'center' : 'left')};
+  width: ${({ customWidth }) => (customWidth ? customWidth : '100%')};
 
   &:focus {
     outline-offset: calc(0.15rem - 2px);

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import EventCard from './eventsCard-slice/EventCard'
 import ProjectFilter from '../projects/components/ProjectFilter'
-import { WrapperBody, Container } from './eventsCard-slice/EventCardElements'
+import EventCard from './eventsCard-slice/EventCard'
+import { Container, WrapperBody } from './eventsCard-slice/EventCardElements'
 
-export default function Event ({ data }) {
-  const [filter, setFilter] = useState('Event')
+export default function Event({ data }) {
+  const [filter, setFilter] = useState('All')
   const [eventItems, setEventItems] = useState([])
-  const filterSelect = ['Event', 'ACE Hour']
+  const filterSelect = ['All', 'Event', 'ACE Hour']
 
   const displayData = data?.allPrismicEventitem?.edges.sort(function (a, b) {
     return (
@@ -16,6 +16,11 @@ export default function Event ({ data }) {
   })
 
   useEffect(() => {
+    if (filter === 'All') {
+      setEventItems(displayData)
+      return
+    }
+
     setEventItems(displayData.filter(e => e.node.data.event_type === filter))
   }, [filter, displayData])
 

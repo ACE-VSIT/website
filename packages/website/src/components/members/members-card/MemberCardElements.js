@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components'
-import { FlexCenter } from '../../../styles/sharedStyles'
-import LinkedinOutlined from '@ant-design/icons/LinkedinOutlined'
-import GithubOutlined from '@ant-design/icons/GithubOutlined'
-import TwitterOutlined from '@ant-design/icons/TwitterOutlined'
-import InstagramOutlined from '@ant-design/icons/InstagramOutlined'
-import FacebookOutlined from '@ant-design/icons/FacebookOutlined'
 import BehanceOutlined from '@ant-design/icons/BehanceOutlined'
 import DribbbleOutlined from '@ant-design/icons/DribbbleOutlined'
+import FacebookOutlined from '@ant-design/icons/FacebookOutlined'
+import GithubOutlined from '@ant-design/icons/GithubOutlined'
+import InstagramOutlined from '@ant-design/icons/InstagramOutlined'
+import LinkedinOutlined from '@ant-design/icons/LinkedinOutlined'
+import TwitterOutlined from '@ant-design/icons/TwitterOutlined'
+import styled, { css } from 'styled-components'
+import { FlexCenter } from '../../../styles/sharedStyles'
 
 export const MemberCardWrapper = styled(FlexCenter)`
   flex-direction: column;

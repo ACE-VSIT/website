@@ -18,7 +18,7 @@ export type FilterType = {
   value: string
 }
 
-const FilterWrapper = styled('span')`
+const FilterWrapper = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +27,8 @@ const FilterWrapper = styled('span')`
   border: 1px solid ${prop => prop.theme.font};
   user-select: none;
   cursor: pointer;
+  width: max-content;
+  transition: 0.375s all ease-in-out;
 
   &:hover {
     border: 1px solid ${prop => prop.theme.active};
