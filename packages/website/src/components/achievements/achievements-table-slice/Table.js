@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Tr,
-  Td,
-  TableContainer,
-  TableContainerTitle,
-  TableContainerTable
-} from '../AchievementsElements'
-import Loading from '../../animations/Loading'
+import React, { useEffect, useState } from 'react'
 import AnimateIn from '../../animations/AnimateIn'
+import Loading from '../../animations/Loading'
 import ProjectFilter from '../../projects/components/ProjectFilter'
+import {
+  TableContainer, TableContainerTable, TableContainerTitle, Td, Tr
+} from '../AchievementsElements'
 
 const Table = ({ tableData, title, breakOn = 'medium' }) => {
   const [filter, setFilter] = useState('Achievement')
@@ -19,7 +15,7 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
   const tableHeader = [
     'Date',
     filter !== 'Achievement' ? 'Name' : 'Winner Name',
-    filter === 'Achievement' && 'Position',
+    filter === 'Achievement' ? 'Position' : false, // doing temp fix here because I didnt have time to refactor
     filter !== 'Achievement' ? 'Position' : 'Event Name',
     filter !== 'Achievement' ? 'Company' : 'College Name'
   ]
@@ -76,9 +72,9 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
             <TableContainerTable>
               <thead>
                 <Tr>
-                  {tableHeader.map((col, index) => (
-                    <th key={index}>{col}</th>
-                  ))}
+                  {tableHeader.map((col, index) => { // doing temp fix here because I didnt have time to refactor
+                    return col && <th key={index}>{col}</th>
+                    })}
                 </Tr>
               </thead>
               <tbody>
@@ -91,13 +87,13 @@ const Table = ({ tableData, title, breakOn = 'medium' }) => {
                     college_name: collegeName
                   }) => {
                     return (
-                      <tr key={eventDate + winnerName}>
+                      <Tr key={eventDate + winnerName}>
                         <Td>{eventDate}</Td>
                         <Td>{winnerName?.document?.data?.member_name?.text}</Td>
-                        <Td>{position ?? '-'}</Td>
+                        {filter === 'Achievement' && <Td>{position ?? '-'}</Td>}
                         <Td>{eventName.text}</Td>
                         <Td>{collegeName.text}</Td>
-                      </tr>
+                      </Tr>
                     )
                   }
                 )}

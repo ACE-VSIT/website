@@ -1,24 +1,22 @@
-import * as React from 'react'
 import PropTypes from 'prop-types'
-import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer/Footer'
+import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyle, lightTheme, darkTheme } from './themes/GlobalStyles'
-import { Container } from './components/container'
-import MoveTop from '../move-to-top/MoveTop'
 import { ThemeContext } from '../../context/ThemeContext'
+import MoveTop from '../move-to-top/MoveTop'
+import { Container } from './components/container'
+import Footer from './components/Footer/Footer'
+import Navbar from './components/Navbar/Navbar'
+import { darkTheme, GlobalStyle, lightTheme } from './themes/GlobalStyles'
 
 const Layout = ({ children, navbar }) => {
   const themeContext = React.useContext(ThemeContext)
 
   React.useEffect(() => {
-    const theme = localStorage.getItem('theme')
-    if (theme) {
-      if (theme === 'dark') {
-        themeContext?.setIsDarkTheme(true)
-      } else {
-        themeContext?.setIsDarkTheme(false)
-      }
+    const theme = localStorage.getItem('ace-webiste-theme')
+    if (theme === 'dark') {
+      themeContext?.setIsDarkTheme(true)
+    } else {
+      themeContext?.setIsDarkTheme(false)
     }
   }, [themeContext])
 
@@ -49,7 +47,7 @@ const Layout = ({ children, navbar }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

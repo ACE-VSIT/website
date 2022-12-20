@@ -1,27 +1,21 @@
-import React, { useState, useRef, useContext } from 'react'
+import { Button } from '@ace/common'
+import { useLocation } from '@reach/router'
+import { navigate } from 'gatsby'
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
+import React, { useContext, useRef, useState } from 'react'
+import { animated, useSpring, useTrail } from 'react-spring'
+import { AuthContext } from '../../../../context/auth/AuthContext'
+import { signOutUser } from '../../../../firebase'
+import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
+import { FlexCenter } from '../../../../styles/sharedStyles'
+import RichText from '../../../rich-text/index'
 import {
   NavbarBrandImg,
   NavbarList,
   NavbarListItem,
-  NavbarSlider,
-  NavSliderInfo,
-  NavbarSliderIcon,
-  NavbarWrapper,
-  NavbarVertical,
-  NavbarSocialHeading,
-  NavbarSocialItem,
-  NavbarSliderThemeIcon,
+  NavbarSlider, NavbarSliderIcon, NavbarSliderThemeIcon, NavbarSocialHeading,
+  NavbarSocialItem, NavbarVertical, NavbarWrapper, NavSliderInfo
 } from './NavbarElements'
-import { AuthContext } from '../../../../context/auth/AuthContext'
-import RichText from '../../../rich-text/index'
-import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
-import { navigate } from 'gatsby'
-import { Button } from '@ace/common'
-import { signOutUser } from '../../../../firebase'
-import { useTrail, useSpring, animated } from 'react-spring'
-import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
-import { FlexCenter } from '../../../../styles/sharedStyles'
-import { useLocation } from '@reach/router'
 
 export default function Navbar({
   img,
@@ -85,7 +79,7 @@ export default function Navbar({
 
   const handleThemeChange = () => {
     setIsDarkTheme(!isDarkTheme)
-    localStorage.setItem('theme', `${!isDarkTheme ? 'dark' : 'light'}`)
+    localStorage.setItem('ace-webiste-theme', `${!isDarkTheme ? 'dark' : 'light'}`)
   }
 
   return (
@@ -130,12 +124,21 @@ export default function Navbar({
       )}
       <NavbarSlider ref={sliderRef} style={toggleStyles}>
         <NavbarSliderThemeIcon onClick={handleThemeChange}>
-          <StaticImage
+          {!isDarkTheme ? (
+            <StaticImage
             src={'../../../../images/themeIcon.svg'}
             placeholder="BLURRED"
             alt=""
-            imgStyle={{ filter: isDarkTheme ? 'invert(1)' : '' }}
+            width={25}
+            height={25}
           />
+          ) : (<StaticImage
+            src={'../../../../images/themeIconLight.png'}
+            placeholder="BLURRED"
+            alt=""
+            width={25}
+            height={25}
+          />)}
         </NavbarSliderThemeIcon>
         <animated.div style={navbarSliderAnimation}>
           <NavSliderInfo isDarkTheme={isDarkTheme}>
