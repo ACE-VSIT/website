@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 import { navigate } from 'gatsby'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
 import { checkEmailVerfiy, savePersonalDetails } from '../../../../firebase'
@@ -28,6 +28,7 @@ export default function Form() {
   const [error, setError] = useState(false)
   const [customError, setCustomError] = useState(false)
   const [success, setSuccess] = useState(false)
+  const inputTypeDateRef = useRef([])
 
   const handleChange = e => {
     setError(false)
@@ -140,15 +141,18 @@ export default function Form() {
                       case 'date':
                         return (
                           <Input
+                            ref={inputTypeDateRef}
                             placeholder={e.placeholder}
                             required={e.required}
-                            type={e.type}
+                            type={'text'}
                             halfWidth={e.halfwidth}
                             name={e.id}
                             min={e.min ?? ''}
                             max={e.max ?? ''}
                             disabled={e.disabled ?? false}
                             onChange={event => handleChange(event)}
+                            onBlur={() => (inputTypeDateRef.current.type = 'text')}
+                            onFocus={() => (inputTypeDateRef.current.type = 'date')}
                           />
                         )
                       case 'select':

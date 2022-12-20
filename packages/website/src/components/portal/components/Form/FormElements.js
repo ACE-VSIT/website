@@ -43,6 +43,12 @@ export const Input = styled.input`
         width: 100%;
       }
     `}
+
+  @media (max-width: 768px) {
+    &[type='date'] {
+      padding-left: 35%;
+    }
+  }
 `
 
 export const Select = styled.select`

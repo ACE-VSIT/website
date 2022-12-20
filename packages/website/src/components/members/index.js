@@ -1,9 +1,9 @@
-import * as React from 'react'
 import { getImage } from 'gatsby-plugin-image'
-import MemberCard from './members-card/MemberCard'
+import * as React from 'react'
 import { FlexCenter, Heading } from '../../styles/sharedStyles'
-import MembersSort from './members-sort/MembersSort'
 import Loading from '../animations/Loading'
+import MemberCard from './members-card/MemberCard'
+import MembersSort from './members-sort/MembersSort'
 
 export default function MembersPage ({ data }) {
   const [members, setMembers] = React.useState([])
@@ -42,6 +42,11 @@ export default function MembersPage ({ data }) {
           e.data.member_position.text.includes('Head') &&
           parseInt(e.data.ending_year) === parseInt(year)
       )
+      const mentors = filterYear.filter(
+        e =>
+          e.data.member_position.text.includes('Mentor') &&
+          parseInt(e.data.ending_year) === parseInt(year)
+      )
       const coreMembers = filterYear.filter(
         e =>
           e.data.member_position.text.includes('Core') &&
@@ -62,6 +67,7 @@ export default function MembersPage ({ data }) {
       const combineAll = presidents.concat(
         vicepresidents,
         generalsecretary,
+        mentors,
         heads,
         coreMembers,
         laterHeads,

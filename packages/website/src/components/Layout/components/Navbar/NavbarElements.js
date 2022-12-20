@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
 import MenuOutlined from '@ant-design/icons/MenuOutlined'
-import { FlexCenter } from '../../../../styles/sharedStyles'
 import { Link } from 'gatsby'
+import styled, { css } from 'styled-components'
+import { FlexCenter } from '../../../../styles/sharedStyles'
 
 export const NavbarWrapper = styled(FlexCenter)`
   justify-content: space-between;
