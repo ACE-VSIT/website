@@ -4,7 +4,7 @@ import {
   MemberCardWrapper,
   MemberImageWrapper,
   MemberName,
-  MemberTitle,
+  MemberTitle
 } from './MemberCardElements'
 import MemberInfoCard from './MemberInfoCard'
 
@@ -18,6 +18,7 @@ export default function MemberCard({
   selectedYear,
   endingYear,
   forceShowPosition,
+  isHomePage = false,
 }) {
   const [showMemberInfoCard, setShowMemberInfoCard] = useState(false)
 
@@ -38,7 +39,7 @@ export default function MemberCard({
         <MemberInfoCard
           name={name}
           title={
-            parseInt(endingYear) === parseInt(selectedYear) ? title : 'Member'
+            (parseInt(endingYear) === parseInt(selectedYear) || isHomePage) ? title : 'Member'
           }
           img={img}
           social={social}

@@ -5,13 +5,17 @@ import Loading from '../animations/Loading'
 import MemberCard from './members-card/MemberCard'
 import MembersSort from './members-sort/MembersSort'
 
-export default function MembersPage ({ data }) {
+export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
   const [faculty, setFaculty] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
-  const [yearMembers, setYearMembers] = React.useState(parseInt(2022))
-  const [yearFaculty, setYearFaculty] = React.useState(parseInt(2022))
+  const [yearMembers, setYearMembers] = React.useState(
+    parseInt(new Date().getFullYear() + 1) // +1 because the year is not over yet
+  )
+  const [yearFaculty, setYearFaculty] = React.useState(
+    parseInt(new Date().getFullYear() + 1) //
+  )
 
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(
@@ -67,8 +71,8 @@ export default function MembersPage ({ data }) {
       const combineAll = presidents.concat(
         vicepresidents,
         generalsecretary,
-        mentors,
         heads,
+        mentors,
         coreMembers,
         laterHeads,
         member

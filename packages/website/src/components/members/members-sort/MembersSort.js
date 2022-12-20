@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { FlexCenter } from '../../../styles/sharedStyles'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
+import { FlexCenter } from '../../../styles/sharedStyles'
 
-export default function MembersSort ({ startingYear, setYear }) {
+export default function MembersSort({ startingYear, setYear }) {
   const [optionYears, setOptionYears] = useState()
   const optionRef = useRef()
 
@@ -11,7 +11,7 @@ export default function MembersSort ({ startingYear, setYear }) {
   }
 
   useEffect(() => {
-    let latestYear = new Date().getFullYear()
+    let latestYear = new Date().getFullYear() + 1 // +1 because the year is not over yet
     const yearArr = []
     while (startingYear <= latestYear) {
       yearArr.push(latestYear--)

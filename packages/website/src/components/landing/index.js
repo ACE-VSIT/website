@@ -1,19 +1,16 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react'
-import HeroSection from './hero-slice/HeroSlice'
-import { Heading, FlexCenter } from '../../styles/sharedStyles'
-import MemberCard from '../members/members-card/MemberCard'
 import { getImage } from 'gatsby-plugin-image'
-import Counter from './counter-slice/Counter'
-import {
-  CounterWrapper
-  // CounterSubTitle,
-} from './counter-slice/CounterElements'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import useOnScreen from '../../hooks/useOnScreen'
-import SliderInfoImg from './side-info-img-slice/SideInfoImg'
+import { FlexCenter, Heading } from '../../styles/sharedStyles'
 import FooterInfo from '../footer-info/FooterInfo'
+import MemberCard from '../members/members-card/MemberCard'
+import Counter from './counter-slice/Counter'
+import { CounterWrapper } from './counter-slice/CounterElements'
+import HeroSection from './hero-slice/HeroSlice'
 import { FacultyWrapper } from './LandingElements'
+import SliderInfoImg from './side-info-img-slice/SideInfoImg'
 
-export default function HomePage ({ data }) {
+export default function HomePage({ data }) {
   const sliderInfoTitle =
     data?.prismicHomepage?.data?.body[1]?.primary?.slice_title?.text
   const sliderInfoSubTitle =
@@ -42,12 +39,21 @@ export default function HomePage ({ data }) {
     const dean = data.allPrismicMembers.nodes.filter(e =>
       e.data.member_position.text.includes('Dean')
     )
-    const faculty = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes('Faculty')
-    )
-    const heads = data.allPrismicMembers.nodes.filter(e =>
-      e.data.member_position.text.includes('Head')
-    )
+    const faculty = data.allPrismicMembers.nodes
+      .filter(e => e.data.member_position.text.includes('Faculty'))
+      .sort((a, b) =>
+        a.data.member_position.text.localeCompare(b.data.member_position.text)
+      )
+    const heads = data.allPrismicMembers.nodes
+      .filter(e => e.data.member_position.text.includes('Head'))
+      .sort((a, b) =>
+        a.data.member_position.text.localeCompare(b.data.member_position.text)
+      )
+    const mentors = data.allPrismicMembers.nodes
+      .filter(e => e.data.member_position.text.includes('Mentor'))
+      .sort((a, b) =>
+        a.data.member_position.text.localeCompare(b.data.member_position.text)
+      )
     const presidents = data.allPrismicMembers.nodes.filter(
       e => e.data.member_position.text === 'President'
     )
@@ -58,19 +64,18 @@ export default function HomePage ({ data }) {
       e.data.member_position.text.includes('Secretary')
     )
 
-    if (presidents.length > 0 && heads.length > 0 && coreMembers.length > 0) {
-      const combineAll = presidents.concat(
-        vicepresidents,
-        generalsecretary,
-        heads,
-        coreMembers
-      )
-      if (faculty.length > 0) {
-        const facult = dean.concat(faculty)
-        setFaculty(facult)
-      }
-      setMembers(combineAll)
+    const combineAll = presidents.concat(
+      vicepresidents,
+      generalsecretary,
+      heads,
+      mentors,
+      coreMembers
+    )
+    if (faculty.length > 0) {
+      const facult = dean.concat(faculty)
+      setFaculty(facult)
     }
+    setMembers(combineAll)
   }, [data.allPrismicMembers.nodes])
 
   useEffect(() => {
@@ -106,37 +111,39 @@ export default function HomePage ({ data }) {
           </CounterWrapper>
         </>
       )}
-      <FacultyWrapper>
-        <Heading topLine>Faculty Coordinators</Heading>
-        <FlexCenter style={{ flexWrap: 'wrap', height: 'max-content' }}>
-          {faculty?.map((e, key) => {
-            const img = getImage(e.data.member_image)
-            // Filters all key values which matches "link" and stores it in socialLinksI
-            const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes('link'))
-              .reduce((obj, key) => {
-                obj[key] = e.data[key]
-                return obj
-              }, {})
+      {faculty.length && (
+        <FacultyWrapper>
+          <Heading topLine>Faculty Coordinators</Heading>
+          <FlexCenter style={{ flexWrap: 'wrap', height: 'max-content' }}>
+            {faculty?.map((e, key) => {
+              const img = getImage(e.data.member_image)
+              // Filters all key values which matches "link" and stores it in socialLinksI
+              const socialLinks = Object.keys(e.data)
+                .filter(links => links.includes('link'))
+                .reduce((obj, key) => {
+                  obj[key] = e.data[key]
+                  return obj
+                }, {})
 
-            return (
-              <div key={key}>
-                <MemberCard
-                  img={img}
-                  name={e.data.member_name.text}
-                  title={e.data.member_position.text}
-                  social={socialLinks}
-                  info={e.data.about_member.text}
-                  joiningYear={e.data.joining_year}
-                  forceShowPosition={true}
-                />
-              </div>
-            )
-          })}
-        </FlexCenter>
-      </FacultyWrapper>
+              return (
+                <div key={key}>
+                  <MemberCard
+                    img={img}
+                    name={e.data.member_name.text}
+                    title={e.data.member_position.text}
+                    social={socialLinks}
+                    info={e.data.about_member.text}
+                    joiningYear={e.data.joining_year}
+                    forceShowPosition={true}
+                  />
+                </div>
+              )
+            })}
+          </FlexCenter>
+        </FacultyWrapper>
+      )}
       <FlexCenter>
-        <Heading topLine>Core Members</Heading>
+        <Heading topLine>Meet our team</Heading>
       </FlexCenter>
       <FlexCenter style={{ flexWrap: 'wrap', height: 'max-content' }}>
         {members?.map((e, key) => {
@@ -153,6 +160,7 @@ export default function HomePage ({ data }) {
             <div key={key}>
               <MemberCard
                 img={img}
+                isHomePage={true}
                 name={e.data.member_name.text}
                 title={e.data.member_position.text}
                 social={socialLinks}
