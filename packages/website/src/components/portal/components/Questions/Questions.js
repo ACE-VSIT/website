@@ -1,13 +1,13 @@
-import React from 'react'
-import Config from './QuestionsConfig.json'
 import { navigate } from 'gatsby'
+import React from 'react'
 import { Heading } from '../../../../styles/sharedStyles'
-import { QuestionWrapper, QuestionBox, Container } from './QuestionElements'
+import { Container, QuestionBox, QuestionWrapper } from './QuestionElements'
+import Config from './QuestionsConfig.json'
 
 export function Questions () {
   return (
     <Container>
-      <Heading>Round 1</Heading>
+      <Heading>Task Submission</Heading>
       <QuestionWrapper>
         {Config.questions.map((e, index) => (
           <QuestionBox

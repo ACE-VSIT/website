@@ -5,7 +5,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
-  useState,
+  useState
 } from 'react'
 import useDrivePicker from 'react-google-drive-picker'
 import { AuthContext } from '../../../../context/auth/AuthContext'
@@ -13,7 +13,7 @@ import { FirebaseContext } from '../../../../context/FirebaseContext'
 import {
   deleteFileFromStorage,
   generatePublicURL,
-  saveSubmittionData,
+  saveSubmittionData
 } from '../../../../firebase'
 import { Heading } from '../../../../styles/sharedStyles'
 import Loading from '../../../animations/Loading'
@@ -24,6 +24,7 @@ export default function Timeline({ timeLine, name }) {
   const [height, setHeight] = useState(0)
   const [isSubmitted, setIsSubmitted] = useState([])
   const [isSubmitting, setIsSubmitting] = useState([])
+  const [liveQuestionTimeline, setLiveQuestionTimeline] = useState([])
   const [openPicker] = useDrivePicker()
   const wrapper = useRef()
   const { user } = useContext(AuthContext)
@@ -115,6 +116,10 @@ export default function Timeline({ timeLine, name }) {
   useEffect(() => getExistingSubmission(), [getExistingSubmission])
 
   useEffect(() => {
+    setLiveQuestionTimeline(timeLine.filter((e) => e?.show_question))
+  }, [timeLine])
+
+  useEffect(() => {
     setTimeout(getHeight, 100)
   }, [getHeight])
 
@@ -125,7 +130,7 @@ export default function Timeline({ timeLine, name }) {
       </Heading>
       {height !== 0 ? (
         <TimelineWrapper ref={wrapper} height={`${height}px`}>
-          {timeLine.map(
+          {liveQuestionTimeline?.map(
             (e, index) =>
               e?.show_question && (
                 <TimelineCard
