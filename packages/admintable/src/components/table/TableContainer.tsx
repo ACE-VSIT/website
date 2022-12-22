@@ -20,6 +20,7 @@ const TableContainer = () => {
   const pullData = useCallback(
     async (fromServer: boolean = false) => {
       const data = await getTableData(user, fromServer)
+      data?.sort((a: IUser, b: IUser) => a.name.localeCompare(b.name) || 0)
       setCurrentData(data || [])
       setTableData!(data || [])
     },

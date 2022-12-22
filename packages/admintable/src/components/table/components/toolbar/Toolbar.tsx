@@ -4,6 +4,7 @@ import useOutsideTouch from 'remote/useOutsideTouch'
 import styled from 'styled-components'
 import useThemeContext from '../../../../contexts/ThemeContext'
 import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
+import Categories from './categories/Categories'
 import FilterContainer from './filter/Filter'
 
 function Toolbar({
@@ -58,6 +59,7 @@ function Toolbar({
         </div>
       </UpdateWrapper>
       <FilterContainer />
+      <Categories />
     </ToolbarWrapper>
   )
 }

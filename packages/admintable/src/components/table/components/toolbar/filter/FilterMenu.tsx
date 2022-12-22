@@ -105,7 +105,7 @@ const ValueInput = styled(TextInput)`
   border: 1px solid black;
 `
 
-const Select = styled('select')`
+export const Select = styled('select')`
   width: 10rem;
   height: 3rem;
   padding: 0.5rem;

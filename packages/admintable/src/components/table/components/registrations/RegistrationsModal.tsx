@@ -138,6 +138,9 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
     if (userIndex && newCurrentTableData) {
       newTableData[userIndex] = newUserInfo
       newCurrentTableData[currentDataIndex!] = newUserInfo
+      newTableData.sort(
+        (a: IUserItem, b: IUserItem) => a.name.localeCompare(b.name) || 0
+      )
       setTableData!(newTableData as IUser[])
       setCurrentData(newCurrentTableData as IUser[])
       tableDataAndLocalStorage().setData(newTableData)
