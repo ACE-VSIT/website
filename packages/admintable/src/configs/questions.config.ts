@@ -1,25 +1,25 @@
 export const questions: any = {
   "App Development": [
-    "basic_application_1",
-    "basic_application_2",
-    "todo_app",
-    "wallpaper_app"
+    "basic-application-1",
+    "basic-application-2",
+    "todo-app",
+    "wallpaper-app"
   ],
   "Ar/Vr Development": [
-    "environment_designing",
-    "normal_game",
-    "coding_related"
+    "environment-designing",
+    "normal-game",
+    "coding-related"
   ],
   "Audio Visual": [
-    "audio_video",
-    "logo_reveal",
-    "ace_video"
+    "audio-video",
+    "logo-reveal",
+    "ace-video"
   ],
   "Content Writing": [
-    "sponsorship_proposal",
-    "chat_gpt",
+    "sponsorship-proposal",
+    "chat-gpt",
     "article",
-    "how-to_blog"
+    "how-to-blog"
   ],
   "Data Science": [
     "analyzing",
@@ -29,16 +29,16 @@ export const questions: any = {
   "Digital Marketing": [
     "seo",
     "promotions",
-    "flower_shop_marketing",
-    "hack_vsit"
+    "flower-shop-marketing",
+    "hack-vsit"
   ],
   "Graphics Designing": [
-    "website_design",
+    "website-design",
     "bump",
     "digi-sell",
     "techno",
-    "blue_cypress",
-    "brand_kit"
+    "blue-cypress",
+    "brand-kit"
   ],
   "IOT": [
     "arduino",
@@ -49,19 +49,19 @@ export const questions: any = {
     "miscellaneous"
   ],
   "Programming": [
-    "list_of_integers_1",
-    "list_of_integers_2",
+    "list-of-integers-1",
+    "list-of-integers-2",
     "sorting",
     "matrix"
   ],
   "Security": [
     "password",
     "not-regex",
-    "can_you_find_me?",
+    "can-you-find-me?",
   ],
   "Web Development": [
-    "portfolio_website",
+    "portfolio-website",
     "tictactoe",
-    "music_player"
+    "music-player"
   ]
 }

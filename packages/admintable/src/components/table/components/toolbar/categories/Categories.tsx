@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { questions as categoriesConfig } from '../../../../../configs/questions.config'
 import useTableProps from '../../../../../contexts/TableContext'
+import useThemeContext from '../../../../../contexts/ThemeContext'
 import { IUser } from '../../../../../interfaces/user.interface'
 import { Select } from '../filter/FilterMenu'
 
 const Categories: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('')
   const { tableData, setCurrentData } = useTableProps()
+  const { isDarkTheme } = useThemeContext();
 
   useEffect(() => {
     if (selectedCategory === '') {
@@ -16,7 +18,10 @@ const Categories: React.FC = () => {
       let categoryData: IUser[] = []
       tableData?.filter(data =>
         Object.keys(data.submissions || {}).forEach(submissionItemKey => {
-          if (categoriesConfig[selectedCategory].includes(submissionItemKey)) {
+          if (
+            categoriesConfig[selectedCategory].includes(submissionItemKey) &&
+            !categoryData.find(user => user.user === data.user)
+          ) {
             categoryData.push(data)
           }
         })
@@ -34,8 +39,9 @@ const Categories: React.FC = () => {
         margin: '1px 0',
         height: 'inherit',
         width: 'max-content',
-        borderColor: '#32486175',
-        background: '#32486125',
+        borderColor: !isDarkTheme ? '#32486175' : '#EBF6FE75',
+        background: !isDarkTheme ? '#32486125' : '#EBF6FE25',
+        color: !isDarkTheme ? '#324861' : '#EBF6FE',
       }}
       value={selectedCategory}
       onChange={e => {

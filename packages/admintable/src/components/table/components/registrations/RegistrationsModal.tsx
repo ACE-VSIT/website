@@ -10,7 +10,7 @@ import { IRegisationsModal } from '../../../../interfaces/registrations.interfac
 import {
   ISubmissionItemKey,
   IUser,
-  IUserItem,
+  IUserItem
 } from '../../../../interfaces/user.interface'
 import { setTableUserInfo } from '../../../../utils/firebase'
 import { tableDataAndLocalStorage } from '../../../../utils/functions'
@@ -20,7 +20,7 @@ import {
   Tbody,
   Td,
   Th,
-  Thead,
+  Thead
 } from '../inputs/styles/table-elements.styles'
 import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 
@@ -36,11 +36,11 @@ const RegistrationsModalWrapperKeyframes = keyframes`
 const RegistrationsModalWrapperBackdrop = styled.div`
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   position: fixed;
-  z-index: 999999999;
+  z-index: 9999;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
