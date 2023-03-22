@@ -10,9 +10,8 @@ export default function Event({ data }) {
 
   const displayData = data?.allPrismicEventitem?.edges.sort(function (a, b) {
     return (
-      parseInt(b.node.data.event_date.slice(-2)) -
-      parseInt(a.node.data.event_date.slice(-2))
-    )
+        new Date(b.node.data.event_date) - new Date(a.node.data.event_date)
+    );
   })
 
   useEffect(() => {
