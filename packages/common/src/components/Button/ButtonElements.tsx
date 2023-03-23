@@ -2,11 +2,12 @@ import styled, { css } from 'styled-components';
 import { IButtonComponents } from '../../interfaces/IButton';
 
 export const ButtonComponent = styled.button<IButtonComponents>`
-  text-align: center;
   text-decoration: none;
   line-height: 80px;
   position: relative;
-  display: block;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   overflow: hidden !important;
   width: 100%;
   height: 80px;
