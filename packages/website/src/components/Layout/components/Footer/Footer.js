@@ -1,4 +1,6 @@
+import { StaticImage } from 'gatsby-plugin-image'
 import React, { useContext } from 'react'
+import { ThemeContext } from '../../../../context/ThemeContext'
 import {
   FooterBottom,
   FooterItemsWrapper,
@@ -8,8 +10,6 @@ import {
   FooterTitle,
   FooterWrapper
 } from './FooterElements'
-import { ThemeContext } from '../../../../context/ThemeContext'
-import { StaticImage } from 'gatsby-plugin-image'
 
 export default function Footer ({ itemList, footerList }) {
   const { isDarkTheme } = useContext(ThemeContext)
@@ -57,13 +57,12 @@ export default function Footer ({ itemList, footerList }) {
         <FooterItemsWrapper mobileMb>
           {footerList?.map((e, key) => {
             return (
-              <div key={key}>
                 <FooterLinks
+                key={key}
                   to={`/${e.footer_item_link.url.replace(/(^\w+:|^)\/\//, '')}`}
                 >
                   {e.footer_item_name.text}
                 </FooterLinks>
-              </div>
             )
           })}
         </FooterItemsWrapper>
