@@ -172,15 +172,21 @@ export const NavSliderInfo = styled(FlexCenter)`
     display: none;
   }
 `
+export const NavbarVerticalContent = styled(FlexCenter)`
+position: fixed;
+bottom: 1rem;
+width: 5rem;
+height: 82vh;
+flex-direction: column-reverse;
+justify-content: space-between;
+padding:3rem 0;
+overflow: hidden;
+`
 export const NavbarVertical = styled(FlexCenter)`
   position: fixed;
   top: 0;
   width: 5rem;
   height: 100vh;
-  padding: 1rem;
-  flex-direction: column-reverse;
-  justify-content: space-evenly;
-  overflow: hidden;
 
   ${({ left }) =>
     left &&
