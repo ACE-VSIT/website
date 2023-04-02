@@ -14,7 +14,6 @@ export interface IAnimateIn {
   children?: React.ReactNode
   onClick?: () => void
   style?: React.CSSProperties
-  componentRef?: React.MutableRefObject<any>
 }
 
 interface IPreventScroll {
@@ -25,14 +24,12 @@ interface IPreventScroll {
 const AnimationContainer = styled.div``;
 
 export default function AnimateIn({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  componentRef,
+  onClick,
   children,
   delay = 0,
   duration = 375,
   type = 'FadeIn',
   enableScroll = true,
-  onClick,
   ...rest
 }: IAnimateIn) {
   const animateInRef: React.MutableRefObject<any> = useRef();
