@@ -29,6 +29,7 @@ export const UpcomingEventQuery = graphql`
         }
         link: registration_link {
           url
+          target
         }
         main_image: hero_section_image {
           gatsbyImageData(placeholder: BLURRED)
@@ -36,7 +37,14 @@ export const UpcomingEventQuery = graphql`
         info {
           text
         }
+        list_title {
+          text
+        }
+        button_name: registration_button_name {
+          text
+        }
         date(formatString: "DD / MM / YYYY")
+        show_button: show_register_button
         body1: body {
           ... on PrismicUpcomingEventPageDataBodyMagazineCard {
             items {

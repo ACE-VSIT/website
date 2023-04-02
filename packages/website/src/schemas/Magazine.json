@@ -39,6 +39,14 @@
         "placeholder": "Enter the info for current magazine"
       }
     },
+    "list_title": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "heading3",
+        "label": "list title",
+        "placeholder": "Enter title for list created below"
+      }
+    },
     "body1": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -64,7 +72,7 @@
               "magazine_title": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                  "single": "heading1,heading2,heading3,heading4,heading5,heading6",
                   "label": "Magazine Title",
                   "placeholder": "Enter the title for the Magazine"
                 }
@@ -88,7 +96,8 @@
                 "type": "Link",
                 "config": {
                   "label": "Magazine Link",
-                  "placeholder": "Enter the link for the Magazine"
+                  "placeholder": "Enter the link for the Magazine",
+                  "select": null
                 }
               }
             }

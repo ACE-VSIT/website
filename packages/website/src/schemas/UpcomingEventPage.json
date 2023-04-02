@@ -23,11 +23,30 @@
         "placeholder": "Enter the start date for the event"
       }
     },
+    "show_register_button": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Register button will not be shown on page",
+        "placeholder_true": "Register button will be shown on page",
+        "default_value": false,
+        "label": "Show Register Button"
+      }
+    },
     "registration_link": {
       "type": "Link",
       "config": {
-        "label": "registration link",
-        "placeholder": "Enter the link for event registration"
+        "label": "Registration Link",
+        "placeholder": "Enter the link for event registration",
+        "select": null,
+        "allowTargetBlank": true
+      }
+    },
+    "registration_button_name": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "allowTargetBlank": true,
+        "label": "Registration Button Name"
       }
     },
     "info": {
@@ -36,6 +55,14 @@
         "multi": "paragraph",
         "label": "info",
         "placeholder": "Enter the info for upcoming event"
+      }
+    },
+    "list_title": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "heading3",
+        "label": "List Title",
+        "placeholder": "Enter the title for list created below"
       }
     },
     "body": {
