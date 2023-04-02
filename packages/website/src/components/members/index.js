@@ -11,10 +11,10 @@ export default function MembersPage({ data }) {
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
   const [yearMembers, setYearMembers] = React.useState(
-    parseInt(new Date().getFullYear() + 1) // +1 because the year is not over yet
+    parseInt(new Date().getFullYear())
   )
   const [yearFaculty, setYearFaculty] = React.useState(
-    parseInt(new Date().getFullYear() + 1) //
+    parseInt(new Date().getFullYear())
   )
 
   // This is not the best approach, will think of something later

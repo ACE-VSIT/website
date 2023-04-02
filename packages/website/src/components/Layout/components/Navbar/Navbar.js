@@ -10,11 +10,9 @@ import useOutsideAlerter from '../../../../hooks/useOutsideTouch'
 import { FlexCenter } from '../../../../styles/sharedStyles'
 import RichText from '../../../rich-text/index'
 import {
-  NavbarBrandImg,
-  NavbarList,
-  NavbarListItem,
-  NavbarSlider, NavbarSliderIcon, NavbarSliderThemeIcon, NavbarSocialHeading,
-  NavbarSocialItem, NavbarVertical, NavbarWrapper, NavSliderInfo
+  NavbarBrandImg, NavbarList,
+  NavbarListItem, NavbarSlider, NavbarSliderIcon, NavbarSliderThemeIcon, NavbarSocialHeading,
+  NavbarSocialItem, NavbarVertical, NavbarVerticalContent, NavbarWrapper, NavSliderInfo
 } from './NavbarElements'
 
 export default function Navbar({
@@ -177,6 +175,7 @@ export default function Navbar({
         )}
       </NavbarSlider>
       <NavbarVertical left>
+        <NavbarVerticalContent>
         <NavbarSocialHeading>{'Follow Us'}</NavbarSocialHeading>
         {socialList &&
           trailHorizontal.map(({ y, height, ...rest }, index) => {
@@ -199,6 +198,7 @@ export default function Navbar({
               </animated.div>
             )
           })}
+          </NavbarVerticalContent>
       </NavbarVertical>
       <NavbarVertical right />
     </NavbarWrapper>

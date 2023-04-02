@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components'
 import RightSquareOutlined from '@ant-design/icons/RightSquareOutlined'
-import { Heading, FlexCenter } from '../../../../styles/sharedStyles'
 import { Link } from 'gatsby'
+import styled, { css } from 'styled-components'
+import { FlexCenter, Heading } from '../../../../styles/sharedStyles'
 
 export const FooterWrapper = styled(FlexCenter)`
   width: 100vw;
@@ -9,7 +9,7 @@ export const FooterWrapper = styled(FlexCenter)`
   flex-wrap: wrap;
   flex-direction: row;
   height: max-content;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-end;
   padding: 2rem 5rem;
   left: 5rem;
