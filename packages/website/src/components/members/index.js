@@ -10,12 +10,8 @@ export default function MembersPage({ data }) {
   const [faculty, setFaculty] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
-  const [yearMembers, setYearMembers] = React.useState(
-    parseInt(new Date().getFullYear()) 
-  )
-  const [yearFaculty, setYearFaculty] = React.useState(
-    parseInt(new Date().getFullYear()) 
-  )
+  const [yearMembers, setYearMembers] = React.useState(new Date().getFullYear())
+  const [yearFaculty, setYearFaculty] = React.useState(new Date().getFullYear())
 
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(

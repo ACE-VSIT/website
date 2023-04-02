@@ -50,6 +50,9 @@ export const magazineInfo = graphql`
       link {
         url
       }
+      list_title {
+        text
+      }
     }
   }
 `

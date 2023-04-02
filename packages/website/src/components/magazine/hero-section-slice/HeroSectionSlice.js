@@ -1,4 +1,8 @@
+import { Button } from '@ace/common'
+import { Link, navigate } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import AnimateIn from '../../animations/AnimateIn'
 import {
   CardDate,
   CardHeading,
@@ -7,11 +11,8 @@ import {
   HeroSectionBg,
   HeroSectionWrapper
 } from './HeroSectionSliceElements'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { Link } from 'gatsby'
-import AnimateIn from '../../animations/AnimateIn'
 
-const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
+const HeroSectionSlice = ({ date, mainImage, title, info, link, buttonName, buttonTarget = '_blank', showButton = false }) => {
   return (
     <HeroSectionWrapper>
       <AnimateIn enableScroll={true} duration={500} delay={300}>
@@ -21,7 +22,7 @@ const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
           )}
         </HeroSectionBg>
       </AnimateIn>
-      <HeroCardHighlight onClick={() => link && window.open(link)}>
+      <HeroCardHighlight onClick={() => !showButton && link && window.open(link)}>
         {date && (
           <AnimateIn duration={500} delay={400}>
             <CardDate>{date}</CardDate>
@@ -39,6 +40,15 @@ const HeroSectionSlice = ({ date, mainImage, title, info, link }) => {
             <CardInfo>{info}</CardInfo>
           </AnimateIn>
         )}
+       {showButton && (<Button
+          onClick={() => navigate(link)}
+          value={buttonName}
+          target={buttonTarget}
+          style={{ marginRight: 'auto' }}
+          md={
+            true
+          } /* Passing random string to avoid `Received `true` for a non-boolean attribute `md`.` */
+        />)}
       </HeroCardHighlight>
     </HeroSectionWrapper>
   )

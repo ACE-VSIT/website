@@ -1,37 +1,38 @@
+const path = require('path')
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
   siteMetadata: {
-    title: `ACE-VIPS`,
-    description: `ACE - Association of Computer Enthusiasts is the CSI Student Branch of Vivekananda Institute of Professional Studies, Pitampura. We are a group of talented and curious technology enthusiasts who are specialised in different fields of technology, namely quizzing, programming, web development, digital imaging, and video editing.`,
-    author: `@ace`,
-    siteUrl: `https://vipsace.org`,
+    title: 'ACE-VIPS',
+    description: 'ACE - Association of Computer Enthusiasts is the CSI Student Branch of Vivekananda Institute of Professional Studies, Pitampura. We are a group of talented and curious technology enthusiasts who are specialised in different fields of technology, namely quizzing, programming, web development, digital imaging, and video editing.',
+    author: '@ace',
+    siteUrl: 'https://vipsace.org',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-image`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: 'images',
+        path: path.join(__dirname, 'src', 'images')
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#EEE`,
-        display: `minimal-ui`,
-        icon: `src/images/ACELogoLight.svg`,
+        name: 'gatsby-starter-default',
+        short_name: 'starter',
+        start_url: '/',
+        background_color: '#EEE',
+        display: 'minimal-ui',
+        icon: 'src/images/ACELogoLight.svg',
       },
     },
     {
@@ -52,6 +53,7 @@ module.exports = {
           gallery: require('./src/schemas/Gallery.json'),
           members_array: require('./src/schemas/MembersArray.json'),
           'non-essential': require('./src/schemas/NonEssential.json'),
+          upcoming_event_page: require('./src/schemas/UpcomingEventPage.json'),
         },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),

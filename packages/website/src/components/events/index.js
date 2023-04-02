@@ -11,7 +11,7 @@ export default function Event({ data }) {
   const displayData = data?.allPrismicEventitem?.edges.sort(function (a, b) {
     return (
         new Date(b.node.data.event_date).getTime() - new Date(a.node.data.event_date).getTime()
-    );
+    )
   })
 
   useEffect(() => {

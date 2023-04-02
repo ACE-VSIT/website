@@ -1,5 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useIsMobile from '../../hooks/useIsMobile';
+import { IItemList, INavbar } from '../../interfaces/INavbar';
+import FlexCenter from '../shared/sharedStyles';
 import {
   NavbarBrandImg,
   NavbarList,
@@ -9,9 +12,6 @@ import {
   NavbarUser,
   NavbarWrapper,
 } from './NavbarElements';
-import FlexCenter from '../shared/sharedStyles';
-import { IItemList, INavbar } from '../../interfaces/INavbar';
-import useIsMobile from '../../hooks/useIsMobile';
 import NavbarUserProfileCard from './NavbarUserProfileCard';
 
 const Navbar: React.FC<INavbar> = ({
@@ -59,9 +59,9 @@ const Navbar: React.FC<INavbar> = ({
           onClick={() => setShowUserProfileCard(!showUserProfileCard)}
         />
       )}
-      {showUserProfileCard && profileList?.length !== 0 && (
+      {showUserProfileCard && profileList && profileList?.length !== 0 && (
         <NavbarUserProfileCard
-          profileList={profileList!}
+          profileList={profileList}
           setState={setShowUserProfileCard}
         />
       )}

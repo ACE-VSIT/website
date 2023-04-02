@@ -1,11 +1,11 @@
 {
   "Main": {
-    "main_image": {
+    "hero_section_image": {
       "type": "Image",
       "config": {
         "constraint": {},
         "thumbnails": [],
-        "label": "Main Image"
+        "label": "hero section image"
       }
     },
     "title": {
@@ -13,45 +13,63 @@
       "config": {
         "single": "heading1",
         "label": "title",
-        "placeholder": "Enter the title for Current Magazine"
+        "placeholder": "Enter title for the upcoming event"
       }
     },
     "date": {
       "type": "Date",
       "config": {
         "label": "date",
-        "placeholder": "Enter the release date for current magazine"
+        "placeholder": "Enter the start date for the event"
       }
     },
-    "link": {
+    "show_register_button": {
+      "type": "Boolean",
+      "config": {
+        "placeholder_false": "Register button will not be shown on page",
+        "placeholder_true": "Register button will be shown on page",
+        "default_value": false,
+        "label": "Show Register Button"
+      }
+    },
+    "registration_link": {
       "type": "Link",
       "config": {
-        "label": "Link",
-        "placeholder": "Enter the Link for Magazine",
-        "select": null
+        "label": "Registration Link",
+        "placeholder": "Enter the link for event registration",
+        "select": null,
+        "allowTargetBlank": true
+      }
+    },
+    "registration_button_name": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph",
+        "allowTargetBlank": true,
+        "label": "Registration Button Name"
       }
     },
     "info": {
       "type": "StructuredText",
       "config": {
         "multi": "paragraph",
-        "label": "Info",
-        "placeholder": "Enter the info for current magazine"
+        "label": "info",
+        "placeholder": "Enter the info for upcoming event"
       }
     },
     "list_title": {
       "type": "StructuredText",
       "config": {
         "multi": "heading3",
-        "label": "list title",
-        "placeholder": "Enter title for list created below"
+        "label": "List Title",
+        "placeholder": "Enter the title for list created below"
       }
     },
-    "body1": {
+    "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
-        "labels": null,
+        "labels": {},
         "choices": {
           "magazine__card": {
             "type": "Slice",
@@ -101,52 +119,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "Seo": {
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {},
-        "choices": {
-          "website_meta_info": {
-            "type": "Slice",
-            "fieldset": "Website Meta Info",
-            "description": "Website Meta info slice for SEO",
-            "icon": "airplay",
-            "non-repeat": {
-              "meta_title": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1",
-                  "label": "Meta Title",
-                  "placeholder": "Meta Title for SEO"
-                }
-              },
-              "meta_description": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "allowTargetBlank": true,
-                  "label": "Meta Description",
-                  "placeholder": "Meta Description for SEO"
-                }
-              },
-              "meta_keywords": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "allowTargetBlank": true,
-                  "label": "Meta Keywords",
-                  "placeholder": "Meta Keywords for SEO"
-                }
-              }
-            },
-            "repeat": {}
           }
         }
       }

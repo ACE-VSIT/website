@@ -1,28 +1,35 @@
-import React from 'react'
 import { getImage } from 'gatsby-plugin-image'
-import ProjectCard from '../projects/components/ProjectCard/ProjectCard'
-import HeroSectionSlice from './hero-section-slice/HeroSectionSlice'
-import { CardWrapper, Wrapper } from './Elements'
+import React from 'react'
 import { Heading } from '../../styles/sharedStyles'
+import ProjectCard from '../projects/components/ProjectCard/ProjectCard'
+import { CardWrapper, Wrapper } from './Elements'
+import HeroSectionSlice from './hero-section-slice/HeroSectionSlice'
 
 export default function MagazinePage ({ data }) {
   const date = data?.date
-  const mainImage = getImage(data?.main_image)
-  const title = data?.title?.text
-  const info = data?.info?.text
   const link = data?.link?.url
+  const info = data?.info?.text
+  const title = data?.title?.text
+  const showButton = data?.show_button
+  const buttonTarget = data?.button_target
+  const buttonName = data?.button_name?.text
+  const mainImage = getImage(data?.main_image)
+  const listTitle = data?.list_title?.text ?? ''
 
   return (
     <>
       <HeroSectionSlice
         date={date}
-        mainImage={mainImage}
-        title={title}
-        info={info}
         link={link}
+        info={info}
+        title={title}
+        mainImage={mainImage}
+        buttonName={buttonName}
+        showButton={showButton}
+        buttonTarget={buttonTarget}
       />
       <Wrapper>
-        <Heading>Previous Magazines</Heading>
+        <Heading>{listTitle}</Heading>
         <CardWrapper>
           {data?.body1[0]?.items?.map((e, index) => {
             const magazineImage = getImage(e?.magazine_image)
