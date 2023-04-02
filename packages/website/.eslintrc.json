@@ -21,6 +21,7 @@
     "multiline-ternary": "off",
     "comma-dangle": "off",
     "space-before-function-paren": "off",
-    "indent": "off"
+    "indent": "off",
+    "no-path-concat": "off"
   }
 }

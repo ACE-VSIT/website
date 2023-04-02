@@ -25,6 +25,7 @@ interface IPreventScroll {
 const AnimationContainer = styled.div``;
 
 export default function AnimateIn({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentRef,
   children,
   delay = 0,

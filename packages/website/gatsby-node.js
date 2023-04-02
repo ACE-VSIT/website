@@ -1,5 +1,5 @@
 exports.createPages = async ({ graphql, actions }) => {
-  const query = await graphql(`
+  const nonEssentialPagesQuery = await graphql(`
     query getMovieList {
       allPrismicNonEssential {
         nodes {
@@ -13,11 +13,33 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  query.data.allPrismicNonEssential.nodes.forEach(edge => {
+  const upcomingEventPageQuery = await graphql(`
+    query upcomingEventPage {
+      allPrismicUpcomingEventPage {
+        nodes {
+          data {
+            title {
+              text
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  nonEssentialPagesQuery.data.allPrismicNonEssential.nodes.forEach(edge => {
     actions.createPage({
       path: `/${edge.data.page_title.text.toLowerCase().replace(/\s/g, '-')}`,
-      component: require.resolve(`./src/templates/NonEssential.js`),
+      component: require.resolve('./src/templates/NonEssential.js'),
       context: { name: edge.data.page_title.text },
+    })
+  })
+
+  upcomingEventPageQuery.data.allPrismicUpcomingEventPage.nodes.forEach(edge => {
+    actions.createPage({
+      path: `/events/${edge.data.title.text.toLowerCase().replace(/\s/g, '-')}`,
+      component: require.resolve('./src/templates/UpcomingEvent.js'),
+      context: { name: edge.data.title.text },
     })
   })
 }
