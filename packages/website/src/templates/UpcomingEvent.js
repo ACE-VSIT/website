@@ -6,7 +6,7 @@ import Seo from '../components/SEO'
 
 const UpcomingEvent = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
-  console.log(data?.prismicUpcomingEventPage?.data)
+
   return (
     <Layout navbar={nav}>
       <Seo title="Technical Day" />

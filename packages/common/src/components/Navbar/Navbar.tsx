@@ -59,10 +59,9 @@ const Navbar: React.FC<INavbar> = ({
           onClick={() => setShowUserProfileCard(!showUserProfileCard)}
         />
       )}
-      {showUserProfileCard && profileList?.length !== 0 && (
+      {showUserProfileCard && profileList && profileList?.length !== 0 && (
         <NavbarUserProfileCard
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          profileList={profileList!}
+          profileList={profileList}
           setState={setShowUserProfileCard}
         />
       )}

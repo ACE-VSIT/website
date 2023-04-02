@@ -7,14 +7,14 @@ import HeroSectionSlice from './hero-section-slice/HeroSectionSlice'
 
 export default function MagazinePage ({ data }) {
   const date = data?.date
-  const mainImage = getImage(data?.main_image)
-  const title = data?.title?.text
-  const info = data?.info?.text
   const link = data?.link?.url
-  const listTitle = data?.list_title?.text
+  const info = data?.info?.text
+  const title = data?.title?.text
+  const showButton = data?.show_button
+  const buttonTarget = data?.button_target
   const buttonName = data?.button_name?.text
-  const buttonTarget = data?.button_target ?? '_self'
-  const showButton = data?.show_button ?? false
+  const mainImage = getImage(data?.main_image)
+  const listTitle = data?.list_title?.text ?? ''
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function MagazinePage ({ data }) {
         buttonTarget={buttonTarget}
       />
       <Wrapper>
-        <Heading>{listTitle ?? ''}</Heading>
+        <Heading>{listTitle}</Heading>
         <CardWrapper>
           {data?.body1[0]?.items?.map((e, index) => {
             const magazineImage = getImage(e?.magazine_image)
