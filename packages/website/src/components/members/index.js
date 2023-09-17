@@ -10,8 +10,9 @@ export default function MembersPage({ data }) {
   const [faculty, setFaculty] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
-  const [yearMembers, setYearMembers] = React.useState(new Date().getFullYear())
-  const [yearFaculty, setYearFaculty] = React.useState(new Date().getFullYear())
+  // New Session updates in September, so if the current month is less than 8, then the year is same as current year, else it is next year
+  const [yearMembers, setYearMembers] = React.useState(new Date().getMonth() < 8 ? new Date().getFullYear() : new Date().getFullYear() + 1)
+  const [yearFaculty, setYearFaculty] = React.useState(new Date().getMonth() < 8 ? new Date().getFullYear() : new Date().getFullYear() + 1)
 
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(

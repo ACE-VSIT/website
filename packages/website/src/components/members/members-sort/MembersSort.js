@@ -11,7 +11,8 @@ export default function MembersSort({ startingYear, setYear }) {
   }
 
   useEffect(() => {
-    let latestYear = new Date().getFullYear()
+    // New Session updates in September, so if the current month is less than 8, then the year is same as current year, else it is next year
+    let latestYear = new Date().getMonth() < 8 ? new Date().getFullYear() : new Date().getFullYear() + 1
     const yearArr = []
     while (startingYear <= latestYear) {
       yearArr.push(latestYear--)
