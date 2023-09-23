@@ -1,16 +1,16 @@
 {
   "questions": [
     { "name": "App Development", "id": "app_development" },
-    { "name": "AR/VR Development", "id": "ar-vr_development" },
-    { "name": "Audio / Visual", "id": "audio-visual" },
-    { "name": "Content Writing", "id": "content_writing" },
-    { "name": "Data Science", "id": "data_science" },
-    { "name": "Digital Marketing", "id": "digital_marketing" },
-    { "name": "Graphics Designing", "id": "graphics_designing" },
-    { "name": "IOT", "id": "iot" },
-    { "name": "Miscellaneous", "id": "misc" },
+    { "name": "Research & Development", "id":"research_and_development" },
     { "name": "Programming", "id": "programming" },
+    { "name": "Content Writing", "id": "content_writing" },
+    { "name": "Web Development", "id": "web_development" },
+    { "name": "Graphics Designing", "id": "graphics_designing" },
+    { "name": "Video editing / animation", "id": "video_editing-animation"},
+    { "name": "Data Science", "id": "data_science" },
     { "name": "Security", "id": "security" },
-    { "name": "Web Development", "id": "web_development" }
-  ]
+    { "name": "Digital Marketing", "id": "digital_marketing" },
+    { "name": "Photography", "id": "photography"},
+    { "name": "UI / UX Designing", "id": "ui-ux_designing" }
+   ]
 }
