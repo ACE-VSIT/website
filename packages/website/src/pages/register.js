@@ -1,14 +1,14 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Seo from '../components/SEO'
 import { Router } from '@reach/router'
+import { graphql } from 'gatsby'
+import React from 'react'
+import Layout from '../components/Layout/index'
+import Seo from '../components/SEO'
+import PrivateRoute from '../components/private-routes/PrivateRoute'
+import Route from '../components/routes/Routes'
+import Timer from '../components/timer/Timer'
+import QuestionType from '../templates/QuestionsType'
 import Homepage from './register/homepage'
 import Questions from './register/question'
-import Timer from '../components/timer/Timer'
-import Route from '../components/routes/Routes'
-import Layout from '../components/Layout/index'
-import QuestionType from '../templates/QuestionsType'
-import PrivateRoute from '../components/private-routes/PrivateRoute'
 
 const Register = ({ data }) => {
   const [hasEventBegun, setHasEventBegun] = React.useState(0) // 0 => not started, 1 => started, 2 => ended
@@ -48,7 +48,7 @@ const Register = ({ data }) => {
 
   return (
     <Layout navbar={nav}>
-      <Seo title={showRegisterPage ? 'Regsiter' : 'Closed'} />
+      <Seo title={showRegisterPage ? 'Register' : 'Closed'} />
       <Router>
         {hasEventBegun === 1 && ( // if event has started
           <>
