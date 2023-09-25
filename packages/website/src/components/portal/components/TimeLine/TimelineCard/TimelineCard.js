@@ -41,10 +41,10 @@ export default function TimelineCard({
     <Container id={'timelineCard'} align={'flex-end'} style={containerMargin}>
       <TimelineCardWrapper>
         {heading && (
-          <TimelineCardTitle align={align}>{heading}</TimelineCardTitle>
+          <TimelineCardTitle >{heading}</TimelineCardTitle>
         )}
         {info && (
-          <TimelineCardInfo align={align}>
+          <TimelineCardInfo >
             <RichText richText={info} />
           </TimelineCardInfo>
         )}
