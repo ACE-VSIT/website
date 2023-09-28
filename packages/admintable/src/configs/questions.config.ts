@@ -1,9 +1,10 @@
 export const questions: any = {
   "App Development": [
-    "basic-application-1",
-    "basic-application-2",
-    "todo-app",
-    "wallpaper-app"
+    "login-form",
+    "food-app",
+    "music-app",
+    "save-your-data",
+    "what-is-your-wallpaper"
   ],
   "Ar/Vr Development": [
     "environment-designing",
@@ -16,29 +17,44 @@ export const questions: any = {
     "ace-video"
   ],
   "Content Writing": [
-    "sponsorship-proposal",
-    "chat-gpt",
-    "article",
-    "how-to-blog"
+    "event-announcement",
+    "promotional-message",
+    "sponsorship-mail",
+    "blog-post",
+    "event-report"
   ],
   "Data Science": [
     "analyzing",
     "updating",
     "comparing"
   ],
-  "Digital Marketing": [
-    "seo",
-    "promotions",
-    "flower-shop-marketing",
-    "hack-vsit"
+  "Marketing": [
+    "ace-catchphrase/jingle/tagline",
+    "create-engaging-memes",
+    "design-an-instagram-page-for-ace",
+    "discover-a-theme-for-ace's-social-media-posts",
+    "pitch-deck-for-ace-as-a-software-solution-brand-and-tech-hub"
   ],
-  "Graphics Designing": [
-    "website-design",
-    "bump",
-    "digi-sell",
+  "Video Editing & Animation": [
+    "tech-animation-gif",
+    "tech-explainer-video",
+    "product-showcase-video",
+    "tech-challenge-montage",
+    "discover-a-theme-for-ace's-social-media-posts"
+
+  ],
+  "Graphic Design": [
+    "design-social-media-posts-for-product-launch",
+    "brochure-design-for-eco-friendly-home-cleaning-products",
+    "brand-identity-for-a-new-fashion-brand",
     "techno",
     "blue-cypress",
     "brand-kit"
+  ],
+  "UI/UX": [
+    "medical-dashboard-redesign",
+    "finance-app-redesign-for-accessibility",
+    "end-to-end-user-journey-analysis-and-redesign",
   ],
   "IOT": [
     "arduino",
@@ -48,16 +64,28 @@ export const questions: any = {
   "Miscellaneous": [
     "miscellaneous"
   ],
-  "Programming": [
-    "list-of-integers-1",
-    "list-of-integers-2",
-    "sorting",
-    "matrix"
+  "R&D": [
+    "give-me-some-insights",
+    "who-are-we?",
+    "shh!-did-you-hear-that?",
+    "i-am-a-mind-researcher"
   ],
+  "Programming": [
+    "it-is-what-it-is",
+    "arrange-it",
+    "story-of-an-intern",
+    "burning-houses",
+    "let's-play-tug-of-war"
+  ],
+  "Photography": [
+    "upload-your-previous-work"
+  ],
+
   "Security": [
-    "password",
-    "not-regex",
-    "can-you-find-me?",
+    "who-is-who?",
+    "member-carry-message",
+    "wirecrypt:-packetmeinpacket",
+    "secrets-unveiled:-key-scanning-quest"
   ],
   "Web Development": [
     "portfolio-website",
