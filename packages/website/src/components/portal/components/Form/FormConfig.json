@@ -30,7 +30,7 @@
       "id": "mobile"
     },
     {
-      "placeholder": "Enrollment Number",
+      "placeholder": "Enrollment Number / Rank",
       "required": true,
       "type": "tel",
       "halfwidth": true,

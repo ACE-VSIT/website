@@ -1,8 +1,8 @@
 /* eslint-disable no-case-declarations */
 import { navigate } from 'gatsby'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { AuthContext } from '../../../../context/auth/AuthContext'
 import { FirebaseContext } from '../../../../context/FirebaseContext'
+import { AuthContext } from '../../../../context/auth/AuthContext'
 import { checkEmailVerfiy, savePersonalDetails } from '../../../../firebase'
 import { FlexCenter, Heading } from '../../../../styles/sharedStyles'
 import Check from '../../../animations/Check'
@@ -57,7 +57,7 @@ export default function Form() {
         }
         break
       case 'enrollmentNo':
-        const enrollmentNoRegExp = /^[a-zA-Z0-9]{10,11}$/
+        const enrollmentNoRegExp = /^[a-zA-Z0-9]{1,11}$/
         if (!e.target.value) {
           setCustomError(false)
         } else {
