@@ -1,23 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useTableProps from '../../../../../contexts/TableContext'
 import useThemeContext from '../../../../../contexts/ThemeContext'
 import { IUser } from '../../../../../interfaces/user.interface'
 import { Select } from '../filter/FilterMenu'
 
-const Year: React.FC = () => {
-  const [selectedYear, setSelectedYear] = useState('')
+
+
+const Year= ({
+  options,
+  setOptions
+}:{
+  options:{
+    year: string,
+    category: string,
+  },
+  setOptions: React.Dispatch<
+    React.SetStateAction<{
+      year: string
+      category: string
+    }>
+  >,
+}) => {
+  // const [selectedYear, setSelectedYear] = useState('')
   const { tableData,setCurrentData } = useTableProps()
   const { isDarkTheme } = useThemeContext();
+  
   useEffect(() => {
-    if (selectedYear === '') {
-    } else {
+    if (options.year !== '' && options.category === '') {
       let categoryData: IUser[] = []
       tableData?.forEach(user => {
         if (user.submissions) {
           Object.values(user.submissions).map(submissionItemKey => {
             const date = new Date(submissionItemKey.lastEditedUtc).getFullYear().toString()
             if (
-              date === selectedYear && !categoryData.find(userData => userData.user === user.user)
+              date === options.year && !categoryData.find(userData => userData.user === user.user)
             ) {
               categoryData.push(user)
             }
@@ -27,13 +43,9 @@ const Year: React.FC = () => {
         }
       }
       )
-      categoryData = categoryData.sort(
-        (a: IUser, b: IUser) => a.name.localeCompare(b.name) || 0
-      )
       setCurrentData(categoryData)
     }
-  }, [selectedYear, setCurrentData, tableData])
-
+  }, [options, setCurrentData, tableData])
   return (
     <Select
       style={{
@@ -44,10 +56,14 @@ const Year: React.FC = () => {
         background: !isDarkTheme ? '#32486125' : '#EBF6FE25',
         color: !isDarkTheme ? '#324861' : '#EBF6FE',
       }}
-      value={selectedYear}
+      value={options.year}
       onChange={e => {
         console.log(e.target.value)
-        setSelectedYear(e.target.value)
+        setOptions({
+          ...options,
+          year: e.target.value,
+        }
+        )
       }}
     >
       <option value={''}>Year</option>

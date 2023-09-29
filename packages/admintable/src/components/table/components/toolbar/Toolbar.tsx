@@ -18,7 +18,10 @@ function Toolbar({
   useOutsideTouch(filterMenuRef, setShow)
   const { isDarkTheme } = useThemeContext()
   const [trigger, setTrigger] = useState(false)
-
+  const [options,setOptions] = useState({
+    year: '',
+    category: '',
+  })
   const triggerFetchUserData = async () => {
     try {
       setTrigger(trigger => !trigger)
@@ -60,8 +63,8 @@ function Toolbar({
         </div>
       </UpdateWrapper>
       <FilterContainer />
-      <Categories />
-      <Year />
+      <Categories options={options} setOptions={setOptions} />
+      <Year options={options} setOptions={setOptions}/>
     </ToolbarWrapper>
   )
 }
