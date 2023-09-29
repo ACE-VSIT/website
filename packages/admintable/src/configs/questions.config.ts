@@ -47,9 +47,6 @@ export const questions: any = {
     "design-social-media-posts-for-product-launch",
     "brochure-design-for-eco-friendly-home-cleaning-products",
     "brand-identity-for-a-new-fashion-brand",
-    "techno",
-    "blue-cypress",
-    "brand-kit"
   ],
   "UI/UX": [
     "medical-dashboard-redesign",
