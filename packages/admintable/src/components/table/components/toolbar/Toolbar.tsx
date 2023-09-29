@@ -6,6 +6,7 @@ import useThemeContext from '../../../../contexts/ThemeContext'
 import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 import Categories from './categories/Categories'
 import FilterContainer from './filter/Filter'
+import Year from './year/Year'
 
 function Toolbar({
   reFetchUserDataWithoutCache,
@@ -17,7 +18,10 @@ function Toolbar({
   useOutsideTouch(filterMenuRef, setShow)
   const { isDarkTheme } = useThemeContext()
   const [trigger, setTrigger] = useState(false)
-
+  const [options,setOptions] = useState({
+    year: '',
+    category: '',
+  })
   const triggerFetchUserData = async () => {
     try {
       setTrigger(trigger => !trigger)
@@ -59,7 +63,8 @@ function Toolbar({
         </div>
       </UpdateWrapper>
       <FilterContainer />
-      <Categories />
+      <Categories options={options} setOptions={setOptions} />
+      <Year options={options} setOptions={setOptions}/>
     </ToolbarWrapper>
   )
 }

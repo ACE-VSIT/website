@@ -58,9 +58,11 @@ function TableComponent({ headers, data }: TablePropTypes) {
     <>
       <Table>
         <Thead>
+          <tr>
           {headers.map(header => (
             <Th key={header.Header}>{header.Header}</Th>
           ))}
+          </tr>
         </Thead>
         <Tbody>
           {currentData?.map(obj => (

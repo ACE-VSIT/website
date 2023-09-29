@@ -1,37 +1,68 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { questions as categoriesConfig } from '../../../../../configs/questions.config'
 import useTableProps from '../../../../../contexts/TableContext'
 import useThemeContext from '../../../../../contexts/ThemeContext'
 import { IUser } from '../../../../../interfaces/user.interface'
 import { Select } from '../filter/FilterMenu'
 
-const Categories: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('')
+const Categories= ({
+  options,
+  setOptions
+}:{
+  options:{
+    year: string,
+    category: string,
+  },
+  setOptions: React.Dispatch<
+    React.SetStateAction<{
+      year: string
+      category: string
+    }>
+  >,
+}) => {
+  // const [selectedCategory, setSelectedCategory] = useState('')
   const { tableData, setCurrentData } = useTableProps()
   const { isDarkTheme } = useThemeContext();
 
   useEffect(() => {
-    if (selectedCategory === '') {
-      tableData?.sort((a: IUser, b: IUser) => a.name.localeCompare(b.name) || 0)
-      setCurrentData(tableData || [])
-    } else {
+    if (options.category !== '' && options.year === '') {
       let categoryData: IUser[] = []
-      tableData?.filter(data =>
-        Object.keys(data.submissions || {}).forEach(submissionItemKey => {
+      tableData?.filter(data =>{
+        if (data.submissions) {
+        Object.keys(data.submissions).forEach(submissionItemKey => {
           if (
-            categoriesConfig[selectedCategory].includes(submissionItemKey) &&
-            !categoryData.find(user => user.user === data.user)
-          ) {
+            categoriesConfig[options.category].includes(submissionItemKey) && 
+            !categoryData.find(user => user.user === data.user) 
+          ) { 
             categoryData.push(data)
           }
         })
-      )
-      categoryData = categoryData.sort(
-        (a: IUser, b: IUser) => a.name.localeCompare(b.name) || 0
-      )
+      }
+      return data.submissions
+    })
       setCurrentData(categoryData)
     }
-  }, [selectedCategory, setCurrentData, tableData])
+    else if (options.year !== '' && options.category !== '') {
+      const Data: IUser[] = []
+      tableData?.filter(data =>{
+        if (data.submissions) {
+        Object.keys(data.submissions).forEach(submissionItemKey => {
+          const date = new Date(data.submissions![submissionItemKey].lastEditedUtc).getFullYear().toString()
+          if (
+            date === options.year &&
+            categoriesConfig[options.category].includes(submissionItemKey) && 
+            !Data.find(user => user.user === data.user) 
+          ) { 
+            Data.push(data)
+          }
+        })
+      }
+      return data.submissions
+    })
+      setCurrentData(Data)
+    }
+    
+  }, [options, setCurrentData, tableData])
 
   return (
     <Select
@@ -43,10 +74,14 @@ const Categories: React.FC = () => {
         background: !isDarkTheme ? '#32486125' : '#EBF6FE25',
         color: !isDarkTheme ? '#324861' : '#EBF6FE',
       }}
-      value={selectedCategory}
+      value={options.category}
       onChange={e => {
         console.log(e.target.value)
-        setSelectedCategory(e.target.value)
+        setOptions({
+          ...options,
+          category: e.target.value
+        })
+        
       }}
     >
       <option value={''}>Default</option>

@@ -289,9 +289,11 @@ const RegistrationsModal: React.FC<IRegisationsModal> = ({ setState }) => {
         </UpdateWrapper>
         <Table style={{ height: 'max-content', width: 'max-content' }}>
           <Thead>
+            <tr>
             {registrationTableHeader.map(el => {
               return <Th key={el.accessor}>{el.Header}</Th>
             })}
+            </tr>
           </Thead>
           <Tbody>
             {Object.keys(userInfo?.submissions!)
