@@ -16,15 +16,20 @@ const Categories: React.FC = () => {
       setCurrentData(tableData || [])
     } else {
       let categoryData: IUser[] = []
-      tableData?.filter(data =>
-        Object.keys(data.submissions || {}).forEach(submissionItemKey => {
+      tableData?.filter(data =>{
+        if (data.submissions) {
+        Object.keys(data.submissions).forEach(submissionItemKey => {
           if (
             categoriesConfig[selectedCategory].includes(submissionItemKey) &&
+            new Date(data.submissions![submissionItemKey].lastEditedUtc).getFullYear() === new Date().getFullYear() &&
             !categoryData.find(user => user.user === data.user)
           ) {
             categoryData.push(data)
           }
         })
+      }
+      return data.submissions
+    }
       )
       categoryData = categoryData.sort(
         (a: IUser, b: IUser) => a.name.localeCompare(b.name) || 0
