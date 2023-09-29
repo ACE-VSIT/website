@@ -6,6 +6,7 @@ import useThemeContext from '../../../../contexts/ThemeContext'
 import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 import Categories from './categories/Categories'
 import FilterContainer from './filter/Filter'
+import Year from './year/Year'
 
 function Toolbar({
   reFetchUserDataWithoutCache,
@@ -60,6 +61,7 @@ function Toolbar({
       </UpdateWrapper>
       <FilterContainer />
       <Categories />
+      <Year />
     </ToolbarWrapper>
   )
 }
