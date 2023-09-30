@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { questions as categoriesConfig } from '../../../../../configs/questions.config'
-import useTableProps from '../../../../../contexts/TableContext'
 import useThemeContext from '../../../../../contexts/ThemeContext'
-import { IUser } from '../../../../../interfaces/user.interface'
 import { Select } from '../filter/FilterMenu'
 
 const Categories= ({
@@ -20,50 +18,7 @@ const Categories= ({
     }>
   >,
 }) => {
-  // const [selectedCategory, setSelectedCategory] = useState('')
-  const { tableData, setCurrentData } = useTableProps()
-  const { isDarkTheme } = useThemeContext();
-
-  useEffect(() => {
-    if (options.category !== '' && options.year === '') {
-      let categoryData: IUser[] = []
-      tableData?.filter(data =>{
-        if (data.submissions) {
-        Object.keys(data.submissions).forEach(submissionItemKey => {
-          if (
-            categoriesConfig[options.category].includes(submissionItemKey) && 
-            !categoryData.find(user => user.user === data.user) 
-          ) { 
-            categoryData.push(data)
-          }
-        })
-      }
-      return data.submissions
-    })
-      setCurrentData(categoryData)
-    }
-    else if (options.year !== '' && options.category !== '') {
-      const Data: IUser[] = []
-      tableData?.filter(data =>{
-        if (data.submissions) {
-        Object.keys(data.submissions).forEach(submissionItemKey => {
-          const date = new Date(data.submissions![submissionItemKey].lastEditedUtc).getFullYear().toString()
-          if (
-            date === options.year &&
-            categoriesConfig[options.category].includes(submissionItemKey) && 
-            !Data.find(user => user.user === data.user) 
-          ) { 
-            Data.push(data)
-          }
-        })
-      }
-      return data.submissions
-    })
-      setCurrentData(Data)
-    }
-    
-  }, [options, setCurrentData, tableData])
-
+  const { isDarkTheme } = useThemeContext();  
   return (
     <Select
       style={{

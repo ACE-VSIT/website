@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react'
-import useTableProps from '../../../../../contexts/TableContext'
+import React from 'react'
 import useThemeContext from '../../../../../contexts/ThemeContext'
-import { IUser } from '../../../../../interfaces/user.interface'
 import { Select } from '../filter/FilterMenu'
-
-
 
 const Year= ({
   options,
@@ -21,31 +17,7 @@ const Year= ({
     }>
   >,
 }) => {
-  // const [selectedYear, setSelectedYear] = useState('')
-  const { tableData,setCurrentData } = useTableProps()
   const { isDarkTheme } = useThemeContext();
-  
-  useEffect(() => {
-    if (options.year !== '' && options.category === '') {
-      let categoryData: IUser[] = []
-      tableData?.forEach(user => {
-        if (user.submissions) {
-          Object.values(user.submissions).map(submissionItemKey => {
-            const date = new Date(submissionItemKey.lastEditedUtc).getFullYear().toString()
-            if (
-              date === options.year && !categoryData.find(userData => userData.user === user.user)
-            ) {
-              categoryData.push(user)
-            }
-            return submissionItemKey
-          }
-          )
-        }
-      }
-      )
-      setCurrentData(categoryData)
-    }
-  }, [options, setCurrentData, tableData])
   return (
     <Select
       style={{
