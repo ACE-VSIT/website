@@ -6,7 +6,6 @@ import SelectOption from '../inputs/SelectOption'
 
 const Pagination: React.FC<IPagination> = () => {
   const { tableData, tableFilters, setTableFilters } = useTableProps()
-  console.log("tableFilters", tableFilters)
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target
 

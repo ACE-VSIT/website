@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import useOutsideTouch from 'remote/useOutsideTouch'
 import styled from 'styled-components'
@@ -27,6 +27,11 @@ function Toolbar({
     year: '',
     category: '',
   })
+  const TrimData = useCallback((Data: IUser[]) => {
+    if (tableFilters?.listLength) {
+      setCurrentData(Data.slice(0, tableFilters?.listLength === '*' ? Data.length : tableFilters?.listLength ))
+    }
+  }, [setCurrentData, tableFilters?.listLength])
 
   useEffect(() => {
     if (!tableData){
@@ -47,7 +52,7 @@ function Toolbar({
           })
         }
       })
-        setCurrentData(categoryData.slice(0, tableFilters?.listLength === '*' ? categoryData.length : tableFilters?.listLength ))
+      TrimData(categoryData)
       }
       else if (options.year !== '' && options.category !== '') {
         const Data: IUser[] = []
@@ -65,7 +70,7 @@ function Toolbar({
           })
         }
       })
-        setCurrentData(Data.slice(0, tableFilters?.listLength === '*' ? Data.length : tableFilters?.listLength ))
+      TrimData(Data)
       }
       else if (options.year !== '' && options.category === '') {
         let categoryData: IUser[] = []
@@ -84,14 +89,14 @@ function Toolbar({
           }
         }
         )
-        setCurrentData(categoryData.slice(0, tableFilters?.listLength === '*' ? categoryData.length : tableFilters?.listLength ))
+        TrimData(categoryData)
       }
       else {
-        setCurrentData(tableData.slice(0, tableFilters?.listLength === '*' ? tableData.length : tableFilters?.listLength ) )
+        TrimData(tableData)
       }
     }
     
-  }, [options, setCurrentData, tableData, tableFilters?.listLength])
+  }, [TrimData, options, setCurrentData, tableData])
   
   const triggerFetchUserData = async () => {
     try {
