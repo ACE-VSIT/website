@@ -20,7 +20,7 @@ function Toolbar({
   const filterMenuRef = useRef()
   const [, setShow] = useState<boolean>(false)
   useOutsideTouch(filterMenuRef, setShow)
-  const { tableData, setCurrentData } = useTableProps()
+  const { tableData, setCurrentData,tableFilters } = useTableProps()
   const { isDarkTheme } = useThemeContext()
   const [trigger, setTrigger] = useState(false)
   const [options,setOptions] = useState({
@@ -47,7 +47,7 @@ function Toolbar({
           })
         }
       })
-        setCurrentData(categoryData)
+        setCurrentData(categoryData.slice(0, tableFilters?.listLength === '*' ? categoryData.length : tableFilters?.listLength ))
       }
       else if (options.year !== '' && options.category !== '') {
         const Data: IUser[] = []
@@ -65,7 +65,7 @@ function Toolbar({
           })
         }
       })
-        setCurrentData(Data)
+        setCurrentData(Data.slice(0, tableFilters?.listLength === '*' ? Data.length : tableFilters?.listLength ))
       }
       else if (options.year !== '' && options.category === '') {
         let categoryData: IUser[] = []
@@ -84,14 +84,14 @@ function Toolbar({
           }
         }
         )
-        setCurrentData(categoryData)
+        setCurrentData(categoryData.slice(0, tableFilters?.listLength === '*' ? categoryData.length : tableFilters?.listLength ))
       }
       else {
-        setCurrentData(tableData )
+        setCurrentData(tableData.slice(0, tableFilters?.listLength === '*' ? tableData.length : tableFilters?.listLength ) )
       }
     }
     
-  }, [options, setCurrentData, tableData])
+  }, [options, setCurrentData, tableData, tableFilters?.listLength])
   
   const triggerFetchUserData = async () => {
     try {

@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import Navbar from 'remote/Navbar'
 import { Wrapper } from '../components/index-elements.styles'
-import Pagination from '../components/table/components/pagination/Pagination'
 import TableContainer from '../components/table/TableContainer'
 import { NavbarConfig } from '../configs/navbar.config'
 import { useAuth } from '../contexts/AuthContext'
@@ -41,7 +40,6 @@ const Dashboard: React.FC = () => {
       <ErrorBoundary>
         <Wrapper>
           <TableContainer />
-          <Pagination />
         </Wrapper>
       </ErrorBoundary>
     </>

@@ -30,7 +30,6 @@ const Year= ({
       }}
       value={options.year}
       onChange={e => {
-        console.log(e.target.value)
         setOptions({
           ...options,
           year: e.target.value,
