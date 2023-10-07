@@ -24,6 +24,11 @@ export const questions: any = {
     "event-report"
   ],
   "Data Science": [
+    "analysis-and-insights-from-titanic-dataset",
+    "explaining-statistical-concepts-in-data-analysis",
+    "probability-distributions-with-graphs",
+    "eda-on-student-performance-dataset",
+    "explain-machine-learning-algorithms",
     "analyzing",
     "updating",
     "comparing"
