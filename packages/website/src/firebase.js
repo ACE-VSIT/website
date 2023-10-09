@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { getApps, initializeApp } from 'firebase/app'
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
-  GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
   sendPasswordResetEmail,
@@ -12,6 +12,7 @@ import {
   signOut,
 } from 'firebase/auth'
 import {
+  Timestamp,
   collection,
   doc,
   getDoc,
@@ -19,7 +20,6 @@ import {
   getFirestore,
   query,
   setDoc,
-  Timestamp,
   updateDoc,
   where,
 } from 'firebase/firestore'
@@ -67,9 +67,9 @@ const saveUser = async (email, uid, name, photoURL, emailVerified) => {
 }
 
 export const savePersonalDetails = async (email, personalDetails) => {
-  const { dob, enrollmentNo, firstName, lastName, mobile, section } =
+  const { dob, enrollmentNo, firstName, lastName, mobile, section, course } =
     personalDetails
-  if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob) {
+  if (!firstName && !lastName && !mobile && !enrollmentNo && !section && !dob && !course) {
     return
   }
   const emailRef = doc(db, 'users', email)
@@ -77,6 +77,7 @@ export const savePersonalDetails = async (email, personalDetails) => {
     personalDetails: {
       dob,
       enrollmentNo,
+      course,
       firstName,
       lastName,
       mobile,
