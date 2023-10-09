@@ -1,7 +1,7 @@
 export interface IToolbarOptions {
   year: string
   category: string
-  course: "MCA" | "BCA" | ""
+  course: "MCA" | "BCA" | "Other" | ""
 }
 
 export interface IToolbar {

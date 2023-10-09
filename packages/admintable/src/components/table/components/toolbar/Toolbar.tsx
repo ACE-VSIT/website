@@ -55,7 +55,9 @@ function Toolbar({
         return date === options.year && (options.category === '' || categoriesConfig[options.category].includes(submissionItemKey));
       }));
     }
-  
+    if (options.course !== '') {
+      filteredData = filteredData.filter(data => data.personalDetails.course === options.course);
+    }
     setCurrentData(options.category === '' && options.year === '' ? TrimData(tableData) : TrimData(filteredData));
   
   }, [TrimData, options, setCurrentData, tableData]);
