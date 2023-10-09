@@ -1,15 +1,17 @@
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 import useOutsideTouch from 'remote/useOutsideTouch'
 import styled from 'styled-components'
 import { questions as categoriesConfig } from '../../../../configs/questions.config'
 import useTableProps from '../../../../contexts/TableContext'
 import useThemeContext from '../../../../contexts/ThemeContext'
-import { IUser } from '../../../../interfaces/user.interface'
 import { UpdateIcon, UpdateWrapper } from '../updater/Updater'
 import Categories from './categories/Categories'
 import FilterContainer from './filter/Filter'
 
+import { IToolbarOptions } from '../../../../interfaces/toolbar.interface'
+import { IUser } from '../../../../interfaces/user.interface'
+import Course from './course/Course'
 import Year from './year/Year'
 
 function Toolbar({
@@ -20,78 +22,44 @@ function Toolbar({
   const filterMenuRef = useRef()
   const [, setShow] = useState<boolean>(false)
   useOutsideTouch(filterMenuRef, setShow)
-  const { tableData, setCurrentData } = useTableProps()
+  const { tableData, setCurrentData,tableFilters } = useTableProps()
   const { isDarkTheme } = useThemeContext()
   const [trigger, setTrigger] = useState(false)
-  const [options,setOptions] = useState({
+  const [options,setOptions] = useState<IToolbarOptions>({
     year: '',
     category: '',
+    course: '',
   })
+  const TrimData = useCallback((Data: IUser[]):IUser[] => {
+    if (tableFilters?.listLength) {
+      return Data.slice(0, tableFilters?.listLength === '*' ? Data.length : tableFilters?.listLength )
+    }
+    return Data;
+  }, [tableFilters?.listLength])
 
   useEffect(() => {
-    if (!tableData){
-      setCurrentData([])
+    if (!tableData) {
+      setCurrentData([]);
+      return;
     }
-    else{
-      if (options.category !== '' && options.year === '') {
-        let categoryData: IUser[] = []
-        tableData?.forEach(data =>{
-          if (data.submissions) {
-          Object.keys(data.submissions).forEach(submissionItemKey => {
-            if (
-              categoriesConfig[options.category].includes(submissionItemKey) && 
-              !categoryData.find(user => user.user === data.user) 
-            ) { 
-              categoryData.push(data)
-            }
-          })
-        }
-      })
-        setCurrentData(categoryData)
-      }
-      else if (options.year !== '' && options.category !== '') {
-        const Data: IUser[] = []
-        tableData?.forEach(data =>{
-          if (data.submissions) {
-          Object.keys(data.submissions).forEach(submissionItemKey => {
-            const date = new Date(data.submissions![submissionItemKey].lastEditedUtc).getFullYear().toString()
-            if (
-              date === options.year &&
-              categoriesConfig[options.category].includes(submissionItemKey) && 
-              !Data.find(user => user.user === data.user) 
-            ) { 
-              Data.push(data)
-            }
-          })
-        }
-      })
-        setCurrentData(Data)
-      }
-      else if (options.year !== '' && options.category === '') {
-        let categoryData: IUser[] = []
-        tableData?.forEach(user => {
-          if (user.submissions) {
-            Object.values(user.submissions).map(submissionItemKey => {
-              const date = new Date(submissionItemKey.lastEditedUtc).getFullYear().toString()
-              if (
-                date === options.year && !categoryData.find(userData => userData.user === user.user)
-              ) {
-                categoryData.push(user)
-              }
-              return submissionItemKey
-            }
-            )
-          }
-        }
-        )
-        setCurrentData(categoryData)
-      }
-      else {
-        setCurrentData(tableData )
-      }
+  
+    let filteredData = tableData;
+
+    if (options.category !== '' && options.year === '') {
+      filteredData = tableData.filter(data => data.submissions && Object.keys(data.submissions).some(submissionItemKey =>
+        categoriesConfig[options.category].includes(submissionItemKey)
+      ));
+    } else if (options.year !== '') {
+      filteredData = tableData.filter(data => data.submissions && Object.keys(data.submissions).some(submissionItemKey => {
+        const date = new Date(data.submissions![submissionItemKey].lastEditedUtc).getFullYear().toString();
+        return date === options.year && (options.category === '' || categoriesConfig[options.category].includes(submissionItemKey));
+      }));
     }
-    
-  }, [options, setCurrentData, tableData])
+  
+    setCurrentData(options.category === '' && options.year === '' ? TrimData(tableData) : TrimData(filteredData));
+  
+  }, [TrimData, options, setCurrentData, tableData]);
+  
   
   const triggerFetchUserData = async () => {
     try {
@@ -136,6 +104,8 @@ function Toolbar({
       <FilterContainer />
       <Categories options={options} setOptions={setOptions} />
       <Year options={options} setOptions={setOptions}/>
+      <Course options={options} setOptions={setOptions}/>
+      
     </ToolbarWrapper>
   )
 }

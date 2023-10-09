@@ -1,23 +1,9 @@
-import React from 'react'
-import { questions as categoriesConfig } from '../../../../../configs/questions.config'
-import useThemeContext from '../../../../../contexts/ThemeContext'
-import { Select } from '../filter/FilterMenu'
+import { questions as categoriesConfig } from '../../../../../configs/questions.config';
+import useThemeContext from '../../../../../contexts/ThemeContext';
+import { IToolbar } from '../../../../../interfaces/toolbar.interface';
+import { Select } from '../filter/FilterMenu';
 
-const Categories= ({
-  options,
-  setOptions
-}:{
-  options:{
-    year: string,
-    category: string,
-  },
-  setOptions: React.Dispatch<
-    React.SetStateAction<{
-      year: string
-      category: string
-    }>
-  >,
-}) => {
+const Categories= ({options,setOptions}:IToolbar) => {
   const { isDarkTheme } = useThemeContext();  
   return (
     <Select
@@ -31,7 +17,6 @@ const Categories= ({
       }}
       value={options.category}
       onChange={e => {
-        console.log(e.target.value)
         setOptions({
           ...options,
           category: e.target.value

@@ -1,22 +1,8 @@
-import React from 'react'
-import useThemeContext from '../../../../../contexts/ThemeContext'
-import { Select } from '../filter/FilterMenu'
+import useThemeContext from '../../../../../contexts/ThemeContext';
+import { IToolbar } from '../../../../../interfaces/toolbar.interface';
+import { Select } from '../filter/FilterMenu';
 
-const Year= ({
-  options,
-  setOptions
-}:{
-  options:{
-    year: string,
-    category: string,
-  },
-  setOptions: React.Dispatch<
-    React.SetStateAction<{
-      year: string
-      category: string
-    }>
-  >,
-}) => {
+const Year= ({options,setOptions}:IToolbar) => {
   const { isDarkTheme } = useThemeContext();
   return (
     <Select
@@ -30,7 +16,6 @@ const Year= ({
       }}
       value={options.year}
       onChange={e => {
-        console.log(e.target.value)
         setOptions({
           ...options,
           year: e.target.value,
