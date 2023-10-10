@@ -1,4 +1,5 @@
 export interface ISubmissionItem {
+  key(key: any): unknown
   id: string
   name: string
   url: string
@@ -29,6 +30,7 @@ export interface IUser {
   personalDetails: {
     mobile: string
     completed: boolean
+    course?: "BCA"| "MCA" | "Other" 
     dob: string
     section: string
     enrollmentNo: string

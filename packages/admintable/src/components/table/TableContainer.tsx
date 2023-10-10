@@ -4,8 +4,9 @@ import { useAuth } from '../../contexts/AuthContext'
 import useTableProps from '../../contexts/TableContext'
 import { IUser } from '../../interfaces/user.interface'
 import { getTableData } from '../../utils/firebase'
-import Toolbar from './components/toolbar/Toolbar'
 import TableComponent from './TableComponent'
+import Pagination from './components/pagination/Pagination'
+import Toolbar from './components/toolbar/Toolbar'
 
 const TableContainer = () => {
   const {
@@ -53,6 +54,7 @@ const TableContainer = () => {
     <>
       <Toolbar reFetchUserDataWithoutCache={() => pullData(true)} />
       <TableComponent headers={columns} data={currentData as IUser[]} />
+      <Pagination />
     </>
   )
 }

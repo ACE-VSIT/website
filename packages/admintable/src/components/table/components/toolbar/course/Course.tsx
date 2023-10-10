@@ -1,10 +1,9 @@
-import { questions as categoriesConfig } from '../../../../../configs/questions.config';
 import useThemeContext from '../../../../../contexts/ThemeContext';
 import { IToolbar } from '../../../../../interfaces/toolbar.interface';
 import { Select } from '../filter/FilterMenu';
 
-const Categories= ({options,setOptions}:IToolbar) => {
-  const { isDarkTheme } = useThemeContext();  
+const Course= ({options,setOptions}:IToolbar) => {
+  const { isDarkTheme } = useThemeContext();
   return (
     <Select
       style={{
@@ -15,21 +14,17 @@ const Categories= ({options,setOptions}:IToolbar) => {
         background: !isDarkTheme ? '#32486125' : '#EBF6FE25',
         color: !isDarkTheme ? '#324861' : '#EBF6FE',
       }}
-      value={options.category}
+      value={options.course}
       onChange={e => {
         setOptions({
           ...options,
-          category: e.target.value
+          course: e.target.value as "" | "MCA" | "BCA" | "Other",
         })
-        
       }}
     >
-      <option value={''}>Default</option>
-      {Object.keys(categoriesConfig).map(category => {
+      <option value={''}>Course</option>
+      {["MCA","BCA","Others"].map(category => {
         const categoryKey = category
-          .toLowerCase()
-          .replaceAll(' ', '_')
-          .replaceAll('/', '-')
         return (
           <option value={category} key={categoryKey}>
             {category}
@@ -40,4 +35,4 @@ const Categories= ({options,setOptions}:IToolbar) => {
   )
 }
 
-export default Categories
+export default Course
