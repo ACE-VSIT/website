@@ -11,15 +11,8 @@ export default function Questions () {
     <>
       {personalDetails ? (
         personalDetails[0]?.completed ? (
-          <>
-            { personalDetails[0]?.course === 'MCA' ? (
-            <QuestionHandler />) : (
-            <div>
-              <h1>Only MCA students are allowed to participate.</h1>
-            </div>
-            )}
-          </>
-        ) : (
+            <QuestionHandler />)
+        : (
           navigate('/register/')
         )
       ) : (
