@@ -1,18 +1,15 @@
 import { graphql, navigate } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
-import ImageGrid from '../../components/Gallery/components/image-grid/ImageGrid'
-import Layout from '../../components/Layout/index'
-import Seo from '../../components/SEO'
-import AnimateIn from '../../components/animations/AnimateIn'
-import { CenterText, FlexCenter, Heading } from '../../styles/sharedStyles'
+import ImageGrid from '../components/Gallery/components/image-grid/ImageGrid'
+import Layout from '../components/Layout/index'
+import Seo from '../components/SEO'
+import AnimateIn from '../components/animations/AnimateIn'
+import { CenterText, FlexCenter, Heading } from '../styles/sharedStyles'
 
 const Gallery = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
-  const hackathon = data?.allPrismicHackathon?.nodes
-  console.log(hackathon)
-  console.log(data)
-
+  const hackathon = data?.allPrismicHackathon?.nodes.reverse()
   return (
     <Layout navbar={nav}>
       <Seo title="Hackathon" />
