@@ -18,6 +18,7 @@ export const ImageContainer = styled.div`
   cursor: pointer;
   overflow: hidden;
   text-align: center;
+  border-radius: 1rem;
   transition: 0.375s all ease-in-out;
   background-color: ${props => props.theme.font + 50};
 

@@ -9,7 +9,7 @@ import { CenterText, FlexCenter, Heading } from '../styles/sharedStyles'
 
 const Gallery = ({ data }) => {
   const nav = data?.prismicLayout?.data?.body
-  const hackathon = data?.allPrismicHackathon?.nodes.reverse()
+  const hackathon = data?.allPrismicHackathon?.nodes.sort((a, b) => b.data.url.text.localeCompare(a.data.url.text))
   return (
     <Layout navbar={nav}>
       <Seo title="Hackathon" />
