@@ -54,6 +54,7 @@ module.exports = {
           members_array: require('./src/schemas/MembersArray.json'),
           'non-essential': require('./src/schemas/NonEssential.json'),
           upcoming_event_page: require('./src/schemas/UpcomingEventPage.json'),
+          hackathon: require('./src/schemas/Hackathon.json'),
         },
         // customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
         // linkResolver: doc => linkResolver(doc),

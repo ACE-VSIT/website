@@ -1,12 +1,12 @@
+import { useOutsideAlerter } from '@ace/common'
+import { getImage } from 'gatsby-plugin-image'
 import React, { useRef } from 'react'
 import { FlexCenter, Heading } from '../../styles/sharedStyles'
-import ImageGrid from './components/image-grid/ImageGrid'
 import AnimateIn from '../animations/AnimateIn'
-import { getImage } from 'gatsby-plugin-image'
+import ImageGrid from './components/image-grid/ImageGrid'
 import ImageSlider from './components/image-slider/ImageSlider'
-import { useOutsideAlerter } from '@ace/common'
 
-export default function GalleryPage ({ title, subTitle, imgArr }) {
+export default function GalleryPage ({ title, subTitle = '', imgArr }) {
   const [isSliderOpen, setIsSliderOpen] = React.useState(false)
   const [imageIndex, setImageIndex] = React.useState(0)
   const imageSliderRef = useRef()

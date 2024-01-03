@@ -1,0 +1,131 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading2",
+        "label": "title",
+        "placeholder": "Hackathon Name"
+      }
+    },
+    "url": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "url",
+        "placeholder": "hackathon-name"
+      }
+    },
+    "cover_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Cover Image"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "gallery": {
+            "type": "Slice",
+            "fieldset": "Gallery",
+            "description": "Gallery Image ",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              },
+              "event_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Event Title",
+                  "placeholder": "Enter the title of Event"
+                }
+              },
+              "event_info": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "paragraph",
+                  "label": "Event Info",
+                  "placeholder": "Enter the info for the event"
+                }
+              },
+              "event_date": {
+                "type": "Date",
+                "config": {
+                  "label": "Event Date",
+                  "placeholder": "Enter the date for the event"
+                }
+              },
+              "show_card": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": true,
+                  "label": "Show Card"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Seo": {
+    "body1": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {},
+        "choices": {
+          "website_meta_info": {
+            "type": "Slice",
+            "fieldset": "Website Meta Info",
+            "description": "Website Meta info slice for SEO",
+            "icon": "airplay",
+            "non-repeat": {
+              "meta_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Meta Title",
+                  "placeholder": "Meta Title for SEO"
+                }
+              },
+              "meta_description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Description",
+                  "placeholder": "Meta Description for SEO"
+                }
+              },
+              "meta_keywords": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph",
+                  "allowTargetBlank": true,
+                  "label": "Meta Keywords",
+                  "placeholder": "Meta Keywords for SEO"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

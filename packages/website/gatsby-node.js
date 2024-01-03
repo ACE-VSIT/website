@@ -27,6 +27,28 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const hackathonPageQuery = await graphql(`
+    query hackathonPage {
+      allPrismicHackathon {
+        nodes {
+          data {
+            url {
+              text
+            }
+          }
+        }
+      }
+    }
+  `)
+  hackathonPageQuery.data.allPrismicHackathon.nodes.forEach(edge => {
+    actions.createPage({
+      path: `/hackathon/${edge.data.url.text.toLowerCase().replace(/\s/g, '-')}`,
+      component: require.resolve('./src/templates/Hackathon.js'),
+      context: { name: edge.data.url.text },
+    })
+  }
+  )
+
   nonEssentialPagesQuery.data.allPrismicNonEssential.nodes.forEach(edge => {
     actions.createPage({
       path: `/${edge.data.page_title.text.toLowerCase().replace(/\s/g, '-')}`,

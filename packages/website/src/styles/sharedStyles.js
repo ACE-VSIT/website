@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
 import CloseOutlined from '@ant-design/icons/CloseOutlined'
+import styled, { css } from 'styled-components'
 
 export const FlexCenter = styled.div`
   display: flex;
@@ -87,4 +87,13 @@ export const Close = styled(CloseOutlined)`
         background: ${props => props.theme.bg};
       }
     `}
+`
+
+export const CenterText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 2rem;
+  flex-direction: column;
 `
