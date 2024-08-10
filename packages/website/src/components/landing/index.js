@@ -70,7 +70,7 @@ export default function HomePage({ data }) {
       heads,
       mentors,
       coreMembers
-    )
+    ).filter((e) => e.data.ending_year === "2025")
     if (faculty.length > 0) {
       const facult = dean.concat(faculty)
       setFaculty(facult)
