@@ -19,8 +19,17 @@
     "joining_year": {
       "type": "Select",
       "config": {
-        "options": ["2022", "2021", "2020", "2019", "2018", "2017"],
-        "default_value": "2022",
+        "options": [
+          "2024",
+          "2023",
+          "2022",
+          "2021",
+          "2020",
+          "2019",
+          "2018",
+          "2017"
+        ],
+        "default_value": "2024",
         "label": "Joining Year",
         "placeholder": "Member joined ACE in which year"
       }
@@ -28,8 +37,17 @@
     "ending_year": {
       "type": "Select",
       "config": {
-        "options": ["2024", "2023", "2022", "2021", "2019", "2018", "2017"],
-        "default_value": "2024",
+        "options": [
+          "2025",
+          "2024",
+          "2023",
+          "2022",
+          "2021",
+          "2019",
+          "2018",
+          "2017"
+        ],
+        "default_value": "2025",
         "label": "ending_year",
         "placeholder": "Ending Year"
       }
