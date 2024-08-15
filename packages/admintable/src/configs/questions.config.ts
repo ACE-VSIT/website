@@ -4,7 +4,10 @@ export const questions: any = {
     "food-app",
     "music-app",
     "save-your-data",
-    "what-is-your-wallpaper"
+    "what-is-your-wallpaper",
+    "create-a-single-screen-portfolio-app",
+    "create-a-todo-list-app",
+    "create-a-weather-app-with-api-integration",
   ],
   "Ar/Vr Development": [
     "environment-designing",
@@ -21,7 +24,8 @@ export const questions: any = {
     "promotional-message",
     "sponsorship-mail",
     "blog-post",
-    "event-report"
+    "event-report",
+    "linkedin-post",
   ],
   "Data Science": [
     "analysis-and-insights-from-titanic-dataset",
@@ -31,14 +35,21 @@ export const questions: any = {
     "explain-machine-learning-algorithms",
     "analyzing",
     "updating",
-    "comparing"
+    "comparing",
+    "case-study-on-analysis-of-customer-segmentation",
+    "exploratory-data-analysis-on-video-game-sales-dataset",
+    "sentimental-analysis"
   ],
   "Marketing": [
     "ace-catchphrase/jingle/tagline",
     "create-engaging-memes",
     "design-an-instagram-page-for-ace",
     "discover-a-theme-for-ace's-social-media-posts",
-    "pitch-deck-for-ace-as-a-software-solution-brand-and-tech-hub"
+    "pitch-deck-for-ace-as-a-software-solution-brand-and-tech-hub",
+    "create-15-day-content-calendar",
+    "ace-youtube-channel-concept",
+    "social-media-storyboard",
+    "marketing-campaign-proposal",  
   ],
   "Video Editing & Animation": [
     "tech-animation-gif",
@@ -52,11 +63,17 @@ export const questions: any = {
     "design-social-media-posts-for-product-launch",
     "brochure-design-for-eco-friendly-home-cleaning-products",
     "brand-identity-for-a-new-fashion-brand",
+    "create-simple-balanced-social-media-posts",
+    "design-a-flyer-with-clear-hierarchy",
+    "develop-a-mini-brand-identity"
   ],
   "UI/UX": [
     "medical-dashboard-redesign",
     "finance-app-redesign-for-accessibility",
     "end-to-end-user-journey-analysis-and-redesign",
+    "basic-management-dashboard",
+    "design-a-landing-page",
+    "redesign-E-commerce-checkout-flow",
   ],
   "IOT": [
     "arduino",
@@ -70,28 +87,52 @@ export const questions: any = {
     "give-me-some-insights",
     "who-are-we?",
     "shh!-did-you-hear-that?",
-    "i-am-a-mind-researcher"
+    "i-am-a-mind-researcher",
+    "3x3-matrix",
+    "learn-about-gradient-descent-in-machine-learning",
+    "create-a-model",
+    "showcase-research-paper"
   ],
   "Programming": [
     "it-is-what-it-is",
     "arrange-it",
     "story-of-an-intern",
     "burning-houses",
-    "let's-play-tug-of-war"
+    "let's-play-tug-of-war",
+    "merge-the-strings",
+    "-",
+    "-",
+    "quick-sort-algorithm",
+    "sum-as-linked-list",
   ],
   "Photography": [
-    "upload-your-previous-work"
+    "upload-your-previous-work",
+    "upload-photos-based-on-themes",
+    "before-and-after-versions-of-photos"
   ],
-
   "Security": [
     "who-is-who?",
     "member-carry-message..",
     "wirecrypt:-packetmeinpacket",
-    "secrets-unveiled:-key-scanning-quest"
+    "secrets-unveiled:-key-scanning-quest",
+    "you-are-smart",
+    "who-won-it",
+    "key-decode",
+    "steg-quest"
   ],
   "Web Development": [
     "portfolio-website",
     "tictactoe",
-    "music-player"
+    "music-player",
+    "meme-generator",
+    "weather-forecasting-web-app",
+    "url-shortener",
+    "blog-website",
+    "student-management-system",
+  ],
+  "Visuals And Video Editing":[
+    "raw-video-footage",
+    "event-video",
+    "ace-social-media-posts"
   ]
 }
