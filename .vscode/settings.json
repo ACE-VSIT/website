@@ -9,9 +9,9 @@
   // },
 
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.addMissingImports": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit"
   },
   "files.insertFinalNewline": true,
   "eslint.validate": [
