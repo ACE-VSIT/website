@@ -54,7 +54,7 @@ const TableContainer = () => {
     <>
       <Toolbar reFetchUserDataWithoutCache={() => pullData(true)} />
       <TableComponent headers={columns} data={currentData as IUser[]} />
-      <Pagination />
+      {/* <Pagination /> */}
     </>
   )
 }
