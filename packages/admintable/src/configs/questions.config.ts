@@ -81,7 +81,8 @@ export const questions: any = {
     "communication"
   ],
   "Miscellaneous": [
-    "miscellaneous"
+    "miscellaneous",
+    "submit-any-other-previous-project-you-have-created"
   ],
   "R&D": [
     "give-me-some-insights",
@@ -107,8 +108,8 @@ export const questions: any = {
   ],
   "Photography": [
     "upload-your-previous-work",
-    "upload-photos-based-on-themes",
-    "before-and-after-versions-of-photos"
+    "photography-task-1",
+    "photography-task-2"
   ],
   "Security": [
     "who-is-who?",
@@ -116,9 +117,9 @@ export const questions: any = {
     "wirecrypt:-packetmeinpacket",
     "secrets-unveiled:-key-scanning-quest",
     "you-are-smart",
-    "who-won-it",
-    "key-decode",
-    "steg-quest"
+    "whowonit",
+    "keydecode",
+    "stegquest"
   ],
   "Web Development": [
     "portfolio-website",
@@ -131,8 +132,8 @@ export const questions: any = {
     "student-management-system",
   ],
   "Visuals And Video Editing":[
-    "raw-video-footage",
-    "event-video",
-    "ace-social-media-posts"
+    "visuals-and-video-editing-task-1",
+    "visuals-and-video-editing-task-2",
+    "visuals-and-video-editing-task-3"
   ]
 }
