@@ -61,11 +61,13 @@ export default function MembersPage({ data }) {
           e.data.member_position.text !== 'Vice President' &&
           !e.data.member_position.text.includes('Head') &&
           !e.data.member_position.text.includes('Dean') &&
-          !e.data.member_position.text.includes('Faculty')
+          !e.data.member_position.text.includes('Faculty') &&
+          !e.data.member_position.text.includes('Chairperson')
       )
       const member = filterYear.filter(
         e => e.data.member_position.text === 'Member'
       )
+      // console.log(member)
       const combineAll = presidents.concat(
         vicepresidents,
         generalsecretary,
@@ -96,6 +98,7 @@ export default function MembersPage({ data }) {
 
       const facultyMembers = ch_person.concat(dean)
       setFaculty(facultyMembers)
+      // console.log(facultyMembers)
 
       const faculty = filterYear.filter(e =>
         e.data.member_position.text.includes('Faculty')
