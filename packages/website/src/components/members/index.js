@@ -8,6 +8,7 @@ import MembersSort from './members-sort/MembersSort'
 export default function MembersPage({ data }) {
   const [members, setMembers] = React.useState([])
   const [faculty, setFaculty] = React.useState([])
+  const [facultyCoordinators, setFacultyCoordinators] = React.useState([])
   const [loadingMembers, setLoadingMembers] = React.useState(true)
   const [loadingFaculty, setLoadingFaculty] = React.useState(true)
   // New Session updates in September, so if the current month is less than 8, then the year is same as current year, else it is next year
@@ -72,7 +73,7 @@ export default function MembersPage({ data }) {
         mentors,
         coreMembers,
         laterHeads,
-        member
+        member  
       )
       setMembers(combineAll)
     },
@@ -86,15 +87,20 @@ export default function MembersPage({ data }) {
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
       )
+      const ch_person = year >= 2025 ? filterYear.filter(e => 
+        e.data.member_position.text.includes('Chairperson')
+      ) : []
       const dean = filterYear.filter(e =>
         e.data.member_position.text.includes('Dean')
       )
+
+      const facultyMembers = ch_person.concat(dean)
+      setFaculty(facultyMembers)
+
       const faculty = filterYear.filter(e =>
         e.data.member_position.text.includes('Faculty')
       )
-      const facultyMembers = dean.concat(faculty)
-
-      setFaculty(facultyMembers)
+      setFacultyCoordinators(faculty)
     },
     [data.allPrismicMembers.nodes]
   )
@@ -122,7 +128,8 @@ export default function MembersPage({ data }) {
       </FlexCenter>
       <MembersSort startingYear={2017} setYear={e => setYearFaculty(e)} />
       {!loadingFaculty ? (
-        <FlexCenter style={{ flexWrap: 'wrap' }}>
+        <>
+          <FlexCenter style={{ flexWrap: 'wrap' }}>
           {faculty?.map((e, key) => {
             const img = getImage(e.data.member_image)
             // Filters all key values which matches "link" and stores it in socialLinksI
@@ -135,6 +142,37 @@ export default function MembersPage({ data }) {
 
             const forceShow =
               e.data.member_position.text.includes('Dean') |
+              e.data.member_position.text.includes('Chairperson')
+
+            return (
+              <div key={key}>
+                <MemberCard
+                  img={img}
+                  name={e.data.member_name.text}
+                  title={e.data.member_position.text}
+                  social={socialLinks}
+                  info={e.data.about_member.text}
+                  joiningYear={e.data.joining_year}
+                  selectedYear={yearFaculty}
+                  forceShowPosition={forceShow}
+                  endingYear={e.data.ending_year}
+                />
+              </div>
+            )
+          })}
+          </FlexCenter>
+          <FlexCenter style={{ flexWrap: 'wrap' }}>
+          {facultyCoordinators?.map((e, key) => {
+            const img = getImage(e.data.member_image)
+            // Filters all key values which matches "link" and stores it in socialLinksI
+            const socialLinks = Object.keys(e.data)
+              .filter(links => links.includes('link'))
+              .reduce((obj, key) => {
+                obj[key] = e.data[key]
+                return obj
+              }, {})
+
+            const forceShow =
               e.data.member_position.text.includes('Faculty')
 
             return (
@@ -153,7 +191,9 @@ export default function MembersPage({ data }) {
               </div>
             )
           })}
-        </FlexCenter>
+          </FlexCenter>
+        </>
+        
       ) : (
         <div style={{ height: '80vh' }}>
           <Loading />
