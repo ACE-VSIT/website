@@ -93,9 +93,12 @@ export default function MembersPage({ data }) {
       const dean = filterYear.filter(e =>
         e.data.member_position.text.includes('Dean')
       )
+
+      // Faculty Members
       const facultyMembers = ch_person.concat(dean)
       setFaculty(facultyMembers)
 
+      // Faculty Coordinators
       const faculty = filterYear.filter(e =>
         e.data.member_position.text.includes('Faculty')
       )
