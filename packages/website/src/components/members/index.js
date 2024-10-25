@@ -72,28 +72,34 @@ export default function MembersPage({ data }) {
         mentors,
         coreMembers,
         laterHeads,
-        member
+        member  
       )
       setMembers(combineAll)
     },
     [data.allPrismicMembers.nodes]
   )
 
+  const currentYear = new Date().getFullYear();
+
   const filterFaculty = React.useCallback(
     year => {
+      console.log(year);
       const filterYear = data.allPrismicMembers.nodes.filter(
         e =>
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
       )
+      const ch_person = year >= 2025 ? filterYear.filter(e => 
+        e.data.member_position.text.includes('Chair Person')
+      ) : []
       const dean = filterYear.filter(e =>
         e.data.member_position.text.includes('Dean')
       )
       const faculty = filterYear.filter(e =>
         e.data.member_position.text.includes('Faculty')
       )
-      const facultyMembers = dean.concat(faculty)
-
+      const facultyMembers = ch_person.concat(dean,faculty)
+      console.log(facultyMembers);
       setFaculty(facultyMembers)
     },
     [data.allPrismicMembers.nodes]
