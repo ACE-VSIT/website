@@ -86,6 +86,8 @@ export default function HomePage({ data }) {
     onViewPort && setHasMounted(true)
   }, [onViewPort])
 
+  console.log(data?.prismicHomepage?.data?.body[0]);
+
   return (
     <>
       <HeroSection data={data?.prismicHomepage?.data?.body[0]} />

@@ -60,7 +60,7 @@ export default function HeroSection({ data }) {
             <AnimateIn duration={500} delay={200}>
               {hero?.subTitle && <HeroInfo>{hero?.subTitle}</HeroInfo>}
             </AnimateIn>
-            {hero?.heroBtn && (
+            {/* {hero?.heroBtn && (
               <Button
                 onClick={() => navigate(hero?.heroBtnLink)}
                 value={hero?.heroBtnTitle}
@@ -68,9 +68,13 @@ export default function HeroSection({ data }) {
                 style={{ marginRight: 'auto' }}
                 md={
                   true
-                } /* Passing random string to avoid `Received `true` for a non-boolean attribute `md`.` */
+                }
               />
-            )}
+            )} */}
+            <Button 
+              value='HACKVSIT 6.0 ( Coming Soon )'
+              style={{ marginRight: 'auto' }}
+            />
           </HeroInfoWrapper>
         </HeroWrapper>
       )}
