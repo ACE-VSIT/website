@@ -60,7 +60,7 @@ export default function HeroSection({ data }) {
             <AnimateIn duration={500} delay={200}>
               {hero?.subTitle && <HeroInfo>{hero?.subTitle}</HeroInfo>}
             </AnimateIn>
-            {/* {hero?.heroBtn && (
+            {hero?.heroBtn && (
               <Button
                 onClick={() => navigate(hero?.heroBtnLink)}
                 value={hero?.heroBtnTitle}
@@ -70,11 +70,12 @@ export default function HeroSection({ data }) {
                   true
                 }
               />
-            )} */}
-            <Button 
-              value='HACKVSIT 6.0 ( Coming Soon )'
+            )}
+            {/* <Button 
+              value='HackVSIT 6.0 is Here'
               style={{ marginRight: 'auto' }}
-            />
+              onClick={()=> {navigate("https://hack-vsit.tech/")}}
+            /> */}
           </HeroInfoWrapper>
         </HeroWrapper>
       )}
