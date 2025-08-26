@@ -51,7 +51,7 @@ export const questions: any = {
     "social-media-storyboard",
     "marketing-campaign-proposal",  
   ],
-  "Video Editing & Animation": [
+  "Video Editing": [
     "tech-animation-gif",
     "tech-explainer-video",
     "product-showcase-video",
@@ -67,7 +67,7 @@ export const questions: any = {
     "design-a-flyer-with-clear-hierarchy",
     "develop-a-mini-brand-identity"
   ],
-  "UI/UX": [
+  "Designing": [
     "medical-dashboard-redesign",
     "finance-app-redesign-for-accessibility",
     "end-to-end-user-journey-analysis-and-redesign",
