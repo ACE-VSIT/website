@@ -84,7 +84,7 @@ export const questions: any = {
     "miscellaneous",
     "submit-any-other-previous-project-you-have-created"
   ],
-  "R&D": [
+  "Research & Development": [
     "give-me-some-insights",
     "who-are-we?",
     "shh!-did-you-hear-that?",
