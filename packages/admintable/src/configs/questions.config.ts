@@ -47,7 +47,7 @@ export const questions: any = {
     "complete-the-solve-maze-function",
     "build-a-gui-application",
     "six-degrees-of-kevin-bacon",
-    "Showcase-a-research-paper"
+    "showcase-a-research-paper"
   ],
   "Programming": [
     "word-frequency-counter",
@@ -87,4 +87,5 @@ export const questions: any = {
   "IOT": [
   ]
 }
+
 
