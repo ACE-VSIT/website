@@ -3,7 +3,7 @@
 {
   "questions": [
     { "name": "App Development", "id": "app_development" },
-    { "name": "R&D", "id":"R&D" },
+    { "name": "Research & Development", "id":"research_and_development" },
     { "name": "Programming", "id": "programming" },
     { "name": "Content Writing", "id": "content_writing" },
     { "name": "Web Development", "id": "web_development" },
@@ -17,3 +17,4 @@
    ]
 
 }
+
