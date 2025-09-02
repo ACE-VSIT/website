@@ -3,7 +3,7 @@
 {
   "questions": [
     { "name": "App Development", "id": "app_development" },
-    { "name": "Research & Development", "id":"research_and_development" },
+    { "name": "R&D", "id":"R&D" },
     { "name": "Programming", "id": "programming" },
     { "name": "Content Writing", "id": "content_writing" },
     { "name": "Web Development", "id": "web_development" },
@@ -15,4 +15,5 @@
     { "name": "Video Editing", "id": "video_editing" },
     { "name": "Miscellaneous", "id": "miscellaneous"}
    ]
+
 }
