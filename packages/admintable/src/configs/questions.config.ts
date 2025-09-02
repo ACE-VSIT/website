@@ -41,7 +41,7 @@ export const questions: any = {
     "full-event-branding-kit",
   ],
 
-  "R&D": [
+  "Research & Development": [
     "3x3-matrix",
     "build-a-basic-machine-learning-model",
     "complete-the-solve-maze-function",
@@ -87,5 +87,6 @@ export const questions: any = {
   "IOT": [
   ]
 }
+
 
 
