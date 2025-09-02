@@ -1,110 +1,58 @@
 export const questions: any = {
   "App Development": [
-    "login-form",
-    "food-app",
-    "music-app",
-    "save-your-data",
-    "what-is-your-wallpaper",
-    "create-a-single-screen-portfolio-app",
-    "create-a-todo-list-app",
-    "create-a-weather-app-with-api-integration",
-  ],
-  "Ar/Vr Development": [
-    "environment-designing",
-    "normal-game",
-    "coding-related"
-  ],
-  "Audio Visual": [
-    "audio-video",
-    "logo-reveal",
-    "ace-video"
+    "create-a-login/signup-page",
+    "create-a-portfolio-app",
+    "create-a-to-do-list-application",
+    "create-a-clone-of-spotify-ui-with-all-the-screens",
+    "create-a-weather-application-with-api-integration",
   ],
   "Content Writing": [
-    "event-announcement",
-    "promotional-message",
-    "sponsorship-mail",
-    "blog-post",
-    "event-report",
-    "linkedin-post",
+    "reel-script:-hackvsit-7.0",
+    "outreach-email",
+    "event-content-simulation",
   ],
   "Data Science": [
-    "analysis-and-insights-from-titanic-dataset",
-    "explaining-statistical-concepts-in-data-analysis",
-    "probability-distributions-with-graphs",
-    "eda-on-student-performance-dataset",
-    "explain-machine-learning-algorithms",
-    "analyzing",
-    "updating",
-    "comparing",
-    "case-study-on-analysis-of-customer-segmentation",
-    "exploratory-data-analysis-on-video-game-sales-dataset",
-    "sentimental-analysis"
+    "student-performance-dashboard-using-excel",
+    "student-performance-analysis-using-pandas",
+    "student-performance-analysis-using-sql",
+    "cafe-sales-eda",
   ],
   "Marketing": [
-    "ace-catchphrase/jingle/tagline",
-    "create-engaging-memes",
-    "design-an-instagram-page-for-ace",
-    "discover-a-theme-for-ace's-social-media-posts",
-    "pitch-deck-for-ace-as-a-software-solution-brand-and-tech-hub",
-    "create-15-day-content-calendar",
-    "ace-youtube-channel-concept",
-    "social-media-storyboard",
-    "marketing-campaign-proposal",  
+    "meme-it-with-ace",
+    "ace-instaglow-up-challenge",
+    "15-day-content-calendar-challenge-for-tech-event",
+    "trend-hackers:-reel-script-challenge",
+    "decode-&-recode:-hackathon-strategy-challenge",
+    "ace-powerplay:-sponsor-pitch-challenge",
   ],
-  "Video Editing & Animation": [
-    "tech-animation-gif",
-    "tech-explainer-video",
-    "product-showcase-video",
-    "tech-challenge-montage",
-    "discover-a-theme-for-ace's-social-media-posts"
+  "Video Editing": [
+    "reel-remix-task-1",
+    "image-animation-creation-task-2",
+    "event-highlight-recap-task-1",
+    "infographic-style-reel-redesign-task-2",
+    "advanced-cinematic-trailer-challenge",
+  ],
+  "Designing": [
+    "instagram-post",
+    "id-card-design",
+    "ui/ux-design",
+    "glassmorphism-poster",
+    "ui/ux-design-system",
+    "full-event-branding-kit",
+  ],
 
-  ],
-  "Graphic Design": [
-    "design-social-media-posts-for-product-launch",
-    "brochure-design-for-eco-friendly-home-cleaning-products",
-    "brand-identity-for-a-new-fashion-brand",
-    "create-simple-balanced-social-media-posts",
-    "design-a-flyer-with-clear-hierarchy",
-    "develop-a-mini-brand-identity"
-  ],
-  "UI/UX": [
-    "medical-dashboard-redesign",
-    "finance-app-redesign-for-accessibility",
-    "end-to-end-user-journey-analysis-and-redesign",
-    "basic-management-dashboard",
-    "design-a-landing-page",
-    "redesign-E-commerce-checkout-flow",
-  ],
-  "IOT": [
-    "arduino",
-    "firebase",
-    "communication"
-  ],
-  "Miscellaneous": [
-    "miscellaneous",
-    "submit-any-other-previous-project-you-have-created"
-  ],
-  "Research & Development": [
-    "give-me-some-insights",
-    "who-are-we?",
-    "shh!-did-you-hear-that?",
-    "i-am-a-mind-researcher",
+  "R&D": [
     "3x3-matrix",
-    "learn-about-gradient-descent-in-machine-learning",
-    "create-a-model",
-    "showcase-research-paper"
+    "build-a-basic-machine-learning-model",
+    "complete-the-solve-maze-function",
+    "build-a-gui-application",
   ],
   "Programming": [
-    "it-is-what-it-is",
-    "arrange-it",
-    "story-of-an-intern",
-    "burning-houses",
-    "let's-play-tug-of-war",
-    "merge-the-strings",
-    "-",
-    "-",
-    "quick-sort-algorithm",
-    "sum-as-linked-list",
+    "word-frequency-counter",
+    "cli-quiz-app",
+    "library-book-management-(in-memory)",
+    "personal-expense-tracker-(console-app)",
+    "build-your-own-virtual-vending-machine",
   ],
   "Photography": [
     "upload-your-previous-work",
@@ -112,28 +60,28 @@ export const questions: any = {
     "photography-task-2"
   ],
   "Security": [
-    "who-is-who?",
-    "member-carry-message..",
-    "wirecrypt:-packetmeinpacket",
-    "secrets-unveiled:-key-scanning-quest",
-    "you-are-smart",
-    "whowonit",
-    "keydecode",
-    "stegquest"
+    "network-scan",
+    "attack",
+    "stegquest",
   ],
   "Web Development": [
     "portfolio-website",
-    "tictactoe",
-    "music-player",
     "meme-generator",
     "weather-forecasting-web-app",
     "url-shortener",
     "blog-website",
     "student-management-system",
   ],
-  "Visuals And Video Editing":[
-    "visuals-and-video-editing-task-1",
-    "visuals-and-video-editing-task-2",
-    "visuals-and-video-editing-task-3"
+  "Miscellaneous": [
+    "miscellaneous",
+    "submit-any-other-previous-project-you-have-created"
+  ],
+
+
+
+
+  "Ar/Vr Development": [
+  ],
+  "IOT": [
   ]
 }
