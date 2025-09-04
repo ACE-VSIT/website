@@ -14,7 +14,7 @@ export default function MembersPage({ data }) {
   // New Session updates in September, so if the current month is less than 8, then the year is same as current year, else it is next year
   const [yearMembers, setYearMembers] = React.useState(new Date().getMonth() < 7 ? new Date().getFullYear() : new Date().getFullYear() + 1)
   const [yearFaculty, setYearFaculty] = React.useState(new Date().getMonth() < 7 ? new Date().getFullYear() : new Date().getFullYear() + 1)
-  
+
   // This is not the best approach, will think of something later
   const filterMembers = React.useCallback(
     year => {
@@ -23,6 +23,12 @@ export default function MembersPage({ data }) {
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
       )
+      const studentChairpersons = filterYear.filter(e =>
+        e.data.member_position.text.includes('Chairperson') &&
+        !e.data.member_position.text.includes('IT') &&
+        !e.data.member_position.text.includes('Faculty')
+      );
+
       const presidents = filterYear.filter(
         e =>
           e.data.member_position.text === 'President' &&
@@ -68,16 +74,19 @@ export default function MembersPage({ data }) {
         e => e.data.member_position.text === 'Member'
       )
       // console.log(member)
-      const combineAll = presidents.concat(
+      const combineAll = studentChairpersons.concat(
+        presidents,
         vicepresidents,
         generalsecretary,
         heads,
         mentors,
         coreMembers,
         laterHeads,
-        member  
+        member
       )
+
       setMembers(combineAll)
+
     },
     [data.allPrismicMembers.nodes]
   )
@@ -89,9 +98,11 @@ export default function MembersPage({ data }) {
           parseInt(e.data.joining_year) <= parseInt(year) &&
           parseInt(e.data.ending_year) >= parseInt(year)
       )
-      const ch_person = year >= 2025 ? filterYear.filter(e => 
-        e.data.member_position.text.includes('Chairperson')
-      ) : []
+      const ch_person = year >= 2025 ? filterYear.filter(e =>
+        e.data.member_position.text.includes('Chairperson') &&
+        (e.data.member_position.text.includes('IT') || e.data.member_position.text.includes('Faculty'))
+      ) : [];
+
       const dean = filterYear.filter(e =>
         e.data.member_position.text.includes('Dean')
       )
@@ -133,70 +144,70 @@ export default function MembersPage({ data }) {
       {!loadingFaculty ? (
         <>
           <FlexCenter style={{ flexWrap: 'wrap' }}>
-          {faculty?.map((e, key) => {
-            const img = getImage(e.data.member_image)
-            // Filters all key values which matches "link" and stores it in socialLinksI
-            const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes('link'))
-              .reduce((obj, key) => {
-                obj[key] = e.data[key]
-                return obj
-              }, {})
+            {faculty?.map((e, key) => {
+              const img = getImage(e.data.member_image)
+              // Filters all key values which matches "link" and stores it in socialLinksI
+              const socialLinks = Object.keys(e.data)
+                .filter(links => links.includes('link'))
+                .reduce((obj, key) => {
+                  obj[key] = e.data[key]
+                  return obj
+                }, {})
 
-            const forceShow =
-              e.data.member_position.text.includes('Dean') |
-              e.data.member_position.text.includes('Chairperson')
+              const forceShow =
+                e.data.member_position.text.includes('Dean') |
+                e.data.member_position.text.includes('Chairperson')
 
-            return (
-              <div key={key}>
-                <MemberCard
-                  img={img}
-                  name={e.data.member_name.text}
-                  title={e.data.member_position.text}
-                  social={socialLinks}
-                  info={e.data.about_member.text}
-                  joiningYear={e.data.joining_year}
-                  selectedYear={yearFaculty}
-                  forceShowPosition={forceShow}
-                  endingYear={e.data.ending_year}
-                />
-              </div>
-            )
-          })}
+              return (
+                <div key={key}>
+                  <MemberCard
+                    img={img}
+                    name={e.data.member_name.text}
+                    title={e.data.member_position.text}
+                    social={socialLinks}
+                    info={e.data.about_member.text}
+                    joiningYear={e.data.joining_year}
+                    selectedYear={yearFaculty}
+                    forceShowPosition={forceShow}
+                    endingYear={e.data.ending_year}
+                  />
+                </div>
+              )
+            })}
           </FlexCenter>
           <FlexCenter style={{ flexWrap: 'wrap' }}>
-          {facultyCoordinators?.map((e, key) => {
-            const img = getImage(e.data.member_image)
-            // Filters all key values which matches "link" and stores it in socialLinksI
-            const socialLinks = Object.keys(e.data)
-              .filter(links => links.includes('link'))
-              .reduce((obj, key) => {
-                obj[key] = e.data[key]
-                return obj
-              }, {})
+            {facultyCoordinators?.map((e, key) => {
+              const img = getImage(e.data.member_image)
+              // Filters all key values which matches "link" and stores it in socialLinksI
+              const socialLinks = Object.keys(e.data)
+                .filter(links => links.includes('link'))
+                .reduce((obj, key) => {
+                  obj[key] = e.data[key]
+                  return obj
+                }, {})
 
-            const forceShow =
-              e.data.member_position.text.includes('Faculty')
+              const forceShow =
+                e.data.member_position.text.includes('Faculty')
 
-            return (
-              <div key={key}>
-                <MemberCard
-                  img={img}
-                  name={e.data.member_name.text}
-                  title={e.data.member_position.text}
-                  social={socialLinks}
-                  info={e.data.about_member.text}
-                  joiningYear={e.data.joining_year}
-                  selectedYear={yearFaculty}
-                  forceShowPosition={forceShow}
-                  endingYear={e.data.ending_year}
-                />
-              </div>
-            )
-          })}
+              return (
+                <div key={key}>
+                  <MemberCard
+                    img={img}
+                    name={e.data.member_name.text}
+                    title={e.data.member_position.text}
+                    social={socialLinks}
+                    info={e.data.about_member.text}
+                    joiningYear={e.data.joining_year}
+                    selectedYear={yearFaculty}
+                    forceShowPosition={forceShow}
+                    endingYear={e.data.ending_year}
+                  />
+                </div>
+              )
+            })}
           </FlexCenter>
         </>
-        
+
       ) : (
         <div style={{ height: '80vh' }}>
           <Loading />
