@@ -45,7 +45,8 @@ export default function ProjectPage ({ projectList }) {
             const img = getImage(e?.data?.image)
             const title = e?.data?.title?.text
             const type = e?.data?.project_type
-
+            const link = e?.data?.source_link?.url || null
+          
             return (
               <div key={index}>
                 <ProjectCard
@@ -53,6 +54,7 @@ export default function ProjectPage ({ projectList }) {
                   content={content}
                   img={img}
                   title={title}
+                  link={link} 
                 />
               </div>
             )

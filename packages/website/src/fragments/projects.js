@@ -30,6 +30,9 @@ export const ProjectPage = graphql`
         gatsbyImageData(placeholder: BLURRED)
       }
       project_type
+      source_link {
+        url
+      }
     }
   }
 `
