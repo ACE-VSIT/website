@@ -16,20 +16,36 @@ export default function ProjectCard ({
   title,
   link = null
 }) {
+  
+  const CardContent = (
+    <ProjectCardWrapper>
+      <ProjectCardImageWrapper>
+        <GatsbyImage
+          image={img}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          alt={title || ''}
+        />
+      </ProjectCardImageWrapper>
+      <ProjectCardHeading>{title}</ProjectCardHeading>
+      <ProjectCardInfo>{content}</ProjectCardInfo>
+      <ProjectCardTags>{type}</ProjectCardTags>
+    </ProjectCardWrapper>
+  )
+
   return (
     <AnimateIn duration={500} delay={250}>
-      <ProjectCardWrapper onClick={() => link && window.open(link)}>
-        <ProjectCardImageWrapper>
-          <GatsbyImage
-            image={img}
-            style={{ width: '100%', height: '100%', objectFit: 's' }}
-            alt={''}
-          />
-        </ProjectCardImageWrapper>
-        <ProjectCardHeading>{title}</ProjectCardHeading>
-        <ProjectCardInfo>{content}</ProjectCardInfo>
-        <ProjectCardTags>{type}</ProjectCardTags>
-      </ProjectCardWrapper>
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          {CardContent}
+        </a>
+      ) : (
+        CardContent
+      )}
     </AnimateIn>
   )
 }
