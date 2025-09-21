@@ -2,19 +2,9 @@
 
 {
   "questions": [
-    { "name": "App Development", "id": "app_development" },
-    { "name": "Research & Development", "id":"research_and_development" },
-    { "name": "Programming", "id": "programming" },
-    { "name": "Content Writing", "id": "content_writing" },
-    { "name": "Web Development", "id": "web_development" },
-    { "name": "Data Science", "id": "data_science" },
-    { "name": "Security", "id": "security" },
-    { "name": "Marketing", "id": "digital_marketing" },
-    { "name": "Visuals", "id": "visuals"},
-    { "name": "Designing", "id": "designing" },
-    { "name": "Video Editing", "id": "video_editing" },
     { "name": "Miscellaneous", "id": "miscellaneous"}
    ]
 
 }
+
 
