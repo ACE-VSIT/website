@@ -72,9 +72,10 @@ export default function HeroSection({ data }) {
               />
             )}
             {/* <Button 
-              value='HackVSIT 6.0 is Here'
+              value='Tasks Submissions'
               style={{ marginRight: 'auto' }}
-              onClick={()=> {navigate("https://hack-vsit.tech/")}}
+              md={true}
+              onClick={()=> {navigate("https://tasks.vipsace.org/")}}
             /> */}
           </HeroInfoWrapper>
         </HeroWrapper>
@@ -82,5 +83,3 @@ export default function HeroSection({ data }) {
     </>
   )
 }
-
-/* New Commit */
